@@ -1,32 +1,89 @@
 aid: akamai-api-security
 name: Akamai API Security
 description: >-
-  Akamai API Security provides API discovery, analysis, and threat protection across cloud and on-premises environments.
+  Akamai API Security (formerly Noname Security) provides comprehensive API
+  discovery, posture management, and threat protection for organizations across
+  cloud, on-premises, and hybrid environments. The platform continuously
+  discovers and monitors all APIs, identifies vulnerabilities and
+  misconfigurations, detects and responds to API threats in real time, and
+  provides pre-production security testing integrated into CI/CD pipelines.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - API Analysis
   - API Security
+  - API Discovery
+  - Threat Protection
+  - Posture Management
+  - Runtime Protection
+  - Cloud Security
 url: >-
   https://raw.githubusercontent.com/api-evangelist/akamai-api-security/refs/heads/main/apis.yml
 created: '2026-03-26'
 modified: '2026-03-26'
 specificationVersion: '0.19'
 apis:
-  - aid: akamai-api-security:akamai-api-security
+  - aid: akamai-api-security:api-security
     name: Akamai API Security
     description: >-
-      Akamai API Security provides API discovery, analysis, and threat protection across cloud and on-premises environments.
+      Akamai API Security provides end-to-end API protection including
+      discovery, posture management, runtime protection, and active testing. It
+      discovers all APIs including shadow and zombie APIs, identifies
+      vulnerabilities and misconfigurations, and detects and blocks API-based
+      attacks in real time.
     humanURL: https://www.akamai.com/products/api-security
     tags:
-      - API Analysis
       - API Security
+      - API Discovery
+      - Threat Protection
+      - Runtime Protection
     properties:
       - type: Documentation
-        url: https://techdocs.akamai.com
+        url: https://techdocs.akamai.com/api-security/docs/welcome
+      - type: GettingStarted
+        url: https://techdocs.akamai.com/api-security/docs/get-started
+  - aid: akamai-api-security:akamai-apis
+    name: Akamai APIs
+    description: >-
+      Akamai provides a comprehensive set of REST APIs for managing and
+      configuring their platform services, including API security, CDN, edge
+      computing, and security products. The APIs use the Akamai EdgeGrid
+      authentication mechanism.
+    humanURL: https://techdocs.akamai.com/home/page/products-tools-a-z
+    tags:
+      - REST API
+      - Platform API
+      - EdgeGrid
+      - Configuration
+    properties:
+      - type: Documentation
+        url: https://techdocs.akamai.com/home/page/products-tools-a-z
+      - type: Authentication
+        url: https://techdocs.akamai.com/developer/docs/authenticate-with-edgegrid
+      - type: GettingStarted
+        url: https://techdocs.akamai.com/developer/docs/get-started
 common:
   - type: Website
     url: https://www.akamai.com/products/api-security
+  - type: Documentation
+    url: https://techdocs.akamai.com
+  - type: Blog
+    url: https://www.akamai.com/blog
+  - type: Pricing
+    url: https://www.akamai.com/products/api-security#pricing
+  - type: Support
+    url: https://www.akamai.com/support
+  - type: Login
+    url: https://control.akamai.com
+  - type: Signup
+    url: https://www.akamai.com/free-trials
+  - type: GitHub
+    url: https://github.com/akamai
+  - type: Status
+    url: https://www.akamaistatus.com
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/akamai-technologies
+  - type: Twitter
+    url: https://twitter.com/Akamai
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
