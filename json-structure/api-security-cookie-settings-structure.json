@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/akamai-api-security/refs/heads/main/json-structure/api-security-cookie-settings-structure.json",
+  "name": "cookie-settings",
+  "description": "Contains the cookie settings for a configuration.",
+  "type": "object",
+  "properties": {
+    "cookieDomain": {
+      "description": "Choose the type of domain. The default recommended type is `automatic`. Otherwise, choose `fqdn` to use the current Fully Qualified Domain name, `legacy` to use the original way in which the domain was selected, or `psl` to use the public suffix list to identify a private domain.",
+      "enum": [
+        "automatic",
+        "fqdn",
+        "legacy",
+        "psl"
+      ],
+      "type": "string"
+    },
+    "useAllSecureTraffic": {
+      "description": "If all of your traffic uses HTTPS, specify `true`. This option sets the Secure flag on all security product cookies, which are then only included with HTTPS traffic. It also adds `SameSite=None` to most bot management cookies, ensuring that recent browser versions submit the cookies with protected requests. The `SameSite=None` cookie setting is necessary for site architectures that involve cross-domain form submission or inclusion of cross-domain iframes.",
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": false
+}

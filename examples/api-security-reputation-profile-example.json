@@ -1,0 +1,11 @@
+{
+  "condition": {},
+  "context": "DOSATCK",
+  "contextReadable": "example-value",
+  "description": "10.20.30.40",
+  "enabled": false,
+  "id": 342,
+  "name": "Production Security Config",
+  "sharedIpHandling": "NON_SHARED",
+  "threshold": 53.91
+}

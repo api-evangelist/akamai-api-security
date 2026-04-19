@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/akamai-api-security/refs/heads/main/json-structure/api-security-request-body-structure.json",
+  "name": "request-body",
+  "description": "Contains the size limits for a request body.",
+  "type": "object",
+  "properties": {
+    "requestBodyInspectionLimitInKB": {
+      "description": "Request body size in KB, either `8`, `16`, or `32` as string-formatted integers, or `default` to use Akamai's best practice value.",
+      "enum": [
+        "8",
+        "16",
+        "32",
+        "default"
+      ],
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

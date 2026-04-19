@@ -1,0 +1,11 @@
+{
+  "description": "10.20.30.40",
+  "id": 57,
+  "latestVersion": 490,
+  "name": "Production Security Config",
+  "productionHostnames": [
+    "vpn.example.com"
+  ],
+  "productionVersion": 576,
+  "stagingVersion": 866
+}

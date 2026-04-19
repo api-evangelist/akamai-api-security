@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/akamai-api-security/refs/heads/main/json-structure/api-security-siem-settings-structure.json",
+  "name": "siem-settings",
+  "description": "Contains Security Information Event Management (SIEM) integration settings.",
+  "type": "object",
+  "properties": {
+    "enableForAllPolicies": {
+      "description": "Whether you enabled SIEM for all the security policies in the configuration version.",
+      "type": "boolean"
+    },
+    "enableSiem": {
+      "description": "Whether you enabled SIEM in a security configuration version.",
+      "type": "boolean"
+    },
+    "enabledBotmanSiemEvents": {
+      "description": "__Deprecated__ Whether you enabled SIEM for the Bot Manager events. Use `exceptions` parameter instead to set botman siem events exception. ",
+      "type": "boolean",
+      "x-akamai": {
+        "status": "DEPRECATED"
+      }
+    },
+    "exceptions": {
+      "description": "Describes all attack type exceptions that will be ignored in siem events.",
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "actionTypes": {
+            "description": "Describes actions to be excluded for a particular attack type. A `*` value means all actions.",
+            "items": {
+              "enum": [
+                "*",
+                "alert",
+                "deny",
+                "all_custom",
+                "abort",
+                "allow",
+                "delay",
+                "ignore",
+                "monitor",
+                "slow",
+                "tarpit"
+              ],
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "protection": {
+            "description": "Attack type to be added as an exception.",
+            "enum": [
+              "ipgeo",
+              "rate",
+              "urlProtection",
+              "slowpost",
+              "customrules",
+              "waf",
+              "apirequestconstraints",
+              "clientrep",
+              "malwareprotection",
+              "botmanagement",
+              "aprProtection"
+            ],
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "firewallPolicyIds": {
+      "description": "The list of security policy identifiers for which to enable the SIEM integration.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "siemDefinitionId": {
+      "description": "Uniquely identifies the SIEM settings.",
+      "type": "int32"
+    }
+  },
+  "required": [
+    "enableSiem"
+  ],
+  "additionalProperties": false
+}

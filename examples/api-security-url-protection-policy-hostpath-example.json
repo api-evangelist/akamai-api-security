@@ -1,0 +1,6 @@
+{
+  "hostname": "vpn.example.com",
+  "paths": [
+    "example-value"
+  ]
+}

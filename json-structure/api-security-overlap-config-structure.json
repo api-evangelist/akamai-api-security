@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/akamai-api-security/refs/heads/main/json-structure/api-security-overlap-config-structure.json",
+  "name": "overlap-config",
+  "description": "Contains details about an overlapping configuration.",
+  "type": "object",
+  "properties": {
+    "configId": {
+      "description": "The configuration ID.",
+      "type": "int32"
+    },
+    "configName": {
+      "description": "The configuration name.",
+      "type": "string"
+    },
+    "configVersion": {
+      "description": "The configuration version.",
+      "type": "int32"
+    },
+    "contractId": {
+      "description": "The contract ID.",
+      "type": "string"
+    },
+    "contractName": {
+      "description": "The contract name.",
+      "type": "string"
+    },
+    "hostnames": {
+      "description": "List of version tags, any combination of `STAGING` and `LAST_CREATED`.",
+      "items": {
+        "description": "The version tag.",
+        "enum": [
+          "STAGING",
+          "LAST_CREATED"
+        ],
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "configId",
+    "configName",
+    "configVersion"
+  ],
+  "additionalProperties": false
+}

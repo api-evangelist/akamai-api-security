@@ -1,0 +1,26 @@
+{
+  "apiDefinitions": [
+    {}
+  ],
+  "bypassCondition": {},
+  "categories": [
+    "example-value"
+  ],
+  "configId": 919,
+  "configVersion": 746,
+  "createDate": "2025-03-15T14:30:00Z",
+  "createdBy": "example-value",
+  "description": "10.20.30.40",
+  "hostnamePaths": [
+    {}
+  ],
+  "intelligentLoadShedding": false,
+  "name": "Production Security Config",
+  "policyId": 840,
+  "protectionType": "SINGLE",
+  "rateThreshold": 657,
+  "sheddingThresholdHitsPerSec": 367,
+  "updateDate": "2025-03-15T14:30:00Z",
+  "updatedBy": "example-value",
+  "used": true
+}

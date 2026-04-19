@@ -1,0 +1,12 @@
+{
+  "enableForAllPolicies": true,
+  "enableSiem": true,
+  "enabledBotmanSiemEvents": false,
+  "exceptions": [
+    {}
+  ],
+  "firewallPolicyIds": [
+    "example-value"
+  ],
+  "siemDefinitionId": 933
+}

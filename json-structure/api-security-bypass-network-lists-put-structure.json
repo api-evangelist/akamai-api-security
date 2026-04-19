@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/akamai-api-security/refs/heads/main/json-structure/api-security-bypass-network-lists-put-structure.json",
+  "name": "bypass-network-lists-put",
+  "description": "Contains bypass network lists for the specified configuration version.",
+  "type": "object",
+  "properties": {
+    "networkLists": {
+      "description": "Contains a list of network list IDs.",
+      "items": {
+        "description": "List of network lists. The values are the network lists' IDs.",
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "networkLists"
+  ],
+  "additionalProperties": false
+}

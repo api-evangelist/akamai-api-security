@@ -1,0 +1,15 @@
+{
+  "configId": 662,
+  "configName": "Production Security Config",
+  "lastCreatedVersion": 748,
+  "page": 228,
+  "pageSize": 373,
+  "productionActiveVersion": 211,
+  "productionExpediteRequestId": 211,
+  "stagingActiveVersion": 52,
+  "stagingExpediteRequestId": 788,
+  "totalSize": 51,
+  "versionList": [
+    {}
+  ]
+}

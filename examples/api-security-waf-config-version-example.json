@@ -1,0 +1,11 @@
+{
+  "basedOn": 620,
+  "configId": 43,
+  "configName": "Production Security Config",
+  "createDate": "example-value",
+  "createdBy": "example-value",
+  "production": {},
+  "staging": {},
+  "version": 132,
+  "versionNotes": "example-value"
+}

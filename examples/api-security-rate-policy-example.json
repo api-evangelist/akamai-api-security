@@ -1,0 +1,40 @@
+{
+  "additionalMatchOptions": [
+    {}
+  ],
+  "apiSelectors": [
+    {}
+  ],
+  "averageThreshold": 139,
+  "bodyParameters": [
+    {}
+  ],
+  "burstThreshold": 932,
+  "burstWindow": 1,
+  "clientIdentifier": "ip-useragent",
+  "condition": {},
+  "counterType": "per_edge",
+  "createDate": "2016-07-22 18:57:08.0",
+  "description": "10.20.30.40",
+  "evaluation": {},
+  "fileExtensions": {},
+  "hostnames": [
+    "vpn.example.com"
+  ],
+  "hosts": {},
+  "id": 607,
+  "matchType": "path",
+  "name": "Production Security Config",
+  "path": {},
+  "pathMatchType": "TopLevel",
+  "pathUriPositiveMatch": true,
+  "queryParameters": [
+    {}
+  ],
+  "requestType": "ClientResponse",
+  "sameActionOnIpv6": false,
+  "type": "WAF",
+  "updateDate": "2017-02-22 00:05:41.0",
+  "useXForwardForHeaders": true,
+  "used": true
+}

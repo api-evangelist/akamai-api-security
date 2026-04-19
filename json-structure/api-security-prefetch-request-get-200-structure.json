@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/akamai-api-security/refs/heads/main/json-structure/api-security-prefetch-request-get-200-structure.json",
+  "name": "prefetch-request-get-200",
+  "description": "The GET Response JSON for Prefetch Requests.",
+  "type": "object",
+  "properties": {
+    "allExtensions": {
+      "description": "Whether to enable prefetch requests for all extensions.",
+      "type": "boolean"
+    },
+    "enableAppLayer": {
+      "description": "Whether to enable Prefetch Requests.",
+      "type": "boolean"
+    },
+    "enableRateControls": {
+      "description": "Whether to enable Prefetch Requests for rate controls.",
+      "type": "boolean"
+    },
+    "extensions": {
+      "description": "List of extensions.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "allExtensions",
+    "enableAppLayer",
+    "enableRateControls"
+  ],
+  "additionalProperties": false
+}

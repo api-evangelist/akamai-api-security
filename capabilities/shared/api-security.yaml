@@ -1,0 +1,191 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Akamai API Security"
+  description: "Akamai API Security application security configuration management API for managing security policies, configurations, activations, and protections."
+  tags:
+    - Akamai
+    - API Security
+    - Application Security
+    - Configuration Management
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+binds:
+  - namespace: env
+    keys:
+      AKAMAI_CLIENT_TOKEN: AKAMAI_CLIENT_TOKEN
+      AKAMAI_CLIENT_SECRET: AKAMAI_CLIENT_SECRET
+      AKAMAI_ACCESS_TOKEN: AKAMAI_ACCESS_TOKEN
+      AKAMAI_HOST: AKAMAI_HOST
+
+capability:
+  consumes:
+    - type: http
+      namespace: akamai-api-security
+      baseUri: https://{hostname}/appsec/v1
+      description: "Akamai Application Security API for managing security configurations, policies, and activations."
+      authentication:
+        type: apikey
+        key: Authorization
+        value: "{{AKAMAI_EDGEGRID_AUTH}}"
+        placement: header
+      resources:
+        - name: configurations
+          path: /configs
+          description: "Security configuration management"
+          operations:
+            - name: list-configs
+              method: GET
+              description: "List all security configurations"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: create-config
+              method: POST
+              description: "Create a new security configuration"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  name: "{{tools.name}}"
+                  description: "{{tools.description}}"
+        - name: security-policies
+          path: /configs/{configId}/security-policies
+          description: "Security policy management within a configuration"
+          operations:
+            - name: list-policies
+              method: GET
+              description: "List all security policies for a configuration"
+              inputParameters:
+                - name: configId
+                  in: path
+                  type: string
+                  required: true
+                  description: "Configuration identifier"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: activations
+          path: /activations
+          description: "Configuration activation management"
+          operations:
+            - name: list-activations
+              method: GET
+              description: "List all activations"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: api-discovery
+          path: /api-discovery
+          description: "API discovery and inventory management"
+          operations:
+            - name: get-api-discovery
+              method: GET
+              description: "Get discovered API inventory"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8100
+      namespace: akamai-api-security-api
+      resources:
+        - path: /v1/configs
+          name: configs
+          description: "Security configurations"
+          operations:
+            - method: GET
+              name: list-configs
+              description: "List security configurations"
+              call: "akamai-api-security.list-configs"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-config
+              description: "Create security configuration"
+              call: "akamai-api-security.create-config"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/api-discovery
+          name: api-discovery
+          description: "API discovery"
+          operations:
+            - method: GET
+              name: get-api-discovery
+              description: "Get API inventory"
+              call: "akamai-api-security.get-api-discovery"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9100
+      namespace: akamai-api-security-mcp
+      transport: http
+      tools:
+        - name: list-security-configs
+          description: "List all Akamai API Security configurations"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "akamai-api-security.list-configs"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-security-config
+          description: "Create a new Akamai API Security configuration"
+          hints:
+            readOnly: false
+            destructive: false
+          call: "akamai-api-security.create-config"
+          with:
+            name: "tools.name"
+            description: "tools.description"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-security-policies
+          description: "List security policies for a configuration"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "akamai-api-security.list-policies"
+          with:
+            configId: "tools.configId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-api-discovery
+          description: "Get discovered API inventory and shadow API findings"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "akamai-api-security.get-api-discovery"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-activations
+          description: "List all configuration activations and their status"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "akamai-api-security.list-activations"
+          outputParameters:
+            - type: object
+              mapping: "$."

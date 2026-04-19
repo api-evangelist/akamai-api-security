@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/akamai-api-security/refs/heads/main/json-schema/api-security-siem-version-schema.json",
+  "title": "siem-version",
+  "description": "Contains Security Information Event Management (SIEM) version settings.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "Uniquely identifies the SIEM version.",
+      "type": "integer"
+    },
+    "name": {
+      "description": "The name assigned to the SIEM version.",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "id",
+    "name"
+  ],
+  "additionalProperties": false
+}

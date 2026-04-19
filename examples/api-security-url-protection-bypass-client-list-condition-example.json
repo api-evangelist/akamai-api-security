@@ -1,0 +1,8 @@
+{
+  "checkIps": "connecting",
+  "className": "NetworkListCondition",
+  "positiveMatch": false,
+  "value": [
+    "example-value"
+  ]
+}

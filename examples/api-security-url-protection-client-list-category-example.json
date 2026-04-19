@@ -1,0 +1,7 @@
+{
+  "listIds": [
+    "example-value"
+  ],
+  "positiveMatch": true,
+  "type": "CLIENT_LIST"
+}

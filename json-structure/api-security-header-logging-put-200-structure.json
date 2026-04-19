@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/akamai-api-security/refs/heads/main/json-structure/api-security-header-logging-put-200-structure.json",
+  "name": "header-logging-put-200",
+  "description": "The PUT Response JSON for HTTP Header Logging.",
+  "type": "object",
+  "properties": {
+    "allowSampling": {
+      "description": "Enables HTTP Header logging.",
+      "type": "boolean"
+    },
+    "cookies": {
+      "additionalProperties": false,
+      "description": "Settings for cookie headers.",
+      "properties": {
+        "type": {
+          "description": "Use `all` to log headers for all requests with any standard header. Use `none` to exclude headers for any requests with any standard header from logging. Use `exclude` to exclude headers for requests with specific standard headers. Use `only` to include headers for requests with specific standard headers.",
+          "enum": [
+            "all",
+            "none",
+            "exclude",
+            "only"
+          ],
+          "type": "string"
+        },
+        "values": {
+          "description": "List of headers to include or exclude depending on the `type` setting.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "type": "object",
+      "x-akamai": {
+        "file-path": "schemas/logging-header-setting.yaml"
+      }
+    },
+    "customHeaders": {
+      "additionalProperties": false,
+      "description": "Settings for custom headers.",
+      "properties": {
+        "type": {
+          "description": "Use `all` to log headers for all requests with any standard header. Use `none` to exclude headers for any requests with any standard header from logging. Use `exclude` to exclude headers for requests with specific standard headers. Use `only` to include headers for requests with specific standard headers.",
+          "enum": [
+            "all",
+            "none",
+            "exclude",
+            "only"
+          ],
+          "type": "string"
+        },
+        "values": {
+          "description": "List of headers to include or exclude depending on the `type` setting.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "type": "object",
+      "x-akamai": {
+        "file-path": "schemas/logging-header-setting.yaml"
+      }
+    },
+    "standardHeaders": {
+      "additionalProperties": false,
+      "description": "Settings for standard headers.",
+      "properties": {
+        "type": {
+          "description": "Use `all` to log headers for all requests with any standard header. Use `none` to exclude headers for any requests with any standard header from logging. Use `exclude` to exclude headers for requests with specific standard headers. Use `only` to include headers for requests with specific standard headers.",
+          "enum": [
+            "all",
+            "none",
+            "exclude",
+            "only"
+          ],
+          "type": "string"
+        },
+        "values": {
+          "description": "List of headers to include or exclude depending on the `type` setting.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "type": "object",
+      "x-akamai": {
+        "file-path": "schemas/logging-header-setting.yaml"
+      }
+    }
+  },
+  "required": [
+    "allowSampling",
+    "cookies",
+    "customHeaders",
+    "standardHeaders"
+  ],
+  "additionalProperties": false
+}

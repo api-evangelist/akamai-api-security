@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/akamai-api-security/refs/heads/main/json-structure/api-security-config-post-structure.json",
+  "name": "config-post",
+  "description": "Specifies the details of a security config.",
+  "type": "object",
+  "properties": {
+    "contractId": {
+      "description": "Contract ID.",
+      "type": "string"
+    },
+    "createFrom": {
+      "additionalProperties": false,
+      "description": "Contains details about a source configuration and version for cloning a new security configuration.",
+      "properties": {
+        "configId": {
+          "description": "Uniquely identifies the security configuration.",
+          "type": "int32"
+        },
+        "version": {
+          "description": "The configuration version to clone from.",
+          "type": "int32"
+        }
+      },
+      "required": [
+        "configId",
+        "version"
+      ],
+      "type": "object"
+    },
+    "description": {
+      "description": "Describes the security configuration.",
+      "type": "string"
+    },
+    "groupId": {
+      "description": "Group ID.",
+      "type": "int32"
+    },
+    "hostnames": {
+      "description": "List of hostnames to be added to the configuration.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "name": {
+      "description": "The name you assigned to the security configuration.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "name",
+    "description",
+    "hostnames"
+  ],
+  "additionalProperties": false
+}

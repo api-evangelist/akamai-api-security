@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/akamai-api-security/refs/heads/main/json-structure/api-security-url-protection-client-list-category-structure.json",
+  "name": "url-protection-client-list-category",
+  "description": "Defines a `CLIENT_LIST` load shedding category for a URL protection policy.",
+  "type": "object",
+  "properties": {
+    "listIds": {
+      "description": "A list of client list identifiers to match on.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "positiveMatch": {
+      "description": "Whether the selected client lists match.",
+      "type": "boolean"
+    },
+    "type": {
+      "description": "Specify `CLIENT_LIST` to match on a client list.",
+      "enum": [
+        "CLIENT_LIST"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "type"
+  ],
+  "additionalProperties": false
+}

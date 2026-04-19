@@ -1,0 +1,9 @@
+{
+  "className": "ClientReputationCondition",
+  "name": [
+    "DOSATCK"
+  ],
+  "positiveMatch": false,
+  "sharedIpHandling": "NON_SHARED",
+  "value": 7.32
+}

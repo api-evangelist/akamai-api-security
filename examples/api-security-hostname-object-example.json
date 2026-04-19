@@ -1,0 +1,8 @@
+{
+  "activeInProduction": true,
+  "activeInStaging": false,
+  "arlInclusion": true,
+  "configIdInProduction": 67,
+  "configNameInProduction": "Production Security Config",
+  "hostname": "vpn.example.com"
+}

@@ -1,0 +1,26 @@
+{
+  "apis": [
+    {}
+  ],
+  "bypassNetworkLists": [
+    {}
+  ],
+  "defaultFile": "NO_MATCH",
+  "effectiveSecurityControls": {},
+  "fileExtensions": [
+    "example-value"
+  ],
+  "filePaths": [
+    "example-value"
+  ],
+  "hostnames": [
+    "vpn.example.com"
+  ],
+  "isNegativeFileExtensionMatch": false,
+  "isNegativePathMatch": false,
+  "securityPolicy": {},
+  "sequence": 810,
+  "targetId": 933,
+  "type": "website",
+  "validations": {}
+}

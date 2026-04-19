@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/akamai-api-security/refs/heads/main/json-schema/api-security-url-protection-bypass-client-list-condition-schema.json",
+  "title": "url-protection-bypass-client-list-condition",
+  "description": "Collects data needed for condition matches on client lists and network lists.",
+  "type": "object",
+  "properties": {
+    "checkIps": {
+      "description": "__Read-only__ Whether the connecting IP or both the connecting IP and `X-Forwarded-For` (XFF) header match on the client list or network list. URL protection bypass supports `connecting` only.",
+      "enum": [
+        "connecting"
+      ],
+      "readOnly": true,
+      "type": "string"
+    },
+    "className": {
+      "description": "Choose `NetworkListCondition` to match the requesting client's identifier, like IP, GEO, ASN or TLS Fingerprint, against the specified client list or network list.",
+      "enum": [
+        "NetworkListCondition"
+      ],
+      "type": "string"
+    },
+    "positiveMatch": {
+      "description": "__Read-only__ Whether the condition triggers on a match or lack of match.",
+      "readOnly": true,
+      "type": "boolean"
+    },
+    "value": {
+      "description": "Identifies the client list or network list.",
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "nullable": true,
+      "type": "array",
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "className",
+    "value"
+  ],
+  "additionalProperties": false
+}

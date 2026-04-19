@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/akamai-api-security/refs/heads/main/json-schema/api-security-config-rename-schema.json",
+  "title": "config-rename",
+  "description": "Contains details of a security configuration.",
+  "type": "object",
+  "properties": {
+    "description": {
+      "description": "Describes the security configuration.",
+      "type": "string"
+    },
+    "name": {
+      "description": "The name you assigned to the security configuration.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "additionalProperties": false
+}

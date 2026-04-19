@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/akamai-api-security/refs/heads/main/json-schema/api-security-pii-learning-schema.json",
+  "title": "pii-learning",
+  "description": "Summarizes availability of PII learning.",
+  "type": "object",
+  "properties": {
+    "enablePiiLearning": {
+      "description": "Enables PII learning.",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "enablePiiLearning"
+  ],
+  "additionalProperties": false
+}

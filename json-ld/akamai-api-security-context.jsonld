@@ -1,0 +1,844 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "akamai": "https://developer.akamai.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "url-protection-category": "akamai:url-protection-category",
+    "type": {
+      "@id": "akamai:type",
+      "@type": "xsd:string"
+    },
+    "hostname-coverage-match-target-get-200": "akamai:hostname-coverage-match-target-get-200",
+    "matchTargets": {
+      "@id": "akamai:matchTargets",
+      "@type": "@id"
+    },
+    "apiTargets": {
+      "@id": "akamai:apiTargets",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "websiteTargets": {
+      "@id": "akamai:websiteTargets",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "header-logging-put": "akamai:header-logging-put",
+    "allowSampling": {
+      "@id": "akamai:allowSampling",
+      "@type": "xsd:boolean"
+    },
+    "cookies": {
+      "@id": "akamai:cookies",
+      "@type": "@id"
+    },
+    "values": {
+      "@id": "akamai:values",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "customHeaders": {
+      "@id": "akamai:customHeaders",
+      "@type": "@id"
+    },
+    "standardHeaders": {
+      "@id": "akamai:standardHeaders",
+      "@type": "@id"
+    },
+    "custom-rules": "akamai:custom-rules",
+    "customRules": {
+      "@id": "akamai:customRules",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "reputation-profile": "akamai:reputation-profile",
+    "condition": {
+      "@id": "akamai:condition",
+      "@type": "@id"
+    },
+    "atomicConditions": {
+      "@id": "akamai:atomicConditions",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "positiveMatch": {
+      "@id": "akamai:positiveMatch",
+      "@type": "xsd:boolean"
+    },
+    "context": {
+      "@id": "akamai:context",
+      "@type": "xsd:string"
+    },
+    "contextReadable": {
+      "@id": "akamai:contextReadable",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "schema:description"
+    },
+    "enabled": {
+      "@id": "akamai:enabled",
+      "@type": "xsd:boolean"
+    },
+    "id": {
+      "@id": "akamai:id",
+      "@type": "xsd:integer"
+    },
+    "name": {
+      "@id": "schema:name"
+    },
+    "sharedIpHandling": {
+      "@id": "akamai:sharedIpHandling",
+      "@type": "xsd:string"
+    },
+    "threshold": {
+      "@id": "akamai:threshold",
+      "@type": "xsd:decimal"
+    },
+    "attack-payload-logging-put": "akamai:attack-payload-logging-put",
+    "requestBody": {
+      "@id": "akamai:requestBody",
+      "@type": "@id"
+    },
+    "responseBody": {
+      "@id": "akamai:responseBody",
+      "@type": "@id"
+    },
+    "url-protection-bypass-request-header-condition": "akamai:url-protection-bypass-request-header-condition",
+    "className": {
+      "@id": "akamai:className",
+      "@type": "xsd:string"
+    },
+    "nameWildcard": {
+      "@id": "akamai:nameWildcard",
+      "@type": "xsd:boolean"
+    },
+    "value": {
+      "@id": "akamai:value",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "valueCase": {
+      "@id": "akamai:valueCase",
+      "@type": "xsd:boolean"
+    },
+    "valueWildcard": {
+      "@id": "akamai:valueWildcard",
+      "@type": "xsd:boolean"
+    },
+    "url-protection-policies": "akamai:url-protection-policies",
+    "urlProtectionPolicies": {
+      "@id": "akamai:urlProtectionPolicies",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "malware-policy": "akamai:malware-policy",
+    "allowListId": {
+      "@id": "akamai:allowListId",
+      "@type": "xsd:string"
+    },
+    "blockListId": {
+      "@id": "akamai:blockListId",
+      "@type": "xsd:string"
+    },
+    "contentTypes": {
+      "@id": "akamai:contentTypes",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "hostnames": "akamai:hostnames",
+    "logFilename": {
+      "@id": "akamai:logFilename",
+      "@type": "xsd:boolean"
+    },
+    "paths": {
+      "@id": "akamai:paths",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "prefetch-request-put": "akamai:prefetch-request-put",
+    "allExtensions": {
+      "@id": "akamai:allExtensions",
+      "@type": "xsd:boolean"
+    },
+    "enableAppLayer": {
+      "@id": "akamai:enableAppLayer",
+      "@type": "xsd:boolean"
+    },
+    "enableRateControls": {
+      "@id": "akamai:enableRateControls",
+      "@type": "xsd:boolean"
+    },
+    "extensions": {
+      "@id": "akamai:extensions",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "version-notes-get-200": "akamai:version-notes-get-200",
+    "notes": {
+      "@id": "akamai:notes",
+      "@type": "xsd:string"
+    },
+    "reputation-profiles": "akamai:reputation-profiles",
+    "reputationProfiles": {
+      "@id": "akamai:reputationProfiles",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "url-protection-policy": "akamai:url-protection-policy",
+    "apiDefinitions": {
+      "@id": "akamai:apiDefinitions",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "bypassCondition": {
+      "@id": "akamai:bypassCondition",
+      "@type": "@id"
+    },
+    "categories": {
+      "@id": "akamai:categories",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "configId": {
+      "@id": "akamai:configId",
+      "@type": "xsd:integer"
+    },
+    "configVersion": {
+      "@id": "akamai:configVersion",
+      "@type": "xsd:integer"
+    },
+    "createDate": {
+      "@id": "akamai:createDate",
+      "@type": "xsd:dateTime"
+    },
+    "createdBy": {
+      "@id": "akamai:createdBy",
+      "@type": "xsd:string"
+    },
+    "hostnamePaths": {
+      "@id": "akamai:hostnamePaths",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "intelligentLoadShedding": {
+      "@id": "akamai:intelligentLoadShedding",
+      "@type": "xsd:boolean"
+    },
+    "policyId": {
+      "@id": "akamai:policyId",
+      "@type": "xsd:integer"
+    },
+    "protectionType": {
+      "@id": "akamai:protectionType",
+      "@type": "xsd:string"
+    },
+    "rateThreshold": {
+      "@id": "akamai:rateThreshold",
+      "@type": "xsd:integer"
+    },
+    "sheddingThresholdHitsPerSec": {
+      "@id": "akamai:sheddingThresholdHitsPerSec",
+      "@type": "xsd:integer"
+    },
+    "updateDate": {
+      "@id": "akamai:updateDate",
+      "@type": "xsd:dateTime"
+    },
+    "updatedBy": {
+      "@id": "akamai:updatedBy",
+      "@type": "xsd:string"
+    },
+    "used": {
+      "@id": "akamai:used",
+      "@type": "xsd:boolean"
+    },
+    "attack-payload-logging-get-200": "akamai:attack-payload-logging-get-200",
+    "prefetch-request-get-200": "akamai:prefetch-request-get-200",
+    "validation": "akamai:validation",
+    "detail": {
+      "@id": "akamai:detail",
+      "@type": "xsd:string"
+    },
+    "fieldName": {
+      "@id": "akamai:fieldName",
+      "@type": "xsd:string"
+    },
+    "jsonReference": {
+      "@id": "akamai:jsonReference",
+      "@type": "xsd:string"
+    },
+    "title": {
+      "@id": "akamai:title",
+      "@type": "xsd:string"
+    },
+    "config-get": "akamai:config-get",
+    "latestVersion": {
+      "@id": "akamai:latestVersion",
+      "@type": "xsd:integer"
+    },
+    "productionHostnames": {
+      "@id": "akamai:productionHostnames",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "productionVersion": {
+      "@id": "akamai:productionVersion",
+      "@type": "xsd:integer"
+    },
+    "stagingVersion": {
+      "@id": "akamai:stagingVersion",
+      "@type": "xsd:integer"
+    },
+    "version-notes-put": "akamai:version-notes-put",
+    "request-header-condition-2": "akamai:request-header-condition-2",
+    "overlap-config": "akamai:overlap-config",
+    "configName": {
+      "@id": "akamai:configName",
+      "@type": "xsd:string"
+    },
+    "contractId": {
+      "@id": "akamai:contractId",
+      "@type": "xsd:string"
+    },
+    "contractName": {
+      "@id": "akamai:contractName",
+      "@type": "xsd:string"
+    },
+    "waf-config-version": "akamai:waf-config-version",
+    "basedOn": {
+      "@id": "akamai:basedOn",
+      "@type": "xsd:integer"
+    },
+    "production": {
+      "@id": "akamai:production",
+      "@type": "@id"
+    },
+    "action": {
+      "@id": "akamai:action",
+      "@type": "xsd:string"
+    },
+    "status": {
+      "@id": "akamai:status",
+      "@type": "xsd:string"
+    },
+    "time": {
+      "@id": "akamai:time",
+      "@type": "xsd:string"
+    },
+    "staging": {
+      "@id": "akamai:staging",
+      "@type": "@id"
+    },
+    "version": {
+      "@id": "schema:version"
+    },
+    "versionNotes": {
+      "@id": "akamai:versionNotes",
+      "@type": "xsd:string"
+    },
+    "rate-policy-evaluation-put": "akamai:rate-policy-evaluation-put",
+    "validations": "akamai:validations",
+    "errors": {
+      "@id": "akamai:errors",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "notices": {
+      "@id": "akamai:notices",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "warnings": {
+      "@id": "akamai:warnings",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "siem-settings": "akamai:siem-settings",
+    "enableForAllPolicies": {
+      "@id": "akamai:enableForAllPolicies",
+      "@type": "xsd:boolean"
+    },
+    "enableSiem": {
+      "@id": "akamai:enableSiem",
+      "@type": "xsd:boolean"
+    },
+    "enabledBotmanSiemEvents": {
+      "@id": "akamai:enabledBotmanSiemEvents",
+      "@type": "xsd:boolean"
+    },
+    "exceptions": {
+      "@id": "akamai:exceptions",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "firewallPolicyIds": {
+      "@id": "akamai:firewallPolicyIds",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "siemDefinitionId": {
+      "@id": "akamai:siemDefinitionId",
+      "@type": "xsd:integer"
+    },
+    "hostname-object": "akamai:hostname-object",
+    "activeInProduction": {
+      "@id": "akamai:activeInProduction",
+      "@type": "xsd:boolean"
+    },
+    "activeInStaging": {
+      "@id": "akamai:activeInStaging",
+      "@type": "xsd:boolean"
+    },
+    "arlInclusion": {
+      "@id": "akamai:arlInclusion",
+      "@type": "xsd:boolean"
+    },
+    "configIdInProduction": {
+      "@id": "akamai:configIdInProduction",
+      "@type": "xsd:integer"
+    },
+    "configNameInProduction": {
+      "@id": "akamai:configNameInProduction",
+      "@type": "xsd:string"
+    },
+    "hostname": {
+      "@id": "akamai:hostname",
+      "@type": "xsd:string"
+    },
+    "custom-deny": "akamai:custom-deny",
+    "parameters": {
+      "@id": "akamai:parameters",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "match-targets": "akamai:match-targets",
+    "evasive-path-match-get-200": "akamai:evasive-path-match-get-200",
+    "enablePathMatch": {
+      "@id": "akamai:enablePathMatch",
+      "@type": "xsd:boolean"
+    },
+    "malware-policies": "akamai:malware-policies",
+    "malwarePolicies": {
+      "@id": "akamai:malwarePolicies",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "config-clone-post": "akamai:config-clone-post",
+    "createFromVersion": {
+      "@id": "akamai:createFromVersion",
+      "@type": "xsd:integer"
+    },
+    "ruleUpdate": {
+      "@id": "akamai:ruleUpdate",
+      "@type": "xsd:boolean"
+    },
+    "header-logging-get-200": "akamai:header-logging-get-200",
+    "siem-version": "akamai:siem-version",
+    "request-body": "akamai:request-body",
+    "requestBodyInspectionLimitInKB": {
+      "@id": "akamai:requestBodyInspectionLimitInKB",
+      "@type": "xsd:string"
+    },
+    "problem-details": "akamai:problem-details",
+    "fieldErrors": {
+      "@id": "akamai:fieldErrors",
+      "@type": "@id"
+    },
+    "instance": {
+      "@id": "akamai:instance",
+      "@type": "xsd:string"
+    },
+    "pii-learning": "akamai:pii-learning",
+    "enablePiiLearning": {
+      "@id": "akamai:enablePiiLearning",
+      "@type": "xsd:boolean"
+    },
+    "configs-get": "akamai:configs-get",
+    "configurations": {
+      "@id": "akamai:configurations",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "hostname-coverage-match-target": "akamai:hostname-coverage-match-target",
+    "apis": {
+      "@id": "akamai:apis",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "bypassNetworkLists": {
+      "@id": "akamai:bypassNetworkLists",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "defaultFile": {
+      "@id": "akamai:defaultFile",
+      "@type": "xsd:string"
+    },
+    "effectiveSecurityControls": {
+      "@id": "akamai:effectiveSecurityControls",
+      "@type": "@id"
+    },
+    "applyApiConstraints": {
+      "@id": "akamai:applyApiConstraints",
+      "@type": "xsd:boolean"
+    },
+    "applyApplicationLayerControls": {
+      "@id": "akamai:applyApplicationLayerControls",
+      "@type": "xsd:boolean"
+    },
+    "applyBotmanControls": {
+      "@id": "akamai:applyBotmanControls",
+      "@type": "xsd:boolean"
+    },
+    "applyNetworkLayerControls": {
+      "@id": "akamai:applyNetworkLayerControls",
+      "@type": "xsd:boolean"
+    },
+    "applyRateControls": {
+      "@id": "akamai:applyRateControls",
+      "@type": "xsd:boolean"
+    },
+    "applyReputationControls": {
+      "@id": "akamai:applyReputationControls",
+      "@type": "xsd:boolean"
+    },
+    "applySlowPostControls": {
+      "@id": "akamai:applySlowPostControls",
+      "@type": "xsd:boolean"
+    },
+    "fileExtensions": {
+      "@id": "akamai:fileExtensions",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "filePaths": {
+      "@id": "akamai:filePaths",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "isNegativeFileExtensionMatch": {
+      "@id": "akamai:isNegativeFileExtensionMatch",
+      "@type": "xsd:boolean"
+    },
+    "isNegativePathMatch": {
+      "@id": "akamai:isNegativePathMatch",
+      "@type": "xsd:boolean"
+    },
+    "securityPolicy": {
+      "@id": "akamai:securityPolicy",
+      "@type": "@id"
+    },
+    "sequence": {
+      "@id": "akamai:sequence",
+      "@type": "xsd:integer"
+    },
+    "targetId": {
+      "@id": "akamai:targetId",
+      "@type": "xsd:integer"
+    },
+    "custom-rule": "akamai:custom-rule",
+    "conditions": {
+      "@id": "akamai:conditions",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "effectiveTimePeriod": "akamai:effectiveTimePeriod",
+    "endDate": {
+      "@id": "akamai:endDate",
+      "@type": "xsd:string"
+    },
+    "startDate": {
+      "@id": "akamai:startDate",
+      "@type": "xsd:dateTime"
+    },
+    "inspectRequest": {
+      "@id": "akamai:inspectRequest",
+      "@type": "xsd:boolean"
+    },
+    "inspectResponse": {
+      "@id": "akamai:inspectResponse",
+      "@type": "xsd:boolean"
+    },
+    "loggingOptions": {
+      "@id": "akamai:loggingOptions",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "metadata": {
+      "@id": "akamai:metadata",
+      "@type": "xsd:string"
+    },
+    "operation": {
+      "@id": "akamai:operation",
+      "@type": "xsd:string"
+    },
+    "ruleActivated": {
+      "@id": "akamai:ruleActivated",
+      "@type": "xsd:boolean"
+    },
+    "samplingRate": {
+      "@id": "akamai:samplingRate",
+      "@type": "xsd:integer"
+    },
+    "stagingOnly": {
+      "@id": "akamai:stagingOnly",
+      "@type": "xsd:boolean"
+    },
+    "structured": {
+      "@id": "akamai:structured",
+      "@type": "xsd:boolean"
+    },
+    "tag": {
+      "@id": "akamai:tag",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "rate-policy": "akamai:rate-policy",
+    "additionalMatchOptions": {
+      "@id": "akamai:additionalMatchOptions",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "apiSelectors": {
+      "@id": "akamai:apiSelectors",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "averageThreshold": {
+      "@id": "akamai:averageThreshold",
+      "@type": "xsd:integer"
+    },
+    "bodyParameters": {
+      "@id": "akamai:bodyParameters",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "burstThreshold": {
+      "@id": "akamai:burstThreshold",
+      "@type": "xsd:integer"
+    },
+    "burstWindow": {
+      "@id": "akamai:burstWindow",
+      "@type": "xsd:integer"
+    },
+    "clientIdentifier": {
+      "@id": "akamai:clientIdentifier",
+      "@type": "xsd:string"
+    },
+    "counterType": {
+      "@id": "akamai:counterType",
+      "@type": "xsd:string"
+    },
+    "evaluation": {
+      "@id": "akamai:evaluation",
+      "@type": "@id"
+    },
+    "evaluationId": {
+      "@id": "akamai:evaluationId",
+      "@type": "xsd:integer"
+    },
+    "evaluationStatus": {
+      "@id": "akamai:evaluationStatus",
+      "@type": "xsd:string"
+    },
+    "hosts": {
+      "@id": "akamai:hosts",
+      "@type": "@id"
+    },
+    "matchType": {
+      "@id": "akamai:matchType",
+      "@type": "xsd:string"
+    },
+    "path": {
+      "@id": "akamai:path",
+      "@type": "@id"
+    },
+    "pathMatchType": {
+      "@id": "akamai:pathMatchType",
+      "@type": "xsd:string"
+    },
+    "pathUriPositiveMatch": {
+      "@id": "akamai:pathUriPositiveMatch",
+      "@type": "xsd:boolean"
+    },
+    "queryParameters": {
+      "@id": "akamai:queryParameters",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "requestType": {
+      "@id": "akamai:requestType",
+      "@type": "xsd:string"
+    },
+    "sameActionOnIpv6": {
+      "@id": "akamai:sameActionOnIpv6",
+      "@type": "xsd:boolean"
+    },
+    "useXForwardForHeaders": {
+      "@id": "akamai:useXForwardForHeaders",
+      "@type": "xsd:boolean"
+    },
+    "cookie-settings": "akamai:cookie-settings",
+    "cookieDomain": {
+      "@id": "akamai:cookieDomain",
+      "@type": "xsd:string"
+    },
+    "useAllSecureTraffic": {
+      "@id": "akamai:useAllSecureTraffic",
+      "@type": "xsd:boolean"
+    },
+    "match-target": "akamai:match-target",
+    "host-info-in-config": "akamai:host-info-in-config",
+    "availableSet": {
+      "@id": "akamai:availableSet",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "errorSet": {
+      "@id": "akamai:errorSet",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "protectARLInclusionHost": {
+      "@id": "akamai:protectARLInclusionHost",
+      "@type": "xsd:boolean"
+    },
+    "selectedSet": {
+      "@id": "akamai:selectedSet",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "bypass-network-lists-get": "akamai:bypass-network-lists-get",
+    "networkLists": {
+      "@id": "akamai:networkLists",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "logging-option": "akamai:logging-option",
+    "evasive-path-match-put": "akamai:evasive-path-match-put",
+    "header-logging-put-200": "akamai:header-logging-put-200",
+    "evasive-path-match-put-200": "akamai:evasive-path-match-put-200",
+    "match-targets-sequence": "akamai:match-targets-sequence",
+    "targetSequence": {
+      "@id": "akamai:targetSequence",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "hostname-coverage-overlapping-get-200": "akamai:hostname-coverage-overlapping-get-200",
+    "overLappingList": {
+      "@id": "akamai:overLappingList",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "attack-payload-logging": "akamai:attack-payload-logging",
+    "waf-config-versions": "akamai:waf-config-versions",
+    "lastCreatedVersion": {
+      "@id": "akamai:lastCreatedVersion",
+      "@type": "xsd:integer"
+    },
+    "page": {
+      "@id": "akamai:page",
+      "@type": "xsd:integer"
+    },
+    "pageSize": {
+      "@id": "akamai:pageSize",
+      "@type": "xsd:integer"
+    },
+    "productionActiveVersion": {
+      "@id": "akamai:productionActiveVersion",
+      "@type": "xsd:integer"
+    },
+    "productionExpediteRequestId": {
+      "@id": "akamai:productionExpediteRequestId",
+      "@type": "xsd:integer"
+    },
+    "stagingActiveVersion": {
+      "@id": "akamai:stagingActiveVersion",
+      "@type": "xsd:integer"
+    },
+    "stagingExpediteRequestId": {
+      "@id": "akamai:stagingExpediteRequestId",
+      "@type": "xsd:integer"
+    },
+    "totalSize": {
+      "@id": "akamai:totalSize",
+      "@type": "xsd:integer"
+    },
+    "versionList": {
+      "@id": "akamai:versionList",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "rate-policies": "akamai:rate-policies",
+    "ratePolicies": {
+      "@id": "akamai:ratePolicies",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "hostnameList": {
+      "@id": "akamai:hostnameList",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "mode": {
+      "@id": "akamai:mode",
+      "@type": "xsd:string"
+    },
+    "custom-denies": "akamai:custom-denies",
+    "logging-header-setting": "akamai:logging-header-setting",
+    "url-protection-policy-hostpath": "akamai:url-protection-policy-hostpath",
+    "siem-versions": "akamai:siem-versions",
+    "siemDefinitions": {
+      "@id": "akamai:siemDefinitions",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "pragma-header": "akamai:pragma-header",
+    "conditionOperator": {
+      "@id": "akamai:conditionOperator",
+      "@type": "xsd:string"
+    },
+    "excludeCondition": {
+      "@id": "akamai:excludeCondition",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "bypass-network-lists-put": "akamai:bypass-network-lists-put",
+    "security-controls": "akamai:security-controls",
+    "config-rename": "akamai:config-rename",
+    "malware-policies-content-types": "akamai:malware-policies-content-types",
+    "malwareContentTypes": {
+      "@id": "akamai:malwareContentTypes",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "tls-fingerprint-condition": "akamai:tls-fingerprint-condition",
+    "version-notes-put-200": "akamai:version-notes-put-200",
+    "url-protection-client-list-category": "akamai:url-protection-client-list-category",
+    "listIds": {
+      "@id": "akamai:listIds",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "prefetch-request-put-200": "akamai:prefetch-request-put-200",
+    "client-reputation-condition": "akamai:client-reputation-condition",
+    "config-post": "akamai:config-post",
+    "createFrom": {
+      "@id": "akamai:createFrom",
+      "@type": "@id"
+    },
+    "groupId": {
+      "@id": "akamai:groupId",
+      "@type": "xsd:integer"
+    },
+    "attack-payload-logging-put-200": "akamai:attack-payload-logging-put-200",
+    "url-protection-bypass-client-list-condition": "akamai:url-protection-bypass-client-list-condition",
+    "checkIps": {
+      "@id": "akamai:checkIps",
+      "@type": "xsd:string"
+    }
+  }
+}

@@ -1,0 +1,115 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: "Akamai API Security"
+  description: "Unified vocabulary covering the operational and capability dimensions of Akamai API Security, mapping resources, actions, schemas, and workflows."
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+operational:
+  apis:
+    - namespace: akamai-api-security
+      version: v1
+      baseUrl: https://{hostname}/appsec/v1
+      status: active
+
+  resources:
+    - name: configurations
+      api: akamai-api-security
+      actions: [list, create, get, update, delete, activate]
+    - name: security-policies
+      api: akamai-api-security
+      actions: [list, create, get, update, delete]
+    - name: api-discovery
+      api: akamai-api-security
+      actions: [get, list]
+    - name: activations
+      api: akamai-api-security
+      actions: [list, create, get]
+    - name: custom-rules
+      api: akamai-api-security
+      actions: [list, create, get, update, delete]
+    - name: rate-policies
+      api: akamai-api-security
+      actions: [list, create, get, update, delete]
+    - name: network-lists
+      api: akamai-api-security
+      actions: [list, get]
+
+  actions:
+    - name: list
+      httpMethod: GET
+      pattern: read
+    - name: get
+      httpMethod: GET
+      pattern: read
+    - name: create
+      httpMethod: POST
+      pattern: write
+    - name: update
+      httpMethod: PUT
+      pattern: write
+    - name: delete
+      httpMethod: DELETE
+      pattern: destructive
+    - name: activate
+      httpMethod: POST
+      pattern: write
+
+  authentication:
+    schemes:
+      - type: EdgeGrid
+        description: Akamai EdgeGrid authentication using client token, client secret, and access token
+
+  schemas:
+    core:
+      - name: SecurityConfiguration
+        description: Top-level security configuration object
+      - name: SecurityPolicy
+        description: Security policy within a configuration
+      - name: Activation
+        description: Configuration activation record
+      - name: CustomRule
+        description: Custom security rule definition
+      - name: RatePolicy
+        description: Rate limiting policy
+
+capability:
+  workflows:
+    - name: api-security-management
+      file: capabilities/api-security-management.yaml
+      description: Manage API security configurations and posture
+      personas: [Security Engineer, API Security Analyst]
+      domains: [API Security, Posture Management, Runtime Protection]
+
+  personas:
+    - id: security-engineer
+      name: Security Engineer
+      description: Manages API security configurations and activations
+      workflows: [api-security-management]
+    - id: api-security-analyst
+      name: API Security Analyst
+      description: Monitors API discovery, threat detection, and posture findings
+      workflows: [api-security-management]
+
+  domains:
+    - name: API Security
+      description: API security configuration and policy management
+    - name: Posture Management
+      description: API posture assessment and vulnerability management
+    - name: Runtime Protection
+      description: Real-time API threat detection and blocking
+
+crossReference:
+  - resource: configurations
+    operations: [list, create, get, update, delete, activate]
+    workflows: [api-security-management]
+    personas: [Security Engineer]
+  - resource: api-discovery
+    operations: [get, list]
+    workflows: [api-security-management]
+    personas: [API Security Analyst]
+  - resource: security-policies
+    operations: [list, create, get, update, delete]
+    workflows: [api-security-management]
+    personas: [Security Engineer, API Security Analyst]

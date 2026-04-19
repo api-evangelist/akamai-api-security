@@ -1,0 +1,8 @@
+{
+  "allExtensions": false,
+  "enableAppLayer": false,
+  "enableRateControls": true,
+  "extensions": [
+    "example-value"
+  ]
+}

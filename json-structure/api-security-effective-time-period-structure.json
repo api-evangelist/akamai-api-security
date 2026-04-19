@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/akamai-api-security/refs/heads/main/json-structure/api-security-effective-time-period-structure.json",
+  "name": "effectiveTimePeriod",
+  "description": "The time period during which the custom rule is active.",
+  "type": "object",
+  "properties": {
+    "endDate": {
+      "description": "An ISO 8601 timestamp that sets when the rule expires or deactivates.",
+      "type": "string"
+    },
+    "startDate": {
+      "description": "An ISO 8601 timestamp that sets when the rule activates.",
+      "type": "datetime"
+    },
+    "status": {
+      "description": "The current status of the rule based on its `startDate` and `endDate`. By default, rules are active for 30 days. When `ACTIVE`, the rule triggers when conditions are met. When `INACTIVE`, the rule doesn't trigger. When `EXPIRING`, the rule still triggers because it's still active until its specified expiration date. When the rule's status is `EXPIRED`, the rule is inactive and doesn't trigger. If your rule expires and you want to use it again, make a PUT request to [Modify a custom rule](https://techdocs.akamai.com/application-security/reference/put-config-custom-rule) with the new dates you'd like the rule to be active.",
+      "enum": [
+        "active",
+        "inactive",
+        "expiring",
+        "expired"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "endDate",
+    "startDate"
+  ],
+  "additionalProperties": false
+}

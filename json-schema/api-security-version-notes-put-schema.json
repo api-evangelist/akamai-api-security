@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/akamai-api-security/refs/heads/main/json-schema/api-security-version-notes-put-schema.json",
+  "title": "version-notes-put",
+  "description": "Specifies the setting for a version note update request.",
+  "type": "object",
+  "properties": {
+    "notes": {
+      "description": "The version notes.",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

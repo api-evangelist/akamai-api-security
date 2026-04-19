@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/akamai-api-security/refs/heads/main/json-schema/api-security-config-clone-post-schema.json",
+  "title": "config-clone-post",
+  "description": "Specifies the settings for a new clone of a security configuration.",
+  "type": "object",
+  "properties": {
+    "createFromVersion": {
+      "description": "The configuration version to clone from.",
+      "type": "integer"
+    },
+    "ruleUpdate": {
+      "description": "Specifies whether the application rules should be migrated to the latest version.",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "createFromVersion",
+    "ruleUpdate"
+  ],
+  "additionalProperties": false
+}

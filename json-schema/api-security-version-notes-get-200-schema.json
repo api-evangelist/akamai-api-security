@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/akamai-api-security/refs/heads/main/json-schema/api-security-version-notes-get-200-schema.json",
+  "title": "version-notes-get-200",
+  "description": "The GET Response for Version Notes.",
+  "type": "object",
+  "properties": {
+    "notes": {
+      "description": "The version notes.",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

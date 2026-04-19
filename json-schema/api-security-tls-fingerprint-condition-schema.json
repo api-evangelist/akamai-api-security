@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/akamai-api-security/refs/heads/main/json-schema/api-security-tls-fingerprint-condition-schema.json",
+  "title": "tls-fingerprint-condition",
+  "description": "Collects data needed for condition matches on TLS fingerprints.",
+  "type": "object",
+  "properties": {
+    "className": {
+      "description": "The type of condition. In this case, `TlsFingerprintCondition`.",
+      "enum": [
+        "TlsFingerprintCondition"
+      ],
+      "type": "string"
+    },
+    "positiveMatch": {
+      "description": "Whether the condition triggers on a match or lack of match.",
+      "type": "boolean"
+    },
+    "value": {
+      "description": "A list of unique TLS fingerprints.",
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "className",
+    "value"
+  ],
+  "additionalProperties": false
+}

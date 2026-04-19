@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/akamai-api-security/refs/heads/main/json-schema/api-security-url-protection-policy-hostpath-schema.json",
+  "title": "url-protection-policy-hostpath",
+  "description": "The hostname and path combinations to match on.",
+  "type": "object",
+  "properties": {
+    "hostname": {
+      "description": "The hostnames you choose to match on.",
+      "type": "string"
+    },
+    "paths": {
+      "description": "The list of paths to match on.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "hostname",
+    "paths"
+  ],
+  "additionalProperties": false
+}

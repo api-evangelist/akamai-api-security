@@ -1,0 +1,140 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/akamai-api-security/refs/heads/main/json-structure/api-security-host-info-in-config-structure.json",
+  "name": "host-info-in-config",
+  "description": "Contains the list of hostnames available for protection and its details.",
+  "type": "object",
+  "properties": {
+    "availableSet": {
+      "description": "The available hosts set for the current user.",
+      "items": {
+        "additionalProperties": false,
+        "description": "Contains details about the hostname and its status.",
+        "properties": {
+          "activeInProduction": {
+            "description": "Whether the hostname is active in the production network.",
+            "type": "boolean"
+          },
+          "activeInStaging": {
+            "description": "Whether the hostname is active in the staging network.",
+            "type": "boolean"
+          },
+          "arlInclusion": {
+            "description": "Whether the hostname is Akamai Resource Locator (ARL) included.",
+            "type": "boolean"
+          },
+          "configIdInProduction": {
+            "description": "Uniquely identifies the configuration that protects the hostname.",
+            "nullable": true,
+            "type": "int32"
+          },
+          "configNameInProduction": {
+            "description": "The name of the configuration that protects the hostname.",
+            "nullable": true,
+            "type": "string"
+          },
+          "hostname": {
+            "description": "The hostname.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "hostname"
+        ],
+        "type": "object",
+        "x-akamai": {
+          "file-path": "schemas/hostname-object.yaml"
+        }
+      },
+      "type": "array"
+    },
+    "configId": {
+      "description": "Uniquely identifies the security configuration.",
+      "type": "int32"
+    },
+    "configVersion": {
+      "description": "The security configuration version.",
+      "type": "int32"
+    },
+    "errorSet": {
+      "description": "The requested hosts aren't available in this configuration version.",
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "hostname": {
+            "description": "The hostname that triggers an error.",
+            "type": "string"
+          },
+          "reason": {
+            "description": "The reason why the hosts aren't protectable in this configuration version.",
+            "type": "string"
+          },
+          "reasonCode": {
+            "description": "The error status code for the hostname.",
+            "type": "int32"
+          }
+        },
+        "required": [
+          "reason",
+          "reasonCode",
+          "hostname"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "protectARLInclusionHost": {
+      "description": "Whether the host defined in the ARL file has legacy WAF enabled in the configuration.",
+      "type": "boolean"
+    },
+    "selectedSet": {
+      "description": "The selected set of hostnames in this configuration version.",
+      "items": {
+        "additionalProperties": false,
+        "description": "Contains details about the hostname and its status.",
+        "properties": {
+          "activeInProduction": {
+            "description": "Whether the hostname is active in the production network.",
+            "type": "boolean"
+          },
+          "activeInStaging": {
+            "description": "Whether the hostname is active in the staging network.",
+            "type": "boolean"
+          },
+          "arlInclusion": {
+            "description": "Whether the hostname is Akamai Resource Locator (ARL) included.",
+            "type": "boolean"
+          },
+          "configIdInProduction": {
+            "description": "Uniquely identifies the configuration that protects the hostname.",
+            "nullable": true,
+            "type": "int32"
+          },
+          "configNameInProduction": {
+            "description": "The name of the configuration that protects the hostname.",
+            "nullable": true,
+            "type": "string"
+          },
+          "hostname": {
+            "description": "The hostname.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "hostname"
+        ],
+        "type": "object",
+        "x-akamai": {
+          "file-path": "schemas/hostname-object.yaml"
+        }
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "configId",
+    "configVersion",
+    "protectARLInclusionHost"
+  ],
+  "additionalProperties": false
+}

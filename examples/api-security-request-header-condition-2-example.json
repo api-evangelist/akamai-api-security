@@ -1,0 +1,13 @@
+{
+  "className": "RequestHeaderCondition",
+  "name": [
+    "Production Security Config"
+  ],
+  "nameWildcard": false,
+  "positiveMatch": true,
+  "value": [
+    "example-value"
+  ],
+  "valueCase": true,
+  "valueWildcard": true
+}

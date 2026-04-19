@@ -1,0 +1,24 @@
+{
+  "conditions": [
+    {}
+  ],
+  "description": "10.20.30.40",
+  "effectiveTimePeriod": {},
+  "id": 841,
+  "inspectRequest": true,
+  "inspectResponse": false,
+  "loggingOptions": [
+    {}
+  ],
+  "metadata": "example-value",
+  "name": "Production Security Config",
+  "operation": "OR",
+  "ruleActivated": true,
+  "samplingRate": 83,
+  "stagingOnly": false,
+  "structured": true,
+  "tag": [
+    "example-value"
+  ],
+  "version": 250
+}

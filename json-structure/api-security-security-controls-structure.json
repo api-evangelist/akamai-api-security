@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/akamai-api-security/refs/heads/main/json-structure/api-security-security-controls-structure.json",
+  "name": "security-controls",
+  "description": "Describes the operational status of security controls.",
+  "type": "object",
+  "properties": {
+    "applyApiConstraints": {
+      "description": "Whether you enabled API constraints.",
+      "type": "boolean"
+    },
+    "applyApplicationLayerControls": {
+      "description": "Whether you enabled application layer controls.",
+      "type": "boolean"
+    },
+    "applyBotmanControls": {
+      "description": "Whether you enabled Bot Manager controls.",
+      "type": "boolean"
+    },
+    "applyNetworkLayerControls": {
+      "description": "Whether you enabled network layer controls.",
+      "type": "boolean"
+    },
+    "applyRateControls": {
+      "description": "Whether you enabled rate controls.",
+      "type": "boolean"
+    },
+    "applyReputationControls": {
+      "description": "Whether you enabled reputation controls.",
+      "type": "boolean"
+    },
+    "applySlowPostControls": {
+      "description": "Whether you enabled slow post controls.",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "applyApplicationLayerControls",
+    "applyNetworkLayerControls",
+    "applyRateControls",
+    "applyReputationControls",
+    "applyBotmanControls",
+    "applyApiConstraints",
+    "applySlowPostControls"
+  ],
+  "additionalProperties": false
+}

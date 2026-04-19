@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/akamai-api-security/refs/heads/main/json-structure/api-security-siem-versions-structure.json",
+  "name": "siem-versions",
+  "description": "Contains details about SIEM versions.",
+  "type": "object",
+  "properties": {
+    "siemDefinitions": {
+      "description": "A list of SIEM versions.",
+      "items": {
+        "additionalProperties": false,
+        "description": "Contains Security Information Event Management (SIEM) version settings.",
+        "properties": {
+          "id": {
+            "description": "Uniquely identifies the SIEM version.",
+            "type": "int32"
+          },
+          "name": {
+            "description": "The name assigned to the SIEM version.",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "name"
+        ],
+        "type": "object",
+        "x-akamai": {
+          "file-path": "schemas/siem-version.yaml"
+        }
+      },
+      "type": "array"
+    }
+  },
+  "additionalProperties": false
+}

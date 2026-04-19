@@ -1,0 +1,10 @@
+{
+  "configId": 461,
+  "configName": "Production Security Config",
+  "configVersion": 342,
+  "contractId": "760826",
+  "contractName": "Production Security Config",
+  "hostnames": [
+    "STAGING"
+  ]
+}

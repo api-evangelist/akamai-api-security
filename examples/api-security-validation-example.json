@@ -1,0 +1,7 @@
+{
+  "detail": "example-value",
+  "fieldName": "Production Security Config",
+  "jsonReference": "example-value",
+  "title": "Not Found",
+  "type": "/appsec/problem-types/INCOMPATIBLE-FIELD"
+}

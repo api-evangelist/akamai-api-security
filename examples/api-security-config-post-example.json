@@ -1,0 +1,10 @@
+{
+  "contractId": "513649",
+  "createFrom": {},
+  "description": "10.20.30.40",
+  "groupId": 378,
+  "hostnames": [
+    "vpn.example.com"
+  ],
+  "name": "Production Security Config"
+}

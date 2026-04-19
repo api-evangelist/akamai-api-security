@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/akamai-api-security/refs/heads/main/json-schema/api-security-logging-option-schema.json",
+  "title": "logging-option",
+  "description": "Condition to be logged.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "The unique identifier for each logging option. See [Logging option values](https://techdocs.akamai.com/application-security/reference/logging-option-values).",
+      "enum": [
+        "CLIENT_TLS_FINGERPRINT_MATCH",
+        "HEADER_ORDER_MATCH",
+        "REQUEST_HEADER_MATCH",
+        "COOKIE_MATCH",
+        "URI_QUERY_MATCH",
+        "ARGS_POST_MATCH"
+      ],
+      "type": "string"
+    },
+    "name": {
+      "description": "A description of the logging option type.",
+      "type": "string"
+    },
+    "value": {
+      "description": "The value on which to match when determining whether to log the custom rule condition.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "id"
+  ],
+  "additionalProperties": false
+}

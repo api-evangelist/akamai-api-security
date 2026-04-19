@@ -1,0 +1,7 @@
+{
+  "className": "TlsFingerprintCondition",
+  "positiveMatch": true,
+  "value": [
+    "example-value"
+  ]
+}
