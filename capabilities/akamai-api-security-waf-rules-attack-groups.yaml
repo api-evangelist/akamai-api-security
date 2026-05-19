@@ -1,0 +1,241 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: 'Akamai: Application Security API — WAF rules: Attack groups'
+  description: 'Akamai: Application Security API — WAF rules: Attack groups. 5 operations. Lead operation: Akamai API Security
+    List Attack Groups. Self-contained Naftiko capability covering one Akamai Api Security business surface.'
+  tags:
+  - Akamai Api Security
+  - 'WAF rules: Attack groups'
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AKAMAI_API_SECURITY_API_KEY: AKAMAI_API_SECURITY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: akamai-api-security-waf-rules-attack-groups
+    baseUri: https://{hostname}/appsec/v1
+    description: 'Akamai: Application Security API — WAF rules: Attack groups business capability. Self-contained, no shared
+      references.'
+    resources:
+    - name: configs-configId-versions-versionNumber-security-policies-policyId-attack-groups
+      path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/attack-groups
+      operations:
+      - name: getpolicyattackgroups
+        method: GET
+        description: Akamai API Security List Attack Groups
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountSwitchKey
+          in: query
+          type: string
+          description: For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-w
+    - name: configs-configId-versions-versionNumber-security-policies-policyId-attack-groups
+      path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/attack-groups/{attackGroupId}
+      operations:
+      - name: getpolicyattackgroup
+        method: GET
+        description: Akamai API Security Get the Action for an Attack Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountSwitchKey
+          in: query
+          type: string
+          description: For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-w
+      - name: putattackgroup
+        method: PUT
+        description: Akamai API Security Modify the Action for an Attack Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountSwitchKey
+          in: query
+          type: string
+          description: For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-w
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: configs-configId-versions-versionNumber-security-policies-policyId-attack-groups
+      path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/attack-groups/{attackGroupId}/condition-exception
+      operations:
+      - name: getattackgroupconditionexception
+        method: GET
+        description: Akamai API Security Get the Exceptions of an Attack Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountSwitchKey
+          in: query
+          type: string
+          description: For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-w
+      - name: putattackgroupconditionexception
+        method: PUT
+        description: Akamai API Security Modify the Exceptions of an Attack Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountSwitchKey
+          in: query
+          type: string
+          description: For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-w
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: akamai-api-security-waf-rules-attack-groups-rest
+    port: 8080
+    description: 'REST adapter for Akamai: Application Security API — WAF rules: Attack groups. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.'
+    resources:
+    - path: /v1/configs/{configid}/versions/{versionnumber}/security-policies/{policyid}/attack-groups
+      name: configs-configid-versions-versionnumber-security-policies-policyid-attack-groups
+      description: REST surface for configs-configId-versions-versionNumber-security-policies-policyId-attack-groups.
+      operations:
+      - method: GET
+        name: getpolicyattackgroups
+        description: Akamai API Security List Attack Groups
+        call: akamai-api-security-waf-rules-attack-groups.getpolicyattackgroups
+        with:
+          accountSwitchKey: rest.accountSwitchKey
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/configs/{configid}/versions/{versionnumber}/security-policies/{policyid}/attack-groups/{attackgroupid}
+      name: configs-configid-versions-versionnumber-security-policies-policyid-attack-groups
+      description: REST surface for configs-configId-versions-versionNumber-security-policies-policyId-attack-groups.
+      operations:
+      - method: GET
+        name: getpolicyattackgroup
+        description: Akamai API Security Get the Action for an Attack Group
+        call: akamai-api-security-waf-rules-attack-groups.getpolicyattackgroup
+        with:
+          accountSwitchKey: rest.accountSwitchKey
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: putattackgroup
+        description: Akamai API Security Modify the Action for an Attack Group
+        call: akamai-api-security-waf-rules-attack-groups.putattackgroup
+        with:
+          accountSwitchKey: rest.accountSwitchKey
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/configs/{configid}/versions/{versionnumber}/security-policies/{policyid}/attack-groups/{attackgroupid}/condition-exception
+      name: configs-configid-versions-versionnumber-security-policies-policyid-attack-groups
+      description: REST surface for configs-configId-versions-versionNumber-security-policies-policyId-attack-groups.
+      operations:
+      - method: GET
+        name: getattackgroupconditionexception
+        description: Akamai API Security Get the Exceptions of an Attack Group
+        call: akamai-api-security-waf-rules-attack-groups.getattackgroupconditionexception
+        with:
+          accountSwitchKey: rest.accountSwitchKey
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: putattackgroupconditionexception
+        description: Akamai API Security Modify the Exceptions of an Attack Group
+        call: akamai-api-security-waf-rules-attack-groups.putattackgroupconditionexception
+        with:
+          accountSwitchKey: rest.accountSwitchKey
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: akamai-api-security-waf-rules-attack-groups-mcp
+    port: 9090
+    transport: http
+    description: 'MCP adapter for Akamai: Application Security API — WAF rules: Attack groups. One tool per consumed operation,
+      routed inline through this capability''s consumes block.'
+    tools:
+    - name: akamai-api-security-list-attack
+      description: Akamai API Security List Attack Groups
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: akamai-api-security-waf-rules-attack-groups.getpolicyattackgroups
+      with:
+        accountSwitchKey: tools.accountSwitchKey
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: akamai-api-security-get-action
+      description: Akamai API Security Get the Action for an Attack Group
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: akamai-api-security-waf-rules-attack-groups.getpolicyattackgroup
+      with:
+        accountSwitchKey: tools.accountSwitchKey
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: akamai-api-security-modify-action
+      description: Akamai API Security Modify the Action for an Attack Group
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: akamai-api-security-waf-rules-attack-groups.putattackgroup
+      with:
+        accountSwitchKey: tools.accountSwitchKey
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: akamai-api-security-get-exceptions
+      description: Akamai API Security Get the Exceptions of an Attack Group
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: akamai-api-security-waf-rules-attack-groups.getattackgroupconditionexception
+      with:
+        accountSwitchKey: tools.accountSwitchKey
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: akamai-api-security-modify-exceptions
+      description: Akamai API Security Modify the Exceptions of an Attack Group
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: akamai-api-security-waf-rules-attack-groups.putattackgroupconditionexception
+      with:
+        accountSwitchKey: tools.accountSwitchKey
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

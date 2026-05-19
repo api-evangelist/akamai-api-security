@@ -1,0 +1,77 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: 'Akamai: Application Security API — Available hostnames'
+  description: 'Akamai: Application Security API — Available hostnames. 1 operations. Lead operation: Akamai API Security
+    List Available Hostnames for a New Configuration. Self-contained Naftiko capability covering one Akamai Api Security business
+    surface.'
+  tags:
+  - Akamai Api Security
+  - Available hostnames
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AKAMAI_API_SECURITY_API_KEY: AKAMAI_API_SECURITY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: akamai-api-security-available-hostnames
+    baseUri: https://{hostname}/appsec/v1
+    description: 'Akamai: Application Security API — Available hostnames business capability. Self-contained, no shared references.'
+    resources:
+    - name: contracts-contractId-groups-groupId-selectable-hostnames
+      path: /contracts/{contractId}/groups/{groupId}/selectable-hostnames
+      operations:
+      - name: getselectablehostnamesperconfig
+        method: GET
+        description: Akamai API Security List Available Hostnames for a New Configuration
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountSwitchKey
+          in: query
+          type: string
+          description: For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-w
+  exposes:
+  - type: rest
+    namespace: akamai-api-security-available-hostnames-rest
+    port: 8080
+    description: 'REST adapter for Akamai: Application Security API — Available hostnames. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.'
+    resources:
+    - path: /v1/contracts/{contractid}/groups/{groupid}/selectable-hostnames
+      name: contracts-contractid-groups-groupid-selectable-hostnames
+      description: REST surface for contracts-contractId-groups-groupId-selectable-hostnames.
+      operations:
+      - method: GET
+        name: getselectablehostnamesperconfig
+        description: Akamai API Security List Available Hostnames for a New Configuration
+        call: akamai-api-security-available-hostnames.getselectablehostnamesperconfig
+        with:
+          accountSwitchKey: rest.accountSwitchKey
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: akamai-api-security-available-hostnames-mcp
+    port: 9090
+    transport: http
+    description: 'MCP adapter for Akamai: Application Security API — Available hostnames. One tool per consumed operation,
+      routed inline through this capability''s consumes block.'
+    tools:
+    - name: akamai-api-security-list-available
+      description: Akamai API Security List Available Hostnames for a New Configuration
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: akamai-api-security-available-hostnames.getselectablehostnamesperconfig
+      with:
+        accountSwitchKey: tools.accountSwitchKey
+      outputParameters:
+      - type: object
+        mapping: $.

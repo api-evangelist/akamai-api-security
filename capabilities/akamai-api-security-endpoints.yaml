@@ -1,0 +1,165 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: 'Akamai: Application Security API — Endpoints'
+  description: 'Akamai: Application Security API — Endpoints. 3 operations. Lead operation: Akamai API Security Modify an
+    API''s Visibility. Self-contained Naftiko capability covering one Akamai Api Security business surface.'
+  tags:
+  - Akamai Api Security
+  - Endpoints
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AKAMAI_API_SECURITY_API_KEY: AKAMAI_API_SECURITY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: akamai-api-security-endpoints
+    baseUri: https://{hostname}/appsec/v1
+    description: 'Akamai: Application Security API — Endpoints business capability. Self-contained, no shared references.'
+    resources:
+    - name: api-discovery-host-hostname-basepath-basePath
+      path: /api-discovery/host/{hostname}/basepath/{basePath}
+      operations:
+      - name: putapivisibility
+        method: PUT
+        description: Akamai API Security Modify an API's Visibility
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountSwitchKey
+          in: query
+          type: string
+          description: For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-w
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-discovery-host-hostname-basepath-basePath-endpoints
+      path: /api-discovery/host/{hostname}/basepath/{basePath}/endpoints
+      operations:
+      - name: postapiendpointresource
+        method: POST
+        description: Akamai API Security Create an Endpoint or Resource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountSwitchKey
+          in: query
+          type: string
+          description: For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-w
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: getdiscoveredapiendpoints
+        method: GET
+        description: Akamai API Security List Discovered API Endpoints
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountSwitchKey
+          in: query
+          type: string
+          description: For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-w
+  exposes:
+  - type: rest
+    namespace: akamai-api-security-endpoints-rest
+    port: 8080
+    description: 'REST adapter for Akamai: Application Security API — Endpoints. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.'
+    resources:
+    - path: /v1/api-discovery/host/{hostname}/basepath/{basepath}
+      name: api-discovery-host-hostname-basepath-basepath
+      description: REST surface for api-discovery-host-hostname-basepath-basePath.
+      operations:
+      - method: PUT
+        name: putapivisibility
+        description: Akamai API Security Modify an API's Visibility
+        call: akamai-api-security-endpoints.putapivisibility
+        with:
+          accountSwitchKey: rest.accountSwitchKey
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api-discovery/host/{hostname}/basepath/{basepath}/endpoints
+      name: api-discovery-host-hostname-basepath-basepath-endpoints
+      description: REST surface for api-discovery-host-hostname-basepath-basePath-endpoints.
+      operations:
+      - method: POST
+        name: postapiendpointresource
+        description: Akamai API Security Create an Endpoint or Resource
+        call: akamai-api-security-endpoints.postapiendpointresource
+        with:
+          accountSwitchKey: rest.accountSwitchKey
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getdiscoveredapiendpoints
+        description: Akamai API Security List Discovered API Endpoints
+        call: akamai-api-security-endpoints.getdiscoveredapiendpoints
+        with:
+          accountSwitchKey: rest.accountSwitchKey
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: akamai-api-security-endpoints-mcp
+    port: 9090
+    transport: http
+    description: 'MCP adapter for Akamai: Application Security API — Endpoints. One tool per consumed operation, routed inline
+      through this capability''s consumes block.'
+    tools:
+    - name: akamai-api-security-modify-api-s
+      description: Akamai API Security Modify an API's Visibility
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: akamai-api-security-endpoints.putapivisibility
+      with:
+        accountSwitchKey: tools.accountSwitchKey
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: akamai-api-security-create-endpoint
+      description: Akamai API Security Create an Endpoint or Resource
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: akamai-api-security-endpoints.postapiendpointresource
+      with:
+        accountSwitchKey: tools.accountSwitchKey
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: akamai-api-security-list-discovered
+      description: Akamai API Security List Discovered API Endpoints
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: akamai-api-security-endpoints.getdiscoveredapiendpoints
+      with:
+        accountSwitchKey: tools.accountSwitchKey
+      outputParameters:
+      - type: object
+        mapping: $.

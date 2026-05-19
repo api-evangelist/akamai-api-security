@@ -1,0 +1,76 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: 'Akamai: Application Security API — Hostname coverage'
+  description: 'Akamai: Application Security API — Hostname coverage. 1 operations. Lead operation: Akamai API Security Get
+    Hostname Coverage. Self-contained Naftiko capability covering one Akamai Api Security business surface.'
+  tags:
+  - Akamai Api Security
+  - Hostname coverage
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AKAMAI_API_SECURITY_API_KEY: AKAMAI_API_SECURITY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: akamai-api-security-hostname-coverage
+    baseUri: https://{hostname}/appsec/v1
+    description: 'Akamai: Application Security API — Hostname coverage business capability. Self-contained, no shared references.'
+    resources:
+    - name: hostname-coverage
+      path: /hostname-coverage
+      operations:
+      - name: gethostnamecoverage
+        method: GET
+        description: Akamai API Security Get Hostname Coverage
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountSwitchKey
+          in: query
+          type: string
+          description: For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-w
+  exposes:
+  - type: rest
+    namespace: akamai-api-security-hostname-coverage-rest
+    port: 8080
+    description: 'REST adapter for Akamai: Application Security API — Hostname coverage. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.'
+    resources:
+    - path: /v1/hostname-coverage
+      name: hostname-coverage
+      description: REST surface for hostname-coverage.
+      operations:
+      - method: GET
+        name: gethostnamecoverage
+        description: Akamai API Security Get Hostname Coverage
+        call: akamai-api-security-hostname-coverage.gethostnamecoverage
+        with:
+          accountSwitchKey: rest.accountSwitchKey
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: akamai-api-security-hostname-coverage-mcp
+    port: 9090
+    transport: http
+    description: 'MCP adapter for Akamai: Application Security API — Hostname coverage. One tool per consumed operation, routed
+      inline through this capability''s consumes block.'
+    tools:
+    - name: akamai-api-security-get-hostname
+      description: Akamai API Security Get Hostname Coverage
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: akamai-api-security-hostname-coverage.gethostnamecoverage
+      with:
+        accountSwitchKey: tools.accountSwitchKey
+      outputParameters:
+      - type: object
+        mapping: $.

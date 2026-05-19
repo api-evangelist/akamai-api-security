@@ -1,0 +1,199 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: 'Akamai: Application Security API — Bypass network lists'
+  description: 'Akamai: Application Security API — Bypass network lists. 4 operations. Lead operation: Akamai API Security
+    Get Bypass Network Lists Settings. Self-contained Naftiko capability covering one Akamai Api Security business surface.'
+  tags:
+  - Akamai Api Security
+  - Bypass network lists
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AKAMAI_API_SECURITY_API_KEY: AKAMAI_API_SECURITY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: akamai-api-security-bypass-network-lists
+    baseUri: https://{hostname}/appsec/v1
+    description: 'Akamai: Application Security API — Bypass network lists business capability. Self-contained, no shared references.'
+    resources:
+    - name: configs-configId-versions-versionNumber-bypass-network-lists
+      path: /configs/{configId}/versions/{versionNumber}/bypass-network-lists
+      operations:
+      - name: getbypassnetworklists
+        method: GET
+        description: Akamai API Security Get Bypass Network Lists Settings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountSwitchKey
+          in: query
+          type: string
+          description: For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-w
+      - name: putbypassnetworklists
+        method: PUT
+        description: Akamai API Security Modify the Bypass Network Lists Settings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountSwitchKey
+          in: query
+          type: string
+          description: For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-w
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: configs-configId-versions-versionNumber-security-policies-policyId-bypass-networ
+      path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/bypass-network-lists
+      operations:
+      - name: getbypassnetworklistsperpolicy
+        method: GET
+        description: Akamai API Security Get the Bypass Network Lists Settings for a Security Policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountSwitchKey
+          in: query
+          type: string
+          description: For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-w
+      - name: putbypassnetworklistsperpolicy
+        method: PUT
+        description: Akamai API Security Modify the Bypass Network Lists Settings for a Security Policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountSwitchKey
+          in: query
+          type: string
+          description: For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-w
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: akamai-api-security-bypass-network-lists-rest
+    port: 8080
+    description: 'REST adapter for Akamai: Application Security API — Bypass network lists. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.'
+    resources:
+    - path: /v1/configs/{configid}/versions/{versionnumber}/bypass-network-lists
+      name: configs-configid-versions-versionnumber-bypass-network-lists
+      description: REST surface for configs-configId-versions-versionNumber-bypass-network-lists.
+      operations:
+      - method: GET
+        name: getbypassnetworklists
+        description: Akamai API Security Get Bypass Network Lists Settings
+        call: akamai-api-security-bypass-network-lists.getbypassnetworklists
+        with:
+          accountSwitchKey: rest.accountSwitchKey
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: putbypassnetworklists
+        description: Akamai API Security Modify the Bypass Network Lists Settings
+        call: akamai-api-security-bypass-network-lists.putbypassnetworklists
+        with:
+          accountSwitchKey: rest.accountSwitchKey
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/configs/{configid}/versions/{versionnumber}/security-policies/{policyid}/bypass-network-lists
+      name: configs-configid-versions-versionnumber-security-policies-policyid-bypass-networ
+      description: REST surface for configs-configId-versions-versionNumber-security-policies-policyId-bypass-networ.
+      operations:
+      - method: GET
+        name: getbypassnetworklistsperpolicy
+        description: Akamai API Security Get the Bypass Network Lists Settings for a Security Policy
+        call: akamai-api-security-bypass-network-lists.getbypassnetworklistsperpolicy
+        with:
+          accountSwitchKey: rest.accountSwitchKey
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: putbypassnetworklistsperpolicy
+        description: Akamai API Security Modify the Bypass Network Lists Settings for a Security Policy
+        call: akamai-api-security-bypass-network-lists.putbypassnetworklistsperpolicy
+        with:
+          accountSwitchKey: rest.accountSwitchKey
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: akamai-api-security-bypass-network-lists-mcp
+    port: 9090
+    transport: http
+    description: 'MCP adapter for Akamai: Application Security API — Bypass network lists. One tool per consumed operation,
+      routed inline through this capability''s consumes block.'
+    tools:
+    - name: akamai-api-security-get-bypass
+      description: Akamai API Security Get Bypass Network Lists Settings
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: akamai-api-security-bypass-network-lists.getbypassnetworklists
+      with:
+        accountSwitchKey: tools.accountSwitchKey
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: akamai-api-security-modify-bypass
+      description: Akamai API Security Modify the Bypass Network Lists Settings
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: akamai-api-security-bypass-network-lists.putbypassnetworklists
+      with:
+        accountSwitchKey: tools.accountSwitchKey
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: akamai-api-security-get-bypass-2
+      description: Akamai API Security Get the Bypass Network Lists Settings for a Security Policy
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: akamai-api-security-bypass-network-lists.getbypassnetworklistsperpolicy
+      with:
+        accountSwitchKey: tools.accountSwitchKey
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: akamai-api-security-modify-bypass-2
+      description: Akamai API Security Modify the Bypass Network Lists Settings for a Security Policy
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: akamai-api-security-bypass-network-lists.putbypassnetworklistsperpolicy
+      with:
+        accountSwitchKey: tools.accountSwitchKey
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
