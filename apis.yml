@@ -71,7 +71,7 @@ common:
     url: https://www.akamai.com/support
   - type: Login
     url: https://control.akamai.com
-  - type: SignUp
+  - type: Signup
     url: https://www.akamai.com/free-trials
   - type: GitHubOrganization
     url: https://github.com/akamai
