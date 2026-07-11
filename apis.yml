@@ -59,6 +59,8 @@ apis:
       - type: GettingStarted
         url: https://techdocs.akamai.com/developer/docs/get-started
 common:
+  - type: DomainSecurity
+    url: security/akamai-api-security-domain-security.yml
   - type: Website
     url: https://www.akamai.com/products/api-security
   - type: Documentation
