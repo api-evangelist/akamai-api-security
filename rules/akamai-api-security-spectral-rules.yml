@@ -1,206 +1,229 @@
-# Akamai API Security Spectral Ruleset
-# Enforces conventions found in the Akamai Application Security API specification
-
+# akamai-api-security — Spectral ruleset (strengthened)
+# Plain Spectral. Existing hand-authored rules preserved; measured rules added
+# from this provider's own OpenAPI conventions by strengthen_ruleset.py,
+# then self-validated against the spec.
+#
+# Provenance:
+#   - servers-https-only: 100% of servers already https (error)
+#   - path-params-casing: camel @ 99% (n=521)
+#   - query-params-casing: camel @ 94% (n=238)
+#   - operationid-casing: kebab @ 100% (n=213)
+#   - schema-names-casing: kebab @ 94% (n=71)
+#   - schema-properties-casing: camel @ 63% (n=304)
+#   - operation-documents-404: 90% adherence
+#   - pagination params observed: ['page', 'pageSize']
+#   - merge: kept 23 existing, added 5 measured, upgraded 0
+#   - added: path-params-casing, query-params-casing, schema-names-casing, schema-properties-casing, operation-documents-404
+extends:
+  - spectral:oas
 rules:
-
-  # INFO / METADATA
   info-title-format:
-    message: "API title should start with 'Akamai'"
+    message: API title should start with 'Akamai'
     severity: warn
-    given: "$.info.title"
+    given: $.info.title
     then:
       function: pattern
       functionOptions:
-        match: "^Akamai"
-
+        match: ^Akamai
   info-description-required:
-    message: "API info must have a description"
+    message: API info must have a description
     severity: error
-    given: "$.info"
+    given: $.info
     then:
       field: description
       function: truthy
-
   info-version-required:
-    message: "API info must have a version"
+    message: API info must have a version
     severity: error
-    given: "$.info"
+    given: $.info
     then:
       field: version
       function: truthy
-
-  # OPENAPI VERSION
   openapi-version-3:
-    message: "Must use OpenAPI 3.x"
+    message: Must use OpenAPI 3.x
     severity: error
-    given: "$"
+    given: $
     then:
       field: openapi
       function: pattern
       functionOptions:
-        match: "^3\\."
-
-  # SERVERS
+        match: ^3\.
   servers-defined:
-    message: "Servers must be defined"
+    message: Servers must be defined
     severity: error
-    given: "$"
+    given: $
     then:
       field: servers
       function: truthy
-
   servers-https:
-    message: "Server URLs should use HTTPS"
+    message: Server URLs should use HTTPS
     severity: warn
-    given: "$.servers[*].url"
+    given: $.servers[*].url
     then:
       function: pattern
       functionOptions:
-        match: "^https://"
-
-  # PATHS
+        match: ^https://
   paths-kebab-case:
-    message: "Path segments should use kebab-case"
+    message: Path segments should use kebab-case
     severity: warn
-    given: "$.paths[*]~"
+    given: $.paths[*]~
     then:
       function: pattern
       functionOptions:
-        match: "^(\\/([a-z0-9][a-z0-9\\-]*|\\{[a-zA-Z][a-zA-Z0-9_]*\\}))*$"
-
+        match: ^(\/([a-z0-9][a-z0-9\-]*|\{[a-zA-Z][a-zA-Z0-9_]*\}))*$
   paths-no-trailing-slash:
-    message: "Paths must not have trailing slashes"
+    message: Paths must not have trailing slashes
     severity: error
-    given: "$.paths[*]~"
+    given: $.paths[*]~
     then:
       function: pattern
       functionOptions:
-        notMatch: "\\/$"
-
-  # OPERATIONS
+        notMatch: \/$
   operation-summary-required:
-    message: "Every operation must have a summary"
+    message: Every operation must have a summary
     severity: error
-    given: "$.paths[*][get,post,put,patch,delete,head,options]"
+    given: $.paths[*][get,post,put,patch,delete,head,options]
     then:
       field: summary
       function: truthy
-
   operation-summary-akamai-prefix:
-    message: "Operation summaries should start with 'Akamai'"
+    message: Operation summaries should start with 'Akamai'
     severity: warn
-    given: "$.paths[*][get,post,put,patch,delete,head,options].summary"
+    given: $.paths[*][get,post,put,patch,delete,head,options].summary
     then:
       function: pattern
       functionOptions:
-        match: "^Akamai"
-
+        match: ^Akamai
   operation-description-required:
-    message: "Every operation must have a description"
+    message: Every operation must have a description
     severity: warn
-    given: "$.paths[*][get,post,put,patch,delete,head,options]"
+    given: $.paths[*][get,post,put,patch,delete,head,options]
     then:
       field: description
       function: truthy
-
   operation-id-required:
-    message: "Every operation must have an operationId"
+    message: Every operation must have an operationId
     severity: error
-    given: "$.paths[*][get,post,put,patch,delete,head,options]"
+    given: $.paths[*][get,post,put,patch,delete,head,options]
     then:
       field: operationId
       function: truthy
-
   operation-id-camel-case:
-    message: "operationId should use camelCase"
+    message: operationId should use camelCase
     severity: warn
-    given: "$.paths[*][get,post,put,patch,delete,head,options].operationId"
+    given: $.paths[*][get,post,put,patch,delete,head,options].operationId
     then:
       function: pattern
       functionOptions:
-        match: "^[a-z][a-zA-Z0-9]*$"
-
+        match: ^[a-z][a-zA-Z0-9]*$
   operation-tags-required:
-    message: "Every operation must have at least one tag"
+    message: Every operation must have at least one tag
     severity: error
-    given: "$.paths[*][get,post,put,patch,delete,head,options]"
+    given: $.paths[*][get,post,put,patch,delete,head,options]
     then:
       field: tags
       function: truthy
-
-  # PARAMETERS
   parameter-description-required:
-    message: "All parameters must have a description"
+    message: All parameters must have a description
     severity: warn
-    given: "$.paths[*][get,post,put,patch,delete][*].parameters[*]"
+    given: $.paths[*][get,post,put,patch,delete][*].parameters[*]
     then:
       field: description
       function: truthy
-
-  # RESPONSES
   operation-success-response:
-    message: "Operations must have at least one 2xx response"
+    message: Operations must have at least one 2xx response
     severity: error
-    given: "$.paths[*][get,post,put,patch,delete]"
+    given: $.paths[*][get,post,put,patch,delete]
     then:
       field: responses
       function: truthy
-
   response-description-required:
-    message: "All responses must have a description"
+    message: All responses must have a description
     severity: error
-    given: "$.paths[*][*].responses[*]"
+    given: $.paths[*][*].responses[*]
     then:
       field: description
       function: truthy
-
-  # SCHEMAS
   schema-type-defined:
-    message: "Schema properties should have a type defined"
+    message: Schema properties should have a type defined
     severity: warn
-    given: "$.components.schemas[*].properties[*]"
+    given: $.components.schemas[*].properties[*]
     then:
       field: type
       function: truthy
-
   schema-description-required:
-    message: "Top-level schemas should have a description"
+    message: Top-level schemas should have a description
     severity: warn
-    given: "$.components.schemas[*]"
+    given: $.components.schemas[*]
     then:
       field: description
       function: truthy
-
-  # SECURITY
   security-schemes-defined:
-    message: "Security schemes should be defined"
+    message: Security schemes should be defined
     severity: warn
-    given: "$.components"
+    given: $.components
     then:
       field: securitySchemes
       function: truthy
-
-  # HTTP METHODS
   get-no-request-body:
-    message: "GET operations must not have a request body"
+    message: GET operations must not have a request body
     severity: error
-    given: "$.paths[*].get"
+    given: $.paths[*].get
     then:
       field: requestBody
       function: falsy
-
   delete-no-request-body:
-    message: "DELETE operations should not have a request body"
+    message: DELETE operations should not have a request body
     severity: warn
-    given: "$.paths[*].delete"
+    given: $.paths[*].delete
     then:
       field: requestBody
       function: falsy
-
-  # GENERAL QUALITY
   no-empty-descriptions:
-    message: "Descriptions must not be empty"
+    message: Descriptions must not be empty
     severity: error
-    given: "$..description"
+    given: $..description
     then:
+      function: truthy
+  path-params-casing:
+    description: Path parameters should be camelCase (the dominant convention in this API).
+    severity: warn
+    given: $.paths[*].parameters[?(@.in=='path')].name
+    then:
+      function: casing
+      functionOptions:
+        type: camel
+  query-params-casing:
+    description: Query parameters should be camelCase (the dominant convention in this API).
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].parameters[?(@.in=='query')]
+    then:
+      field: name
+      function: casing
+      functionOptions:
+        type: camel
+  schema-names-casing:
+    description: Component schema names should be kebab-case (the dominant convention in this API).
+    severity: warn
+    given: $.components.schemas
+    then:
+      field: '@key'
+      function: casing
+      functionOptions:
+        type: kebab
+  schema-properties-casing:
+    description: Schema properties should be camelCase (the dominant convention in this API).
+    severity: info
+    given: $.components.schemas[*].properties
+    then:
+      field: '@key'
+      function: pattern
+      functionOptions:
+        match: ^[a-z][A-Za-z0-9]*$
+  operation-documents-404:
+    description: Operations should document a 404 response (documented on 90% of this API's operations).
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].responses
+    then:
+      field: '404'
       function: truthy
