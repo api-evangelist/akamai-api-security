@@ -1,0 +1,2767 @@
+generated: '2026-07-15'
+method: generated
+source: openapi/akamai-api-security-openapi.json
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 213
+  by_action_class:
+    acting: 103
+    connected: 110
+  by_consequence:
+    write: 102
+    read: 110
+    physical: 1
+  human_in_the_loop_required: 0
+operations:
+- path: /activations
+  method: post
+  operationId: post-activations
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /activations/status/{statusId}
+  method: get
+  operationId: get-activations-status
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /activations/{activationId}
+  method: get
+  operationId: get-activation
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api-discovery
+  method: get
+  operationId: get-api-list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api-discovery/host/{hostname}/basepath/{basePath}
+  method: get
+  operationId: get-api-details
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api-discovery/host/{hostname}/basepath/{basePath}
+  method: put
+  operationId: put-api-visibility
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api-discovery/host/{hostname}/basepath/{basePath}/endpoints
+  method: post
+  operationId: post-api-endpoint-resource
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api-discovery/host/{hostname}/basepath/{basePath}/endpoints
+  method: get
+  operationId: get-discovered-api-endpoints
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs
+  method: post
+  operationId: post-config
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs
+  method: get
+  operationId: get-configs
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}
+  method: get
+  operationId: get-config
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}
+  method: put
+  operationId: put-config
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}
+  method: delete
+  operationId: delete-config
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/activations
+  method: get
+  operationId: get-activation-history
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/custom-rules
+  method: post
+  operationId: post-config-custom-rules
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/custom-rules
+  method: get
+  operationId: get-configs-custom-rules
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/custom-rules/{ruleId}
+  method: get
+  operationId: get-config-custom-rule
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/custom-rules/{ruleId}
+  method: put
+  operationId: put-config-custom-rule
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/custom-rules/{ruleId}
+  method: delete
+  operationId: delete-config-custom-rule
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/failover-hostnames
+  method: get
+  operationId: get-failover-hostnames
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/notification/subscription/{feature}
+  method: post
+  operationId: post-subscription-feature
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/notification/subscription/{feature}
+  method: get
+  operationId: get-subscription-feature
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions
+  method: post
+  operationId: post-config-versions
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions
+  method: get
+  operationId: get-config-versions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/diff
+  method: post
+  operationId: post-config-versions-diff
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}
+  method: get
+  operationId: get-version-number
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}
+  method: delete
+  operationId: delete-version-number
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/advanced-settings/cookie-settings
+  method: get
+  operationId: get-advanced-settings-cookie-settings
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/advanced-settings/cookie-settings
+  method: put
+  operationId: put-advanced-settings-cookie-settings
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/advanced-settings/evasive-path-match
+  method: get
+  operationId: get-evasive-path-match-per-config
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/advanced-settings/evasive-path-match
+  method: put
+  operationId: put-evasive-path-match-per-config
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/advanced-settings/logging
+  method: get
+  operationId: get-advanced-settings-logging
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/advanced-settings/logging
+  method: put
+  operationId: put-advanced-settings-logging
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/advanced-settings/logging/attack-payload
+  method: get
+  operationId: get-advanced-settings-attack-payload-logging
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/advanced-settings/logging/attack-payload
+  method: put
+  operationId: put-advanced-settings-attack-payload-logging
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/advanced-settings/pii-learning
+  method: get
+  operationId: get-advanced-settings-pii-learning
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/advanced-settings/pii-learning
+  method: put
+  operationId: put-advanced-settings-pii-learning
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/advanced-settings/pragma-header
+  method: get
+  operationId: get-advanced-settings-pragma-header
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/advanced-settings/pragma-header
+  method: put
+  operationId: put-advanced-settings-pragma-header
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/advanced-settings/prefetch
+  method: get
+  operationId: get-advanced-settings-prefetch
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/advanced-settings/prefetch
+  method: put
+  operationId: put-advanced-settings-prefetch
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/advanced-settings/request-body
+  method: get
+  operationId: get-advanced-settings-request-body
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/advanced-settings/request-body
+  method: put
+  operationId: put-advanced-settings-request-body
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/bypass-network-lists
+  method: get
+  operationId: get-bypass-network-lists
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/bypass-network-lists
+  method: put
+  operationId: put-bypass-network-lists
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/custom-deny
+  method: post
+  operationId: post-custom-deny
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/custom-deny
+  method: get
+  operationId: get-custom-deny-actions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/custom-deny/{customDenyId}
+  method: get
+  operationId: get-custom-deny-action
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/custom-deny/{customDenyId}
+  method: put
+  operationId: put-custom-deny
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/custom-deny/{customDenyId}
+  method: delete
+  operationId: delete-custom-deny
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/hostname-coverage/match-targets
+  method: get
+  operationId: get-coverage-match-targets
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/hostname-coverage/overlapping
+  method: get
+  operationId: get-hostname-coverage-overlapping
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/malware-policies
+  method: post
+  operationId: post-malware-policies
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/malware-policies
+  method: get
+  operationId: get-malware-policies
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/malware-policies/content-types
+  method: get
+  operationId: get-malware-policy-content-types
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/malware-policies/{malwarePolicyId}
+  method: get
+  operationId: get-malware-policy
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/malware-policies/{malwarePolicyId}
+  method: put
+  operationId: put-malware-policy
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/malware-policies/{malwarePolicyId}
+  method: delete
+  operationId: delete-malware-policy
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/match-targets
+  method: post
+  operationId: post-match-targets
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/match-targets
+  method: get
+  operationId: get-match-targets
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/match-targets/sequence
+  method: put
+  operationId: put-match-targets-sequence
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/match-targets/{targetId}
+  method: get
+  operationId: get-match-target
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/match-targets/{targetId}
+  method: put
+  operationId: put-match-target
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/match-targets/{targetId}
+  method: delete
+  operationId: delete-match-target
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/protect-eval-hostnames
+  method: put
+  operationId: put-protect-eval-hostnames
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/rate-policies
+  method: post
+  operationId: post-rate-policies
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/rate-policies
+  method: get
+  operationId: get-rate-policies
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/rate-policies/{ratePolicyId}
+  method: get
+  operationId: get-rate-policy
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/rate-policies/{ratePolicyId}
+  method: put
+  operationId: put-rate-policy
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/rate-policies/{ratePolicyId}
+  method: delete
+  operationId: delete-rate-policy
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/rate-policies/{ratePolicyId}/evaluation
+  method: put
+  operationId: put-rate-policy-evaluation
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/reputation-profiles
+  method: post
+  operationId: post-reputation-profiles
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/reputation-profiles
+  method: get
+  operationId: get-reputation-profiles
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/reputation-profiles/{reputationProfileId}
+  method: get
+  operationId: get-reputation-profile
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/reputation-profiles/{reputationProfileId}
+  method: put
+  operationId: put-reputation-profile
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/reputation-profiles/{reputationProfileId}
+  method: delete
+  operationId: delete-reputation-profile
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/security-policies
+  method: post
+  operationId: post-policy
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/security-policies
+  method: get
+  operationId: get-policies
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}
+  method: get
+  operationId: get-policy
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}
+  method: put
+  operationId: put-policy
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}
+  method: delete
+  operationId: delete-policy
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/advanced-settings/evasive-path-match
+  method: get
+  operationId: get-evasive-path-match
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/advanced-settings/evasive-path-match
+  method: put
+  operationId: put-evasive-path-match
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/advanced-settings/logging
+  method: get
+  operationId: get-policies-logging
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/advanced-settings/logging
+  method: put
+  operationId: put-policies-logging
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/advanced-settings/logging/attack-payload
+  method: get
+  operationId: get-policies-attack-payload-logging
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/advanced-settings/logging/attack-payload
+  method: put
+  operationId: put-policies-attack-payload-logging
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/advanced-settings/pragma-header
+  method: get
+  operationId: get-policies-pragma-header
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/advanced-settings/pragma-header
+  method: put
+  operationId: put-policies-pragma-header
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/advanced-settings/request-body
+  method: get
+  operationId: get-policies-request-body
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/advanced-settings/request-body
+  method: put
+  operationId: put-policies-request-body
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/api-endpoints
+  method: get
+  operationId: get-api-endpoints
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/api-request-constraints
+  method: get
+  operationId: get-api-request-constraints
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/api-request-constraints
+  method: put
+  operationId: put-api-request-constraints
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/api-request-constraints/{apiId}
+  method: put
+  operationId: put-api-request-constraints-api
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/attack-groups
+  method: get
+  operationId: get-policy-attack-groups
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/attack-groups/{attackGroupId}
+  method: get
+  operationId: get-policy-attack-group
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/attack-groups/{attackGroupId}
+  method: put
+  operationId: put-attack-group
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/attack-groups/{attackGroupId}/condition-exception
+  method: get
+  operationId: get-attack-group-condition-exception
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/attack-groups/{attackGroupId}/condition-exception
+  method: put
+  operationId: put-attack-group-condition-exception
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/bypass-network-lists
+  method: get
+  operationId: get-bypass-network-lists-per-policy
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/bypass-network-lists
+  method: put
+  operationId: put-bypass-network-lists-per-policy
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/cpc
+  method: get
+  operationId: get-policy-cpc
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/cpc
+  method: put
+  operationId: put-policy-cpc
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/custom-rules
+  method: get
+  operationId: get-custom-rules
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/custom-rules/{ruleId}
+  method: put
+  operationId: put-custom-rule
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/eval
+  method: post
+  operationId: post-policy-eval
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/eval-groups
+  method: get
+  operationId: get-policy-eval-groups
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/eval-groups/{attackGroupId}
+  method: get
+  operationId: get-policy-eval-group
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/eval-groups/{attackGroupId}
+  method: put
+  operationId: put-eval-group
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/eval-groups/{attackGroupId}/condition-exception
+  method: get
+  operationId: get-eval-group-condition-exception
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/eval-groups/{attackGroupId}/condition-exception
+  method: put
+  operationId: put-eval-group-condition-exception
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/eval-hostnames
+  method: get
+  operationId: get-eval-hostnames
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/eval-hostnames
+  method: put
+  operationId: put-eval-hostnames
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/eval-penalty-box
+  method: get
+  operationId: get-eval-policy-penalty-box
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/eval-penalty-box
+  method: put
+  operationId: put-eval-policy-penalty-box
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/eval-penalty-box/conditions
+  method: get
+  operationId: get-eval-policy-penalty-box-conditions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/eval-penalty-box/conditions
+  method: put
+  operationId: put-eval-policy-penalty-box-conditions
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/eval-rules
+  method: get
+  operationId: get-policy-eval-rules
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/eval-rules/{ruleId}
+  method: get
+  operationId: get-policy-eval-rule
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/eval-rules/{ruleId}
+  method: put
+  operationId: put-policy-eval-rule
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/eval-rules/{ruleId}/condition-exception
+  method: get
+  operationId: get-condition-exception
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/eval-rules/{ruleId}/condition-exception
+  method: put
+  operationId: put-condition-exception
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/ip-geo-firewall
+  method: get
+  operationId: get-policy-ip-geo-firewall
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/ip-geo-firewall
+  method: put
+  operationId: put-policy-ip-geo-firewall
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/malware-policies
+  method: get
+  operationId: get-malware-policies-actions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/malware-policies/{malwarePolicyId}
+  method: put
+  operationId: put-malware-policy-action
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/mode
+  method: get
+  operationId: get-policy-mode
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/mode
+  method: put
+  operationId: put-policy-mode
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/penalty-box
+  method: get
+  operationId: get-policy-penalty-box
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/penalty-box
+  method: put
+  operationId: put-policy-penalty-box
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/penalty-box/conditions
+  method: get
+  operationId: get-policy-penalty-box-conditions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/penalty-box/conditions
+  method: put
+  operationId: put-policy-penalty-box-conditions
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/protect-eval-hostnames
+  method: put
+  operationId: put-protect-eval-hostnames-per-policy
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/protections
+  method: get
+  operationId: get-policy-protections
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/protections
+  method: put
+  operationId: put-policy-protections
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/rapid-rules
+  method: get
+  operationId: get-policy-rapid-rules
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/rapid-rules/action
+  method: get
+  operationId: get-policy-rapid-rules-action
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/rapid-rules/action
+  method: put
+  operationId: put-policy-rapid-rules-action
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/rapid-rules/status
+  method: get
+  operationId: get-policy-rapid-rules-status
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/rapid-rules/status
+  method: put
+  operationId: put-policy-rapid-rules-status
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/rapid-rules/{ruleId}/condition-exception
+  method: get
+  operationId: get-policy-rapid-rule-condition-exception
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/rapid-rules/{ruleId}/condition-exception
+  method: put
+  operationId: put-policy-rapid-rule-condition-exception
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/rapid-rules/{ruleId}/lock
+  method: get
+  operationId: get-policy-rapid-rule-lock
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/rapid-rules/{ruleId}/lock
+  method: put
+  operationId: put-policy-rapid-rule-lock
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/rapid-rules/{ruleId}/versions/{ruleVersion}/action
+  method: get
+  operationId: get-policy-rapid-rule-action
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/rapid-rules/{ruleId}/versions/{ruleVersion}/action
+  method: put
+  operationId: put-policy-rapid-rule-action
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/rate-policies
+  method: get
+  operationId: get-rate-policies-actions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/rate-policies/{ratePolicyId}
+  method: put
+  operationId: put-rate-policy-action
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/recommendations
+  method: post
+  operationId: post-recommendations
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/recommendations
+  method: get
+  operationId: get-recommendations
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/recommendations/attack-groups/{attackGroupId}
+  method: get
+  operationId: get-attack-group
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/recommendations/rules/{ruleId}
+  method: get
+  operationId: get-recommendations-rule
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/reputation-analysis
+  method: get
+  operationId: get-reputation-analysis
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/reputation-analysis
+  method: put
+  operationId: put-reputation-analysis
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/reputation-profiles
+  method: get
+  operationId: get-reputation-profiles-actions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/reputation-profiles/{reputationProfileId}
+  method: get
+  operationId: get-reputation-profile-action
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/reputation-profiles/{reputationProfileId}
+  method: put
+  operationId: put-reputation-profile-action
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/rules
+  method: get
+  operationId: get-policy-rules
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/rules
+  method: put
+  operationId: put-policy-rules
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/rules/threat-intel
+  method: get
+  operationId: get-rules-threat-intel
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/rules/threat-intel
+  method: put
+  operationId: put-rules-threat-intel
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/rules/upgrade-details
+  method: get
+  operationId: get-rules-upgrade-details
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/rules/{ruleId}
+  method: get
+  operationId: get-rule
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/rules/{ruleId}
+  method: put
+  operationId: put-rule
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/rules/{ruleId}/condition-exception
+  method: get
+  operationId: get-rule-condition-exception
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/rules/{ruleId}/condition-exception
+  method: put
+  operationId: put-rule-condition-exception
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/selected-hostnames
+  method: get
+  operationId: get-selected-hostnames-per-policy
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/selected-hostnames
+  method: put
+  operationId: put-selected-hostnames-per-config
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/slow-post
+  method: get
+  operationId: get-policy-slow-post
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/slow-post
+  method: put
+  operationId: put-policy-slow-post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/url-protections
+  method: get
+  operationId: get-url-protection-policies-actions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/url-protections/{urlProtectionPolicyId}
+  method: put
+  operationId: put-url-protection-policy-action
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/selectable-hostnames
+  method: get
+  operationId: get-selectable-hostnames
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/selected-hostnames
+  method: get
+  operationId: get-selected-hostnames
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/selected-hostnames
+  method: put
+  operationId: put-selected-hostnames
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/selected-hostnames/eval-hostnames
+  method: get
+  operationId: get-selected-hostnames-eval-hostnames
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/selected-hostnames/eval-hostnames
+  method: put
+  operationId: put-selected-eval-hostnames
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/siem
+  method: get
+  operationId: get-siem
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/siem
+  method: put
+  operationId: put-siem
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/url-protections
+  method: post
+  operationId: post-url-protection-policies
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/url-protections
+  method: get
+  operationId: get-url-protection-policies
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/url-protections/{urlProtectionPolicyId}
+  method: get
+  operationId: get-url-protection-policy
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/url-protections/{urlProtectionPolicyId}
+  method: put
+  operationId: put-url-protection-policy
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/url-protections/{urlProtectionPolicyId}
+  method: delete
+  operationId: delete-url-protection-policy
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /configs/{configId}/versions/{versionNumber}/version-notes
+  method: get
+  operationId: get-version-notes
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configs/{configId}/versions/{versionNumber}/version-notes
+  method: put
+  operationId: put-version-notes
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /contracts-groups
+  method: get
+  operationId: get-contracts-groups
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /contracts/{contractId}/groups/{groupId}/selectable-hostnames
+  method: get
+  operationId: get-selectable-hostnames-per-config
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cves
+  method: get
+  operationId: get-cves
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cves/subscribe
+  method: post
+  operationId: post-subscribe
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /cves/subscribed
+  method: get
+  operationId: get-subscribed
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cves/unsubscribe
+  method: post
+  operationId: post-unsubscribe
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /cves/{cveId}
+  method: get
+  operationId: get-cve
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cves/{cveId}/security-coverage
+  method: get
+  operationId: get-security-coverage
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /export/configs/{configId}/versions/{versionNumber}
+  method: get
+  operationId: get-export-config-version
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /hostname-coverage
+  method: get
+  operationId: get-hostname-coverage
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /onboardings
+  method: post
+  operationId: post-onboarding
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /onboardings
+  method: get
+  operationId: get-onboardings
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /onboardings/{onboardingId}
+  method: get
+  operationId: get-onboarding
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /onboardings/{onboardingId}
+  method: delete
+  operationId: delete-onboarding
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /onboardings/{onboardingId}/activations
+  method: post
+  operationId: post-onboarding-activation
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /onboardings/{onboardingId}/activations/{activationId}
+  method: get
+  operationId: get-onboarding-activation-status
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /onboardings/{onboardingId}/certificate-validation
+  method: get
+  operationId: get-onboarding-certificate-validation
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /onboardings/{onboardingId}/certificate-validation/validate
+  method: post
+  operationId: post-onboarding-certificate-validation
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /onboardings/{onboardingId}/cname-to-akamai
+  method: get
+  operationId: get-onboarding-cname-records
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /onboardings/{onboardingId}/cname-to-akamai/validate
+  method: post
+  operationId: post-validate-onboarding-cname-records
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /onboardings/{onboardingId}/origin-validation
+  method: get
+  operationId: get-onboarding-origin-validation
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /onboardings/{onboardingId}/origin-validation/skip
+  method: post
+  operationId: post-skip-onboarding-origin-validation
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /onboardings/{onboardingId}/origin-validation/validate
+  method: post
+  operationId: post-onboarding-origin-validation
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /onboardings/{onboardingId}/settings
+  method: get
+  operationId: get-onboarding-settings
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /onboardings/{onboardingId}/settings
+  method: put
+  operationId: put-onboarding-settings
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /siem-definitions
+  method: get
+  operationId: get-siem-definitions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none

@@ -59,6 +59,8 @@ apis:
       - type: GettingStarted
         url: https://techdocs.akamai.com/developer/docs/get-started
 common:
+  - type: AgenticAccess
+    url: agentic-access/akamai-api-security-agentic-access.yml
   - type: DomainSecurity
     url: security/akamai-api-security-domain-security.yml
   - type: Website
