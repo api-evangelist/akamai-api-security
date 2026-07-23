@@ -1,0 +1,387 @@
+openapi: 3.0.0
+info:
+  description: 'Manage your configurations for Kona Site Defender,
+
+    Web Application Protector, and Client Reputation.
+
+    '
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  title: 'Akamai: Application Security Activation history Activations API'
+  version: v1
+servers:
+- url: https://{hostname}/appsec/v1
+tags:
+- description: Manage your security configuration activations.
+  name: Activations
+paths:
+  /activations:
+    x-akamai:
+      file-path: paths/activations.yaml
+      path-info: /activations
+    post:
+      description: Activates one or more configurations globally. Note that you need to explicitly list any invalid hosts in the `acknowledgedInvalidHostsByConfig` parameter in order to successfully activate a configuration that includes invalid hostnames. If you have an invalid hostname that isn't explicitly called out you'll receive an error telling you to add them to `acknowledgedInvalidHostsByConfig`. See [Activate with invalid hostnames](https://techdocs.akamai.com/application-security/reference/activate-with-invalid-hostnames) for instructions. _Products:_ All.
+      externalDocs:
+        description: See documentation for this operation in Akamai's Application Security API
+        url: https://techdocs.akamai.com/application-security/reference/post-activations
+      operationId: post-activations
+      parameters:
+      - description: For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys).
+        example: '{{accountSwitchKey}}'
+        in: query
+        name: accountSwitchKey
+        required: false
+        schema:
+          example: 1-5C0YLB:1-8BYUX
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              action: ACTIVATE
+              activationConfigs:
+              - configId: 1
+                configVersion: 4
+              network: STAGING
+              note: Free text notes
+              notificationEmails:
+              - a@example.com
+              - b@example.com
+            schema:
+              additionalProperties: false
+              properties:
+                acknowledgedInvalidHosts:
+                  description: The list of invalid hostnames in the security configuration to activate. In some cases, you may want to activate a security configuration with hostnames that WAF can't protect (for example, hostnames not managed as Akamai properties, or managed under a different contract than the configuration). By default, the existence of invalid hostnames blocks activation with a warning. The warning includes the names of the invalid hostnames. If you want to activate a configuration with invalid hostnames, enter the hostnames in this array. This field is now deprecated. Use `acknowledgedInvalidHostsByConfig` instead.
+                  items:
+                    type: string
+                  type: array
+                acknowledgedInvalidHostsByConfig:
+                  description: The list of invalid hostnames per security configuration to activate. In some cases, you may want to activate a security configuration with hostnames that WAF can't protect (for example, hostnames not managed as Akamai properties, or managed under a different contract than the configuration). By default, the existence of invalid hostnames blocks activation with a warning. The warning includes the names of the invalid hostnames. If you want to activate a configuration with invalid hostnames, enter the hostnames and the configuration ID in this array.
+                  items:
+                    additionalProperties: false
+                    properties:
+                      configId:
+                        description: Uniquely identifies the security configuration with invalid hostnames.
+                        type: integer
+                      invalidHosts:
+                        description: The list of invalid hostnames in the security configuration.
+                        items:
+                          type: string
+                        type: array
+                    required:
+                    - configId
+                    - invalidHosts
+                    type: object
+                  type: array
+                action:
+                  description: The action to take, either `ACTIVATE` or `DEACTIVATE`.
+                  enum:
+                  - ACTIVATE
+                  - DEACTIVATE
+                  example: '{{action}}'
+                  type: string
+                activationConfigs:
+                  description: Specifies the security configuration and version to activate or deactivate.
+                  items:
+                    additionalProperties: false
+                    properties:
+                      configId:
+                        description: The origin identifier or destination configuration to activate.
+                        type: integer
+                      configVersion:
+                        description: The origin version or destination configuration to activate.
+                        type: integer
+                    required:
+                    - configId
+                    - configVersion
+                    type: object
+                  maxItems: 2
+                  minItems: 1
+                  type: array
+                network:
+                  description: The target Akamai activation environment, either `STAGING` or `PRODUCTION`.
+                  enum:
+                  - STAGING
+                  - PRODUCTION
+                  example: '{{network}}'
+                  type: string
+                note:
+                  description: The notes you entered for the activation.
+                  example: '{{note}}'
+                  type: string
+                notificationEmails:
+                  description: The email addresses to notify when the activation happens.
+                  items:
+                    type: string
+                  type: array
+              required:
+              - action
+              - activationConfigs
+              - network
+              - note
+              - notificationEmails
+              type: object
+              x-akamai:
+                file-path: schemas/activations-post.yaml
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                action: ACTIVATE
+                activationConfigs:
+                - configId: 1
+                  configName: config 1
+                  configVersion: 4
+                  previousConfigVersion: 2
+                activationId: 1234
+                createDate: '2013-10-07T17:41:52+00:00'
+                createdBy: mrossi
+                dispatchCount: 1
+                estimate: PTM5
+                network: PRODUCTION
+                status: RECEIVED
+              schema:
+                additionalProperties: false
+                description: Contains the activation status and settings for a configuration version.
+                properties:
+                  action:
+                    description: The action performed on this activation, either `ACTIVATE` or `DEACTIVATE`.
+                    enum:
+                    - ACTIVATE
+                    - DEACTIVATE
+                    type: string
+                  activationConfigs:
+                    description: Specifies the security configuration and activation version.
+                    items:
+                      additionalProperties: false
+                      properties:
+                        configId:
+                          description: The origin identifier or the activation's destination configuration.
+                          type: integer
+                        configName:
+                          description: The name you assigned to the configuration. This field is provided for information purposes and only appears in the API output.
+                          type: string
+                        configVersion:
+                          description: The origin version or the activation's destination configuration.
+                          type: integer
+                        previousConfigVersion:
+                          description: __Read-only__ The previous active configuration version.
+                          readOnly: true
+                          type: integer
+                      required:
+                      - configId
+                      - configVersion
+                      type: object
+                    type: array
+                  activationId:
+                    description: Uniquely identifies the activation.
+                    type: integer
+                  completionDate:
+                    description: __Read-only__ The ISO 8601 timestamp at which the activation reaches a steady state and validates across the Akamai network.
+                    format: date-time
+                    readOnly: true
+                    type: string
+                  createDate:
+                    description: __Read-only__ The ISO 8601 timestamp at which the activation request was submitted.
+                    format: date-time
+                    readOnly: true
+                    type: string
+                  createdBy:
+                    description: __Read-only__ The user who created the activation request.
+                    readOnly: true
+                    type: string
+                  dispatchCount:
+                    description: __Read-only__ The number of times which this activation has been dispatched to the Akamai edge network. A number greater than 1 indicates that this activation may be retried due to network safety concerns.
+                    readOnly: true
+                    type: integer
+                  estimate:
+                    description: The estimated time remaining to complete the activation in ISO 8601 duration format, starting when the response is generated.
+                    type: string
+                  network:
+                    description: The Akamai activation environment, either `STAGING` or `PRODUCTION`.
+                    enum:
+                    - STAGING
+                    - PRODUCTION
+                    type: string
+                  status:
+                    description: The current activation status, either `RECEIVED`, `LIVE`, `DEPLOYED`, `CANCELING`, `STOPPED`, `REMOVED`, `ROLLBACK`, `ACTIVATED`, `FAILED`, `CANCELLING`, or `UNDEPLOYED`.
+                    enum:
+                    - RECEIVED
+                    - LIVE
+                    - DEPLOYED
+                    - STOPPED
+                    - REMOVED
+                    - ROLLBACK
+                    - ACTIVATED
+                    - FAILED
+                    - CANCELLING
+                    - UNDEPLOYED
+                    type: string
+                required:
+                - activationId
+                - action
+                - network
+                - status
+                - activationConfigs
+                - createdBy
+                - createDate
+                type: object
+                x-akamai:
+                  file-path: schemas/activation-status.yaml
+          description: Activation request successful.
+        '202':
+          content:
+            application/json:
+              example:
+                createDate: '2018-06-19T11:27:55Z'
+                links:
+                  check-status:
+                    href: /appsec/v1/activations/status/f81c92c5-b150-4c41-9b53-9cef7969150a
+                statusId: f81c92c5-b150-4c41-9b53-9cef7969150a
+              schema:
+                additionalProperties: false
+                description: Describes the activation request's status upon creation.
+                properties:
+                  createDate:
+                    description: The time when you submitted this activation request.
+                    format: date-time
+                    type: string
+                  links:
+                    additionalProperties: false
+                    description: A 303 response returns a link to additional information about your activation request status.
+                    properties:
+                      check-status:
+                        description: URL to access or perform the action on a related resource. May be expressed as an absolute server path, or relative to the current URL call.
+                        type: string
+                    required:
+                    - check-status
+                    type: object
+                  statusId:
+                    description: Uniquely identifies the activation request. You can use this ID to poll for the status of your activation request.
+                    type: string
+                required:
+                - statusId
+                - createDate
+                type: object
+                x-akamai:
+                  file-path: schemas/activation-request-status-created.yaml
+          description: Activation request launched.
+          headers:
+            Location:
+              description: Location at which you can find the status of the ongoing job to create your activation request.
+              schema:
+                type: string
+        '400':
+          content:
+            application/problem+json:
+              example:
+                detail: The request could not be understood by the server due to malformed syntax.
+                instance: https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749
+                status: 400
+                title: Bad Request
+                type: https://problems.luna.akamaiapis.net/appsec/error-types/BAD-REQUEST
+              schema:
+                additionalProperties: true
+                description: Details the errors you can receive.
+                properties:
+                  detail:
+                    description: The detailed error message.
+                    type: string
+                  fieldErrors:
+                    additionalProperties:
+                      description: Fields that provide additional details about the problem.
+                      type: string
+                    description: Pointers to fields for which invalid input was provided, whose values are messages detailing the reason this input was invalid for this field.
+                    type: object
+                  instance:
+                    description: The non-referenceable URI that indicates the error instance.
+                    example: https://problems.luna.akamaiapis.net/api-definitions/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749
+                    type: string
+                  status:
+                    description: The HTTP status code.
+                    example: 404
+                    type: integer
+                  title:
+                    description: The error title.
+                    example: Not Found
+                    type: string
+                  type:
+                    description: The URL for the error type.
+                    example: https://problems.luna.akamaiapis.net/api-definitions/error-types/NOT-FOUND
+                    type: string
+                required:
+                - title
+                - type
+                - detail
+                - instance
+                - status
+                type: object
+                x-akamai:
+                  file-path: schemas/problem-details.yaml
+          description: '[Bad request](https://techdocs.akamai.com/application-security/reference/400). Invalid request body or URL parameter input.'
+          x-akamai:
+            file-path: errors/400.yaml
+        '403':
+          content:
+            application/problem+json:
+              example:
+                detail: You do not have the necessary access to perform this operation or the requested resource cannot be modified
+                instance: https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749
+                status: 403
+                title: Forbidden
+                type: https://problems.luna.akamaiapis.net/appsec-resource/error-types/ACCESS-DENIED
+              schema:
+                additionalProperties: true
+                description: Details the errors you can receive.
+                properties:
+                  detail:
+                    description: The detailed error message.
+                    type: string
+                  fieldErrors:
+                    additionalProperties:
+                      description: Fields that provide additional details about the problem.
+                      type: string
+                    description: Pointers to fields for which invalid input was provided, whose values are messages detailing the reason this input was invalid for this field.
+                    type: object
+                  instance:
+                    description: The non-referenceable URI that indicates the error instance.
+                    example: https://problems.luna.akamaiapis.net/api-definitions/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749
+                    type: string
+                  status:
+                    description: The HTTP status code.
+                    example: 404
+                    type: integer
+                  title:
+                    description: The error title.
+                    example: Not Found
+                    type: string
+                  type:
+                    description: The URL for the error type.
+                    example: https://problems.luna.akamaiapis.net/api-definitions/error-types/NOT-FOUND
+                    type: string
+                required:
+                - title
+                - type
+                - detail
+                - instance
+                - status
+                type: object
+                x-akamai:
+                  file-path: schemas/problem-details.yaml
+          description: '[Forbidden](https://techdocs.akamai.com/application-security/reference/403). You don''t have access to the configuration.'
+          x-akamai:
+            file-path: errors/403.yaml
+      summary: Akamai API Security Activate a Configuration Version
+      tags:
+      - Activations
+externalDocs:
+  description: See documentation for Akamai's Application Security API
+  url: https://techdocs.akamai.com/application-security/reference
+x-readme:
+  samples-languages:
+  - curl
+  - python
+  - node

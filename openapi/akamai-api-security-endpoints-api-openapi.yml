@@ -1,0 +1,1455 @@
+openapi: 3.0.0
+info:
+  description: 'Manage your configurations for Kona Site Defender,
+
+    Web Application Protector, and Client Reputation.
+
+    '
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  title: 'Akamai: Application Security Activation history Endpoints API'
+  version: v1
+servers:
+- url: https://{hostname}/appsec/v1
+tags:
+- description: Manage the API endpoints associated with a security policy.
+  name: Endpoints
+paths:
+  /api-discovery/host/{hostname}/basepath/{basePath}:
+    parameters:
+    - description: The base64-encoded value of the hostname.
+      example: '{{hostname}}'
+      in: path
+      name: hostname
+      required: true
+      schema:
+        example: d3d3LmV4YW1wbGUuY29t
+        type: string
+      x-akamai:
+        file-path: parameters/hostname-path.yaml
+    - description: The base64-encoded value of the base path.
+      example: '{{basePath}}'
+      in: path
+      name: basePath
+      required: true
+      schema:
+        example: L2FwaS92MQ==
+        type: string
+      x-akamai:
+        file-path: parameters/basepath-path.yaml
+    x-akamai:
+      file-path: paths/api-discovery-base-path.yaml
+      path-info: /api-discovery/host/{hostname}/basepath/{basePath}
+    put:
+      description: Hide or show an API. You can choose to include or exclude APIs from the [Get discovered APIs](https://techdocs.akamai.com/application-security/reference/get-api-list) response. This operation is per-user. If you hide an API from the response, another of your colleagues will still see that API in the response when they run this operation with their own credentials.
+      externalDocs:
+        description: See documentation for this operation in Akamai's Application Security API
+        url: https://techdocs.akamai.com/application-security/reference/put-api-visibility
+      operationId: put-api-visibility
+      parameters:
+      - description: For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys).
+        example: '{{accountSwitchKey}}'
+        in: query
+        name: accountSwitchKey
+        required: false
+        schema:
+          example: 1-5C0YLB:1-8BYUX
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              hidden: true
+              reason: FALSE_POSITIVE
+            schema:
+              additionalProperties: false
+              description: Describes an API's visibility status.
+              properties:
+                hidden:
+                  description: Describes an API's visibility status.
+                  example: '{{hidden}}'
+                  type: boolean
+                reason:
+                  description: The reason you've decided to hide the API from the API list. Use `NOT_ELIGIBLE` if you want to hide it for now and choose what to do with the API at a later time. Use `FALSE_POSITIVE` for APIs you feel are incorrectly included in the data.
+                  enum:
+                  - NOT_ELIGIBLE
+                  - FALSE_POSITIVE
+                  example: '{{reason}}'
+                  type: string
+              required:
+              - hidden
+              type: object
+              x-akamai:
+                file-path: schemas/api-visibility.yaml
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                hidden: true
+                reason: FALSE_POSITIVE
+              schema:
+                additionalProperties: false
+                description: Describes an API's visibility status.
+                properties:
+                  hidden:
+                    description: Describes an API's visibility status.
+                    type: boolean
+                  reason:
+                    description: The reason you've decided to hide the API from the API list. Use `NOT_ELIGIBLE` if you want to hide it for now and choose what to do with the API at a later time. Use `FALSE_POSITIVE` for APIs you feel are incorrectly included in the data.
+                    enum:
+                    - NOT_ELIGIBLE
+                    - FALSE_POSITIVE
+                    type: string
+                required:
+                - hidden
+                type: object
+                x-akamai:
+                  file-path: schemas/api-visibility.yaml
+          description: Successfully updated the API's action.
+        '400':
+          content:
+            application/json:
+              example:
+                detail: The request could not be understood by the server due to malformed syntax.
+                instance: https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749
+                status: 400
+                title: Bad Request
+                type: https://problems.luna.akamaiapis.net/appsec/error-types/BAD-REQUEST
+              schema:
+                additionalProperties: true
+                description: Details the errors you can receive.
+                properties:
+                  detail:
+                    description: The detailed error message.
+                    type: string
+                  fieldErrors:
+                    additionalProperties:
+                      description: Fields that provide additional details about the problem.
+                      type: string
+                    description: Pointers to fields for which invalid input was provided, whose values are messages detailing the reason this input was invalid for this field.
+                    type: object
+                  instance:
+                    description: The non-referenceable URI that indicates the error instance.
+                    example: https://problems.luna.akamaiapis.net/api-definitions/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749
+                    type: string
+                  status:
+                    description: The HTTP status code.
+                    example: 404
+                    type: integer
+                  title:
+                    description: The error title.
+                    example: Not Found
+                    type: string
+                  type:
+                    description: The URL for the error type.
+                    example: https://problems.luna.akamaiapis.net/api-definitions/error-types/NOT-FOUND
+                    type: string
+                required:
+                - title
+                - type
+                - detail
+                - instance
+                - status
+                type: object
+                x-akamai:
+                  file-path: schemas/problem-details.yaml
+          description: '[Invalid](https://techdocs.akamai.com/application-security/reference/400). Client error, such as invalid or malformed input.'
+          x-akamai:
+            file-path: errors/400-client-read-errors.yaml
+        '403':
+          content:
+            application/problem+json:
+              example:
+                detail: You do not have the necessary access to perform this operation or the requested resource cannot be modified
+                instance: https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749
+                status: 403
+                title: Forbidden
+                type: https://problems.luna.akamaiapis.net/appsec-resource/error-types/ACCESS-DENIED
+              schema:
+                additionalProperties: true
+                description: Details the errors you can receive.
+                properties:
+                  detail:
+                    description: The detailed error message.
+                    type: string
+                  fieldErrors:
+                    additionalProperties:
+                      description: Fields that provide additional details about the problem.
+                      type: string
+                    description: Pointers to fields for which invalid input was provided, whose values are messages detailing the reason this input was invalid for this field.
+                    type: object
+                  instance:
+                    description: The non-referenceable URI that indicates the error instance.
+                    example: https://problems.luna.akamaiapis.net/api-definitions/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749
+                    type: string
+                  status:
+                    description: The HTTP status code.
+                    example: 404
+                    type: integer
+                  title:
+                    description: The error title.
+                    example: Not Found
+                    type: string
+                  type:
+                    description: The URL for the error type.
+                    example: https://problems.luna.akamaiapis.net/api-definitions/error-types/NOT-FOUND
+                    type: string
+                required:
+                - title
+                - type
+                - detail
+                - instance
+                - status
+                type: object
+                x-akamai:
+                  file-path: schemas/problem-details.yaml
+          description: '[Forbidden](https://techdocs.akamai.com/application-security/reference/403). You don''t have permission to write to this resource.'
+          x-akamai:
+            file-path: errors/403-client-write-errors.yaml
+        '404':
+          content:
+            application/problem+json:
+              example:
+                detail: The requested resource is not found
+                instance: https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749
+                status: 404
+                title: Not Found
+                type: https://problems.luna.akamaiapis.net/appsec/error-types/NOT-FOUND
+              schema:
+                additionalProperties: true
+                description: Details the errors you can receive.
+                properties:
+                  detail:
+                    description: The detailed error message.
+                    type: string
+                  fieldErrors:
+                    additionalProperties:
+                      description: Fields that provide additional details about the problem.
+                      type: string
+                    description: Pointers to fields for which invalid input was provided, whose values are messages detailing the reason this input was invalid for this field.
+                    type: object
+                  instance:
+                    description: The non-referenceable URI that indicates the error instance.
+                    example: https://problems.luna.akamaiapis.net/api-definitions/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749
+                    type: string
+                  status:
+                    description: The HTTP status code.
+                    example: 404
+                    type: integer
+                  title:
+                    description: The error title.
+                    example: Not Found
+                    type: string
+                  type:
+                    description: The URL for the error type.
+                    example: https://problems.luna.akamaiapis.net/api-definitions/error-types/NOT-FOUND
+                    type: string
+                required:
+                - title
+                - type
+                - detail
+                - instance
+                - status
+                type: object
+                x-akamai:
+                  file-path: schemas/problem-details.yaml
+          description: '[Not found](https://techdocs.akamai.com/application-security/reference/404). The named security policy doesn''t exist, doesn''t carry application layer controls, or no rule with this ID is available for use in this policy.'
+          x-akamai:
+            file-path: errors/404-client-read-errors.yaml
+        '500':
+          content:
+            application/problem+json:
+              example:
+                detail: Internal Server Error
+                instance: 12ab3c45-789d-01ef-2gh3-ijk4l56m78no
+                status: 500
+                title: Internal Server Error
+                type: internal_server_error
+              schema:
+                additionalProperties: true
+                description: Details the errors you can receive.
+                properties:
+                  detail:
+                    description: The detailed error message.
+                    type: string
+                  fieldErrors:
+                    additionalProperties:
+                      description: Fields that provide additional details about the problem.
+                      type: string
+                    description: Pointers to fields for which invalid input was provided, whose values are messages detailing the reason this input was invalid for this field.
+                    type: object
+                  instance:
+                    description: The non-referenceable URI that indicates the error instance.
+                    example: https://problems.luna.akamaiapis.net/api-definitions/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749
+                    type: string
+                  status:
+                    description: The HTTP status code.
+                    example: 404
+                    type: integer
+                  title:
+                    description: The error title.
+                    example: Not Found
+                    type: string
+                  type:
+                    description: The URL for the error type.
+                    example: https://problems.luna.akamaiapis.net/api-definitions/error-types/NOT-FOUND
+                    type: string
+                required:
+                - title
+                - type
+                - detail
+                - instance
+                - status
+                type: object
+                x-akamai:
+                  file-path: schemas/problem-details.yaml
+          description: '[Internal server error](https://techdocs.akamai.com/application-security/reference/500). Something went wrong on our side. Try again in a few minutes, and contact support if the error persists.'
+          x-akamai:
+            file-path: errors/500-server-errors.yaml
+      summary: Akamai API Security Modify an API's Visibility
+      tags:
+      - Endpoints
+  /api-discovery/host/{hostname}/basepath/{basePath}/endpoints:
+    parameters:
+    - description: The base64-encoded value of the hostname.
+      example: '{{hostname}}'
+      in: path
+      name: hostname
+      required: true
+      schema:
+        example: d3d3LmV4YW1wbGUuY29t
+        type: string
+      x-akamai:
+        file-path: parameters/hostname-path.yaml
+    - description: The base64-encoded value of the base path.
+      example: '{{basePath}}'
+      in: path
+      name: basePath
+      required: true
+      schema:
+        example: L2FwaS92MQ==
+        type: string
+      x-akamai:
+        file-path: parameters/basepath-path.yaml
+    x-akamai:
+      file-path: paths/api-discovery-base-path-endpoints.yaml
+      path-info: /api-discovery/host/{hostname}/basepath/{basePath}/endpoints
+    post:
+      description: Create a new API endpoint or add a resource to an existing endpoint. When you run this operation to add a new resource to an existing API, the API version is cloned for you and the resource is included in the new version.
+      externalDocs:
+        description: See documentation for this operation in Akamai's Application Security API
+        url: https://techdocs.akamai.com/application-security/reference/post-api-endpoint-resource
+      operationId: post-api-endpoint-resource
+      parameters:
+      - description: For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys).
+        example: '{{accountSwitchKey}}'
+        in: query
+        name: accountSwitchKey
+        required: false
+        schema:
+          example: 1-5C0YLB:1-8BYUX
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              apiName: New API
+              contractId: C-0N7RAC71
+              groupId: 12345
+            schema:
+              additionalProperties: false
+              description: Describes an API endpoint or adding a new resource to an existing endpoint.
+              properties:
+                apiEndpointId:
+                  description: A unique identifier for an API endpoint. You need this when adding a resource to an existing endpoint.
+                  example: '{{apiEndpointId}}'
+                  type: integer
+                apiName:
+                  description: The name for this API endpoint. You need this to register an endpoint.
+                  example: '{{apiName}}'
+                  type: string
+                contractId:
+                  description: A unique identifier for a contract. You need this when registering a new endpoint.
+                  example: '{{contractId}}'
+                  type: string
+                groupId:
+                  description: A unique identifier for a group. You need this when registering a new endpoint.
+                  example: '{{groupId}}'
+                  type: integer
+                version:
+                  description: The version number. You need this when adding a resource to an existing endpoint. When a version is read-only, the version is cloned and updates are included in the newly cloned version.
+                  example: '{{version}}'
+                  type: integer
+              type: object
+              x-akamai:
+                file-path: schemas/endpoint-post.yaml
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              example:
+                akamaiSecurityRestrictions: null
+                apiCategoryIds:
+                - 2
+                - 7
+                apiEndPointHosts:
+                - bookstore.api.akamai.com
+                apiEndPointId: 492375
+                apiEndPointLocked: false
+                apiEndPointName: Bookstore API
+                apiEndPointScheme: http/https
+                apiEndPointVersion: 574127
+                apiResources:
+                - apiResourceClonedFromId: null
+                  apiResourceId: 2926712
+                  apiResourceLogicId: 118435
+                  apiResourceMethods:
+                  - apiParameters:
+                    - apiChildParameters: []
+                      apiParamLogicId: 578116
+                      apiParameterId: 1212945
+                      apiParameterLocation: path
+                      apiParameterName: bookId
+                      apiParameterNotes: null
+                      apiParameterRequired: true
+                      apiParameterRestriction: null
+                      apiParameterType: string
+                      apiResourceMethParamId: 494448
+                      array: false
+                      pathParamLocationId: null
+                      response: false
+                    apiResourceMethod: GET
+                    apiResourceMethodId: 341591
+                    apiResourceMethodLogicId: 184404
+                  - apiParameters:
+                    - apiChildParameters: []
+                      apiParamLogicId: 578117
+                      apiParameterId: 1212946
+                      apiParameterLocation: path
+                      apiParameterName: bookId
+                      apiParameterNotes: null
+                      apiParameterRequired: true
+                      apiParameterRestriction:
+                        arrayRestriction: null
+                        lengthRestriction:
+                          lengthMax: 15
+                          lengthMin: 3
+                        numberRangeRestriction: null
+                        rangeRestriction: null
+                        xmlConversionRule: null
+                      apiParameterType: string
+                      apiResourceMethParamId: 494449
+                      array: false
+                      pathParamLocationId: null
+                      response: false
+                    apiResourceMethod: POST
+                    apiResourceMethodId: 341592
+                    apiResourceMethodLogicId: 184405
+                  apiResourceName: books
+                  createDate: 2019-06-12T13:06:52+0000
+                  createdBy: alfulani
+                  description: A book item within the bookstore API.
+                  link: null
+                  lockVersion: 0
+                  private: false
+                  resourcePath: /books/{bookId}
+                  updateDate: 2019-06-12T13:06:52+0000
+                  updatedBy: bookstore_admin
+                availableActions:
+                - DELETE
+                - CLONE_ENDPOINT
+                - ACTIVATE_ON_PRODUCTION
+                - HIDE_ENDPOINT
+                - EDIT_ENDPOINT_DEFINITION
+                - ACTIVATE_ON_STAGING
+                basePath: /bookstore
+                caseSensitive: true
+                clonedFromVersion: null
+                consumeType: any
+                contractId: C-0N7RAC71
+                createDate: 2019-06-12T13:06:52+0000
+                createdBy: hgildong
+                description: An API for bookstore users allowing them to retrieve book items, add new items (admin users), and modify existing items.
+                endpointHidden: false
+                graphQL: false
+                groupId: 12345
+                isGraphQL: false
+                lockVersion: 0
+                positiveConstrainsEnabled: null
+                productionStatus: null
+                productionVersion:
+                  lastError: null
+                  status: null
+                  timestamp: null
+                  versionNumber: null
+                protectedByApiKey: true
+                securityScheme:
+                  securitySchemeDetail:
+                    apiKeyLocation: header
+                    apiKeyName: apikey
+                  securitySchemeType: apikey
+                source: null
+                stagingStatus: null
+                stagingVersion:
+                  lastError: null
+                  status: null
+                  timestamp: null
+                  versionNumber: null
+                updateDate: 2019-06-12T13:06:52+0000
+                updatedBy: bookstore_admin
+                versionHidden: false
+                versionNumber: 1
+              schema:
+                additionalProperties: false
+                description: Contains information about an endpoint and its associated resources.
+                properties:
+                  akamaiSecurityRestrictions:
+                    additionalProperties: false
+                    description: Contains information about the Kona Site Defender security restrictions that you apply to an API. Note that you should only include these details in your requests if you're a Kona Site Defender customer.
+                    nullable: true
+                    properties:
+                      ALLOW_UNDEFINED_RESPONSE_BODY_PARAMS:
+                        description: When set to `1`, the API allows for responses with undefined parameters in the response body. When `0`, the API does not allow responses with undefined parameters in the response body.
+                        enum:
+                        - 1
+                        - 0
+                        type: integer
+                      ALLOW_UNDEFINED_RESPONSE_HEADER_PARAMS:
+                        description: When set to `1`, the API allows for responses with undefined parameters in the response header. When set to `0`, the API does not allow responses with undefined parameters in the response header.
+                        enum:
+                        - 1
+                        - 0
+                        type: integer
+                      MAX_BODY_SIZE:
+                        description: The maximum allowed size of a request body.
+                        type: integer
+                      MAX_DOC_DEPTH:
+                        description: The maximum depth of nested data elements allowed in a request body.
+                        type: integer
+                      MAX_ELEMENT_NAME_LENGTH:
+                        description: The maximum length of an XML element name or JSON object key name allowed in a request body.
+                        type: integer
+                      MAX_INTEGER_VALUE:
+                        description: The maximum integer value allowed in a request body.
+                        type: integer
+                      MAX_JSONXML_ELEMENT:
+                        description: The maximum number of XML elements, JSON object keys, or array items allowed in a request body.
+                        type: integer
+                      MAX_STRING_LENGTH:
+                        description: The maximum length of any string value in a request body.
+                        type: integer
+                      POSITIVE_SECURITY_ENABLED:
+                        description: Whether the API request body and resource constraints should be enforced as allowlists in your KSD security policies. Either `1` for enabled security constraints, or `0` for disabled.
+                        enum:
+                        - 1
+                        - 0
+                        type: integer
+                    type: object
+                  apiCategoryIds:
+                    description: The category identifiers that apply to the endpoint. The value is `null` for uncategorized endpoints.
+                    items:
+                      type: integer
+                    nullable: true
+                    type: array
+                  apiEndPointHosts:
+                    description: The hostnames that may receive traffic for the endpoint. At least one hostname is required before activating the endpoint.
+                    items:
+                      type: string
+                    type: array
+                  apiEndPointId:
+                    description: The unique identifier for the endpoint.
+                    type: integer
+                  apiEndPointLocked:
+                    description: Whether the endpoint version is read-only.
+                    type: boolean
+                  apiEndPointName:
+                    description: The name of the endpoint, unique within the account.
+                    type: string
+                  apiEndPointScheme:
+                    description: The URL scheme to which the endpoint may respond, either `http`, `https`, or `http/https` for both.
+                    enum:
+                    - http
+                    - https
+                    - http/https
+                    type: string
+                  apiEndPointVersion:
+                    description: The unique identifier for the endpoint version.
+                    type: integer
+                  apiResources:
+                    description: The list of resource objects associated with the endpoint.
+                    items:
+                      additionalProperties: false
+                      description: Contains information about a resource associated with an endpoint.
+                      properties:
+                        apiResourceClonedFromId:
+                          description: For cloned resources, the unique identifier for the source resource.
+                          nullable: true
+                          type: integer
+                        apiResourceId:
+                          description: The unique identifier for the resource.
+                          type: integer
+                        apiResourceLogicId:
+                          description: The unique identifier for the resource across all endpoint versions.
+                          type: integer
+                        apiResourceMethodNameLists:
+                          description: The list of HTTP methods the resource may respond to.
+                          items:
+                            type: string
+                          type: array
+                        apiResourceMethods:
+                          description: The list of Method objects that represent HTTP methods the resource may respond to.
+                          items:
+                            additionalProperties: false
+                            description: Contains information about a resource associated with an endpoint.
+                            properties:
+                              apiResourceClonedFromId:
+                                description: For cloned resources, the unique identifier for the source resource.
+                                nullable: true
+                                type: integer
+                              apiResourceId:
+                                description: The unique identifier for the resource.
+                                type: integer
+                              apiResourceLogicId:
+                                description: The unique identifier for the resource across all endpoint versions.
+                                type: integer
+                              apiResourceMethodNameLists:
+                                description: The list of HTTP methods the resource may respond to.
+                                items:
+                                  type: string
+                                type: array
+                              apiResourceMethods:
+                                description: The list of Method objects that represent HTTP methods the resource may respond to.
+                                items:
+                                  additionalProperties: false
+                                  description: Contains information about a resource associated with an endpoint.
+                                  properties:
+                                    apiResourceClonedFromId:
+                                      description: For cloned resources, the unique identifier for the source resource.
+                                      nullable: true
+                                      type: integer
+                                    apiResourceId:
+                                      description: The unique identifier for the resource.
+                                      type: integer
+                                    apiResourceLogicId:
+                                      description: The unique identifier for the resource across all endpoint versions.
+                                      type: integer
+                                    apiResourceMethodNameLists:
+                                      description: The list of HTTP methods the resource may respond to.
+                                      items:
+                                        type: string
+                                      type: array
+                                    apiResourceMethods:
+                                      description: Nested methods.
+                                      items:
+                                        type: object
+                                      type: array
+                                    apiResourceName:
+                                      description: The name of the resource.
+                                      type: string
+                                    createDate:
+                                      description: The ISO 8601 timestamp indicating when you created the resource.
+                                      format: date-time
+                                      type: string
+                                    createdBy:
+                                      description: The identifier for the user who created the resource.
+                                      type: string
+                                    description:
+                                      description: The description to clarify the resource's function within the API. If you specify `null` in the request or omit this member from the object, the JSON response reflects it as an empty string.
+                                      nullable: true
+                                      type: string
+                                    link:
+                                      description: The location of the navigable resource within this API, for use by API clients.
+                                      nullable: true
+                                      type: string
+                                    lockVersion:
+                                      description: The identifier used for optimistic locking. See [Concurrency control](https://techdocs.akamai.com/application-security/reference/concurrency-control) for details.
+                                      type: integer
+                                    private:
+                                      description: Whether the resource is private. API consumers can access private resources only if they identify with an appropriate API key.
+                                      type: boolean
+                                    resourcePath:
+                                      description: The URL path relative to the hostnames on which the resource resides. When entering a resource path, you can use curly brackets (`{}`) to define path parameters (for example, `/path/{pathparam}`). If you decide to do so, ensure that the value of the `apiParameterName` member in the corresponding parameter definition matches the name that you specified in the resource path.
+                                      type: string
+                                    updateDate:
+                                      description: The ISO 8601 timestamp indicating when you last modified the resource.
+                                      format: date-time
+                                      type: string
+                                    updatedBy:
+                                      description: The identifier for the user who last modified the resource.
+                                      type: string
+                                  required:
+                                  - apiResourceName
+                                  - resourcePath
+                                  type: object
+                                  x-akamai:
+                                    file-path: schemas/api-method-parameters-nested.yaml
+                                type: array
+                              apiResourceName:
+                                description: The name of the resource.
+                                type: string
+                              createDate:
+                                description: The ISO 8601 timestamp indicating when you created the resource.
+                                format: date-time
+                                type: string
+                              createdBy:
+                                description: The identifier for the user who created the resource.
+                                type: string
+                              description:
+                                description: The description to clarify the resource's function within the API. If you specify `null` in the request or omit this member from the object, the JSON response reflects it as an empty string.
+                                nullable: true
+                                type: string
+                              link:
+                                description: The location of the navigable resource within this API, for use by API clients.
+                                nullable: true
+                                type: string
+                              lockVersion:
+                                description: The identifier used for optimistic locking. See [Concurrency control](https://techdocs.akamai.com/application-security/reference/concurrency-control) for details.
+                                type: integer
+                              private:
+                                description: Whether the resource is private. API consumers can access private resources only if they identify with an appropriate API key.
+                                type: boolean
+                              resourcePath:
+                                description: The URL path relative to the hostnames on which the resource resides. When entering a resource path, you can use curly brackets (`{}`) to define path parameters (for example, `/path/{pathparam}`). If you decide to do so, ensure that the value of the `apiParameterName` member in the corresponding parameter definition matches the name that you specified in the resource path.
+                                type: string
+                              updateDate:
+                                description: The ISO 8601 timestamp indicating when you last modified the resource.
+                                format: date-time
+                                type: string
+                              updatedBy:
+                                description: The identifier for the user who last modified the resource.
+                                type: string
+                            required:
+                            - apiResourceName
+                            - resourcePath
+                            type: object
+                            x-akamai:
+                              file-path: schemas/api-method-parameters.yaml
+                          type: array
+                        apiResourceName:
+                          description: The name of the resource.
+                          type: string
+                        createDate:
+                          description: The ISO 8601 timestamp indicating when you created the resource.
+                          format: date-time
+                          type: string
+                        createdBy:
+                          description: The identifier for the user who created the resource.
+                          type: string
+                        description:
+                          description: The description to clarify the resource's function within the API. If you specify `null` in the request or omit this member from the object, the JSON response reflects it as an empty string.
+                          nullable: true
+                          type: string
+                        link:
+                          description: The location of the navigable resource within this API, for use by API clients.
+                          nullable: true
+                          type: string
+                        lockVersion:
+                          description: The identifier used for optimistic locking. See [Concurrency control](https://techdocs.akamai.com/application-security/reference/concurrency-control) for details.
+                          type: integer
+                        private:
+                          description: Whether the resource is private. API consumers can access private resources only if they identify with an appropriate API key.
+                          type: boolean
+                        resourcePath:
+                          description: The URL path relative to the hostnames on which the resource resides. When entering a resource path, you can use curly brackets (`{}`) to define path parameters (for example, `/path/{pathparam}`). If you decide to do so, ensure that the value of the `apiParameterName` member in the corresponding parameter definition matches the name that you specified in the resource path.
+                          type: string
+                        updateDate:
+                          description: The ISO 8601 timestamp indicating when you last modified the resource.
+                          format: date-time
+                          type: string
+                        updatedBy:
+                          description: The identifier for the user who last modified the resource.
+                          type: string
+                      required:
+                      - apiResourceName
+                      - resourcePath
+                      type: object
+                      x-akamai:
+                        file-path: schemas/api-resource-meth-params.yaml
+                    type: array
+                  apiVersionInfo:
+                    additionalProperties: false
+                    description: Contains information about a major API version. This refers to REST API versioning and is a different concept than the endpoint configuration versions you create at Akamai.
+                    nullable: true
+                    properties:
+                      location:
+                        description: The location of the API version value in an incoming request. Either `HEADER`, `BASE_PATH`, or `QUERY` parameter.
+                        enum:
+                        - HEADER
+                        - BASE_PATH
+                        - QUERY
+                        type: string
+                      parameterName:
+                        description: The name of the header or query parameter that includes the API version value. This is applicable only if the corresponding `location` member is either `HEADER` or `QUERY`.
+                        type: string
+                      value:
+                        description: The expected API version value in an incoming request.
+                        type: string
+                    required:
+                    - location
+                    type: object
+                    x-akamai:
+                      file-path: schemas/api-version.yaml
+                  availableActions:
+                    description: The collection of available actions that you can perform on the endpoint depending on its versions' activation status.
+                    items:
+                      enum:
+                      - DELETE
+                      - CLONE_ENDPOINT
+                      - COMPARE_ENDPOINT
+                      - COMPARE_AAG_SETTINGS
+                      - COMPARE_RAPID_SETTINGS
+                      - EDIT_ENDPOINT_DEFINITION
+                      - ACTIVATE_ON_STAGING
+                      - ACTIVATE_ON_PRODUCTION
+                      - DEACTIVATE_ON_STAGING
+                      - DEACTIVATE_ON_PRODUCTION
+                      - HIDE_ENDPOINT
+                      - SHOW_ENDPOINT
+                      type: string
+                    type: array
+                  basePath:
+                    description: The URL path that serves as a root prefix for all resources' `resourcePath` values. This is `/` if empty. Don't append a `/` character to the path. If you specify `null` in the request or omit this member from the object, the JSON response reflects it as an empty string.
+                    nullable: true
+                    type: string
+                  caseSensitive:
+                    description: Whether the URLs and parameters within the endpoint are case sensitive.
+                    type: boolean
+                  clonedFromVersion:
+                    description: For cloned endpoints, the unique identifier for the source endpoint version.
+                    nullable: true
+                    type: integer
+                  consumeType:
+                    description: The content type the endpoint exchanges, either `json`, `xml`, `json/xml` for dual-format APIs, `any`, or `none`.
+                    enum:
+                    - json
+                    - xml
+                    - json/xml
+                    - any
+                    - none
+                    type: string
+                  contractId:
+                    description: The unique identifier for the contract with Akamai under which you provisioned security and delivery settings for this API.
+                    type: string
+                  createDate:
+                    description: The ISO 8601 timestamp indicating when you created the endpoint.
+                    type: string
+                  createdBy:
+                    description: The identifier for the user who created the endpoint.
+                    type: string
+                  description:
+                    description: The description of the endpoint. If you specify `null` in the request or omit this member from the object, the JSON response reflects it as an empty string.
+                    nullable: true
+                    type: string
+                  endpointHidden:
+                    description: Whether the endpoint is hidden. You cannot activate or delete versions of a hidden endpoint. If you want to do so, you first need to reveal the endpoint by running the [Show an endpoint](https://techdocs.akamai.com/application-security/reference/post-endpoint-show) operation.
+                    type: boolean
+                  groupId:
+                    description: The unique identifier for the group in Control Center under which you provisioned security and delivery settings for this API.
+                    type: integer
+                  isGraphQL:
+                    description: Whether the endpoint uses GraphQL to deliver structured content to clients.
+                    type: boolean
+                  lockVersion:
+                    description: The identifier for the last modification of an endpoint version, used for optimistic locking. See [Concurrency control](https://techdocs.akamai.com/application-security/reference/concurrency-control) for details.
+                    type: integer
+                  positiveConstrainsEnabled:
+                    description: Whether the KSD firewall policies are enabled for the endpoint.
+                    nullable: true
+                    type: boolean
+                  productionStatus:
+                    description: The version activation status on the production network, either `PENDING` if the version contains changes that are being propagated to the network, `ACTIVE` if the version is active, `DEACTIVATED` if the version had been active once but has been deactivated, or `FAILED` if an activation or deactivation attempt for this version has failed. The value is `null` for versions that have never been activated on this network.
+                    enum:
+                    - PENDING
+                    - ACTIVE
+                    - DEACTIVATED
+                    - FAILED
+                    nullable: true
+                    type: string
+                  productionVersion:
+                    description: Contains information about an endpoint version's activation status on the production network.
+                    type: object
+                  protectedByApiKey:
+                    description: Whether you enabled API key protection for the endpoint version by making the version private.
+                    type: boolean
+                  securityScheme:
+                    additionalProperties: false
+                    description: Contains information about the key with which users may access the endpoint.
+                    properties:
+                      securitySchemeDetail:
+                        additionalProperties: false
+                        description: Contains information about the location of the API key.
+                        properties:
+                          apiKeyLocation:
+                            description: The location of the API key in incoming requests, either `cookie`, `header`, or `query` parameter.
+                            enum:
+                            - cookie
+                            - header
+                            - query
+                            type: string
+                          apiKeyName:
+                            description: The name of the header, query parameter, or cookie where you located the API key.
+                            type: string
+                        type: object
+                      securitySchemeType:
+                        description: The type of security scheme implemented for the endpoint. The only valid value is `apikey`.
+                        enum:
+                        - apikey
+                        type: string
+                    type: object
+                  source:
+                    description: Contains information about the import file used to create the endpoint.
+                    nullable: true
+                    type: object
+                  stagingStatus:
+                    description: The version activation status on the staging network, either `PENDING` if the version contains changes that are being propagated to the network, `ACTIVE` if the version is active, `DEACTIVATED` if the version had been active once but has been deactivated, or `FAILED` if an activation or deactivation attempt for this version has failed. The value is `null` for versions that have never been activated on this network.
+                    enum:
+                    - PENDING
+                    - ACTIVE
+                    - DEACTIVATED
+                    - FAILED
+                    nullable: true
+                    type: string
+                  stagingVersion:
+                    description: Contains information about an endpoint version's activation status on the staging network.
+                    type: object
+                  updateDate:
+                    description: The ISO 8601 timestamp indicating when you last modified the endpoint.
+                    type: string
+                  updatedBy:
+                    description: The identifier for the user who last modified the endpoint.
+                    type: string
+                  versionHidden:
+                    description: Whether the endpoint version is hidden. You cannot activate or delete hidden versions. If you want to do so, you first need to reveal the version by running the [Show a version](https://techdocs.akamai.com/application-security/reference/post-version-show) operation.
+                    type: boolean
+                  versionNumber:
+                    description: The endpoint version number.
+                    type: integer
+                required:
+                - apiEndPointName
+                - apiEndPointHosts
+                type: object
+                x-akamai:
+                  file-path: schemas/api-endpoint-with-resource.yaml
+          description: Successfully registered an endpoint or a new resource to an existing endpoint.
+        '400':
+          content:
+            application/json:
+              example:
+                detail: The request could not be understood by the server due to malformed syntax.
+                instance: https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749
+                status: 400
+                title: Bad Request
+                type: https://problems.luna.akamaiapis.net/appsec/error-types/BAD-REQUEST
+              schema:
+                additionalProperties: true
+                description: Details the errors you can receive.
+                properties:
+                  detail:
+                    description: The detailed error message.
+                    type: string
+                  fieldErrors:
+                    additionalProperties:
+                      description: Fields that provide additional details about the problem.
+                      type: string
+                    description: Pointers to fields for which invalid input was provided, whose values are messages detailing the reason this input was invalid for this field.
+                    type: object
+                  instance:
+                    description: The non-referenceable URI that indicates the error instance.
+                    example: https://problems.luna.akamaiapis.net/api-definitions/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749
+                    type: string
+                  status:
+                    description: The HTTP status code.
+                    example: 404
+                    type: integer
+                  title:
+                    description: The error title.
+                    example: Not Found
+                    type: string
+                  type:
+                    description: The URL for the error type.
+                    example: https://problems.luna.akamaiapis.net/api-definitions/error-types/NOT-FOUND
+                    type: string
+                required:
+                - title
+                - type
+                - detail
+                - instance
+                - status
+                type: object
+                x-akamai:
+                  file-path: schemas/problem-details.yaml
+          description: '[Invalid](https://techdocs.akamai.com/application-security/reference/400). Client error, such as invalid or malformed input.'
+          x-akamai:
+            file-path: errors/400-client-read-errors.yaml
+        '403':
+          content:
+            application/problem+json:
+              example:
+                detail: You do not have the necessary access to perform this operation or the requested resource cannot be modified
+                instance: https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749
+                status: 403
+                title: Forbidden
+                type: https://problems.luna.akamaiapis.net/appsec-resource/error-types/ACCESS-DENIED
+              schema:
+                additionalProperties: true
+                description: Details the errors you can receive.
+                properties:
+                  detail:
+                    description: The detailed error message.
+                    type: string
+                  fieldErrors:
+                    additionalProperties:
+                      description: Fields that provide additional details about the problem.
+                      type: string
+                    description: Pointers to fields for which invalid input was provided, whose values are messages detailing the reason this input was invalid for this field.
+                    type: object
+                  instance:
+                    description: The non-referenceable URI that indicates the error instance.
+                    example: https://problems.luna.akamaiapis.net/api-definitions/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749
+                    type: string
+                  status:
+                    description: The HTTP status code.
+                    example: 404
+                    type: integer
+                  title:
+                    description: The error title.
+                    example: Not Found
+                    type: string
+                  type:
+                    description: The URL for the error type.
+                    example: https://problems.luna.akamaiapis.net/api-definitions/error-types/NOT-FOUND
+                    type: string
+                required:
+                - title
+                - type
+                - detail
+                - instance
+                - status
+                type: object
+                x-akamai:
+                  file-path: schemas/problem-details.yaml
+          description: '[Forbidden](https://techdocs.akamai.com/application-security/reference/403). You don''t have permission to write to this resource.'
+          x-akamai:
+            file-path: errors/403-client-write-errors.yaml
+        '404':
+          content:
+            application/problem+json:
+              example:
+                detail: The requested resource is not found
+                instance: https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749
+                status: 404
+                title: Not Found
+                type: https://problems.luna.akamaiapis.net/appsec/error-types/NOT-FOUND
+              schema:
+                additionalProperties: true
+                description: Details the errors you can receive.
+                properties:
+                  detail:
+                    description: The detailed error message.
+                    type: string
+                  fieldErrors:
+                    additionalProperties:
+                      description: Fields that provide additional details about the problem.
+                      type: string
+                    description: Pointers to fields for which invalid input was provided, whose values are messages detailing the reason this input was invalid for this field.
+                    type: object
+                  instance:
+                    description: The non-referenceable URI that indicates the error instance.
+                    example: https://problems.luna.akamaiapis.net/api-definitions/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749
+                    type: string
+                  status:
+                    description: The HTTP status code.
+                    example: 404
+                    type: integer
+                  title:
+                    description: The error title.
+                    example: Not Found
+                    type: string
+                  type:
+                    description: The URL for the error type.
+                    example: https://problems.luna.akamaiapis.net/api-definitions/error-types/NOT-FOUND
+                    type: string
+                required:
+                - title
+                - type
+                - detail
+                - instance
+                - status
+                type: object
+                x-akamai:
+                  file-path: schemas/problem-details.yaml
+          description: '[Not found](https://techdocs.akamai.com/application-security/reference/404). The named security policy doesn''t exist, doesn''t carry application layer controls, or no rule with this ID is available for use in this policy.'
+          x-akamai:
+            file-path: errors/404-client-read-errors.yaml
+        '500':
+          content:
+            application/problem+json:
+              example:
+                detail: Internal Server Error
+                instance: 12ab3c45-789d-01ef-2gh3-ijk4l56m78no
+                status: 500
+                title: Internal Server Error
+                type: internal_server_error
+              schema:
+                additionalProperties: true
+                description: Details the errors you can receive.
+                properties:
+                  detail:
+                    description: The detailed error message.
+                    type: string
+                  fieldErrors:
+                    additionalProperties:
+                      description: Fields that provide additional details about the problem.
+                      type: string
+                    description: Pointers to fields for which invalid input was provided, whose values are messages detailing the reason this input was invalid for this field.
+                    type: object
+                  instance:
+                    description: The non-referenceable URI that indicates the error instance.
+                    example: https://problems.luna.akamaiapis.net/api-definitions/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749
+                    type: string
+                  status:
+                    description: The HTTP status code.
+                    example: 404
+                    type: integer
+                  title:
+                    description: The error title.
+                    example: Not Found
+                    type: string
+                  type:
+                    description: The URL for the error type.
+                    example: https://problems.luna.akamaiapis.net/api-definitions/error-types/NOT-FOUND
+                    type: string
+                required:
+                - title
+                - type
+                - detail
+                - instance
+                - status
+                type: object
+                x-akamai:
+                  file-path: schemas/problem-details.yaml
+          description: '[Internal server error](https://techdocs.akamai.com/application-security/reference/500). Something went wrong on our side. Try again in a few minutes, and contact support if the error persists.'
+          x-akamai:
+            file-path: errors/500-server-errors.yaml
+      summary: Akamai API Security Create an Endpoint or Resource
+      tags:
+      - Endpoints
+    get:
+      description: Returns API endpoints for the specified hostname and base path. Unlike [Get discovered APIs](https://techdocs.akamai.com/application-security/reference/get-api-list), this operation returns APIs already in your API definitions. When you see a discovered API or a new resource, add it to your definition with [Create an endpoint or resource](https://techdocs.akamai.com/application-security/reference/post-api-endpoint-resource).
+      externalDocs:
+        description: See documentation for this operation in Akamai's Application Security API
+        url: https://techdocs.akamai.com/application-security/reference/get-discovered-api-endpoints
+      operationId: get-discovered-api-endpoints
+      parameters:
+      - description: For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys).
+        example: '{{accountSwitchKey}}'
+        in: query
+        name: accountSwitchKey
+        required: false
+        schema:
+          example: 1-5C0YLB:1-8BYUX
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                apis:
+                - apiEndPointId: 613101
+                  apiEndPointName: Access Lambda Live
+                  latest:
+                    basePath: /access-api/v1
+                    version: 3
+                  production:
+                    basePath: /access-api/v1
+                    version: 1
+                  staging:
+                    basePath: /access-api/v1
+                    version: 2
+                - apiEndPointId: 613102
+                  apiEndPointName: New Broadcast API
+                  latest:
+                    basePath: /access-api
+                    version: 8
+                  production:
+                    basePath: /access-api
+                    version: 4
+                  staging:
+                    basePath: /access-api
+                    version: 5
+              schema:
+                additionalProperties: false
+                description: Specifies the list of matching API Definitions.
+                properties:
+                  configurations:
+                    description: A list of API Definitions.
+                    items:
+                      additionalProperties: false
+                      description: Specifies the details of an API Definition.
+                      properties:
+                        apiEndPointId:
+                          description: A unique identifier for an API endpoint.
+                          type: integer
+                        apiEndPointName:
+                          description: The name for this API endpoint.
+                          type: string
+                        latest:
+                          additionalProperties: false
+                          description: Summarizes this API endpoint's latest version.
+                          properties:
+                            basePath:
+                              description: The API endpoint's base path.
+                              type: string
+                            version:
+                              description: The  version number.
+                              type: integer
+                          type: object
+                        production:
+                          additionalProperties: false
+                          description: Summarizes this API endpoint's current deployment on Akamai's production network.
+                          properties:
+                            basePath:
+                              description: The API endpoint's base path.
+                              type: string
+                            version:
+                              description: The production version number.
+                              type: integer
+                          type: object
+                        staging:
+                          additionalProperties: false
+                          description: Summarizes this API endpoint's current deployment on Akamai's staging network.
+                          properties:
+                            basePath:
+                              description: The API endpoint's base path.
+                              type: string
+                            version:
+                              description: The staging version number.
+                              type: integer
+                          type: object
+                      required:
+                      - apiEndPointId
+                      - apiEndPointName
+                      - latest
+                      type: object
+                      x-akamai:
+                        file-path: schemas/api-match.yaml
+                    type: array
+                type: object
+                x-akamai:
+                  file-path: schemas/api-matches.yaml
+          description: Successfully returned the data.
+        '400':
+          content:
+            application/json:
+              example:
+                detail: The request could not be understood by the server due to malformed syntax.
+                instance: https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749
+                status: 400
+                title: Bad Request
+                type: https://problems.luna.akamaiapis.net/appsec/error-types/BAD-REQUEST
+              schema:
+                additionalProperties: true
+                description: Details the errors you can receive.
+                properties:
+                  detail:
+                    description: The detailed error message.
+                    type: string
+                  fieldErrors:
+                    additionalProperties:
+                      description: Fields that provide additional details about the problem.
+                      type: string
+                    description: Pointers to fields for which invalid input was provided, whose values are messages detailing the reason this input was invalid for this field.
+                    type: object
+                  instance:
+                    description: The non-referenceable URI that indicates the error instance.
+                    example: https://problems.luna.akamaiapis.net/api-definitions/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749
+                    type: string
+                  status:
+                    description: The HTTP status code.
+                    example: 404
+                    type: integer
+                  title:
+                    description: The error title.
+                    example: Not Found
+                    type: string
+                  type:
+                    description: The URL for the error type.
+                    example: https://problems.luna.akamaiapis.net/api-definitions/error-types/NOT-FOUND
+                    type: string
+                required:
+                - title
+                - type
+                - detail
+                - instance
+                - status
+                type: object
+                x-akamai:
+                  file-path: schemas/problem-details.yaml
+          description: '[Invalid](https://techdocs.akamai.com/application-security/reference/400). Client error, such as invalid or malformed input.'
+          x-akamai:
+            file-path: errors/400-client-read-errors.yaml
+        '403':
+          content:
+            application/problem+json:
+              example:
+                detail: You do not have the necessary access to perform this operation or the requested resource cannot be modified
+                instance: https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749
+                status: 403
+                title: Forbidden
+                type: https://problems.luna.akamaiapis.net/appsec-resource/error-types/ACCESS-DENIED
+              schema:
+                additionalProperties: true
+                description: Details the errors you can receive.
+                properties:
+                  detail:
+                    description: The detailed error message.
+                    type: string
+                  fieldErrors:
+                    additionalProperties:
+                      description: Fields that provide additional details about the problem.
+                      type: string
+                    description: Pointers to fields for which invalid input was provided, whose values are messages detailing the reason this input was invalid for this field.
+                    type: object
+                  instance:
+                    description: The non-referenceable URI that indicates the error instance.
+                    example: https://problems.luna.akamaiapis.net/api-definitions/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749
+                    type: string
+                  status:
+                    description: The HTTP status code.
+                    example: 404
+                    type: integer
+                  title:
+                    description: The error title.
+                    example: Not Found
+                    type: string
+                  type:
+                    description: The URL for the error type.
+                    example: https://problems.luna.akamaiapis.net/api-definitions/error-types/NOT-FOUND
+                    type: string
+                required:
+                - title
+                - type
+                - detail
+                - instance
+                - status
+                type: object
+                x-akamai:
+                  file-path: schemas/problem-details.yaml
+          description: '[Forbidden](https://techdocs.akamai.com/application-security/reference/403). You don''t have permission to write to this resource.'
+          x-akamai:
+            file-path: errors/403-client-write-errors.yaml
+        '404':
+          content:
+            application/problem+json:
+              example:
+                detail: The requested resource is not found
+                instance: https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749
+                status: 404
+                title: Not Found
+                type: https://problems.luna.akamaiapis.net/appsec/error-types/NOT-FOUND
+              schema:
+                additionalProperties: true
+                description: Details the errors you can receive.
+                properties:
+                  detail:
+                    description: The detailed error message.
+                    type: string
+                  fieldErrors:
+                    additionalProperties:
+                      description: Fields that provide additional details about the problem.
+                      type: string
+                    description: Pointers to fields for which invalid input was provided, whose values are messages detailing the reason this input was invalid for this field.
+                    type: object
+                  instance:
+                    description: The non-referenceable URI that indicates the error instance.
+                    example: https://problems.luna.akamaiapis.net/api-definitions/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749
+                    type: string
+                  status:
+                    description: The HTTP status code.
+                    example: 404
+                    type: integer
+                  title:
+                    description: The error title.
+                    example: Not Found
+                    type: string
+                  type:
+                    description: The URL for the error type.
+                    example: https://problems.luna.akamaiapis.net/api-definitions/error-types/NOT-FOUND
+                    type: string
+                required:
+                - title
+                - type
+                - detail
+                - instance
+                - status
+                type: object
+                x-akamai:
+                  file-path: schemas/problem-details.yaml
+          description: '[Not found](https://techdocs.akamai.com/application-security/reference/404). The named security policy doesn''t exist, doesn''t carry application layer controls, or no rule with this ID is available for use in this policy.'
+          x-akamai:
+            file-path: errors/404-client-read-errors.yaml
+        '500':
+          content:
+            application/problem+json:
+              example:
+                detail: Internal Server Error
+                instance: 12ab3c45-789d-01ef-2gh3-ijk4l56m78no
+                status: 500
+                title: Internal Server Error
+                type: internal_server_error
+              schema:
+                additionalProperties: true
+                description: Details the errors you can receive.
+                properties:
+                  detail:
+                    description: The detailed error message.
+                    type: string
+                  fieldErrors:
+                    additionalProperties:
+                      description: Fields that provide additional details about the problem.
+                      type: string
+                    description: Pointers to fields for which invalid input was provided, whose values are messages detailing the reason this input was invalid for this field.
+                    type: object
+                  instance:
+                    description: The non-referenceable URI that indicates the error instance.
+                    example: https://problems.luna.akamaiapis.net/api-definitions/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749
+                    type: string
+                  status:
+                    description: The HTTP status code.
+                    example: 404
+                    type: integer
+                  title:
+                    description: The error title.
+                    example: Not Found
+                    type: string
+                  type:
+                    description: The URL for the error type.
+                    example: https://problems.luna.akamaiapis.net/api-definitions/error-types/NOT-FOUND
+                    type: string
+                required:
+                - title
+                - type
+                - detail
+                - instance
+                - status
+                type: object
+                x-akamai:
+                  file-path: schemas/problem-details.yaml
+          description: '[Internal server error](https://techdocs.akamai.com/application-security/reference/500). Something went wrong on our side. Try again in a few minutes, and contact support if the error persists.'
+          x-akamai:
+            file-path: errors/500-server-errors.yaml
+      summary: Akamai API Security List Discovered API Endpoints
+      tags:
+      - Endpoints
+externalDocs:
+  description: See documentation for Akamai's Application Security API
+  url: https://techdocs.akamai.com/application-security/reference
+x-readme:
+  samples-languages:
+  - curl
+  - python
+  - node

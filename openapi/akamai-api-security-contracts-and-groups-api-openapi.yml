@@ -1,0 +1,180 @@
+openapi: 3.0.0
+info:
+  description: 'Manage your configurations for Kona Site Defender,
+
+    Web Application Protector, and Client Reputation.
+
+    '
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  title: 'Akamai: Application Security Activation history Contracts and groups API'
+  version: v1
+servers:
+- url: https://{hostname}/appsec/v1
+tags:
+- description: List the contracts and groups for your account.
+  name: Contracts and groups
+paths:
+  /contracts-groups:
+    x-akamai:
+      file-path: paths/contracts-groups.yaml
+      path-info: /contracts-groups
+    get:
+      description: List the contracts and groups for your account. Each object contains the contract, groups associated with the contract, and whether Kona Site Defender or Web Application Protector is the product for that contract. You'll need this information when you create a new security configuration or when you want to get a list of hostnames still available for use in a security policy. _Products:_ All.
+      externalDocs:
+        description: See documentation for this operation in Akamai's Application Security API
+        url: https://techdocs.akamai.com/application-security/reference/get-contracts-groups
+      operationId: get-contracts-groups
+      parameters:
+      - description: For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys).
+        example: '{{accountSwitchKey}}'
+        in: query
+        name: accountSwitchKey
+        required: false
+        schema:
+          example: 1-5C0YLB:1-8BYUX
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                contract_groups:
+                - contractId: C-0N7RAC71
+                  displayName: 'Main Street Corporation '
+                  groupId: 12345
+                - contractId: K-0N7RAK71
+                  displayName: AltQ
+                  groupId: 12345
+                - contractId: K-0N7RAK71
+                  displayName: BV QA
+                  groupId: 32145
+              schema:
+                additionalProperties: false
+                description: Specifies contracts and groups that have Kona Site Defender or Web Application Firewall.
+                properties:
+                  contractId:
+                    description: A unique identifier for a contract.
+                    type: string
+                  displayName:
+                    description: The display name for a contract group pair.
+                    type: string
+                  groupId:
+                    description: A unique identifier for a group.
+                    type: integer
+                type: object
+                x-akamai:
+                  file-path: schemas/contract-groups.yaml
+          description: Successful response.
+        '403':
+          content:
+            application/problem+json:
+              example:
+                detail: You do not have the necessary access to perform this operation or the requested resource cannot be modified
+                instance: https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749
+                status: 403
+                title: Forbidden
+                type: https://problems.luna.akamaiapis.net/appsec-resource/error-types/ACCESS-DENIED
+              schema:
+                additionalProperties: true
+                description: Details the errors you can receive.
+                properties:
+                  detail:
+                    description: The detailed error message.
+                    type: string
+                  fieldErrors:
+                    additionalProperties:
+                      description: Fields that provide additional details about the problem.
+                      type: string
+                    description: Pointers to fields for which invalid input was provided, whose values are messages detailing the reason this input was invalid for this field.
+                    type: object
+                  instance:
+                    description: The non-referenceable URI that indicates the error instance.
+                    example: https://problems.luna.akamaiapis.net/api-definitions/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749
+                    type: string
+                  status:
+                    description: The HTTP status code.
+                    example: 404
+                    type: integer
+                  title:
+                    description: The error title.
+                    example: Not Found
+                    type: string
+                  type:
+                    description: The URL for the error type.
+                    example: https://problems.luna.akamaiapis.net/api-definitions/error-types/NOT-FOUND
+                    type: string
+                required:
+                - title
+                - type
+                - detail
+                - instance
+                - status
+                type: object
+                x-akamai:
+                  file-path: schemas/problem-details.yaml
+          description: '[Forbidden](https://techdocs.akamai.com/application-security/reference/403). You don''t have access to the resource.'
+          x-akamai:
+            file-path: errors/403.yaml
+        '404':
+          content:
+            application/problem+json:
+              example:
+                detail: The requested resource is not found
+                instance: https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749
+                status: 404
+                title: Not Found
+                type: https://problems.luna.akamaiapis.net/appsec/error-types/NOT-FOUND
+              schema:
+                additionalProperties: true
+                description: Details the errors you can receive.
+                properties:
+                  detail:
+                    description: The detailed error message.
+                    type: string
+                  fieldErrors:
+                    additionalProperties:
+                      description: Fields that provide additional details about the problem.
+                      type: string
+                    description: Pointers to fields for which invalid input was provided, whose values are messages detailing the reason this input was invalid for this field.
+                    type: object
+                  instance:
+                    description: The non-referenceable URI that indicates the error instance.
+                    example: https://problems.luna.akamaiapis.net/api-definitions/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749
+                    type: string
+                  status:
+                    description: The HTTP status code.
+                    example: 404
+                    type: integer
+                  title:
+                    description: The error title.
+                    example: Not Found
+                    type: string
+                  type:
+                    description: The URL for the error type.
+                    example: https://problems.luna.akamaiapis.net/api-definitions/error-types/NOT-FOUND
+                    type: string
+                required:
+                - title
+                - type
+                - detail
+                - instance
+                - status
+                type: object
+                x-akamai:
+                  file-path: schemas/problem-details.yaml
+          description: '[Not found](https://techdocs.akamai.com/application-security/reference/404). That resource doesn''t exist, or the URL is malformed.'
+          x-akamai:
+            file-path: errors/404.yaml
+      summary: Akamai API Security List Contracts and Groups
+      tags:
+      - Contracts and groups
+externalDocs:
+  description: See documentation for Akamai's Application Security API
+  url: https://techdocs.akamai.com/application-security/reference
+x-readme:
+  samples-languages:
+  - curl
+  - python
+  - node
