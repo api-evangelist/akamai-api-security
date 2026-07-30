@@ -6,7 +6,19 @@ description: >-
   and monitors all APIs, identifies vulnerabilities and misconfigurations, detects and responds to API threats in real
   time, and provides pre-production security testing integrated into CI/CD pipelines.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Freemium
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/akamai-api-security.png
 tags:
   - API Discovery
   - API Security
@@ -19,45 +31,984 @@ created: '2026-03-26'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: akamai-api-security:api-security
-    name: Akamai API Security
-    description: >-
-      Akamai API Security provides end-to-end API protection including discovery, posture management, runtime
-      protection, and active testing. It discovers all APIs including shadow and zombie APIs, identifies vulnerabilities
-      and misconfigurations, and detects and blocks API-based attacks in real time.
-    humanURL: https://www.akamai.com/products/api-security
-    tags:
-      - API Discovery
-      - API Security
-      - Runtime Protection
-      - Threat Protection
-    properties:
-      - type: Documentation
-        url: https://techdocs.akamai.com/api-security/docs/welcome
-      - type: GettingStarted
-        url: https://techdocs.akamai.com/api-security/docs/get-started
-      - type: OpenAPI
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/akamai-api-security/refs/heads/main/openapi/akamai-api-security-openapi.json
-  - aid: akamai-api-security:akamai-apis
-    name: Akamai APIs
-    description: >-
-      Akamai provides a comprehensive set of REST APIs for managing and configuring their platform services, including
-      API security, CDN, edge computing, and security products. The APIs use the Akamai EdgeGrid authentication
-      mechanism.
-    humanURL: https://techdocs.akamai.com/home/page/products-tools-a-z
-    tags:
-      - Configuration
-      - EdgeGrid
-      - Platform API
-      - REST API
-    properties:
-      - type: Documentation
-        url: https://techdocs.akamai.com/home/page/products-tools-a-z
-      - type: Authentication
-        url: https://techdocs.akamai.com/developer/docs/authenticate-with-edgegrid
-      - type: GettingStarted
-        url: https://techdocs.akamai.com/developer/docs/get-started
+- aid: akamai-api-security:akamai-apis
+  name: Akamai APIs
+  description: >-
+    Akamai provides a comprehensive set of REST APIs for managing and configuring their platform services,
+    including API security, CDN, edge computing, and security products. The APIs use the Akamai EdgeGrid
+    authentication mechanism.
+  humanURL: https://techdocs.akamai.com/home/page/products-tools-a-z
+  tags:
+  - Configuration
+  - EdgeGrid
+  - Platform API
+  - REST API
+  properties:
+  - type: Documentation
+    url: https://techdocs.akamai.com/home/page/products-tools-a-z
+  - type: Authentication
+    url: https://techdocs.akamai.com/developer/docs/authenticate-with-edgegrid
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/developer/docs/get-started
+- aid: akamai-api-security:akamai-api-security-activation-history-api
+  name: Akamai API Security Activation history API
+  description: Get the activation history for a configuration.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - Activation history
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-activation-history-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-activation-status-api
+  name: Akamai API Security Activation status API
+  description: >-
+    Get status information about your activations and activation
+
+    requests.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - Activation status
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-activation-status-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-activations-api
+  name: Akamai API Security Activations API
+  description: Manage your security configuration activations.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - Activations
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-activations-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-api-endpoints-api
+  name: Akamai API Security API endpoints API
+  description: Get the list of API endpoints associated with a security policy.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - API endpoints
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-api-endpoints-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-api-request-constraints-api
+  name: Akamai API Security API request constraints API
+  description: >-
+    Manage API request limits and the actions to take when those
+
+    limits are met.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - API request constraints
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-api-request-constraints-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-attack-payload-logs-api
+  name: Akamai API Security Attack payload logs API
+  description: >-
+    Manage the attack payload log settings for your security
+
+    configurations.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - Attack payload logs
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-attack-payload-logs-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-available-hostnames-api
+  name: Akamai API Security Available hostnames API
+  description: List all hostnames for a given contract and group.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - Available hostnames
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-available-hostnames-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-bypass-network-lists-api
+  name: Akamai API Security Bypass network lists API
+  description: Manage the bypass network lists used with your security policies.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - Bypass network lists
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-bypass-network-lists-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-client-reputation-api
+  name: Akamai API Security Client reputation API
+  description: Manage your client reputation profiles.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - Client reputation
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-client-reputation-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-client-side-protections-compliance-api
+  name: Akamai API Security Client-Side Protections & Compliance API
+  description: >-
+    The Client-Side Protections & Compliance API from Akamai API Security — 1 operation(s) for client-side
+    protections & compliance.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - Client-Side Protections & Compliance
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-client-side-protections-compliance-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-configuration-evaluation-hostnames-api
+  name: 'Akamai API Security Configuration: Evaluation hostnames API'
+  description: >-
+    Manage hostnames you're currently evaluating for a configuration
+
+    version.  If using Web Application Protector, manage hostnames
+
+    currently in evaluation mode.  This mode lets you to see how
+
+    your configuration settings protect a hostname's traffic before
+
+    adding the hostname to a live configuration.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - 'Configuration: Evaluation hostnames'
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-configuration-evaluation-hostnames-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-configuration-version-diff-api
+  name: Akamai API Security Configuration version diff API
+  description: >-
+    The Configuration version diff API from Akamai API Security — 1 operation(s) for configuration version
+    diff.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - Configuration version diff
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-configuration-version-diff-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-configuration-version-export-api
+  name: Akamai API Security Configuration version export API
+  description: >-
+    Get comprehensive details about a security configuration
+
+    version.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - Configuration version export
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-configuration-version-export-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-contracts-and-groups-api
+  name: Akamai API Security Contracts and groups API
+  description: List the contracts and groups for your account.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - Contracts and groups
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-contracts-and-groups-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-cookie-settings-api
+  name: Akamai API Security Cookie Settings API
+  description: The Cookie Settings API from Akamai API Security — 1 operation(s) for cookie settings.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - Cookie Settings
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-cookie-settings-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-custom-rule-actions-api
+  name: Akamai API Security Custom rule actions API
+  description: >-
+    Manage the actions contained in your custom rules.  Use custom
+
+    rules to handle scenarios not covered by the included standard
+
+    rules or to quickly patch new website vulnerabilities.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - Custom rule actions
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-custom-rule-actions-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-cve-protections-lookup-api
+  name: Akamai API Security CVE Protections lookup API
+  description: >-
+    See which CVEs are covered by App & API Protector. The catalog contains only CVEs that the Akamai
+    Threat Research team is aware of. App & API Protector can identify and block attacks related to the
+    active exploitation of many more CVEs and attacks without associated known vulnerabilities.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - CVE Protections lookup
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-cve-protections-lookup-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-discovered-apis-api
+  name: Akamai API Security Discovered APIs API
+  description: >-
+    Get information about APIs discovered in your traffic that are
+
+    new or not yet protected under API protections.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - Discovered APIs
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-discovered-apis-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-endpoints-api
+  name: Akamai API Security Endpoints API
+  description: Manage the API endpoints associated with a security policy.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - Endpoints
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-endpoints-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-evasive-path-match-api
+  name: Akamai API Security Evasive path match API
+  description: Manage the evasive path match for your security configurations.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - Evasive path match
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-evasive-path-match-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-failover-hostnames-api
+  name: Akamai API Security Failover hostnames API
+  description: Get a list of the failover hostnames in a security configuration.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - Failover hostnames
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-failover-hostnames-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-general-configuration-settings-api
+  name: Akamai API Security General configuration settings API
+  description: Manage security configurations and their versions.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - General configuration settings
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-general-configuration-settings-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-general-policy-settings-api
+  name: Akamai API Security General policy settings API
+  description: Manage security policies and their versions.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - General policy settings
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-general-policy-settings-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-hostname-coverage-api
+  name: Akamai API Security Hostname coverage API
+  description: >-
+    Get the list of hostnames in an account with their current
+
+    protections, activation statuses, and other summary information.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - Hostname coverage
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-hostname-coverage-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-hostnames-api
+  name: Akamai API Security Hostnames API
+  description: Manage the hostnames in your configuration settings.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - Hostnames
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-hostnames-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-http-header-logs-api
+  name: Akamai API Security HTTP header logs API
+  description: Manage the HTTP header log settings for security policies.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - HTTP header logs
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-http-header-logs-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-ip-geo-firewall-settings-api
+  name: Akamai API Security IP/Geo Firewall settings API
+  description: >-
+    Manage which network lists are used in the IP/Geo Firewall
+
+    settings.  If you want to add or remove IP addresses from the
+
+    network lists, use the Network Lists API.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - IP/Geo Firewall settings
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-ip-geo-firewall-settings-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-malware-policy-actions-api
+  name: Akamai API Security Malware policy actions API
+  description: Manage the actions taken by your malware policies.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - Malware policy actions
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-malware-policy-actions-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-match-targets-api
+  name: Akamai API Security Match targets API
+  description: >-
+    Manage your match targets, which define which security policy
+
+    applies to an API, hostname, or path.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - Match targets
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-match-targets-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-onboarding-activations-and-status-api
+  name: 'Akamai API Security Onboarding: Activations and status API'
+  description: Manage your onboardings' activations, and the activation history for each onboarding.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - 'Onboarding: Activations and status'
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-onboarding-activations-and-status-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-onboarding-creation-and-settings-api
+  name: 'Akamai API Security Onboarding: Creation and settings API'
+  description: Manage onboardings and their settings.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - 'Onboarding: Creation and settings'
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-onboarding-creation-and-settings-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-onboarding-post-activation-validation-api
+  name: 'Akamai API Security Onboarding: Post-activation validation API'
+  description: >-
+    Manage your post activations validations and cname your hostnames to akamai in order to go live.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - 'Onboarding: Post-activation validation'
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-onboarding-post-activation-validation-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-pii-learning-api
+  name: Akamai API Security PII learning API
+  description: >-
+    Manage settings for Personally Identifiable Information (PII)
+
+    learning. With this feature, the network discovers PII on your
+
+    behalf.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - PII learning
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-pii-learning-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-pragma-settings-api
+  name: Akamai API Security Pragma settings API
+  description: Manage the Pragma header settings for your security policies.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - Pragma settings
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-pragma-settings-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-prefetch-requests-api
+  name: Akamai API Security Prefetch requests API
+  description: >-
+    Manage your prefetch request protections.  When enabled, your
+
+    application firewall rules inspect internal requests, which are
+
+    those between your origin and Akamai's servers, for the file
+
+    types you specify.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - Prefetch requests
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-prefetch-requests-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-protections-api
+  name: Akamai API Security Protections API
+  description: >-
+    Manage various security policy protections.  These settings
+
+    enable or disable each protection on your policy.  However, you
+
+    set the protections themselves in their corresponding operations
+
+    available in this API.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - Protections
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-protections-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-rate-policy-actions-api
+  name: Akamai API Security Rate policy actions API
+  description: >-
+    Manage rate policy actions, which are the actions each policy
+
+    takes when conditions are met.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - Rate policy actions
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-rate-policy-actions-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-reputation-analysis-api
+  name: Akamai API Security Reputation analysis API
+  description: >-
+    If using Kona Site Defender, manage the reputation analysis
+
+    settings.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - Reputation analysis
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-reputation-analysis-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-request-body-inspection-limits-api
+  name: Akamai API Security Request body inspection limits API
+  description: Manage limits for the maximum request body size allowed.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - Request body inspection limits
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-request-body-inspection-limits-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-request-body-size-api
+  name: Akamai API Security Request body size API
+  description: >-
+    Manage a security configuration's inspection limit settings for
+
+    request bodies.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - Request body size
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-request-body-size-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-security-policy-conditions-and-exceptions-api
+  name: 'Akamai API Security Security policy: Conditions and exceptions API'
+  description: >-
+    Manage the attack groups and rules that you're currently evaluating
+
+    for your security policies.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - 'Security policy: Conditions and exceptions'
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-security-policy-conditions-and-exceptions-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-security-policy-evaluation-attack-groups-api
+  name: 'Akamai API Security Security policy: Evaluation attack groups API'
+  description: >-
+    Manage the attack groups that you're evaluating for your
+
+    security configurations and policies.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - 'Security policy: Evaluation attack groups'
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-security-policy-evaluation-attack-groups-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-security-policy-evaluation-hostnames-api
+  name: 'Akamai API Security Security policy: Evaluation hostnames API'
+  description: Manage hostnames you're currently evaluating for security policies.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - 'Security policy: Evaluation hostnames'
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-security-policy-evaluation-hostnames-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-security-policy-evaluation-mode-api
+  name: 'Akamai API Security Security policy: Evaluation mode API'
+  description: >-
+    Set the evaluation mode for your security policies.  This mode
+
+    runs concurrently with your existing Web Application Firewall
+
+    Rule settings and records how the rules would respond if applied
+
+    to live traffic.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - 'Security policy: Evaluation mode'
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-security-policy-evaluation-mode-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-security-policy-evaluation-penalty-box-api
+  name: 'Akamai API Security Security policy: Evaluation penalty box API'
+  description: >-
+    Manage the penalty box settings that you're evaluating for your
+
+    security policies.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - 'Security policy: Evaluation penalty box'
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-security-policy-evaluation-penalty-box-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-security-policy-evaluation-rules-api
+  name: 'Akamai API Security Security policy: Evaluation rules API'
+  description: >-
+    Manage the rules you're currently evaluating for security
+
+    policies.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - 'Security policy: Evaluation rules'
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-security-policy-evaluation-rules-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-shared-resources-custom-deny-actions-api
+  name: 'Akamai API Security Shared resources: Custom deny actions API'
+  description: >-
+    Manage your custom deny actions for security configurations and
+
+    policies.  Custom deny actions let you serve error messages,
+
+    pages, and responses that meet your organization's unique needs.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - 'Shared resources: Custom deny actions'
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-shared-resources-custom-deny-actions-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-shared-resources-custom-rules-api
+  name: 'Akamai API Security Shared resources: Custom rules API'
+  description: Manage your custom rules for security configurations and policies.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - 'Shared resources: Custom rules'
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-shared-resources-custom-rules-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-shared-resources-malware-policies-api
+  name: 'Akamai API Security Shared resources: Malware policies API'
+  description: Manage your malware policies.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - 'Shared resources: Malware policies'
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-shared-resources-malware-policies-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-shared-resources-rate-policies-api
+  name: 'Akamai API Security Shared resources: Rate policies API'
+  description: Manage rate policies for security configurations.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - 'Shared resources: Rate policies'
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-shared-resources-rate-policies-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-shared-resources-reputation-profiles-api
+  name: 'Akamai API Security Shared resources: Reputation profiles API'
+  description: >-
+    Manage your reputation profiles.  Reputation protections
+
+    identify potentially malicious IP addresses, scoring them based
+
+    on prior interactions with other Akamai customers.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - 'Shared resources: Reputation profiles'
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-shared-resources-reputation-profiles-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-siem-settings-api
+  name: Akamai API Security SIEM settings API
+  description: Manage SIEM settings for your security configurations.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - SIEM settings
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-siem-settings-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-slow-post-protections-api
+  name: Akamai API Security Slow POST protections API
+  description: >-
+    Manage your slow POST protection settings for your security
+
+    policies.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - Slow POST protections
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-slow-post-protections-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-subscriptions-api
+  name: Akamai API Security Subscriptions API
+  description: >-
+    Manage the email subscriptions for features within a specific
+
+    security configuration.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - Subscriptions
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-subscriptions-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-url-protection-policies-api
+  name: Akamai API Security URL protection policies API
+  description: Manage your URL protection policies.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - URL protection policies
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-url-protection-policies-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-url-protection-policy-actions-api
+  name: Akamai API Security URL protection policy actions API
+  description: Manage your URL protection settings for your security policies.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - URL protection policy actions
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-url-protection-policy-actions-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-waf-rules-attack-groups-api
+  name: 'Akamai API Security WAF rules: Attack groups API'
+  description: Manage your WAF attack groups.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - 'WAF rules: Attack groups'
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-waf-rules-attack-groups-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-waf-rules-evaluation-penalty-box-conditions-api
+  name: 'Akamai API Security WAF rules: Evaluation Penalty box conditions API'
+  description: >-
+    Manage the penalty box condition settings for your firewall
+
+    rules.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - 'WAF rules: Evaluation Penalty box conditions'
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-waf-rules-evaluation-penalty-box-conditions-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-waf-rules-general-settings-api
+  name: 'Akamai API Security WAF rules: General settings API'
+  description: Manage your Web Application Firewall (WAF) rules and rule sets.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - 'WAF rules: General settings'
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-waf-rules-general-settings-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-waf-rules-penalty-box-api
+  name: 'Akamai API Security WAF rules: Penalty box API'
+  description: >-
+    Manage the penalty box settings for your Web Application
+
+    Firewall implementation.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - 'WAF rules: Penalty box'
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-waf-rules-penalty-box-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-waf-rules-penalty-box-conditions-api
+  name: 'Akamai API Security WAF rules: Penalty box conditions API'
+  description: >-
+    Manage the conditions used with your Web Application Firewall's
+
+    penalty box.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - 'WAF rules: Penalty box conditions'
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-waf-rules-penalty-box-conditions-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-waf-rules-rapid-rules-api
+  name: 'Akamai API Security WAF rules: Rapid rules API'
+  description: >-
+    Quickly manage and mitigate risks resulting from the most recent high-profile, critical vulnerabilities.
+
+    __Note__. Rapid rules are rules you can apply while we are still testing and perfecting them. Once
+    we finish that process, a rapid rule becomes a WAF rule.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - 'WAF rules: Rapid rules'
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-waf-rules-rapid-rules-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-waf-rules-tuning-recommendations-api
+  name: 'Akamai API Security WAF rules: Tuning recommendations API'
+  description: Manage the tuning recommendations for your WAF attack groups.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - 'WAF rules: Tuning recommendations'
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-waf-rules-tuning-recommendations-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
+- aid: akamai-api-security:akamai-api-security-waf-rules-update-mode-api
+  name: 'Akamai API Security WAF rules: Update mode API'
+  description: >-
+    Manage the mode used with your WAF rules. Your mode you set
+
+    determines how your rule sets are updated.
+  humanURL: https://www.akamai.com/products/api-security
+  tags:
+  - 'WAF rules: Update mode'
+  properties:
+  - type: OpenAPI
+    url: openapi/akamai-api-security-waf-rules-update-mode-api-openapi.yml
+  - type: Documentation
+    url: https://techdocs.akamai.com/api-security/docs/welcome
+  - type: GettingStarted
+    url: https://techdocs.akamai.com/api-security/docs/get-started
 common:
   - type: AgenticAccess
     url: agentic-access/akamai-api-security-agentic-access.yml
