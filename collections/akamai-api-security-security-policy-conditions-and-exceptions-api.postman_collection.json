@@ -1,0 +1,1840 @@
+{
+  "item": [
+    {
+      "id": "c5035dd2-e581-4b5f-82f3-4722b8d84b04",
+      "name": "Security policy: Conditions and exceptions",
+      "description": {
+        "content": "Manage the attack groups and rules that you're currently evaluating\nfor your security policies.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a2f0c530-ecf8-47a4-987f-7a3c0335361b",
+          "name": "Akamai API Security Get the Exceptions of an Evaluation Attack Group",
+          "request": {
+            "name": "Akamai API Security Get the Exceptions of an Evaluation Attack Group",
+            "description": {
+              "content": "List an attack group's exceptions. _Products:_ All.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "configs",
+                ":configId",
+                "versions",
+                ":versionNumber",
+                "security-policies",
+                ":policyId",
+                "eval-groups",
+                ":attackGroupId",
+                "condition-exception"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "accountSwitchKey",
+                  "value": "<string>",
+                  "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "configId",
+                  "description": "(Required) A unique identifier for each configuration."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "versionNumber",
+                  "description": "(Required) A unique identifier for each version of a configuration."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyId",
+                  "description": "(Required) A unique identifier for a security policy."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "attackGroupId",
+                  "description": "(Required) A unique identifier for each attack group."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a8cb354e-f0f3-4b3b-92d1-492d9bf6942f",
+              "name": "Successfully retrieved the evaluation attack group exceptions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "security-policies",
+                    ":policyId",
+                    "eval-groups",
+                    ":attackGroupId",
+                    "condition-exception"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) A unique identifier for a security policy."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "attackGroupId",
+                      "description": "(Required) A unique identifier for each attack group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"advancedExceptions\": {\n    \"conditionOperator\": \"AND\",\n    \"conditions\": [\n      {\n        \"filenames\": [\n          \"*.aspx\",\n          \"*.js\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"filenameMatch\"\n      },\n      {\n        \"paths\": [\n          \"/catalog\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"pathMatch\"\n      },\n      {\n        \"clientLists\": [\n          \"88330_TESTIP1\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"clientListMatch\",\n        \"useHeaders\": true\n      }\n    ],\n    \"headerCookieOrParamValues\": [\n      {\n        \"valueWildcard\": true,\n        \"values\": [\n          \"header1\",\n          \"cookie1\",\n          \"param1\"\n        ]\n      }\n    ],\n    \"specificHeaderCookieOrParamNameValue\": [\n      {\n        \"namesValues\": [\n          {\n            \"names\": [\n              \"header1\"\n            ],\n            \"values\": [\n              \"value1\"\n            ]\n          }\n        ],\n        \"selector\": \"REQUEST_HEADERS\",\n        \"wildcard\": true\n      },\n      {\n        \"namesValues\": [\n          {\n            \"names\": [\n              \"param-name\"\n            ],\n            \"values\": [\n              \"param-value\"\n            ]\n          }\n        ],\n        \"selector\": \"ARGS\",\n        \"wildcard\": true\n      },\n      {\n        \"namesValues\": [\n          {\n            \"names\": [\n              \"json-param1\"\n            ],\n            \"values\": [\n              \"json-value1\"\n            ]\n          }\n        ],\n        \"selector\": \"JSON_PAIRS\",\n        \"wildcard\": true\n      },\n      {\n        \"namesValues\": [\n          {\n            \"names\": [\n              \"cookie-name\"\n            ],\n            \"values\": [\n              \"cookie1\"\n            ]\n          }\n        ],\n        \"selector\": \"REQUEST_COOKIES\",\n        \"wildcard\": true\n      }\n    ],\n    \"specificHeaderCookieParamXmlOrJsonNames\": [\n      {\n        \"criteria\": [\n          {\n            \"hostnames\": [\n              \"www.host.com\"\n            ],\n            \"paths\": [\n              \"/*\"\n            ]\n          }\n        ],\n        \"selector\": \"REQUEST_HEADERS_NAMES\",\n        \"wildcard\": true\n      },\n      {\n        \"criteria\": [\n          {\n            \"hostnames\": [\n              \"ALL\"\n            ],\n            \"names\": [\n              \"header1\"\n            ],\n            \"paths\": [\n              \"/orders\"\n            ]\n          }\n        ],\n        \"names\": [\n          \"header2\"\n        ],\n        \"selector\": \"REQUEST_HEADERS\",\n        \"wildcard\": false\n      },\n      {\n        \"criteria\": [\n          {\n            \"hostnames\": [\n              \"ALL\"\n            ],\n            \"paths\": [\n              \"/*\"\n            ]\n          }\n        ],\n        \"selector\": \"ARGS_NAMES\",\n        \"wildcard\": true\n      },\n      {\n        \"names\": [\n          \"param-name\"\n        ],\n        \"selector\": \"ARGS\",\n        \"wildcard\": true\n      },\n      {\n        \"names\": [\n          \"*\"\n        ],\n        \"selector\": \"JSON_NAMES\",\n        \"wildcard\": true\n      },\n      {\n        \"names\": [\n          \"json1\"\n        ],\n        \"selector\": \"JSON_PAIRS\",\n        \"wildcard\": true\n      },\n      {\n        \"names\": [\n          \"connect.sid\"\n        ],\n        \"selector\": \"REQUEST_COOKIES_NAMES\",\n        \"wildcard\": false\n      },\n      {\n        \"names\": [\n          \"cookie1\",\n          \"cookie2\"\n        ],\n        \"selector\": \"REQUEST_COOKIES\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQUEST_BODY\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQBODY_PROCESSOR_ERROR\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"FILES_NAMES\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQUEST_PROTOCOL\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQUEST_METHOD\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQUEST_URI\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"QUERY_STRING\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQUEST_FILENAME\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQUEST_PATH_SEGMENT\",\n        \"wildcard\": true\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "09f990e0-2004-48aa-a26b-92d4c8c4c92a",
+              "name": "[Invalid](https://techdocs.akamai.com/application-security/reference/400). Client error, such as invalid or malformed input.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "security-policies",
+                    ":policyId",
+                    "eval-groups",
+                    ":attackGroupId",
+                    "condition-exception"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) A unique identifier for a security policy."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "attackGroupId",
+                      "description": "(Required) A unique identifier for each attack group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"The request could not be understood by the server due to malformed syntax.\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 400,\n  \"title\": \"Bad Request\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec/error-types/BAD-REQUEST\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2e36ab1d-5fdc-4590-9bd2-f4cb3a8d930e",
+              "name": "[Not found](https://techdocs.akamai.com/application-security/reference/404). The named security policy doesn't exist, doesn't carry application layer controls, or no rule with this ID is available for use in this policy.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "security-policies",
+                    ":policyId",
+                    "eval-groups",
+                    ":attackGroupId",
+                    "condition-exception"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) A unique identifier for a security policy."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "attackGroupId",
+                      "description": "(Required) A unique identifier for each attack group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"The requested resource is not found\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 404,\n  \"title\": \"Not Found\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec/error-types/NOT-FOUND\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "07a787d0-2841-4e93-a27b-c6556915828d",
+              "name": "[Internal server error](https://techdocs.akamai.com/application-security/reference/500). Something went wrong on our side. Try again in a few minutes, and contact support if the error persists.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "security-policies",
+                    ":policyId",
+                    "eval-groups",
+                    ":attackGroupId",
+                    "condition-exception"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) A unique identifier for a security policy."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "attackGroupId",
+                      "description": "(Required) A unique identifier for each attack group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"Internal Server Error\",\n  \"instance\": \"12ab3c45-789d-01ef-2gh3-ijk4l56m78no\",\n  \"status\": 500,\n  \"title\": \"Internal Server Error\",\n  \"type\": \"internal_server_error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9e8fdfaa-1f01-4100-b992-b4179cdd5e9f",
+          "name": "Akamai API Security Modify the Exceptions of an Evaluation Attack Group",
+          "request": {
+            "name": "Akamai API Security Modify the Exceptions of an Evaluation Attack Group",
+            "description": {
+              "content": "Update an evaluation attack group exceptions. _Products:_ All.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "configs",
+                ":configId",
+                "versions",
+                ":versionNumber",
+                "security-policies",
+                ":policyId",
+                "eval-groups",
+                ":attackGroupId",
+                "condition-exception"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "accountSwitchKey",
+                  "value": "<string>",
+                  "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "configId",
+                  "description": "(Required) A unique identifier for each configuration."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "versionNumber",
+                  "description": "(Required) A unique identifier for each version of a configuration."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyId",
+                  "description": "(Required) A unique identifier for a security policy."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "attackGroupId",
+                  "description": "(Required) A unique identifier for each attack group."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"advancedExceptions\": {\n    \"conditionOperator\": \"<string>\",\n    \"conditions\": [\n      {\n        \"type\": \"<string>\",\n        \"positiveMatch\": \"<boolean>\",\n        \"caseSensitive\": \"<boolean>\",\n        \"clientLists\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"extensions\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"filenames\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"header\": \"<string>\",\n        \"hosts\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"ips\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"methods\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"name\": \"<string>\",\n        \"nameCase\": \"<boolean>\",\n        \"paths\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"useHeaders\": \"<boolean>\",\n        \"value\": \"<string>\",\n        \"valueCase\": \"<boolean>\",\n        \"valueWildcard\": \"<boolean>\",\n        \"wildcard\": \"<boolean>\"\n      },\n      {\n        \"type\": \"<string>\",\n        \"positiveMatch\": \"<boolean>\",\n        \"caseSensitive\": \"<boolean>\",\n        \"clientLists\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"extensions\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"filenames\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"header\": \"<string>\",\n        \"hosts\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"ips\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"methods\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"name\": \"<string>\",\n        \"nameCase\": \"<boolean>\",\n        \"paths\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"useHeaders\": \"<boolean>\",\n        \"value\": \"<string>\",\n        \"valueCase\": \"<boolean>\",\n        \"valueWildcard\": \"<boolean>\",\n        \"wildcard\": \"<boolean>\"\n      }\n    ],\n    \"headerCookieOrParamValues\": [\n      {\n        \"values\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"criteria\": [\n          {\n            \"paths\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"names\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"hostnames\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"paths\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"names\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"hostnames\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"valueWildcard\": false\n      },\n      {\n        \"values\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"criteria\": [\n          {\n            \"paths\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"names\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"hostnames\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"paths\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"names\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"hostnames\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"valueWildcard\": false\n      }\n    ],\n    \"specificHeaderCookieOrParamNameValue\": [\n      {\n        \"namesValues\": [\n          {\n            \"names\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"names\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"selector\": \"<string>\",\n        \"criteria\": [\n          {\n            \"paths\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"names\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"hostnames\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"paths\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"names\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"hostnames\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"wildcard\": false\n      },\n      {\n        \"namesValues\": [\n          {\n            \"names\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"names\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"selector\": \"<string>\",\n        \"criteria\": [\n          {\n            \"paths\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"names\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"hostnames\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"paths\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"names\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"hostnames\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"wildcard\": false\n      }\n    ],\n    \"specificHeaderCookieParamXmlOrJsonNames\": [\n      {\n        \"selector\": \"<string>\",\n        \"criteria\": [\n          {\n            \"paths\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"names\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"hostnames\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"paths\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"names\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"hostnames\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"names\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"wildcard\": false\n      },\n      {\n        \"selector\": \"<string>\",\n        \"criteria\": [\n          {\n            \"paths\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"names\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"hostnames\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"paths\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"names\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"hostnames\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"names\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"wildcard\": false\n      }\n    ]\n  },\n  \"conditions\": [\n    {\n      \"type\": \"<string>\",\n      \"positiveMatch\": \"<boolean>\",\n      \"caseSensitive\": \"<boolean>\",\n      \"clientLists\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"extensions\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"filenames\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"header\": \"<string>\",\n      \"hosts\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"ips\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"methods\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"name\": \"<string>\",\n      \"nameCase\": \"<boolean>\",\n      \"paths\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"useHeaders\": \"<boolean>\",\n      \"value\": \"<string>\",\n      \"valueCase\": \"<boolean>\",\n      \"valueWildcard\": \"<boolean>\",\n      \"wildcard\": \"<boolean>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"positiveMatch\": \"<boolean>\",\n      \"caseSensitive\": \"<boolean>\",\n      \"clientLists\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"extensions\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"filenames\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"header\": \"<string>\",\n      \"hosts\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"ips\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"methods\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"name\": \"<string>\",\n      \"nameCase\": \"<boolean>\",\n      \"paths\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"useHeaders\": \"<boolean>\",\n      \"value\": \"<string>\",\n      \"valueCase\": \"<boolean>\",\n      \"valueWildcard\": \"<boolean>\",\n      \"wildcard\": \"<boolean>\"\n    }\n  ],\n  \"exception\": {\n    \"anyHeaderCookieOrParam\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"headerCookieOrParamValues\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"specificHeaderCookieOrParamNameValue\": {\n      \"name\": \"<string>\",\n      \"selector\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    \"specificHeaderCookieOrParamNames\": {\n      \"names\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"selector\": \"<string>\"\n    },\n    \"specificHeaderCookieOrParamPrefix\": {\n      \"prefix\": \"<string>\",\n      \"selector\": \"<string>\"\n    },\n    \"specificHeaderCookieParamXmlOrJsonNames\": [\n      {\n        \"selector\": \"<string>\",\n        \"names\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"wildcard\": false\n      },\n      {\n        \"selector\": \"<string>\",\n        \"names\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"wildcard\": false\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ade75a99-18f1-4d2b-886a-c1f7f33dfd41",
+              "name": "Successfully updated the exceptions of an evaluation attack group.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "security-policies",
+                    ":policyId",
+                    "eval-groups",
+                    ":attackGroupId",
+                    "condition-exception"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) A unique identifier for a security policy."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "attackGroupId",
+                      "description": "(Required) A unique identifier for each attack group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"exception\": {\n    \"specificHeaderCookieParamXmlOrJsonNames\": [\n      {\n        \"names\": [\n          \"*\"\n        ],\n        \"selector\": \"REQUEST_HEADERS_NAMES\",\n        \"wildcard\": true\n      },\n      {\n        \"names\": [\n          \"header2\",\n          \"header1\"\n        ],\n        \"selector\": \"REQUEST_HEADERS\",\n        \"wildcard\": false\n      },\n      {\n        \"names\": [\n          \"connect.sid\"\n        ],\n        \"selector\": \"REQUEST_COOKIES_NAMES\",\n        \"wildcard\": false\n      },\n      {\n        \"names\": [\n          \"cookie1\",\n          \"cookie2\"\n        ],\n        \"selector\": \"REQUEST_COOKIES\",\n        \"wildcard\": true\n      },\n      {\n        \"names\": [\n          \"test*\"\n        ],\n        \"selector\": \"ARGS_NAMES\",\n        \"wildcard\": true\n      },\n      {\n        \"names\": [\n          \"param-name\"\n        ],\n        \"selector\": \"ARGS\",\n        \"wildcard\": true\n      },\n      {\n        \"names\": [\n          \"test*\"\n        ],\n        \"selector\": \"JSON_NAMES\",\n        \"wildcard\": true\n      },\n      {\n        \"names\": [\n          \"json1\"\n        ],\n        \"selector\": \"JSON_PAIRS\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQUEST_PROTOCOL\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQUEST_METHOD\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQUEST_URI\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"QUERY_STRING\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQUEST_FILENAME\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQUEST_PATH_SEGMENT\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQUEST_BODY\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQBODY_PROCESSOR_ERROR\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"FILES_NAMES\",\n        \"wildcard\": true\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"exception\": {\n    \"specificHeaderCookieParamXmlOrJsonNames\": [\n      {\n        \"names\": [\n          \"*\"\n        ],\n        \"selector\": \"REQUEST_HEADERS_NAMES\",\n        \"wildcard\": true\n      },\n      {\n        \"names\": [\n          \"header2\",\n          \"header1\"\n        ],\n        \"selector\": \"REQUEST_HEADERS\",\n        \"wildcard\": false\n      },\n      {\n        \"names\": [\n          \"connect.sid\"\n        ],\n        \"selector\": \"REQUEST_COOKIES_NAMES\",\n        \"wildcard\": false\n      },\n      {\n        \"names\": [\n          \"cookie1\",\n          \"cookie2\"\n        ],\n        \"selector\": \"REQUEST_COOKIES\",\n        \"wildcard\": true\n      },\n      {\n        \"names\": [\n          \"test*\"\n        ],\n        \"selector\": \"ARGS_NAMES\",\n        \"wildcard\": true\n      },\n      {\n        \"names\": [\n          \"param-name\"\n        ],\n        \"selector\": \"ARGS\",\n        \"wildcard\": true\n      },\n      {\n        \"names\": [\n          \"test*\"\n        ],\n        \"selector\": \"JSON_NAMES\",\n        \"wildcard\": true\n      },\n      {\n        \"names\": [\n          \"json1\"\n        ],\n        \"selector\": \"JSON_PAIRS\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQUEST_PROTOCOL\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQUEST_METHOD\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQUEST_URI\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"QUERY_STRING\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQUEST_FILENAME\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQUEST_PATH_SEGMENT\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQUEST_BODY\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQBODY_PROCESSOR_ERROR\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"FILES_NAMES\",\n        \"wildcard\": true\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a6bc3be2-046a-408b-9ea7-b96791ba78bc",
+              "name": "[Invalid](https://techdocs.akamai.com/application-security/reference/400). Client error, such as invalid or malformed input.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "security-policies",
+                    ":policyId",
+                    "eval-groups",
+                    ":attackGroupId",
+                    "condition-exception"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) A unique identifier for a security policy."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "attackGroupId",
+                      "description": "(Required) A unique identifier for each attack group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"exception\": {\n    \"specificHeaderCookieParamXmlOrJsonNames\": [\n      {\n        \"names\": [\n          \"*\"\n        ],\n        \"selector\": \"REQUEST_HEADERS_NAMES\",\n        \"wildcard\": true\n      },\n      {\n        \"names\": [\n          \"header2\",\n          \"header1\"\n        ],\n        \"selector\": \"REQUEST_HEADERS\",\n        \"wildcard\": false\n      },\n      {\n        \"names\": [\n          \"connect.sid\"\n        ],\n        \"selector\": \"REQUEST_COOKIES_NAMES\",\n        \"wildcard\": false\n      },\n      {\n        \"names\": [\n          \"cookie1\",\n          \"cookie2\"\n        ],\n        \"selector\": \"REQUEST_COOKIES\",\n        \"wildcard\": true\n      },\n      {\n        \"names\": [\n          \"test*\"\n        ],\n        \"selector\": \"ARGS_NAMES\",\n        \"wildcard\": true\n      },\n      {\n        \"names\": [\n          \"param-name\"\n        ],\n        \"selector\": \"ARGS\",\n        \"wildcard\": true\n      },\n      {\n        \"names\": [\n          \"test*\"\n        ],\n        \"selector\": \"JSON_NAMES\",\n        \"wildcard\": true\n      },\n      {\n        \"names\": [\n          \"json1\"\n        ],\n        \"selector\": \"JSON_PAIRS\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQUEST_PROTOCOL\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQUEST_METHOD\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQUEST_URI\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"QUERY_STRING\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQUEST_FILENAME\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQUEST_PATH_SEGMENT\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQUEST_BODY\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQBODY_PROCESSOR_ERROR\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"FILES_NAMES\",\n        \"wildcard\": true\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"The request could not be understood by the server due to malformed syntax.\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 400,\n  \"title\": \"Bad Request\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec/error-types/BAD-REQUEST\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f2ec0f84-fd76-4e6c-bb55-c223224bed05",
+              "name": "[Forbidden](https://techdocs.akamai.com/application-security/reference/403). You don't have permission to write to this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "security-policies",
+                    ":policyId",
+                    "eval-groups",
+                    ":attackGroupId",
+                    "condition-exception"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) A unique identifier for a security policy."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "attackGroupId",
+                      "description": "(Required) A unique identifier for each attack group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"exception\": {\n    \"specificHeaderCookieParamXmlOrJsonNames\": [\n      {\n        \"names\": [\n          \"*\"\n        ],\n        \"selector\": \"REQUEST_HEADERS_NAMES\",\n        \"wildcard\": true\n      },\n      {\n        \"names\": [\n          \"header2\",\n          \"header1\"\n        ],\n        \"selector\": \"REQUEST_HEADERS\",\n        \"wildcard\": false\n      },\n      {\n        \"names\": [\n          \"connect.sid\"\n        ],\n        \"selector\": \"REQUEST_COOKIES_NAMES\",\n        \"wildcard\": false\n      },\n      {\n        \"names\": [\n          \"cookie1\",\n          \"cookie2\"\n        ],\n        \"selector\": \"REQUEST_COOKIES\",\n        \"wildcard\": true\n      },\n      {\n        \"names\": [\n          \"test*\"\n        ],\n        \"selector\": \"ARGS_NAMES\",\n        \"wildcard\": true\n      },\n      {\n        \"names\": [\n          \"param-name\"\n        ],\n        \"selector\": \"ARGS\",\n        \"wildcard\": true\n      },\n      {\n        \"names\": [\n          \"test*\"\n        ],\n        \"selector\": \"JSON_NAMES\",\n        \"wildcard\": true\n      },\n      {\n        \"names\": [\n          \"json1\"\n        ],\n        \"selector\": \"JSON_PAIRS\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQUEST_PROTOCOL\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQUEST_METHOD\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQUEST_URI\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"QUERY_STRING\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQUEST_FILENAME\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQUEST_PATH_SEGMENT\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQUEST_BODY\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQBODY_PROCESSOR_ERROR\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"FILES_NAMES\",\n        \"wildcard\": true\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"You do not have the necessary access to perform this operation or the requested resource cannot be modified\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 403,\n  \"title\": \"Forbidden\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec-resource/error-types/ACCESS-DENIED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5a00f794-34ff-4e77-a652-2a89f2142949",
+              "name": "[Not found](https://techdocs.akamai.com/application-security/reference/404). The named security policy doesn't exist, doesn't carry application layer controls, or no rule with this ID is available for use in this policy.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "security-policies",
+                    ":policyId",
+                    "eval-groups",
+                    ":attackGroupId",
+                    "condition-exception"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) A unique identifier for a security policy."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "attackGroupId",
+                      "description": "(Required) A unique identifier for each attack group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"exception\": {\n    \"specificHeaderCookieParamXmlOrJsonNames\": [\n      {\n        \"names\": [\n          \"*\"\n        ],\n        \"selector\": \"REQUEST_HEADERS_NAMES\",\n        \"wildcard\": true\n      },\n      {\n        \"names\": [\n          \"header2\",\n          \"header1\"\n        ],\n        \"selector\": \"REQUEST_HEADERS\",\n        \"wildcard\": false\n      },\n      {\n        \"names\": [\n          \"connect.sid\"\n        ],\n        \"selector\": \"REQUEST_COOKIES_NAMES\",\n        \"wildcard\": false\n      },\n      {\n        \"names\": [\n          \"cookie1\",\n          \"cookie2\"\n        ],\n        \"selector\": \"REQUEST_COOKIES\",\n        \"wildcard\": true\n      },\n      {\n        \"names\": [\n          \"test*\"\n        ],\n        \"selector\": \"ARGS_NAMES\",\n        \"wildcard\": true\n      },\n      {\n        \"names\": [\n          \"param-name\"\n        ],\n        \"selector\": \"ARGS\",\n        \"wildcard\": true\n      },\n      {\n        \"names\": [\n          \"test*\"\n        ],\n        \"selector\": \"JSON_NAMES\",\n        \"wildcard\": true\n      },\n      {\n        \"names\": [\n          \"json1\"\n        ],\n        \"selector\": \"JSON_PAIRS\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQUEST_PROTOCOL\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQUEST_METHOD\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQUEST_URI\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"QUERY_STRING\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQUEST_FILENAME\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQUEST_PATH_SEGMENT\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQUEST_BODY\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQBODY_PROCESSOR_ERROR\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"FILES_NAMES\",\n        \"wildcard\": true\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"The requested resource is not found\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 404,\n  \"title\": \"Not Found\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec/error-types/NOT-FOUND\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2df37d5b-19ab-4207-bfa2-c53b18a5dc97",
+              "name": "[Internal server error](https://techdocs.akamai.com/application-security/reference/500). Something went wrong on our side. Try again in a few minutes, and contact support if the error persists.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "security-policies",
+                    ":policyId",
+                    "eval-groups",
+                    ":attackGroupId",
+                    "condition-exception"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) A unique identifier for a security policy."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "attackGroupId",
+                      "description": "(Required) A unique identifier for each attack group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"exception\": {\n    \"specificHeaderCookieParamXmlOrJsonNames\": [\n      {\n        \"names\": [\n          \"*\"\n        ],\n        \"selector\": \"REQUEST_HEADERS_NAMES\",\n        \"wildcard\": true\n      },\n      {\n        \"names\": [\n          \"header2\",\n          \"header1\"\n        ],\n        \"selector\": \"REQUEST_HEADERS\",\n        \"wildcard\": false\n      },\n      {\n        \"names\": [\n          \"connect.sid\"\n        ],\n        \"selector\": \"REQUEST_COOKIES_NAMES\",\n        \"wildcard\": false\n      },\n      {\n        \"names\": [\n          \"cookie1\",\n          \"cookie2\"\n        ],\n        \"selector\": \"REQUEST_COOKIES\",\n        \"wildcard\": true\n      },\n      {\n        \"names\": [\n          \"test*\"\n        ],\n        \"selector\": \"ARGS_NAMES\",\n        \"wildcard\": true\n      },\n      {\n        \"names\": [\n          \"param-name\"\n        ],\n        \"selector\": \"ARGS\",\n        \"wildcard\": true\n      },\n      {\n        \"names\": [\n          \"test*\"\n        ],\n        \"selector\": \"JSON_NAMES\",\n        \"wildcard\": true\n      },\n      {\n        \"names\": [\n          \"json1\"\n        ],\n        \"selector\": \"JSON_PAIRS\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQUEST_PROTOCOL\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQUEST_METHOD\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQUEST_URI\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"QUERY_STRING\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQUEST_FILENAME\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQUEST_PATH_SEGMENT\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQUEST_BODY\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"REQBODY_PROCESSOR_ERROR\",\n        \"wildcard\": true\n      },\n      {\n        \"selector\": \"FILES_NAMES\",\n        \"wildcard\": true\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"Internal Server Error\",\n  \"instance\": \"12ab3c45-789d-01ef-2gh3-ijk4l56m78no\",\n  \"status\": 500,\n  \"title\": \"Internal Server Error\",\n  \"type\": \"internal_server_error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fc9419c9-93bc-4984-99f0-de2eadbabbe6",
+          "name": "Akamai API Security Get the Conditions and Exceptions for an Evaluation Rule",
+          "request": {
+            "name": "Akamai API Security Get the Conditions and Exceptions for an Evaluation Rule",
+            "description": {
+              "content": "List the conditions and exceptions for a rule you want to evaluate. This operation returns the same object type as other condition and exception operations. Keep in mind that the response for this operation applies to the rules you're evaluating even though the concept of conditions and exceptions is the same for all condition exception endpoints. _Products:_ Kona Site Defender, App & API Protector with the Advanced Security module.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "configs",
+                ":configId",
+                "versions",
+                ":versionNumber",
+                "security-policies",
+                ":policyId",
+                "eval-rules",
+                ":ruleId",
+                "condition-exception"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "accountSwitchKey",
+                  "value": "<string>",
+                  "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "ruleId",
+                  "description": "(Required) A unique identifier for rule."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyId",
+                  "description": "(Required) A unique identifier for a security policy."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "versionNumber",
+                  "description": "(Required) A unique identifier for each version of a configuration."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "configId",
+                  "description": "(Required) A unique identifier for each configuration."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bd9490e9-3b0f-497d-98bf-787299cd79d9",
+              "name": "Successfully retrieved the rule conditions and exceptions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "security-policies",
+                    ":policyId",
+                    "eval-rules",
+                    ":ruleId",
+                    "condition-exception"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ruleId",
+                      "description": "(Required) A unique identifier for rule."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) A unique identifier for a security policy."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"advancedExceptions\": {\n    \"conditionOperator\": \"AND\",\n    \"conditions\": [\n      {\n        \"extensions\": [\n          \"test\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"extensionMatch\"\n      },\n      {\n        \"filenames\": [\n          \"test2\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"filenameMatch\"\n      },\n      {\n        \"hosts\": [\n          \"www.test.com\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"hostMatch\"\n      },\n      {\n        \"ips\": [\n          \"192.0.2.34\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"ipMatch\",\n        \"useHeaders\": true\n      },\n      {\n        \"caseSensitive\": true,\n        \"name\": \"test3\",\n        \"nameCase\": false,\n        \"positiveMatch\": true,\n        \"type\": \"uriQueryMatch\",\n        \"value\": \"test4\",\n        \"wildcard\": true\n      },\n      {\n        \"header\": \"referer\",\n        \"positiveMatch\": true,\n        \"type\": \"requestHeaderMatch\",\n        \"value\": \"test5\",\n        \"valueCase\": false,\n        \"valueWildcard\": false\n      },\n      {\n        \"methods\": [\n          \"GET\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"requestMethodMatch\"\n      },\n      {\n        \"paths\": [\n          \"/test6\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"pathMatch\"\n      },\n      {\n        \"clientLists\": [\n          \"77547_AGEOLIST\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"clientListMatch\",\n        \"useHeaders\": false\n      }\n    ],\n    \"headerCookieOrParamValues\": [\n      {\n        \"valueWildcard\": true,\n        \"values\": [\n          \"test\"\n        ]\n      }\n    ],\n    \"specificHeaderCookieOrParamNameValue\": [\n      {\n        \"namesValues\": [\n          {\n            \"names\": [\n              \"Test\"\n            ],\n            \"values\": [\n              \"test\"\n            ]\n          }\n        ],\n        \"selector\": \"REQUEST_HEADERS\",\n        \"valueWildcard\": true,\n        \"wildcard\": true\n      }\n    ],\n    \"specificHeaderCookieOrParamNames\": [\n      {\n        \"names\": [\n          \"test\"\n        ],\n        \"selector\": \"REQUEST_HEADERS\"\n      },\n      {\n        \"names\": [\n          \"test\"\n        ],\n        \"selector\": \"REQUEST_COOKIES\"\n      },\n      {\n        \"names\": [\n          \"test\"\n        ],\n        \"selector\": \"ARGS\"\n      },\n      {\n        \"names\": [\n          \"test\"\n        ],\n        \"selector\": \"JSON_PAIRS\"\n      },\n      {\n        \"names\": [\n          \"test\"\n        ],\n        \"selector\": \"XML_PAIRS\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "50e7c012-e161-487a-91fc-52d5f9144d9b",
+              "name": "[Invalid](https://techdocs.akamai.com/application-security/reference/400). Client error, such as invalid or malformed input.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "security-policies",
+                    ":policyId",
+                    "eval-rules",
+                    ":ruleId",
+                    "condition-exception"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ruleId",
+                      "description": "(Required) A unique identifier for rule."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) A unique identifier for a security policy."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"The request could not be understood by the server due to malformed syntax.\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 400,\n  \"title\": \"Bad Request\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec/error-types/BAD-REQUEST\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b93d4db3-f29d-4b54-aed1-6423d2eca8cb",
+              "name": "[Not found](https://techdocs.akamai.com/application-security/reference/404). The named security policy doesn't exist, doesn't carry application layer controls, or no rule with this ID is available for use in this policy.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "security-policies",
+                    ":policyId",
+                    "eval-rules",
+                    ":ruleId",
+                    "condition-exception"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ruleId",
+                      "description": "(Required) A unique identifier for rule."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) A unique identifier for a security policy."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"The requested resource is not found\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 404,\n  \"title\": \"Not Found\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec/error-types/NOT-FOUND\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "349b2eb2-d0e6-400f-8775-689ad8b8a5f7",
+              "name": "[Internal server error](https://techdocs.akamai.com/application-security/reference/500). Something went wrong on our side. Try again in a few minutes, and contact support if the error persists.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "security-policies",
+                    ":policyId",
+                    "eval-rules",
+                    ":ruleId",
+                    "condition-exception"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ruleId",
+                      "description": "(Required) A unique identifier for rule."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) A unique identifier for a security policy."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"Internal Server Error\",\n  \"instance\": \"12ab3c45-789d-01ef-2gh3-ijk4l56m78no\",\n  \"status\": 500,\n  \"title\": \"Internal Server Error\",\n  \"type\": \"internal_server_error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "63b828dd-6db9-4a8f-bf68-9dc49d6a4c3d",
+          "name": "Akamai API Security Modify the Conditions and Exceptions for an Evaluation Rule",
+          "request": {
+            "name": "Akamai API Security Modify the Conditions and Exceptions for an Evaluation Rule",
+            "description": {
+              "content": "Update an evaluation rule's conditions and exceptions. When the conditions are met, the rule's actions are ignored and not applied to that specific traffic. The rule action you update with this operation is for a rule you are evaluating and not a rule currently in use for your site or app. _Products:_ Kona Site Defender, App & API Protector with the Advanced Security module.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "configs",
+                ":configId",
+                "versions",
+                ":versionNumber",
+                "security-policies",
+                ":policyId",
+                "eval-rules",
+                ":ruleId",
+                "condition-exception"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "accountSwitchKey",
+                  "value": "<string>",
+                  "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "ruleId",
+                  "description": "(Required) A unique identifier for rule."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyId",
+                  "description": "(Required) A unique identifier for a security policy."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "versionNumber",
+                  "description": "(Required) A unique identifier for each version of a configuration."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "configId",
+                  "description": "(Required) A unique identifier for each configuration."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"conditions\": [\n    {\n      \"type\": \"<string>\",\n      \"positiveMatch\": \"<boolean>\",\n      \"caseSensitive\": \"<boolean>\",\n      \"clientLists\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"extensions\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"filenames\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"header\": \"<string>\",\n      \"hosts\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"ips\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"methods\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"name\": \"<string>\",\n      \"nameCase\": \"<boolean>\",\n      \"paths\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"useHeaders\": \"<boolean>\",\n      \"value\": \"<string>\",\n      \"valueCase\": \"<boolean>\",\n      \"valueWildcard\": \"<boolean>\",\n      \"wildcard\": \"<boolean>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"positiveMatch\": \"<boolean>\",\n      \"caseSensitive\": \"<boolean>\",\n      \"clientLists\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"extensions\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"filenames\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"header\": \"<string>\",\n      \"hosts\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"ips\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"methods\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"name\": \"<string>\",\n      \"nameCase\": \"<boolean>\",\n      \"paths\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"useHeaders\": \"<boolean>\",\n      \"value\": \"<string>\",\n      \"valueCase\": \"<boolean>\",\n      \"valueWildcard\": \"<boolean>\",\n      \"wildcard\": \"<boolean>\"\n    }\n  ],\n  \"exception\": {\n    \"anyHeaderCookieOrParam\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"headerCookieOrParamValues\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"specificHeaderCookieOrParamNameValue\": {\n      \"name\": \"<string>\",\n      \"selector\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    \"specificHeaderCookieOrParamNames\": {\n      \"names\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"selector\": \"<string>\"\n    },\n    \"specificHeaderCookieOrParamPrefix\": {\n      \"prefix\": \"<string>\",\n      \"selector\": \"<string>\"\n    },\n    \"specificHeaderCookieParamXmlOrJsonNames\": [\n      {\n        \"selector\": \"<string>\",\n        \"names\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"wildcard\": false\n      },\n      {\n        \"selector\": \"<string>\",\n        \"names\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"wildcard\": false\n      }\n    ]\n  },\n  \"advancedExceptions\": {\n    \"conditionOperator\": \"<string>\",\n    \"conditions\": [\n      {\n        \"type\": \"<string>\",\n        \"positiveMatch\": \"<boolean>\",\n        \"caseSensitive\": \"<boolean>\",\n        \"clientLists\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"extensions\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"filenames\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"header\": \"<string>\",\n        \"hosts\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"ips\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"methods\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"name\": \"<string>\",\n        \"nameCase\": \"<boolean>\",\n        \"paths\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"useHeaders\": \"<boolean>\",\n        \"value\": \"<string>\",\n        \"valueCase\": \"<boolean>\",\n        \"valueWildcard\": \"<boolean>\",\n        \"wildcard\": \"<boolean>\"\n      },\n      {\n        \"type\": \"<string>\",\n        \"positiveMatch\": \"<boolean>\",\n        \"caseSensitive\": \"<boolean>\",\n        \"clientLists\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"extensions\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"filenames\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"header\": \"<string>\",\n        \"hosts\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"ips\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"methods\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"name\": \"<string>\",\n        \"nameCase\": \"<boolean>\",\n        \"paths\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"useHeaders\": \"<boolean>\",\n        \"value\": \"<string>\",\n        \"valueCase\": \"<boolean>\",\n        \"valueWildcard\": \"<boolean>\",\n        \"wildcard\": \"<boolean>\"\n      }\n    ],\n    \"headerCookieOrParamValues\": [\n      {\n        \"values\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"criteria\": [\n          {\n            \"paths\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"names\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"hostnames\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"paths\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"names\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"hostnames\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"valueWildcard\": false\n      },\n      {\n        \"values\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"criteria\": [\n          {\n            \"paths\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"names\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"hostnames\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"paths\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"names\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"hostnames\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"valueWildcard\": false\n      }\n    ],\n    \"specificHeaderCookieOrParamNameValue\": [\n      {\n        \"namesValues\": [\n          {\n            \"names\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"names\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"selector\": \"<string>\",\n        \"criteria\": [\n          {\n            \"paths\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"names\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"hostnames\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"paths\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"names\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"hostnames\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"wildcard\": false\n      },\n      {\n        \"namesValues\": [\n          {\n            \"names\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"names\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"selector\": \"<string>\",\n        \"criteria\": [\n          {\n            \"paths\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"names\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"hostnames\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"paths\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"names\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"hostnames\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"wildcard\": false\n      }\n    ],\n    \"specificHeaderCookieParamXmlOrJsonNames\": [\n      {\n        \"selector\": \"<string>\",\n        \"criteria\": [\n          {\n            \"paths\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"names\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"hostnames\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"paths\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"names\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"hostnames\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"names\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"wildcard\": false\n      },\n      {\n        \"selector\": \"<string>\",\n        \"criteria\": [\n          {\n            \"paths\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"names\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"hostnames\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"paths\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"names\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"hostnames\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"names\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"wildcard\": false\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9c5cc076-72f8-40d5-ba17-33aa23f58275",
+              "name": "Successfully updated the conditions and exceptions of the rule.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "security-policies",
+                    ":policyId",
+                    "eval-rules",
+                    ":ruleId",
+                    "condition-exception"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ruleId",
+                      "description": "(Required) A unique identifier for rule."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) A unique identifier for a security policy."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"advancedExceptions\": {\n    \"conditionOperator\": \"AND\",\n    \"conditions\": [\n      {\n        \"extensions\": [\n          \"test\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"extensionMatch\"\n      },\n      {\n        \"filenames\": [\n          \"test2\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"filenameMatch\"\n      },\n      {\n        \"hosts\": [\n          \"www.test.com\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"hostMatch\"\n      },\n      {\n        \"ips\": [\n          \"192.0.2.34\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"ipMatch\",\n        \"useHeaders\": true\n      },\n      {\n        \"caseSensitive\": true,\n        \"name\": \"test3\",\n        \"nameCase\": false,\n        \"positiveMatch\": true,\n        \"type\": \"uriQueryMatch\",\n        \"value\": \"test4\",\n        \"wildcard\": true\n      },\n      {\n        \"header\": \"referer\",\n        \"positiveMatch\": true,\n        \"type\": \"requestHeaderMatch\",\n        \"value\": \"test5\",\n        \"valueCase\": false,\n        \"valueWildcard\": false\n      },\n      {\n        \"methods\": [\n          \"GET\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"requestMethodMatch\"\n      },\n      {\n        \"paths\": [\n          \"/test6\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"pathMatch\"\n      },\n      {\n        \"clientLists\": [\n          \"77547_AGEOLIST\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"clientListMatch\",\n        \"useHeaders\": false\n      }\n    ],\n    \"headerCookieOrParamValues\": [\n      {\n        \"valueWildcard\": true,\n        \"values\": [\n          \"test\"\n        ]\n      }\n    ],\n    \"specificHeaderCookieOrParamNameValue\": [\n      {\n        \"namesValues\": [\n          {\n            \"names\": [\n              \"Test\"\n            ],\n            \"values\": [\n              \"test\"\n            ]\n          }\n        ],\n        \"selector\": \"REQUEST_HEADERS\",\n        \"valueWildcard\": true,\n        \"wildcard\": true\n      }\n    ],\n    \"specificHeaderCookieOrParamNames\": [\n      {\n        \"names\": [\n          \"test\"\n        ],\n        \"selector\": \"REQUEST_HEADERS\"\n      },\n      {\n        \"names\": [\n          \"test\"\n        ],\n        \"selector\": \"REQUEST_COOKIES\"\n      },\n      {\n        \"names\": [\n          \"test\"\n        ],\n        \"selector\": \"ARGS\"\n      },\n      {\n        \"names\": [\n          \"test\"\n        ],\n        \"selector\": \"JSON_PAIRS\"\n      },\n      {\n        \"names\": [\n          \"test\"\n        ],\n        \"selector\": \"XML_PAIRS\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"advancedExceptions\": {\n    \"conditionOperator\": \"AND\",\n    \"conditions\": [\n      {\n        \"extensions\": [\n          \"test\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"extensionMatch\"\n      },\n      {\n        \"filenames\": [\n          \"test2\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"filenameMatch\"\n      },\n      {\n        \"hosts\": [\n          \"www.test.com\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"hostMatch\"\n      },\n      {\n        \"ips\": [\n          \"192.0.2.34\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"ipMatch\",\n        \"useHeaders\": true\n      },\n      {\n        \"caseSensitive\": true,\n        \"name\": \"test3\",\n        \"nameCase\": false,\n        \"positiveMatch\": true,\n        \"type\": \"uriQueryMatch\",\n        \"value\": \"test4\",\n        \"wildcard\": true\n      },\n      {\n        \"header\": \"referer\",\n        \"positiveMatch\": true,\n        \"type\": \"requestHeaderMatch\",\n        \"value\": \"test5\",\n        \"valueCase\": false,\n        \"valueWildcard\": false\n      },\n      {\n        \"methods\": [\n          \"GET\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"requestMethodMatch\"\n      },\n      {\n        \"paths\": [\n          \"/test6\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"pathMatch\"\n      },\n      {\n        \"clientLists\": [\n          \"77547_AGEOLIST\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"clientListMatch\",\n        \"useHeaders\": false\n      }\n    ],\n    \"headerCookieOrParamValues\": [\n      {\n        \"valueWildcard\": true,\n        \"values\": [\n          \"test\"\n        ]\n      }\n    ],\n    \"specificHeaderCookieOrParamNameValue\": [\n      {\n        \"namesValues\": [\n          {\n            \"names\": [\n              \"Test\"\n            ],\n            \"values\": [\n              \"test\"\n            ]\n          }\n        ],\n        \"selector\": \"REQUEST_HEADERS\",\n        \"valueWildcard\": true,\n        \"wildcard\": true\n      }\n    ],\n    \"specificHeaderCookieOrParamNames\": [\n      {\n        \"names\": [\n          \"test\"\n        ],\n        \"selector\": \"REQUEST_HEADERS\"\n      },\n      {\n        \"names\": [\n          \"test\"\n        ],\n        \"selector\": \"REQUEST_COOKIES\"\n      },\n      {\n        \"names\": [\n          \"test\"\n        ],\n        \"selector\": \"ARGS\"\n      },\n      {\n        \"names\": [\n          \"test\"\n        ],\n        \"selector\": \"JSON_PAIRS\"\n      },\n      {\n        \"names\": [\n          \"test\"\n        ],\n        \"selector\": \"XML_PAIRS\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2e169854-cf8b-4013-a01b-abbc8f6890f0",
+              "name": "[Invalid](https://techdocs.akamai.com/application-security/reference/400). Client error, such as invalid or malformed input.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "security-policies",
+                    ":policyId",
+                    "eval-rules",
+                    ":ruleId",
+                    "condition-exception"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ruleId",
+                      "description": "(Required) A unique identifier for rule."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) A unique identifier for a security policy."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"advancedExceptions\": {\n    \"conditionOperator\": \"AND\",\n    \"conditions\": [\n      {\n        \"extensions\": [\n          \"test\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"extensionMatch\"\n      },\n      {\n        \"filenames\": [\n          \"test2\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"filenameMatch\"\n      },\n      {\n        \"hosts\": [\n          \"www.test.com\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"hostMatch\"\n      },\n      {\n        \"ips\": [\n          \"192.0.2.34\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"ipMatch\",\n        \"useHeaders\": true\n      },\n      {\n        \"caseSensitive\": true,\n        \"name\": \"test3\",\n        \"nameCase\": false,\n        \"positiveMatch\": true,\n        \"type\": \"uriQueryMatch\",\n        \"value\": \"test4\",\n        \"wildcard\": true\n      },\n      {\n        \"header\": \"referer\",\n        \"positiveMatch\": true,\n        \"type\": \"requestHeaderMatch\",\n        \"value\": \"test5\",\n        \"valueCase\": false,\n        \"valueWildcard\": false\n      },\n      {\n        \"methods\": [\n          \"GET\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"requestMethodMatch\"\n      },\n      {\n        \"paths\": [\n          \"/test6\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"pathMatch\"\n      },\n      {\n        \"clientLists\": [\n          \"77547_AGEOLIST\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"clientListMatch\",\n        \"useHeaders\": false\n      }\n    ],\n    \"headerCookieOrParamValues\": [\n      {\n        \"valueWildcard\": true,\n        \"values\": [\n          \"test\"\n        ]\n      }\n    ],\n    \"specificHeaderCookieOrParamNameValue\": [\n      {\n        \"namesValues\": [\n          {\n            \"names\": [\n              \"Test\"\n            ],\n            \"values\": [\n              \"test\"\n            ]\n          }\n        ],\n        \"selector\": \"REQUEST_HEADERS\",\n        \"valueWildcard\": true,\n        \"wildcard\": true\n      }\n    ],\n    \"specificHeaderCookieOrParamNames\": [\n      {\n        \"names\": [\n          \"test\"\n        ],\n        \"selector\": \"REQUEST_HEADERS\"\n      },\n      {\n        \"names\": [\n          \"test\"\n        ],\n        \"selector\": \"REQUEST_COOKIES\"\n      },\n      {\n        \"names\": [\n          \"test\"\n        ],\n        \"selector\": \"ARGS\"\n      },\n      {\n        \"names\": [\n          \"test\"\n        ],\n        \"selector\": \"JSON_PAIRS\"\n      },\n      {\n        \"names\": [\n          \"test\"\n        ],\n        \"selector\": \"XML_PAIRS\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"The request could not be understood by the server due to malformed syntax.\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 400,\n  \"title\": \"Bad Request\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec/error-types/BAD-REQUEST\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "03e61b63-4749-4553-a082-39fdad90dae9",
+              "name": "[Forbidden](https://techdocs.akamai.com/application-security/reference/403). You don't have permission to write to this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "security-policies",
+                    ":policyId",
+                    "eval-rules",
+                    ":ruleId",
+                    "condition-exception"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ruleId",
+                      "description": "(Required) A unique identifier for rule."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) A unique identifier for a security policy."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"advancedExceptions\": {\n    \"conditionOperator\": \"AND\",\n    \"conditions\": [\n      {\n        \"extensions\": [\n          \"test\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"extensionMatch\"\n      },\n      {\n        \"filenames\": [\n          \"test2\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"filenameMatch\"\n      },\n      {\n        \"hosts\": [\n          \"www.test.com\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"hostMatch\"\n      },\n      {\n        \"ips\": [\n          \"192.0.2.34\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"ipMatch\",\n        \"useHeaders\": true\n      },\n      {\n        \"caseSensitive\": true,\n        \"name\": \"test3\",\n        \"nameCase\": false,\n        \"positiveMatch\": true,\n        \"type\": \"uriQueryMatch\",\n        \"value\": \"test4\",\n        \"wildcard\": true\n      },\n      {\n        \"header\": \"referer\",\n        \"positiveMatch\": true,\n        \"type\": \"requestHeaderMatch\",\n        \"value\": \"test5\",\n        \"valueCase\": false,\n        \"valueWildcard\": false\n      },\n      {\n        \"methods\": [\n          \"GET\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"requestMethodMatch\"\n      },\n      {\n        \"paths\": [\n          \"/test6\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"pathMatch\"\n      },\n      {\n        \"clientLists\": [\n          \"77547_AGEOLIST\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"clientListMatch\",\n        \"useHeaders\": false\n      }\n    ],\n    \"headerCookieOrParamValues\": [\n      {\n        \"valueWildcard\": true,\n        \"values\": [\n          \"test\"\n        ]\n      }\n    ],\n    \"specificHeaderCookieOrParamNameValue\": [\n      {\n        \"namesValues\": [\n          {\n            \"names\": [\n              \"Test\"\n            ],\n            \"values\": [\n              \"test\"\n            ]\n          }\n        ],\n        \"selector\": \"REQUEST_HEADERS\",\n        \"valueWildcard\": true,\n        \"wildcard\": true\n      }\n    ],\n    \"specificHeaderCookieOrParamNames\": [\n      {\n        \"names\": [\n          \"test\"\n        ],\n        \"selector\": \"REQUEST_HEADERS\"\n      },\n      {\n        \"names\": [\n          \"test\"\n        ],\n        \"selector\": \"REQUEST_COOKIES\"\n      },\n      {\n        \"names\": [\n          \"test\"\n        ],\n        \"selector\": \"ARGS\"\n      },\n      {\n        \"names\": [\n          \"test\"\n        ],\n        \"selector\": \"JSON_PAIRS\"\n      },\n      {\n        \"names\": [\n          \"test\"\n        ],\n        \"selector\": \"XML_PAIRS\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"You do not have the necessary access to perform this operation or the requested resource cannot be modified\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 403,\n  \"title\": \"Forbidden\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec-resource/error-types/ACCESS-DENIED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "10ce414f-b89e-4975-b6e6-42f35e1fe549",
+              "name": "[Not found](https://techdocs.akamai.com/application-security/reference/404). The named security policy doesn't exist, doesn't carry application layer controls, or no rule with this ID is available for use in this policy.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "security-policies",
+                    ":policyId",
+                    "eval-rules",
+                    ":ruleId",
+                    "condition-exception"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ruleId",
+                      "description": "(Required) A unique identifier for rule."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) A unique identifier for a security policy."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"advancedExceptions\": {\n    \"conditionOperator\": \"AND\",\n    \"conditions\": [\n      {\n        \"extensions\": [\n          \"test\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"extensionMatch\"\n      },\n      {\n        \"filenames\": [\n          \"test2\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"filenameMatch\"\n      },\n      {\n        \"hosts\": [\n          \"www.test.com\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"hostMatch\"\n      },\n      {\n        \"ips\": [\n          \"192.0.2.34\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"ipMatch\",\n        \"useHeaders\": true\n      },\n      {\n        \"caseSensitive\": true,\n        \"name\": \"test3\",\n        \"nameCase\": false,\n        \"positiveMatch\": true,\n        \"type\": \"uriQueryMatch\",\n        \"value\": \"test4\",\n        \"wildcard\": true\n      },\n      {\n        \"header\": \"referer\",\n        \"positiveMatch\": true,\n        \"type\": \"requestHeaderMatch\",\n        \"value\": \"test5\",\n        \"valueCase\": false,\n        \"valueWildcard\": false\n      },\n      {\n        \"methods\": [\n          \"GET\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"requestMethodMatch\"\n      },\n      {\n        \"paths\": [\n          \"/test6\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"pathMatch\"\n      },\n      {\n        \"clientLists\": [\n          \"77547_AGEOLIST\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"clientListMatch\",\n        \"useHeaders\": false\n      }\n    ],\n    \"headerCookieOrParamValues\": [\n      {\n        \"valueWildcard\": true,\n        \"values\": [\n          \"test\"\n        ]\n      }\n    ],\n    \"specificHeaderCookieOrParamNameValue\": [\n      {\n        \"namesValues\": [\n          {\n            \"names\": [\n              \"Test\"\n            ],\n            \"values\": [\n              \"test\"\n            ]\n          }\n        ],\n        \"selector\": \"REQUEST_HEADERS\",\n        \"valueWildcard\": true,\n        \"wildcard\": true\n      }\n    ],\n    \"specificHeaderCookieOrParamNames\": [\n      {\n        \"names\": [\n          \"test\"\n        ],\n        \"selector\": \"REQUEST_HEADERS\"\n      },\n      {\n        \"names\": [\n          \"test\"\n        ],\n        \"selector\": \"REQUEST_COOKIES\"\n      },\n      {\n        \"names\": [\n          \"test\"\n        ],\n        \"selector\": \"ARGS\"\n      },\n      {\n        \"names\": [\n          \"test\"\n        ],\n        \"selector\": \"JSON_PAIRS\"\n      },\n      {\n        \"names\": [\n          \"test\"\n        ],\n        \"selector\": \"XML_PAIRS\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"The requested resource is not found\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 404,\n  \"title\": \"Not Found\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec/error-types/NOT-FOUND\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6383c4a4-33e0-48ff-80eb-e0e35d0c4681",
+              "name": "[Internal server error](https://techdocs.akamai.com/application-security/reference/500). Something went wrong on our side. Try again in a few minutes, and contact support if the error persists.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "security-policies",
+                    ":policyId",
+                    "eval-rules",
+                    ":ruleId",
+                    "condition-exception"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ruleId",
+                      "description": "(Required) A unique identifier for rule."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) A unique identifier for a security policy."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"advancedExceptions\": {\n    \"conditionOperator\": \"AND\",\n    \"conditions\": [\n      {\n        \"extensions\": [\n          \"test\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"extensionMatch\"\n      },\n      {\n        \"filenames\": [\n          \"test2\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"filenameMatch\"\n      },\n      {\n        \"hosts\": [\n          \"www.test.com\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"hostMatch\"\n      },\n      {\n        \"ips\": [\n          \"192.0.2.34\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"ipMatch\",\n        \"useHeaders\": true\n      },\n      {\n        \"caseSensitive\": true,\n        \"name\": \"test3\",\n        \"nameCase\": false,\n        \"positiveMatch\": true,\n        \"type\": \"uriQueryMatch\",\n        \"value\": \"test4\",\n        \"wildcard\": true\n      },\n      {\n        \"header\": \"referer\",\n        \"positiveMatch\": true,\n        \"type\": \"requestHeaderMatch\",\n        \"value\": \"test5\",\n        \"valueCase\": false,\n        \"valueWildcard\": false\n      },\n      {\n        \"methods\": [\n          \"GET\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"requestMethodMatch\"\n      },\n      {\n        \"paths\": [\n          \"/test6\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"pathMatch\"\n      },\n      {\n        \"clientLists\": [\n          \"77547_AGEOLIST\"\n        ],\n        \"positiveMatch\": true,\n        \"type\": \"clientListMatch\",\n        \"useHeaders\": false\n      }\n    ],\n    \"headerCookieOrParamValues\": [\n      {\n        \"valueWildcard\": true,\n        \"values\": [\n          \"test\"\n        ]\n      }\n    ],\n    \"specificHeaderCookieOrParamNameValue\": [\n      {\n        \"namesValues\": [\n          {\n            \"names\": [\n              \"Test\"\n            ],\n            \"values\": [\n              \"test\"\n            ]\n          }\n        ],\n        \"selector\": \"REQUEST_HEADERS\",\n        \"valueWildcard\": true,\n        \"wildcard\": true\n      }\n    ],\n    \"specificHeaderCookieOrParamNames\": [\n      {\n        \"names\": [\n          \"test\"\n        ],\n        \"selector\": \"REQUEST_HEADERS\"\n      },\n      {\n        \"names\": [\n          \"test\"\n        ],\n        \"selector\": \"REQUEST_COOKIES\"\n      },\n      {\n        \"names\": [\n          \"test\"\n        ],\n        \"selector\": \"ARGS\"\n      },\n      {\n        \"names\": [\n          \"test\"\n        ],\n        \"selector\": \"JSON_PAIRS\"\n      },\n      {\n        \"names\": [\n          \"test\"\n        ],\n        \"selector\": \"XML_PAIRS\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"Internal Server Error\",\n  \"instance\": \"12ab3c45-789d-01ef-2gh3-ijk4l56m78no\",\n  \"status\": 500,\n  \"title\": \"Internal Server Error\",\n  \"type\": \"internal_server_error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://{{hostname}}/appsec/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "cc67a43f-49e6-4771-883a-455472c7f69d",
+    "name": "Akamai: Application Security Activation history Security policy: Conditions and exceptions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Manage your configurations for Kona Site Defender,\nWeb Application Protector, and Client Reputation.\n",
+      "type": "text/plain"
+    }
+  }
+}

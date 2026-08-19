@@ -1,0 +1,684 @@
+{
+  "item": [
+    {
+      "id": "13319967-d06d-491a-b319-9dcf9097421f",
+      "name": "Shared resources: Custom rules",
+      "description": {
+        "content": "Manage your custom rules for security configurations and policies.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4228faf6-666a-4a77-b5d9-4c122aa42126",
+          "name": "Akamai API Security Create a Custom Rule",
+          "request": {
+            "name": "Akamai API Security Create a Custom Rule",
+            "description": {
+              "content": "Creates a new custom rule. _Products:_ All.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "configs",
+                ":configId",
+                "custom-rules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "accountSwitchKey",
+                  "value": "<string>",
+                  "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "configId",
+                  "description": "(Required) A unique identifier for each configuration."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"operation\": \"<string>\",\n  \"structured\": \"<boolean>\",\n  \"conditions\": [\n    {\n      \"type\": \"<string>\",\n      \"positiveMatch\": \"<boolean>\",\n      \"name\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"nameCase\": \"<boolean>\",\n      \"nameWildcard\": \"<boolean>\",\n      \"useXForwardForHeaders\": \"<boolean>\",\n      \"value\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"valueCase\": \"<boolean>\",\n      \"valueExactMatch\": \"<boolean>\",\n      \"valueIgnoreSegment\": \"<boolean>\",\n      \"valueNormalize\": \"<boolean>\",\n      \"valueRecursive\": \"<boolean>\",\n      \"valueWildcard\": \"<boolean>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"positiveMatch\": \"<boolean>\",\n      \"name\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"nameCase\": \"<boolean>\",\n      \"nameWildcard\": \"<boolean>\",\n      \"useXForwardForHeaders\": \"<boolean>\",\n      \"value\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"valueCase\": \"<boolean>\",\n      \"valueExactMatch\": \"<boolean>\",\n      \"valueIgnoreSegment\": \"<boolean>\",\n      \"valueNormalize\": \"<boolean>\",\n      \"valueRecursive\": \"<boolean>\",\n      \"valueWildcard\": \"<boolean>\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"effectiveTimePeriod\": {\n    \"endDate\": \"<string>\",\n    \"startDate\": \"<dateTime>\",\n    \"status\": \"<string>\"\n  },\n  \"id\": \"<integer>\",\n  \"inspectRequest\": \"<boolean>\",\n  \"inspectResponse\": \"<boolean>\",\n  \"loggingOptions\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"metadata\": \"<string>\",\n  \"ruleActivated\": \"<boolean>\",\n  \"samplingRate\": \"<integer>\",\n  \"stagingOnly\": false,\n  \"tag\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"version\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "23135870-3dea-4b32-bca9-092aba74f439",
+              "name": "Responds with the newly created rule.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "custom-rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"conditions\": [\n    {\n      \"positiveMatch\": true,\n      \"type\": \"requestMethodMatch\",\n      \"value\": [\n        \"GET\",\n        \"CONNECT\",\n        \"TRACE\",\n        \"PUT\",\n        \"POST\",\n        \"OPTIONS\",\n        \"DELETE\",\n        \"HEAD\"\n      ]\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"pathMatch\",\n      \"value\": [\n        \"/H\",\n        \"/Li\",\n        \"/He\"\n      ]\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"extensionMatch\",\n      \"value\": [\n        \"Li\",\n        \"He\",\n        \"H\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": true\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"filenameMatch\",\n      \"value\": [\n        \"He\",\n        \"H\",\n        \"Li\"\n      ],\n      \"valueCase\": false,\n      \"valueWildcard\": false\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"requestProtocolVersionMatch\",\n      \"value\": \"HTTP/0.9\"\n    },\n    {\n      \"name\": [\n        \"H\",\n        \"He\"\n      ],\n      \"nameWildcard\": true,\n      \"positiveMatch\": true,\n      \"type\": \"requestHeaderMatch\",\n      \"value\": [\n        \"Li\",\n        \"He\",\n        \"H\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": true\n    },\n    {\n      \"name\": [\n        \"He\"\n      ],\n      \"nameWildcard\": true,\n      \"positiveMatch\": true,\n      \"type\": \"requestHeaderMatch\",\n      \"value\": [\n        \"C\",\n        \"Be\",\n        \"B\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": true\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"headerOrderMatch\",\n      \"value\": \"H:He\"\n    },\n    {\n      \"name\": \"H\",\n      \"nameCase\": true,\n      \"nameWildcard\": true,\n      \"positiveMatch\": true,\n      \"type\": \"cookieMatch\",\n      \"value\": [\n        \"H\",\n        \"He\",\n        \"Li\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": true\n    },\n    {\n      \"name\": \"Be\",\n      \"nameCase\": true,\n      \"nameWildcard\": true,\n      \"positiveMatch\": true,\n      \"type\": \"cookieMatch\",\n      \"value\": [\n        \"O\",\n        \"N\",\n        \"C\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": true\n    },\n    {\n      \"name\": \"C\",\n      \"nameCase\": true,\n      \"nameWildcard\": true,\n      \"positiveMatch\": true,\n      \"type\": \"uriQueryMatch\",\n      \"value\": [\n        \"Carbon\",\n        \"C\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": true\n    },\n    {\n      \"name\": \"N\",\n      \"nameCase\": false,\n      \"nameWildcard\": false,\n      \"positiveMatch\": true,\n      \"type\": \"uriQueryMatch\",\n      \"value\": [\n        \"Nitrogen\",\n        \"N\"\n      ],\n      \"valueCase\": false,\n      \"valueWildcard\": false\n    },\n    {\n      \"name\": \"H\",\n      \"positiveMatch\": true,\n      \"type\": \"argsPostMatch\",\n      \"value\": [\n        \"H\",\n        \"Hydrogen\"\n      ]\n    },\n    {\n      \"name\": \"He\",\n      \"positiveMatch\": true,\n      \"type\": \"argsPostMatch\",\n      \"value\": [\n        \"He\",\n        \"Helium\"\n      ]\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"argsPostNamesMatch\",\n      \"value\": [\n        \"Carbon\",\n        \"Oxygen\",\n        \"Nitrogen\",\n        \"Chlorine\"\n      ]\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"clientCertPresentMatch\"\n    },\n    {\n      \"positiveMatch\": false,\n      \"type\": \"clientCertValidMatch\"\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"clientTlsFingerprintMatch\",\n      \"value\": [\n        \"aebbfa8e53e8661f\"\n      ]\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"hostMatch\",\n      \"value\": [\n        \"example.com\",\n        \"*.Nitrogen.gb\"\n      ]\n    },\n    {\n      \"positiveMatch\": false,\n      \"type\": \"asNumberMatch\",\n      \"useXForwardForHeaders\": true,\n      \"value\": [\n        \"2145697538\"\n      ]\n    },\n    {\n      \"positiveMatch\": false,\n      \"type\": \"geoMatch\",\n      \"useXForwardForHeaders\": true,\n      \"value\": [\n        \"AD\"\n      ]\n    },\n    {\n      \"positiveMatch\": false,\n      \"type\": \"ipAddressMatch\",\n      \"useXForwardForHeaders\": true,\n      \"value\": [\n        \"81.477.377.57\"\n      ]\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"clientListMatch\",\n      \"useXForwardForHeaders\": true,\n      \"value\": [\n        \"86744_AZURETLS\",\n        \"83629_40KHG\"\n      ]\n    }\n  ],\n  \"description\": \"Can I create all conditions?\",\n  \"effectiveTimePeriod\": {\n    \"endDate\": \"2021-11-02T01:00:00.000Z\",\n    \"startDate\": \"2021-08-05T01:00:00.000Z\"\n  },\n  \"loggingOptions\": [\n    {\n      \"id\": \"CLIENT_TLS_FINGERPRINT_MATCH\"\n    }\n  ],\n  \"name\": \"Fat Rule\",\n  \"operation\": \"AND\",\n  \"samplingRate\": 10,\n  \"stagingOnly\": true,\n  \"structured\": true,\n  \"tag\": [\n    \"test\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"conditions\": [\n    {\n      \"positiveMatch\": true,\n      \"type\": \"requestMethodMatch\",\n      \"value\": [\n        \"GET\",\n        \"CONNECT\",\n        \"TRACE\",\n        \"PUT\",\n        \"POST\",\n        \"OPTIONS\",\n        \"DELETE\",\n        \"HEAD\"\n      ]\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"pathMatch\",\n      \"value\": [\n        \"/H\",\n        \"/Li\",\n        \"/He\"\n      ]\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"extensionMatch\",\n      \"value\": [\n        \"Li\",\n        \"He\",\n        \"H\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": true\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"filenameMatch\",\n      \"value\": [\n        \"He\",\n        \"H\",\n        \"Li\"\n      ],\n      \"valueCase\": false,\n      \"valueWildcard\": false\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"requestProtocolVersionMatch\",\n      \"value\": \"HTTP/0.9\"\n    },\n    {\n      \"name\": [\n        \"H\",\n        \"He\"\n      ],\n      \"nameWildcard\": true,\n      \"positiveMatch\": true,\n      \"type\": \"requestHeaderMatch\",\n      \"value\": [\n        \"Li\",\n        \"He\",\n        \"H\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": true\n    },\n    {\n      \"name\": [\n        \"He\"\n      ],\n      \"nameWildcard\": true,\n      \"positiveMatch\": true,\n      \"type\": \"requestHeaderMatch\",\n      \"value\": [\n        \"C\",\n        \"Be\",\n        \"B\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": true\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"headerOrderMatch\",\n      \"value\": \"H:He\"\n    },\n    {\n      \"name\": \"H\",\n      \"nameCase\": true,\n      \"nameWildcard\": true,\n      \"positiveMatch\": true,\n      \"type\": \"cookieMatch\",\n      \"value\": [\n        \"H\",\n        \"He\",\n        \"Li\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": true\n    },\n    {\n      \"name\": \"Be\",\n      \"nameCase\": true,\n      \"nameWildcard\": true,\n      \"positiveMatch\": true,\n      \"type\": \"cookieMatch\",\n      \"value\": [\n        \"O\",\n        \"N\",\n        \"C\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": true\n    },\n    {\n      \"name\": \"C\",\n      \"nameCase\": true,\n      \"nameWildcard\": true,\n      \"positiveMatch\": true,\n      \"type\": \"uriQueryMatch\",\n      \"value\": [\n        \"Carbon\",\n        \"C\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": true\n    },\n    {\n      \"name\": \"N\",\n      \"nameCase\": false,\n      \"nameWildcard\": false,\n      \"positiveMatch\": true,\n      \"type\": \"uriQueryMatch\",\n      \"value\": [\n        \"Nitrogen\",\n        \"N\"\n      ],\n      \"valueCase\": false,\n      \"valueWildcard\": false\n    },\n    {\n      \"name\": \"H\",\n      \"positiveMatch\": true,\n      \"type\": \"argsPostMatch\",\n      \"value\": [\n        \"H\",\n        \"Hydrogen\"\n      ]\n    },\n    {\n      \"name\": \"He\",\n      \"positiveMatch\": true,\n      \"type\": \"argsPostMatch\",\n      \"value\": [\n        \"He\",\n        \"Helium\"\n      ]\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"argsPostNamesMatch\",\n      \"value\": [\n        \"Carbon\",\n        \"Oxygen\",\n        \"Nitrogen\",\n        \"Chlorine\"\n      ]\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"clientCertPresentMatch\"\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"clientCertValidMatch\"\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"clientTlsFingerprintMatch\",\n      \"value\": [\n        \"aebbfa8e53e8661f\"\n      ]\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"hostMatch\",\n      \"value\": [\n        \"example.com\",\n        \"*.Nitrogen.gb\"\n      ]\n    },\n    {\n      \"positiveMatch\": false,\n      \"type\": \"asNumberMatch\",\n      \"useXForwardForHeaders\": true,\n      \"value\": [\n        \"2145697538\"\n      ]\n    },\n    {\n      \"positiveMatch\": false,\n      \"type\": \"geoMatch\",\n      \"useXForwardForHeaders\": true,\n      \"value\": [\n        \"AD\"\n      ]\n    },\n    {\n      \"positiveMatch\": false,\n      \"type\": \"ipAddressMatch\",\n      \"useXForwardForHeaders\": true,\n      \"value\": [\n        \"81.477.377.57\"\n      ]\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"clientListMatch\",\n      \"useXForwardForHeaders\": true,\n      \"value\": [\n        \"86744_AZURETLS\",\n        \"83629_40KHG\"\n      ]\n    }\n  ],\n  \"description\": \"Can I create all conditions?\",\n  \"effectiveTimePeriod\": {\n    \"endDate\": \"2021-11-02T01:00:00.000Z\",\n    \"startDate\": \"2021-08-05T01:00:00.000Z\",\n    \"status\": \"expired\"\n  },\n  \"id\": 661699,\n  \"loggingOptions\": [\n    {\n      \"id\": \"CLIENT_TLS_FINGERPRINT_MATCH\"\n    }\n  ],\n  \"name\": \"Fat Rule\",\n  \"operation\": \"AND\",\n  \"ruleActivated\": false,\n  \"samplingRate\": 10,\n  \"stagingOnly\": true,\n  \"tag\": [\n    \"test\"\n  ],\n  \"version\": 1\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "caea05dd-2e10-4db2-92dd-623b8c3686c1",
+          "name": "Akamai API Security List Custom Rules",
+          "request": {
+            "name": "Akamai API Security List Custom Rules",
+            "description": {
+              "content": "Lists custom rules defined in a security configuration. _Products:_ All.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "configs",
+                ":configId",
+                "custom-rules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "accountSwitchKey",
+                  "value": "<string>",
+                  "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "configId",
+                  "description": "(Required) A unique identifier for each configuration."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ee0ed836-a6a2-4955-86bf-32352d4b3538",
+              "name": "All the latest custom rules for this configuration.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "custom-rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customRules\": [\n    {\n      \"effectiveTimePeriod\": {\n        \"endDate\": \"2021-11-02T01:00:00.000Z\",\n        \"startDate\": \"2021-08-05T01:00:00.000Z\",\n        \"status\": \"expired\"\n      },\n      \"id\": 111111,\n      \"link\": \"/appsec/v1/configs/99999/customRules/111111\",\n      \"name\": \"Example 1\",\n      \"samplingRate\": 10,\n      \"status\": \"activated\",\n      \"version\": 1\n    },\n    {\n      \"effectiveTimePeriod\": {\n        \"endDate\": \"2021-11-02T01:00:00.000Z\",\n        \"startDate\": \"2021-08-05T01:00:00.000Z\",\n        \"status\": \"expired\"\n      },\n      \"id\": 111112,\n      \"link\": \"/appsec/v1/configs/99999/customRules/111112\",\n      \"name\": \"Example 2\",\n      \"samplingRate\": 10,\n      \"status\": \"published\",\n      \"version\": 1\n    },\n    {\n      \"effectiveTimePeriod\": {\n        \"endDate\": \"2021-11-02T01:00:00.000Z\",\n        \"startDate\": \"2021-08-05T01:00:00.000Z\",\n        \"status\": \"expired\"\n      },\n      \"id\": 111113,\n      \"link\": \"/appsec/v1/configs/99999/customRules/111113\",\n      \"name\": \"Example 3\",\n      \"samplingRate\": 25,\n      \"status\": \"unused\",\n      \"version\": 2\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5af45170-2147-40d0-b3db-c6d03848ee49",
+          "name": "Akamai API Security Get a Custom Rule",
+          "request": {
+            "name": "Akamai API Security Get a Custom Rule",
+            "description": {
+              "content": "Returns the details of a custom rule. _Products:_ All.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "configs",
+                ":configId",
+                "custom-rules",
+                ":ruleId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "accountSwitchKey",
+                  "value": "<string>",
+                  "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "ruleId",
+                  "description": "(Required) A unique identifier for rule."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "configId",
+                  "description": "(Required) A unique identifier for each configuration."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b83f3517-b2a2-4145-87c8-b101e05f0b2a",
+              "name": "Responds with the requested rule.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "custom-rules",
+                    ":ruleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ruleId",
+                      "description": "(Required) A unique identifier for rule."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"conditions\": [\n    {\n      \"positiveMatch\": true,\n      \"type\": \"requestMethodMatch\",\n      \"value\": [\n        \"GET\",\n        \"CONNECT\",\n        \"TRACE\",\n        \"PUT\",\n        \"POST\",\n        \"OPTIONS\",\n        \"DELETE\",\n        \"HEAD\"\n      ]\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"pathMatch\",\n      \"value\": [\n        \"/H\",\n        \"/Li\",\n        \"/He\"\n      ]\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"extensionMatch\",\n      \"value\": [\n        \"Li\",\n        \"He\",\n        \"H\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": true\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"filenameMatch\",\n      \"value\": [\n        \"He\",\n        \"H\",\n        \"Li\"\n      ],\n      \"valueCase\": false,\n      \"valueWildcard\": false\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"requestProtocolVersionMatch\",\n      \"value\": \"HTTP/0.9\"\n    },\n    {\n      \"name\": [\n        \"H\",\n        \"He\"\n      ],\n      \"nameWildcard\": true,\n      \"positiveMatch\": true,\n      \"type\": \"requestHeaderMatch\",\n      \"value\": [\n        \"Li\",\n        \"He\",\n        \"H\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": true\n    },\n    {\n      \"name\": [\n        \"He\"\n      ],\n      \"nameWildcard\": true,\n      \"positiveMatch\": true,\n      \"type\": \"requestHeaderMatch\",\n      \"value\": [\n        \"C\",\n        \"Be\",\n        \"B\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": true\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"headerOrderMatch\",\n      \"value\": \"H:He\"\n    },\n    {\n      \"name\": \"H\",\n      \"nameCase\": true,\n      \"nameWildcard\": true,\n      \"positiveMatch\": true,\n      \"type\": \"cookieMatch\",\n      \"value\": [\n        \"H\",\n        \"He\",\n        \"Li\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": true\n    },\n    {\n      \"name\": \"Be\",\n      \"nameCase\": true,\n      \"nameWildcard\": true,\n      \"positiveMatch\": true,\n      \"type\": \"cookieMatch\",\n      \"value\": [\n        \"O\",\n        \"N\",\n        \"C\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": true\n    },\n    {\n      \"name\": \"C\",\n      \"nameCase\": true,\n      \"nameWildcard\": true,\n      \"positiveMatch\": true,\n      \"type\": \"uriQueryMatch\",\n      \"value\": [\n        \"Carbon\",\n        \"C\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": true\n    },\n    {\n      \"name\": \"N\",\n      \"nameCase\": false,\n      \"nameWildcard\": false,\n      \"positiveMatch\": true,\n      \"type\": \"uriQueryMatch\",\n      \"value\": [\n        \"Nitrogen\",\n        \"N\"\n      ],\n      \"valueCase\": false,\n      \"valueWildcard\": false\n    },\n    {\n      \"name\": \"H\",\n      \"positiveMatch\": true,\n      \"type\": \"argsPostMatch\",\n      \"value\": [\n        \"H\",\n        \"Hydrogen\"\n      ]\n    },\n    {\n      \"name\": \"He\",\n      \"positiveMatch\": true,\n      \"type\": \"argsPostMatch\",\n      \"value\": [\n        \"He\",\n        \"Helium\"\n      ]\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"argsPostNamesMatch\",\n      \"value\": [\n        \"Carbon\",\n        \"Oxygen\",\n        \"Nitrogen\",\n        \"Chlorine\"\n      ]\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"clientCertPresentMatch\"\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"clientCertValidMatch\"\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"clientTlsFingerprintMatch\",\n      \"value\": [\n        \"aebbfa8e53e8661f\"\n      ]\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"hostMatch\",\n      \"value\": [\n        \"example.com\",\n        \"*.Nitrogen.gb\"\n      ]\n    },\n    {\n      \"positiveMatch\": false,\n      \"type\": \"asNumberMatch\",\n      \"useXForwardForHeaders\": true,\n      \"value\": [\n        \"2145697538\"\n      ]\n    },\n    {\n      \"positiveMatch\": false,\n      \"type\": \"geoMatch\",\n      \"useXForwardForHeaders\": true,\n      \"value\": [\n        \"AD\"\n      ]\n    },\n    {\n      \"positiveMatch\": false,\n      \"type\": \"ipAddressMatch\",\n      \"useXForwardForHeaders\": true,\n      \"value\": [\n        \"81.477.377.57\"\n      ]\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"clientListMatch\",\n      \"useXForwardForHeaders\": true,\n      \"value\": [\n        \"86744_AZURETLS\",\n        \"83629_40KHG\"\n      ]\n    }\n  ],\n  \"description\": \"Can I create all conditions?\",\n  \"effectiveTimePeriod\": {\n    \"endDate\": \"2021-11-02T01:00:00.000Z\",\n    \"startDate\": \"2021-08-05T01:00:00.000Z\",\n    \"status\": \"expired\"\n  },\n  \"id\": 661699,\n  \"loggingOptions\": [\n    {\n      \"id\": \"CLIENT_TLS_FINGERPRINT_MATCH\"\n    }\n  ],\n  \"name\": \"Fat Rule\",\n  \"operation\": \"AND\",\n  \"ruleActivated\": false,\n  \"samplingRate\": 10,\n  \"stagingOnly\": true,\n  \"tag\": [\n    \"test\"\n  ],\n  \"version\": 1\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0d49e8b3-7824-4699-8c60-41ba998816b5",
+          "name": "Akamai API Security Modify a Custom Rule",
+          "request": {
+            "name": "Akamai API Security Modify a Custom Rule",
+            "description": {
+              "content": "Updates an existing custom rule. _Products:_ All.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "configs",
+                ":configId",
+                "custom-rules",
+                ":ruleId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "accountSwitchKey",
+                  "value": "<string>",
+                  "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "ruleId",
+                  "description": "(Required) A unique identifier for rule."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "configId",
+                  "description": "(Required) A unique identifier for each configuration."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"operation\": \"<string>\",\n  \"structured\": \"<boolean>\",\n  \"conditions\": [\n    {\n      \"type\": \"<string>\",\n      \"positiveMatch\": \"<boolean>\",\n      \"name\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"nameCase\": \"<boolean>\",\n      \"nameWildcard\": \"<boolean>\",\n      \"useXForwardForHeaders\": \"<boolean>\",\n      \"value\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"valueCase\": \"<boolean>\",\n      \"valueExactMatch\": \"<boolean>\",\n      \"valueIgnoreSegment\": \"<boolean>\",\n      \"valueNormalize\": \"<boolean>\",\n      \"valueRecursive\": \"<boolean>\",\n      \"valueWildcard\": \"<boolean>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"positiveMatch\": \"<boolean>\",\n      \"name\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"nameCase\": \"<boolean>\",\n      \"nameWildcard\": \"<boolean>\",\n      \"useXForwardForHeaders\": \"<boolean>\",\n      \"value\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"valueCase\": \"<boolean>\",\n      \"valueExactMatch\": \"<boolean>\",\n      \"valueIgnoreSegment\": \"<boolean>\",\n      \"valueNormalize\": \"<boolean>\",\n      \"valueRecursive\": \"<boolean>\",\n      \"valueWildcard\": \"<boolean>\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"effectiveTimePeriod\": {\n    \"endDate\": \"<string>\",\n    \"startDate\": \"<dateTime>\",\n    \"status\": \"<string>\"\n  },\n  \"id\": \"<integer>\",\n  \"inspectRequest\": \"<boolean>\",\n  \"inspectResponse\": \"<boolean>\",\n  \"loggingOptions\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"metadata\": \"<string>\",\n  \"ruleActivated\": \"<boolean>\",\n  \"samplingRate\": \"<integer>\",\n  \"stagingOnly\": false,\n  \"tag\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"version\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "25bc14a9-26bb-45d5-b3ef-617b83341fd9",
+              "name": "Responds with the updated rule.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "custom-rules",
+                    ":ruleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ruleId",
+                      "description": "(Required) A unique identifier for rule."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"conditions\": [\n    {\n      \"positiveMatch\": true,\n      \"type\": \"requestMethodMatch\",\n      \"value\": [\n        \"GET\",\n        \"CONNECT\",\n        \"TRACE\",\n        \"PUT\",\n        \"POST\",\n        \"OPTIONS\",\n        \"DELETE\",\n        \"HEAD\"\n      ]\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"pathMatch\",\n      \"value\": [\n        \"/H\",\n        \"/Li\",\n        \"/He\"\n      ]\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"extensionMatch\",\n      \"value\": [\n        \"Li\",\n        \"He\",\n        \"H\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": true\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"filenameMatch\",\n      \"value\": [\n        \"He\",\n        \"H\",\n        \"Li\"\n      ],\n      \"valueCase\": false,\n      \"valueWildcard\": false\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"requestProtocolVersionMatch\",\n      \"value\": \"HTTP/0.9\"\n    },\n    {\n      \"name\": [\n        \"H\",\n        \"He\"\n      ],\n      \"nameWildcard\": true,\n      \"positiveMatch\": true,\n      \"type\": \"requestHeaderMatch\",\n      \"value\": [\n        \"Li\",\n        \"He\",\n        \"H\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": true\n    },\n    {\n      \"name\": [\n        \"He\"\n      ],\n      \"nameWildcard\": true,\n      \"positiveMatch\": true,\n      \"type\": \"requestHeaderMatch\",\n      \"value\": [\n        \"C\",\n        \"Be\",\n        \"B\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": true\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"headerOrderMatch\",\n      \"value\": \"H:He\"\n    },\n    {\n      \"name\": \"H\",\n      \"nameCase\": true,\n      \"nameWildcard\": true,\n      \"positiveMatch\": true,\n      \"type\": \"cookieMatch\",\n      \"value\": [\n        \"H\",\n        \"He\",\n        \"Li\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": true\n    },\n    {\n      \"name\": \"Be\",\n      \"nameCase\": true,\n      \"nameWildcard\": true,\n      \"positiveMatch\": true,\n      \"type\": \"cookieMatch\",\n      \"value\": [\n        \"O\",\n        \"N\",\n        \"C\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": true\n    },\n    {\n      \"name\": \"C\",\n      \"nameCase\": true,\n      \"nameWildcard\": true,\n      \"positiveMatch\": true,\n      \"type\": \"uriQueryMatch\",\n      \"value\": [\n        \"Carbon\",\n        \"C\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": true\n    },\n    {\n      \"name\": \"N\",\n      \"nameCase\": false,\n      \"nameWildcard\": false,\n      \"positiveMatch\": true,\n      \"type\": \"uriQueryMatch\",\n      \"value\": [\n        \"Nitrogen\",\n        \"N\"\n      ],\n      \"valueCase\": false,\n      \"valueWildcard\": false\n    },\n    {\n      \"name\": \"H\",\n      \"positiveMatch\": true,\n      \"type\": \"argsPostMatch\",\n      \"value\": [\n        \"H\",\n        \"Hydrogen\"\n      ]\n    },\n    {\n      \"name\": \"He\",\n      \"positiveMatch\": true,\n      \"type\": \"argsPostMatch\",\n      \"value\": [\n        \"He\",\n        \"Helium\"\n      ]\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"argsPostNamesMatch\",\n      \"value\": [\n        \"Carbon\",\n        \"Oxygen\",\n        \"Nitrogen\",\n        \"Chlorine\"\n      ]\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"clientCertPresentMatch\"\n    },\n    {\n      \"positiveMatch\": false,\n      \"type\": \"clientCertValidMatch\"\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"clientTlsFingerprintMatch\",\n      \"value\": [\n        \"aebbfa8e53e8661f\"\n      ]\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"hostMatch\",\n      \"value\": [\n        \"example.com\",\n        \"*.Nitrogen.gb\"\n      ]\n    },\n    {\n      \"positiveMatch\": false,\n      \"type\": \"asNumberMatch\",\n      \"useXForwardForHeaders\": true,\n      \"value\": [\n        \"2145697538\"\n      ]\n    },\n    {\n      \"positiveMatch\": false,\n      \"type\": \"geoMatch\",\n      \"useXForwardForHeaders\": true,\n      \"value\": [\n        \"AD\"\n      ]\n    },\n    {\n      \"positiveMatch\": false,\n      \"type\": \"ipAddressMatch\",\n      \"useXForwardForHeaders\": true,\n      \"value\": [\n        \"81.477.377.57\"\n      ]\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"clientListMatch\",\n      \"useXForwardForHeaders\": true,\n      \"value\": [\n        \"86744_AZURETLS\",\n        \"83629_40KHG\"\n      ]\n    }\n  ],\n  \"description\": \"Can I create all conditions?\",\n  \"effectiveTimePeriod\": {\n    \"endDate\": \"2021-11-02T01:00:00.000Z\",\n    \"startDate\": \"2021-08-05T01:00:00.000Z\",\n    \"status\": \"expired\"\n  },\n  \"id\": 661699,\n  \"loggingOptions\": [\n    {\n      \"id\": \"CLIENT_TLS_FINGERPRINT_MATCH\"\n    }\n  ],\n  \"name\": \"Fat Rule\",\n  \"operation\": \"AND\",\n  \"samplingRate\": 10,\n  \"stagingOnly\": true,\n  \"structured\": true,\n  \"tag\": [\n    \"test\"\n  ],\n  \"version\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"conditions\": [\n    {\n      \"positiveMatch\": true,\n      \"type\": \"requestMethodMatch\",\n      \"value\": [\n        \"GET\",\n        \"CONNECT\",\n        \"TRACE\",\n        \"PUT\",\n        \"POST\",\n        \"OPTIONS\",\n        \"DELETE\",\n        \"HEAD\"\n      ]\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"pathMatch\",\n      \"value\": [\n        \"/H\",\n        \"/Li\",\n        \"/He\"\n      ]\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"extensionMatch\",\n      \"value\": [\n        \"Li\",\n        \"He\",\n        \"H\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": true\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"filenameMatch\",\n      \"value\": [\n        \"He\",\n        \"H\",\n        \"Li\"\n      ],\n      \"valueCase\": false,\n      \"valueWildcard\": false\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"requestProtocolVersionMatch\",\n      \"value\": \"HTTP/0.9\"\n    },\n    {\n      \"name\": [\n        \"H\",\n        \"He\"\n      ],\n      \"nameWildcard\": true,\n      \"positiveMatch\": true,\n      \"type\": \"requestHeaderMatch\",\n      \"value\": [\n        \"Li\",\n        \"He\",\n        \"H\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": true\n    },\n    {\n      \"name\": [\n        \"He\"\n      ],\n      \"nameWildcard\": true,\n      \"positiveMatch\": true,\n      \"type\": \"requestHeaderMatch\",\n      \"value\": [\n        \"C\",\n        \"Be\",\n        \"B\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": true\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"headerOrderMatch\",\n      \"value\": \"H:He\"\n    },\n    {\n      \"name\": \"H\",\n      \"nameCase\": true,\n      \"nameWildcard\": true,\n      \"positiveMatch\": true,\n      \"type\": \"cookieMatch\",\n      \"value\": [\n        \"H\",\n        \"He\",\n        \"Li\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": true\n    },\n    {\n      \"name\": \"Be\",\n      \"nameCase\": true,\n      \"nameWildcard\": true,\n      \"positiveMatch\": true,\n      \"type\": \"cookieMatch\",\n      \"value\": [\n        \"O\",\n        \"N\",\n        \"C\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": true\n    },\n    {\n      \"name\": \"C\",\n      \"nameCase\": true,\n      \"nameWildcard\": true,\n      \"positiveMatch\": true,\n      \"type\": \"uriQueryMatch\",\n      \"value\": [\n        \"Carbon\",\n        \"C\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": true\n    },\n    {\n      \"name\": \"N\",\n      \"nameCase\": false,\n      \"nameWildcard\": false,\n      \"positiveMatch\": true,\n      \"type\": \"uriQueryMatch\",\n      \"value\": [\n        \"Nitrogen\",\n        \"N\"\n      ],\n      \"valueCase\": false,\n      \"valueWildcard\": false\n    },\n    {\n      \"name\": \"H\",\n      \"positiveMatch\": true,\n      \"type\": \"argsPostMatch\",\n      \"value\": [\n        \"H\",\n        \"Hydrogen\"\n      ]\n    },\n    {\n      \"name\": \"He\",\n      \"positiveMatch\": true,\n      \"type\": \"argsPostMatch\",\n      \"value\": [\n        \"He\",\n        \"Helium\"\n      ]\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"argsPostNamesMatch\",\n      \"value\": [\n        \"Carbon\",\n        \"Oxygen\",\n        \"Nitrogen\",\n        \"Chlorine\"\n      ]\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"clientCertPresentMatch\"\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"clientCertValidMatch\"\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"clientTlsFingerprintMatch\",\n      \"value\": [\n        \"aebbfa8e53e8661f\"\n      ]\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"hostMatch\",\n      \"value\": [\n        \"example.com\",\n        \"*.Nitrogen.gb\"\n      ]\n    },\n    {\n      \"positiveMatch\": false,\n      \"type\": \"asNumberMatch\",\n      \"useXForwardForHeaders\": true,\n      \"value\": [\n        \"2145697538\"\n      ]\n    },\n    {\n      \"positiveMatch\": false,\n      \"type\": \"geoMatch\",\n      \"useXForwardForHeaders\": true,\n      \"value\": [\n        \"AD\"\n      ]\n    },\n    {\n      \"positiveMatch\": false,\n      \"type\": \"ipAddressMatch\",\n      \"useXForwardForHeaders\": true,\n      \"value\": [\n        \"81.477.377.57\"\n      ]\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"clientListMatch\",\n      \"useXForwardForHeaders\": true,\n      \"value\": [\n        \"86744_AZURETLS\",\n        \"83629_40KHG\"\n      ]\n    }\n  ],\n  \"description\": \"Can I create all conditions?\",\n  \"effectiveTimePeriod\": {\n    \"endDate\": \"2021-11-02T01:00:00.000Z\",\n    \"startDate\": \"2021-08-05T01:00:00.000Z\",\n    \"status\": \"expired\"\n  },\n  \"id\": 661699,\n  \"loggingOptions\": [\n    {\n      \"id\": \"CLIENT_TLS_FINGERPRINT_MATCH\"\n    }\n  ],\n  \"name\": \"Fat Rule\",\n  \"operation\": \"AND\",\n  \"ruleActivated\": false,\n  \"samplingRate\": 10,\n  \"stagingOnly\": true,\n  \"tag\": [\n    \"test\"\n  ],\n  \"version\": 1\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "201cb5e8-5892-4472-8009-1cd81a3380b2",
+          "name": "Akamai API Security Remove a Custom Rule",
+          "request": {
+            "name": "Akamai API Security Remove a Custom Rule",
+            "description": {
+              "content": "Deletes a custom rule as long as it isn't activated. _Products:_ All.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "configs",
+                ":configId",
+                "custom-rules",
+                ":ruleId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "accountSwitchKey",
+                  "value": "<string>",
+                  "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "ruleId",
+                  "description": "(Required) A unique identifier for rule."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "configId",
+                  "description": "(Required) A unique identifier for each configuration."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/problem+json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7692f1ae-e5c4-4e4a-a722-ea6e40ac09ac",
+              "name": "Custom rule successfully deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "custom-rules",
+                    ":ruleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ruleId",
+                      "description": "(Required) A unique identifier for rule."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3c711a62-ae57-4701-9ab6-c095737f230d",
+              "name": "[Forbidden](https://techdocs.akamai.com/application-security/reference/403). Custom rule used and cannot be deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "custom-rules",
+                    ":ruleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ruleId",
+                      "description": "(Required) A unique identifier for rule."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"You do not have the necessary access to perform this operation or the requested resource cannot be modified\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 403,\n  \"title\": \"Forbidden\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec-resource/error-types/ACCESS-DENIED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://{{hostname}}/appsec/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "bf7fdb10-dcfd-4e4e-b439-683e335ebd0e",
+    "name": "Akamai: Application Security Activation history Shared resources: Custom rules API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Manage your configurations for Kona Site Defender,\nWeb Application Protector, and Client Reputation.\n",
+      "type": "text/plain"
+    }
+  }
+}

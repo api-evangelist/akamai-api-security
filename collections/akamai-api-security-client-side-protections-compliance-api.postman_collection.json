@@ -1,0 +1,761 @@
+{
+  "item": [
+    {
+      "id": "fa2b3b61-cee7-4523-8b6d-fd7e6064a520",
+      "name": "Client-Side Protections & Compliance",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b2c33b47-8712-4c1e-854c-fdd6c50a6fb1",
+          "name": "Akamai API Security Get Client-Side Protection & Compliance Settings",
+          "request": {
+            "name": "Akamai API Security Get Client-Side Protection & Compliance Settings",
+            "description": {
+              "content": "Get Client-Side Protection & Compliance settings for a specific policy. For more information, see [Client-side Protection & Compliance](https://techdocs.akamai.com/client-side-protect-compliance/docs/client-side-protect-compliance-ov) _Products:_ All.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "configs",
+                ":configId",
+                "versions",
+                ":versionNumber",
+                "security-policies",
+                ":policyId",
+                "cpc"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "accountSwitchKey",
+                  "value": "<string>",
+                  "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "configId",
+                  "description": "(Required) A unique identifier for each configuration."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "versionNumber",
+                  "description": "(Required) A unique identifier for each version of a configuration."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyId",
+                  "description": "(Required) A unique identifier for a security policy."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9fc4d9e0-e3f0-41c2-9aa1-6b465247bd34",
+              "name": "The response provides the Client-Side Protections & Compliance settings.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "security-policies",
+                    ":policyId",
+                    "cpc"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) A unique identifier for a security policy."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"edgeInjection\": {\n    \"autoLoadStaging\": false,\n    \"clientSideProtectionConfigId\": 5965,\n    \"cpcConfigId\": 5965,\n    \"loadScriptAsync\": false\n  },\n  \"edgeTestParameters\": {\n    \"disableInjectionKey\": \"page-integrity\",\n    \"disableInjectionValue\": \"disable-injection-1234_104690\",\n    \"forceInjectionKey\": \"page-integrity\",\n    \"forceInjectionValue\": \"force-injection-1234_104690\"\n  },\n  \"injectionCriteria\": {\n    \"injectionPathExcludes\": \"\",\n    \"injectionPathIncludes\": \"\",\n    \"injectionPercent\": 100,\n    \"injectionPolicy\": \"late_head\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f8604b22-a290-4543-a7b1-5f30f85a6765",
+              "name": "[Bad request](https://techdocs.akamai.com/application-security/reference/400). Invalid request body or URL parameter input.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "security-policies",
+                    ":policyId",
+                    "cpc"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) A unique identifier for a security policy."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"The request could not be understood by the server due to malformed syntax.\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 400,\n  \"title\": \"Bad Request\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec/error-types/BAD-REQUEST\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "98378532-42f2-4f67-8ef4-30c661fd41e4",
+              "name": "[Forbidden](https://techdocs.akamai.com/application-security/reference/403). You don't have access to the resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "security-policies",
+                    ":policyId",
+                    "cpc"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) A unique identifier for a security policy."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"You do not have the necessary access to perform this operation or the requested resource cannot be modified\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 403,\n  \"title\": \"Forbidden\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec-resource/error-types/ACCESS-DENIED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "98cf6763-a3a3-45af-bdf5-304fa78173ee",
+              "name": "[Not found](https://techdocs.akamai.com/application-security/reference/404). That resource doesn't exist, or the URL is malformed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "security-policies",
+                    ":policyId",
+                    "cpc"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) A unique identifier for a security policy."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"The requested resource is not found\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 404,\n  \"title\": \"Not Found\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec/error-types/NOT-FOUND\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "82d1f1b9-7429-4f53-a110-60b6fc4027c4",
+          "name": "Akamai API Security Modify Client-Side Protections & Compliance Settings",
+          "request": {
+            "name": "Akamai API Security Modify Client-Side Protections & Compliance Settings",
+            "description": {
+              "content": "Update Client-Side Protection & Compliance settings for a specific policy. _Products:_ All.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "configs",
+                ":configId",
+                "versions",
+                ":versionNumber",
+                "security-policies",
+                ":policyId",
+                "cpc"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "accountSwitchKey",
+                  "value": "<string>",
+                  "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "configId",
+                  "description": "(Required) A unique identifier for each configuration."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "versionNumber",
+                  "description": "(Required) A unique identifier for each version of a configuration."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyId",
+                  "description": "(Required) A unique identifier for a security policy."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"edgeInjection\": {\n    \"clientSideProtectionConfigId\": \"<integer>\",\n    \"loadScriptAsync\": \"<boolean>\",\n    \"autoLoadStaging\": \"<boolean>\"\n  },\n  \"injectionCriteria\": {\n    \"injectionPolicy\": \"<string>\",\n    \"injectionPercent\": \"<integer>\",\n    \"injectionPathExcludes\": \"<string>\",\n    \"injectionPathIncludes\": \"<string>\"\n  },\n  \"edgeTestParameters\": {\n    \"disableInjectionKey\": \"<string>\",\n    \"disableInjectionValue\": \"<string>\",\n    \"forceInjectionKey\": \"<string>\",\n    \"forceInjectionValue\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1e1cf7e0-5672-490b-a2bd-fb984260e88e",
+              "name": "The response reflects the updated CPC configuration.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "security-policies",
+                    ":policyId",
+                    "cpc"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) A unique identifier for a security policy."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"edgeInjection\": {\n    \"autoLoadStaging\": false,\n    \"clientSideProtectionConfigId\": 5965,\n    \"cpcConfigId\": 5965,\n    \"loadScriptAsync\": false\n  },\n  \"edgeTestParameters\": {\n    \"disableInjectionKey\": \"page-integrity\",\n    \"disableInjectionValue\": \"disable-injection-1234_104690\",\n    \"forceInjectionKey\": \"page-integrity\",\n    \"forceInjectionValue\": \"force-injection-1234_104690\"\n  },\n  \"injectionCriteria\": {\n    \"injectionPathExcludes\": \"\",\n    \"injectionPathIncludes\": \"\",\n    \"injectionPercent\": 100,\n    \"injectionPolicy\": \"late_head\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"edgeInjection\": {\n    \"autoLoadStaging\": false,\n    \"clientSideProtectionConfigId\": 5965,\n    \"cpcConfigId\": 5965,\n    \"loadScriptAsync\": false\n  },\n  \"edgeTestParameters\": {\n    \"disableInjectionKey\": \"page-integrity\",\n    \"disableInjectionValue\": \"disable-injection-1234_104690\",\n    \"forceInjectionKey\": \"page-integrity\",\n    \"forceInjectionValue\": \"force-injection-1234_104690\"\n  },\n  \"injectionCriteria\": {\n    \"injectionPathExcludes\": \"\",\n    \"injectionPathIncludes\": \"\",\n    \"injectionPercent\": 100,\n    \"injectionPolicy\": \"late_head\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7d1534ba-6564-4799-8019-d3c1f65ed6bc",
+              "name": "[Bad request](https://techdocs.akamai.com/application-security/reference/400). Invalid request body or URL parameter input.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "security-policies",
+                    ":policyId",
+                    "cpc"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) A unique identifier for a security policy."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"edgeInjection\": {\n    \"autoLoadStaging\": false,\n    \"clientSideProtectionConfigId\": 5965,\n    \"cpcConfigId\": 5965,\n    \"loadScriptAsync\": false\n  },\n  \"edgeTestParameters\": {\n    \"disableInjectionKey\": \"page-integrity\",\n    \"disableInjectionValue\": \"disable-injection-1234_104690\",\n    \"forceInjectionKey\": \"page-integrity\",\n    \"forceInjectionValue\": \"force-injection-1234_104690\"\n  },\n  \"injectionCriteria\": {\n    \"injectionPathExcludes\": \"\",\n    \"injectionPathIncludes\": \"\",\n    \"injectionPercent\": 100,\n    \"injectionPolicy\": \"late_head\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"The request could not be understood by the server due to malformed syntax.\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 400,\n  \"title\": \"Bad Request\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec/error-types/BAD-REQUEST\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "42b9a07e-4557-46ce-930a-6af6ee33aabe",
+              "name": "[Forbidden](https://techdocs.akamai.com/application-security/reference/403). You don't have access to the resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "security-policies",
+                    ":policyId",
+                    "cpc"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) A unique identifier for a security policy."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"edgeInjection\": {\n    \"autoLoadStaging\": false,\n    \"clientSideProtectionConfigId\": 5965,\n    \"cpcConfigId\": 5965,\n    \"loadScriptAsync\": false\n  },\n  \"edgeTestParameters\": {\n    \"disableInjectionKey\": \"page-integrity\",\n    \"disableInjectionValue\": \"disable-injection-1234_104690\",\n    \"forceInjectionKey\": \"page-integrity\",\n    \"forceInjectionValue\": \"force-injection-1234_104690\"\n  },\n  \"injectionCriteria\": {\n    \"injectionPathExcludes\": \"\",\n    \"injectionPathIncludes\": \"\",\n    \"injectionPercent\": 100,\n    \"injectionPolicy\": \"late_head\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"You do not have the necessary access to perform this operation or the requested resource cannot be modified\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 403,\n  \"title\": \"Forbidden\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec-resource/error-types/ACCESS-DENIED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e752b6c0-0ff8-4ecb-a77c-cb650778c91a",
+              "name": "[Not found](https://techdocs.akamai.com/application-security/reference/404). That resource doesn't exist, or the URL is malformed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "security-policies",
+                    ":policyId",
+                    "cpc"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) A unique identifier for a security policy."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"edgeInjection\": {\n    \"autoLoadStaging\": false,\n    \"clientSideProtectionConfigId\": 5965,\n    \"cpcConfigId\": 5965,\n    \"loadScriptAsync\": false\n  },\n  \"edgeTestParameters\": {\n    \"disableInjectionKey\": \"page-integrity\",\n    \"disableInjectionValue\": \"disable-injection-1234_104690\",\n    \"forceInjectionKey\": \"page-integrity\",\n    \"forceInjectionValue\": \"force-injection-1234_104690\"\n  },\n  \"injectionCriteria\": {\n    \"injectionPathExcludes\": \"\",\n    \"injectionPathIncludes\": \"\",\n    \"injectionPercent\": 100,\n    \"injectionPolicy\": \"late_head\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"The requested resource is not found\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 404,\n  \"title\": \"Not Found\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec/error-types/NOT-FOUND\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://{{hostname}}/appsec/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "711a2020-6580-4efb-916f-86a6296182a1",
+    "name": "Akamai: Application Security Activation history Client-Side Protections & Compliance API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Manage your configurations for Kona Site Defender,\nWeb Application Protector, and Client Reputation.\n",
+      "type": "text/plain"
+    }
+  }
+}

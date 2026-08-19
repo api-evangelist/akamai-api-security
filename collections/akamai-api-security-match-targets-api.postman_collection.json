@@ -1,0 +1,2253 @@
+{
+  "item": [
+    {
+      "id": "d338f545-cfe5-4048-bbd2-e07248f45712",
+      "name": "Match targets",
+      "description": {
+        "content": "Manage your match targets, which define which security policy\napplies to an API, hostname, or path.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "24365f8c-92f8-4349-b900-cf92768fbe35",
+          "name": "Akamai API Security Get the Hostname Coverage Match Targets",
+          "request": {
+            "name": "Akamai API Security Get the Hostname Coverage Match Targets",
+            "description": {
+              "content": "List the API and website match targets that protect a hostname. _Products:_ Kona Site Defender, App & API Protector with the Advanced Security module.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "configs",
+                ":configId",
+                "versions",
+                ":versionNumber",
+                "hostname-coverage",
+                "match-targets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "hostname",
+                  "value": "<string>",
+                  "description": "Get results by hostname."
+                },
+                {
+                  "disabled": false,
+                  "key": "accountSwitchKey",
+                  "value": "<string>",
+                  "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "configId",
+                  "description": "(Required) A unique identifier for each configuration."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "versionNumber",
+                  "description": "(Required) A unique identifier for each version of a configuration."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d95b08b1-199b-40db-bd9c-0f29e47d8826",
+              "name": "Successfully retrieved the hostname coverage match targets.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "hostname-coverage",
+                    "match-targets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "hostname",
+                      "value": "{{hostname}}"
+                    },
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"matchTargets\": {\n    \"apiTargets\": [],\n    \"websiteTargets\": [\n      {\n        \"bypassNetworkLists\": [\n          {\n            \"id\": \"1410_BYPASSWAFLIST\",\n            \"name\": \"shawn - BypassWAFList\"\n          }\n        ],\n        \"configId\": 75498,\n        \"configVersion\": 428,\n        \"defaultFile\": \"NO_MATCH\",\n        \"effectiveSecurityControls\": {\n          \"applyApplicationLayerControls\": true,\n          \"applyBotmanControls\": true,\n          \"applyNetworkLayerControls\": true,\n          \"applyPageIntegrityControls\": false,\n          \"applyRateControls\": true,\n          \"applyReputationControls\": true,\n          \"applySlowPostControls\": true\n        },\n        \"fileExtensions\": [],\n        \"filePaths\": [\n          \"/content/tealeaf\"\n        ],\n        \"firewallPolicy\": {\n          \"evaluated\": false,\n          \"policyId\": \"GRD_4186\",\n          \"policyName\": \"Main Street Corporation  USA\",\n          \"policySecurityControls\": {\n            \"applyApiConstraints\": false,\n            \"applyApplicationLayerControls\": true,\n            \"applyBotmanControls\": true,\n            \"applyNetworkLayerControls\": true,\n            \"applyPageIntegrityControls\": false,\n            \"applyRateControls\": true,\n            \"applyReputationControls\": true,\n            \"applySlowPostControls\": true\n          }\n        },\n        \"hostnames\": [\n          \"www.example.com\",\n          \"m.example.com\",\n          \"m.new.example.com\",\n          \"safety.example.com\",\n          \"static.example.net\",\n          \"failover3.example.com\",\n          \"static.example.com\",\n          \"images.example.com\",\n          \"failover5.example.com\",\n          \"espanol.example.com\"\n        ],\n        \"isNegativeFileExtensionMatch\": false,\n        \"isNegativePathMatch\": false,\n        \"isTargetSecurityControlsEditable\": false,\n        \"logicalId\": 1730010,\n        \"sequence\": 3,\n        \"targetId\": 2555705,\n        \"targetSecurityControls\": {\n          \"applyApplicationLayerControls\": true,\n          \"applyNetworkLayerControls\": true,\n          \"applyPageIntegrityControls\": false,\n          \"applyRateControls\": true,\n          \"applyReputationControls\": true,\n          \"applySlowPostControls\": true\n        },\n        \"type\": \"website\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a8b5842e-f754-4ff8-912f-fc8ae21422e1",
+              "name": "[Invalid](https://techdocs.akamai.com/application-security/reference/400). Client error, such as invalid or malformed input.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "hostname-coverage",
+                    "match-targets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "hostname",
+                      "value": "{{hostname}}"
+                    },
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"The request could not be understood by the server due to malformed syntax.\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 400,\n  \"title\": \"Bad Request\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec/error-types/BAD-REQUEST\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "91ef2cb2-36ba-46a3-a133-995b902f01b4",
+              "name": "[Not found](https://techdocs.akamai.com/application-security/reference/404). The named security policy doesn't exist, doesn't carry application layer controls, or no rule with this ID is available for use in this policy.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "hostname-coverage",
+                    "match-targets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "hostname",
+                      "value": "{{hostname}}"
+                    },
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"The requested resource is not found\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 404,\n  \"title\": \"Not Found\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec/error-types/NOT-FOUND\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b1dc6a22-729e-462f-a73e-8e0965a5e764",
+              "name": "[Internal server error](https://techdocs.akamai.com/application-security/reference/500). Something went wrong on our side. Try again in a few minutes, and contact support if the error persists.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "hostname-coverage",
+                    "match-targets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "hostname",
+                      "value": "{{hostname}}"
+                    },
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"Internal Server Error\",\n  \"instance\": \"12ab3c45-789d-01ef-2gh3-ijk4l56m78no\",\n  \"status\": 500,\n  \"title\": \"Internal Server Error\",\n  \"type\": \"internal_server_error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a38dd0a3-6bc2-4280-a20f-fc2774825da7",
+          "name": "Akamai API Security Create a Match Target",
+          "request": {
+            "name": "Akamai API Security Create a Match Target",
+            "description": {
+              "content": "Creates a new Match Target in the specified Configuration Version. _Products:_ Kona Site Defender, App & API Protector with the Advanced Security module.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "configs",
+                ":configId",
+                "versions",
+                ":versionNumber",
+                "match-targets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "accountSwitchKey",
+                  "value": "<string>",
+                  "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "configId",
+                  "description": "(Required) A unique identifier for each configuration."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "versionNumber",
+                  "description": "(Required) A unique identifier for each version of a configuration."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"securityPolicy\": {\n    \"policyId\": \"<string>\"\n  },\n  \"apis\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"bypassNetworkLists\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"configId\": \"<integer>\",\n  \"configVersion\": \"<integer>\",\n  \"defaultFile\": \"NO_MATCH\",\n  \"fileExtensions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"filePaths\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"hostnames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"isNegativeFileExtensionMatch\": \"<boolean>\",\n  \"isNegativePathMatch\": \"<boolean>\",\n  \"sequence\": \"<integer>\",\n  \"targetId\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "68e6cadf-e8d8-4d61-8e45-32d75bea5313",
+              "name": "Successfully created a  match target.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "match-targets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bypassNetworkLists\": [\n    {\n      \"id\": \"888518_ACDDCKERS\"\n    },\n    {\n      \"id\": \"1304427_AAXXBBLIST\"\n    }\n  ],\n  \"defaultFile\": \"NO_MATCH\",\n  \"fileExtensions\": [\n    \"wmls\",\n    \"jpeg\",\n    \"pws\",\n    \"carb\",\n    \"pdf\",\n    \"js\",\n    \"hdml\",\n    \"cct\",\n    \"swf\",\n    \"pct\"\n  ],\n  \"filePaths\": [\n    \"/sssi/*\",\n    \"/cache/aaabbc*\",\n    \"/price_toy/*\"\n  ],\n  \"hostnames\": [\n    \"example.com\",\n    \"www.example.net\",\n    \"m.example.com\"\n  ],\n  \"isNegativeFileExtensionMatch\": true,\n  \"isNegativePathMatch\": false,\n  \"securityPolicy\": {\n    \"policyId\": \"fwsf_32432\"\n  },\n  \"type\": \"website\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"bypassNetworkLists\": [\n    {\n      \"id\": \"888518_ACDDCKERS\",\n      \"name\": \"Test network list 1\"\n    },\n    {\n      \"id\": \"1304427_AAXXBBLIST\",\n      \"name\": \"Test network list 2\"\n    }\n  ],\n  \"configId\": 77653,\n  \"configVersion\": 25,\n  \"defaultFile\": \"NO_MATCH\",\n  \"effectiveSecurityControls\": {\n    \"applyApiConstraints\": false,\n    \"applyApplicationLayerControls\": true,\n    \"applyNetworkLayerControls\": false,\n    \"applyRateControls\": true,\n    \"applyReputationControls\": false,\n    \"applySlowPostControls\": false\n  },\n  \"fileExtensions\": [\n    \"wmls\",\n    \"jpeg\",\n    \"pws\",\n    \"carb\",\n    \"pdf\",\n    \"js\",\n    \"hdml\",\n    \"cct\",\n    \"swf\",\n    \"pct\"\n  ],\n  \"filePaths\": [\n    \"/sssi/*\",\n    \"/cache/aaabbc*\",\n    \"/price_toy/*\"\n  ],\n  \"hostnames\": [\n    \"example.com\",\n    \"www.example.net\",\n    \"m.example.com\"\n  ],\n  \"isNegativeFileExtensionMatch\": true,\n  \"isNegativePathMatch\": false,\n  \"securityPolicy\": {\n    \"policyId\": \"fwsf_32432\"\n  },\n  \"sequence\": 1,\n  \"targetId\": 112231,\n  \"type\": \"website\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fee1b991-54b3-4404-af3f-cc049ccb73a6",
+              "name": "[Bad request](https://techdocs.akamai.com/application-security/reference/400). Invalid request body or URL parameter input.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "match-targets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bypassNetworkLists\": [\n    {\n      \"id\": \"888518_ACDDCKERS\"\n    },\n    {\n      \"id\": \"1304427_AAXXBBLIST\"\n    }\n  ],\n  \"defaultFile\": \"NO_MATCH\",\n  \"fileExtensions\": [\n    \"wmls\",\n    \"jpeg\",\n    \"pws\",\n    \"carb\",\n    \"pdf\",\n    \"js\",\n    \"hdml\",\n    \"cct\",\n    \"swf\",\n    \"pct\"\n  ],\n  \"filePaths\": [\n    \"/sssi/*\",\n    \"/cache/aaabbc*\",\n    \"/price_toy/*\"\n  ],\n  \"hostnames\": [\n    \"example.com\",\n    \"www.example.net\",\n    \"m.example.com\"\n  ],\n  \"isNegativeFileExtensionMatch\": true,\n  \"isNegativePathMatch\": false,\n  \"securityPolicy\": {\n    \"policyId\": \"fwsf_32432\"\n  },\n  \"type\": \"website\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"The request could not be understood by the server due to malformed syntax.\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 400,\n  \"title\": \"Bad Request\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec/error-types/BAD-REQUEST\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3e470f8a-66cc-47bd-bbff-4bce2bb86663",
+              "name": "[Forbidden](https://techdocs.akamai.com/application-security/reference/403). You don't have access to match targets in this security configuration.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "match-targets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bypassNetworkLists\": [\n    {\n      \"id\": \"888518_ACDDCKERS\"\n    },\n    {\n      \"id\": \"1304427_AAXXBBLIST\"\n    }\n  ],\n  \"defaultFile\": \"NO_MATCH\",\n  \"fileExtensions\": [\n    \"wmls\",\n    \"jpeg\",\n    \"pws\",\n    \"carb\",\n    \"pdf\",\n    \"js\",\n    \"hdml\",\n    \"cct\",\n    \"swf\",\n    \"pct\"\n  ],\n  \"filePaths\": [\n    \"/sssi/*\",\n    \"/cache/aaabbc*\",\n    \"/price_toy/*\"\n  ],\n  \"hostnames\": [\n    \"example.com\",\n    \"www.example.net\",\n    \"m.example.com\"\n  ],\n  \"isNegativeFileExtensionMatch\": true,\n  \"isNegativePathMatch\": false,\n  \"securityPolicy\": {\n    \"policyId\": \"fwsf_32432\"\n  },\n  \"type\": \"website\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"You do not have the necessary access to perform this operation or the requested resource cannot be modified\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 403,\n  \"title\": \"Forbidden\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec-resource/error-types/ACCESS-DENIED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "76a2f416-782b-4cf4-950e-5e499ead99df",
+              "name": "[Not found](https://techdocs.akamai.com/application-security/reference/404). Security configuration version wasn't found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "match-targets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bypassNetworkLists\": [\n    {\n      \"id\": \"888518_ACDDCKERS\"\n    },\n    {\n      \"id\": \"1304427_AAXXBBLIST\"\n    }\n  ],\n  \"defaultFile\": \"NO_MATCH\",\n  \"fileExtensions\": [\n    \"wmls\",\n    \"jpeg\",\n    \"pws\",\n    \"carb\",\n    \"pdf\",\n    \"js\",\n    \"hdml\",\n    \"cct\",\n    \"swf\",\n    \"pct\"\n  ],\n  \"filePaths\": [\n    \"/sssi/*\",\n    \"/cache/aaabbc*\",\n    \"/price_toy/*\"\n  ],\n  \"hostnames\": [\n    \"example.com\",\n    \"www.example.net\",\n    \"m.example.com\"\n  ],\n  \"isNegativeFileExtensionMatch\": true,\n  \"isNegativePathMatch\": false,\n  \"securityPolicy\": {\n    \"policyId\": \"fwsf_32432\"\n  },\n  \"type\": \"website\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"The requested resource is not found\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 404,\n  \"title\": \"Not Found\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec/error-types/NOT-FOUND\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4e780ce6-5619-4a64-b2f8-3b20c2476ca8",
+          "name": "Akamai API Security List Match Targets",
+          "request": {
+            "name": "Akamai API Security List Match Targets",
+            "description": {
+              "content": "Returns match targets defined in the specified security configuration version. _Products:_ Kona Site Defender, App & API Protector with the Advanced Security module.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "configs",
+                ":configId",
+                "versions",
+                ":versionNumber",
+                "match-targets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "policyId",
+                  "value": "<string>",
+                  "description": "Specifies the security policy to filter match targets."
+                },
+                {
+                  "disabled": false,
+                  "key": "includeChildObjectName",
+                  "value": "true",
+                  "description": "Specify whether to return the object name in the payload, true` by default."
+                },
+                {
+                  "disabled": false,
+                  "key": "accountSwitchKey",
+                  "value": "<string>",
+                  "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "configId",
+                  "description": "(Required) A unique identifier for each configuration."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "versionNumber",
+                  "description": "(Required) A unique identifier for each version of a configuration."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6f74b46c-5cf1-4190-bf29-a30b51ca56d5",
+              "name": "Successfully returned match targets.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "match-targets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "policyId",
+                      "value": "{{policyId}}"
+                    },
+                    {
+                      "key": "includeChildObjectName",
+                      "value": "{{includeChildObjectName}}"
+                    },
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"matchTargets\": {\n    \"apiTargets\": [\n      {\n        \"apis\": [\n          {\n            \"id\": 1111,\n            \"name\": \"API Endpoint 1\"\n          },\n          {\n            \"id\": 2222,\n            \"name\": \"API Endpoint 2\"\n          }\n        ],\n        \"bypassNetworkLists\": [\n          {\n            \"id\": \"522825_CCCBYPASSLIST\",\n            \"name\": \"Example network list 11\"\n          },\n          {\n            \"id\": \"1622566_XXAABYPASSL\",\n            \"name\": \"Example network list 12\"\n          }\n        ],\n        \"configId\": 77653,\n        \"configVersion\": 25,\n        \"effectiveSecurityControls\": {\n          \"applyApiConstraints\": true,\n          \"applyApplicationLayerControls\": true,\n          \"applyNetworkLayerControls\": true,\n          \"applyRateControls\": true,\n          \"applyReputationControls\": true,\n          \"applySlowPostControls\": false\n        },\n        \"securityPolicy\": {\n          \"policyId\": \"ancv_1234\"\n        },\n        \"sequence\": 3,\n        \"targetId\": 1222208,\n        \"type\": \"api\"\n      }\n    ],\n    \"websiteTargets\": [\n      {\n        \"bypassNetworkLists\": [\n          {\n            \"id\": \"222825_AAABYPASSLIST\",\n            \"name\": \"Example network list 21\"\n          },\n          {\n            \"id\": \"2622566_YYAABYPASSL\",\n            \"name\": \"Example network list 22\"\n          }\n        ],\n        \"configId\": 77653,\n        \"configVersion\": 25,\n        \"defaultFile\": \"NO_MATCH\",\n        \"effectiveSecurityControls\": {\n          \"applyApiConstraints\": false,\n          \"applyApplicationLayerControls\": true,\n          \"applyNetworkLayerControls\": true,\n          \"applyRateControls\": true,\n          \"applyReputationControls\": true,\n          \"applySlowPostControls\": false\n        },\n        \"fileExtensions\": [\n          \"html\"\n        ],\n        \"filePaths\": [\n          \"/*\"\n        ],\n        \"hostnames\": [],\n        \"isNegativeFileExtensionMatch\": false,\n        \"isNegativePathMatch\": false,\n        \"securityPolicy\": {\n          \"policyId\": \"ancv_1234\"\n        },\n        \"sequence\": 1,\n        \"targetId\": 1221059,\n        \"type\": \"website\"\n      },\n      {\n        \"bypassNetworkLists\": [],\n        \"configId\": 77653,\n        \"configVersion\": 25,\n        \"defaultFile\": \"NO_MATCH\",\n        \"effectiveSecurityControls\": {\n          \"applyApiConstraints\": false,\n          \"applyApplicationLayerControls\": true,\n          \"applyNetworkLayerControls\": false,\n          \"applyRateControls\": true,\n          \"applyReputationControls\": true,\n          \"applySlowPostControls\": false\n        },\n        \"fileExtensions\": [],\n        \"filePaths\": [\n          \"/path\"\n        ],\n        \"hostnames\": [\n          \"example.com\",\n          \"www.example.net\",\n          \"m.example.com\"\n        ],\n        \"isNegativeFileExtensionMatch\": false,\n        \"isNegativePathMatch\": false,\n        \"securityPolicy\": {\n          \"policyId\": \"ancv_1234\"\n        },\n        \"sequence\": 2,\n        \"targetId\": 1222207,\n        \"type\": \"website\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2a237f22-ad80-4824-a9d6-66107d0584c3",
+              "name": "[Forbidden](https://techdocs.akamai.com/application-security/reference/403). You don't have access to match targets in this security configuration.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "match-targets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "policyId",
+                      "value": "{{policyId}}"
+                    },
+                    {
+                      "key": "includeChildObjectName",
+                      "value": "{{includeChildObjectName}}"
+                    },
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"You do not have the necessary access to perform this operation or the requested resource cannot be modified\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 403,\n  \"title\": \"Forbidden\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec-resource/error-types/ACCESS-DENIED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f7885b90-c689-4445-bd71-d320d5a9a6cb",
+              "name": "[Not found](https://techdocs.akamai.com/application-security/reference/404). Security configuration version wasn't found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "match-targets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "policyId",
+                      "value": "{{policyId}}"
+                    },
+                    {
+                      "key": "includeChildObjectName",
+                      "value": "{{includeChildObjectName}}"
+                    },
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"The requested resource is not found\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 404,\n  \"title\": \"Not Found\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec/error-types/NOT-FOUND\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "936ef1b4-915e-4ef4-b56c-e8ce0405cba5",
+          "name": "Akamai API Security Modify Match Target Order",
+          "request": {
+            "name": "Akamai API Security Modify Match Target Order",
+            "description": {
+              "content": "Updates the sequence of Match Targets in a configuration version. The `website` and `api` match targets' sequence requires updates from separate requests by passing the `type` attribute in the JSON request. _Products:_ Kona Site Defender, App & API Protector with the Advanced Security module.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "configs",
+                ":configId",
+                "versions",
+                ":versionNumber",
+                "match-targets",
+                "sequence"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "accountSwitchKey",
+                  "value": "<string>",
+                  "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "configId",
+                  "description": "(Required) A unique identifier for each configuration."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "versionNumber",
+                  "description": "(Required) A unique identifier for each version of a configuration."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"targetSequence\": [\n    {\n      \"sequence\": \"<integer>\",\n      \"targetId\": \"<integer>\"\n    },\n    {\n      \"sequence\": \"<integer>\",\n      \"targetId\": \"<integer>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1c1ec4da-60c3-4c14-8d77-c750cc1ac343",
+              "name": "Successfully updated match target sequence.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "match-targets",
+                    "sequence"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"targetSequence\": [\n    {\n      \"sequence\": 1,\n      \"targetId\": 1217289\n    },\n    {\n      \"sequence\": 2,\n      \"targetId\": 1217339\n    }\n  ],\n  \"type\": \"website\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"targetSequence\": [\n    {\n      \"sequence\": 1,\n      \"targetId\": 1217289\n    },\n    {\n      \"sequence\": 2,\n      \"targetId\": 1217339\n    }\n  ],\n  \"type\": \"website\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b443c22d-44de-48ad-a6a3-9dde801336a2",
+              "name": "[Bad request](https://techdocs.akamai.com/application-security/reference/400). Invalid request body or URL parameter input.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "match-targets",
+                    "sequence"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"targetSequence\": [\n    {\n      \"sequence\": 1,\n      \"targetId\": 1217289\n    },\n    {\n      \"sequence\": 2,\n      \"targetId\": 1217339\n    }\n  ],\n  \"type\": \"website\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"The request could not be understood by the server due to malformed syntax.\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 400,\n  \"title\": \"Bad Request\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec/error-types/BAD-REQUEST\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d7ce1fc5-42b8-4b48-ab35-0581924b69f9",
+              "name": "[Forbidden](https://techdocs.akamai.com/application-security/reference/403). You don't have access to match targets in this security configuration.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "match-targets",
+                    "sequence"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"targetSequence\": [\n    {\n      \"sequence\": 1,\n      \"targetId\": 1217289\n    },\n    {\n      \"sequence\": 2,\n      \"targetId\": 1217339\n    }\n  ],\n  \"type\": \"website\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"You do not have the necessary access to perform this operation or the requested resource cannot be modified\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 403,\n  \"title\": \"Forbidden\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec-resource/error-types/ACCESS-DENIED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2740b2b9-4287-4a04-a1dc-f69752e3aa30",
+              "name": "[Not found](https://techdocs.akamai.com/application-security/reference/404). Security configuration version wasn't found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "match-targets",
+                    "sequence"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"targetSequence\": [\n    {\n      \"sequence\": 1,\n      \"targetId\": 1217289\n    },\n    {\n      \"sequence\": 2,\n      \"targetId\": 1217339\n    }\n  ],\n  \"type\": \"website\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"The requested resource is not found\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 404,\n  \"title\": \"Not Found\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec/error-types/NOT-FOUND\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ea94d2e0-6277-4dc3-b2cf-3160aac5f184",
+          "name": "Akamai API Security Get a Match Target",
+          "request": {
+            "name": "Akamai API Security Get a Match Target",
+            "description": {
+              "content": "Returns the specified match target. _Products:_ Kona Site Defender, App & API Protector with the Advanced Security module.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "configs",
+                ":configId",
+                "versions",
+                ":versionNumber",
+                "match-targets",
+                ":targetId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "includeChildObjectName",
+                  "value": "true",
+                  "description": "Specify whether to return the object name in the payload, true` by default."
+                },
+                {
+                  "disabled": false,
+                  "key": "accountSwitchKey",
+                  "value": "<string>",
+                  "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "configId",
+                  "description": "(Required) A unique identifier for each configuration."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "versionNumber",
+                  "description": "(Required) A unique identifier for each version of a configuration."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "targetId",
+                  "description": "(Required) A unique identifier for each match target."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7a4b8427-8162-4385-9bc2-972c1ca0ef7d",
+              "name": "Successfully returned match target.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "match-targets",
+                    ":targetId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeChildObjectName",
+                      "value": "{{includeChildObjectName}}"
+                    },
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "targetId",
+                      "description": "(Required) A unique identifier for each match target."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"bypassNetworkLists\": [\n    {\n      \"id\": \"888518_ACDDCKERS\",\n      \"name\": \"Test network list 1\"\n    },\n    {\n      \"id\": \"1304427_AAXXBBLIST\",\n      \"name\": \"Test network list 2\"\n    }\n  ],\n  \"configId\": 77653,\n  \"configVersion\": 25,\n  \"defaultFile\": \"NO_MATCH\",\n  \"effectiveSecurityControls\": {\n    \"applyApiConstraints\": false,\n    \"applyApplicationLayerControls\": true,\n    \"applyNetworkLayerControls\": false,\n    \"applyRateControls\": true,\n    \"applyReputationControls\": false,\n    \"applySlowPostControls\": false\n  },\n  \"fileExtensions\": [\n    \"wmls\",\n    \"jpeg\",\n    \"pws\",\n    \"carb\",\n    \"pdf\",\n    \"js\",\n    \"hdml\",\n    \"cct\",\n    \"swf\",\n    \"pct\"\n  ],\n  \"filePaths\": [\n    \"/sssi/*\",\n    \"/cache/aaabbc*\",\n    \"/price_toy/*\"\n  ],\n  \"hostnames\": [\n    \"example.com\",\n    \"www.example.net\",\n    \"m.example.com\"\n  ],\n  \"isNegativeFileExtensionMatch\": true,\n  \"isNegativePathMatch\": false,\n  \"securityPolicy\": {\n    \"policyId\": \"fwsf_32432\"\n  },\n  \"sequence\": 1,\n  \"targetId\": 112231,\n  \"type\": \"website\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "229866ac-499d-4518-9f1d-9e58673cf444",
+              "name": "[Forbidden](https://techdocs.akamai.com/application-security/reference/403). You don't have access to match targets in this security configuration.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "match-targets",
+                    ":targetId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeChildObjectName",
+                      "value": "{{includeChildObjectName}}"
+                    },
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "targetId",
+                      "description": "(Required) A unique identifier for each match target."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"You do not have the necessary access to perform this operation or the requested resource cannot be modified\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 403,\n  \"title\": \"Forbidden\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec-resource/error-types/ACCESS-DENIED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a28b9098-7033-4a22-a47d-4043af02403c",
+              "name": "[Not found](https://techdocs.akamai.com/application-security/reference/404). Security configuration version or match target wasn't found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "match-targets",
+                    ":targetId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeChildObjectName",
+                      "value": "{{includeChildObjectName}}"
+                    },
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "targetId",
+                      "description": "(Required) A unique identifier for each match target."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"The requested resource is not found\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 404,\n  \"title\": \"Not Found\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec/error-types/NOT-FOUND\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c87c931d-defd-449a-b0f4-b94c88987b9d",
+          "name": "Akamai API Security Modify a Match Target",
+          "request": {
+            "name": "Akamai API Security Modify a Match Target",
+            "description": {
+              "content": "Updates details about the specified match target. _Products:_ Kona Site Defender, App & API Protector with the Advanced Security module.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "configs",
+                ":configId",
+                "versions",
+                ":versionNumber",
+                "match-targets",
+                ":targetId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "accountSwitchKey",
+                  "value": "<string>",
+                  "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "configId",
+                  "description": "(Required) A unique identifier for each configuration."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "versionNumber",
+                  "description": "(Required) A unique identifier for each version of a configuration."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "targetId",
+                  "description": "(Required) A unique identifier for each match target."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"securityPolicy\": {\n    \"policyId\": \"<string>\"\n  },\n  \"apis\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"bypassNetworkLists\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"configId\": \"<integer>\",\n  \"configVersion\": \"<integer>\",\n  \"defaultFile\": \"NO_MATCH\",\n  \"fileExtensions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"filePaths\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"hostnames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"isNegativeFileExtensionMatch\": \"<boolean>\",\n  \"isNegativePathMatch\": \"<boolean>\",\n  \"sequence\": \"<integer>\",\n  \"targetId\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "753d301d-5ed4-423b-9928-b8ebff5836b4",
+              "name": "Successfully updated match target.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "match-targets",
+                    ":targetId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "targetId",
+                      "description": "(Required) A unique identifier for each match target."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bypassNetworkLists\": [\n    {\n      \"id\": \"888518_ACDDCKERS\"\n    },\n    {\n      \"id\": \"1304427_AAXXBBLIST\"\n    }\n  ],\n  \"defaultFile\": \"NO_MATCH\",\n  \"fileExtensions\": [\n    \"wmls\",\n    \"jpeg\",\n    \"pws\",\n    \"carb\",\n    \"pdf\",\n    \"js\",\n    \"hdml\",\n    \"cct\",\n    \"swf\",\n    \"pct\"\n  ],\n  \"filePaths\": [\n    \"/sssi/*\",\n    \"/cache/aaabbc*\",\n    \"/price_toy/*\"\n  ],\n  \"hostnames\": [\n    \"example.com\",\n    \"www.example.net\",\n    \"m.example.com\"\n  ],\n  \"isNegativeFileExtensionMatch\": true,\n  \"isNegativePathMatch\": false,\n  \"securityPolicy\": {\n    \"policyId\": \"fwsf_32432\"\n  },\n  \"targetId\": 112231,\n  \"type\": \"website\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"bypassNetworkLists\": [\n    {\n      \"id\": \"888518_ACDDCKERS\",\n      \"name\": \"Test network list 1\"\n    },\n    {\n      \"id\": \"1304427_AAXXBBLIST\",\n      \"name\": \"Test network list 2\"\n    }\n  ],\n  \"configId\": 77653,\n  \"configVersion\": 25,\n  \"defaultFile\": \"NO_MATCH\",\n  \"effectiveSecurityControls\": {\n    \"applyApiConstraints\": false,\n    \"applyApplicationLayerControls\": true,\n    \"applyNetworkLayerControls\": false,\n    \"applyRateControls\": true,\n    \"applyReputationControls\": false,\n    \"applySlowPostControls\": false\n  },\n  \"fileExtensions\": [\n    \"wmls\",\n    \"jpeg\",\n    \"pws\",\n    \"carb\",\n    \"pdf\",\n    \"js\",\n    \"hdml\",\n    \"cct\",\n    \"swf\",\n    \"pct\"\n  ],\n  \"filePaths\": [\n    \"/sssi/*\",\n    \"/cache/aaabbc*\",\n    \"/price_toy/*\"\n  ],\n  \"hostnames\": [\n    \"example.com\",\n    \"www.example.net\",\n    \"m.example.com\"\n  ],\n  \"isNegativeFileExtensionMatch\": true,\n  \"isNegativePathMatch\": false,\n  \"securityPolicy\": {\n    \"policyId\": \"fwsf_32432\"\n  },\n  \"sequence\": 1,\n  \"targetId\": 112231,\n  \"type\": \"website\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1ef40d51-c6e6-44f7-bc26-d1e631fdb82c",
+              "name": "[Bad request](https://techdocs.akamai.com/application-security/reference/400). Invalid request body or URL parameter input.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "match-targets",
+                    ":targetId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "targetId",
+                      "description": "(Required) A unique identifier for each match target."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bypassNetworkLists\": [\n    {\n      \"id\": \"888518_ACDDCKERS\"\n    },\n    {\n      \"id\": \"1304427_AAXXBBLIST\"\n    }\n  ],\n  \"defaultFile\": \"NO_MATCH\",\n  \"fileExtensions\": [\n    \"wmls\",\n    \"jpeg\",\n    \"pws\",\n    \"carb\",\n    \"pdf\",\n    \"js\",\n    \"hdml\",\n    \"cct\",\n    \"swf\",\n    \"pct\"\n  ],\n  \"filePaths\": [\n    \"/sssi/*\",\n    \"/cache/aaabbc*\",\n    \"/price_toy/*\"\n  ],\n  \"hostnames\": [\n    \"example.com\",\n    \"www.example.net\",\n    \"m.example.com\"\n  ],\n  \"isNegativeFileExtensionMatch\": true,\n  \"isNegativePathMatch\": false,\n  \"securityPolicy\": {\n    \"policyId\": \"fwsf_32432\"\n  },\n  \"targetId\": 112231,\n  \"type\": \"website\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"The request could not be understood by the server due to malformed syntax.\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 400,\n  \"title\": \"Bad Request\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec/error-types/BAD-REQUEST\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "76c29e50-e3fc-4aca-92f1-04bdb6fcefd5",
+              "name": "[Forbidden](https://techdocs.akamai.com/application-security/reference/403). You don't have access to match targets in this security configuration.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "match-targets",
+                    ":targetId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "targetId",
+                      "description": "(Required) A unique identifier for each match target."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bypassNetworkLists\": [\n    {\n      \"id\": \"888518_ACDDCKERS\"\n    },\n    {\n      \"id\": \"1304427_AAXXBBLIST\"\n    }\n  ],\n  \"defaultFile\": \"NO_MATCH\",\n  \"fileExtensions\": [\n    \"wmls\",\n    \"jpeg\",\n    \"pws\",\n    \"carb\",\n    \"pdf\",\n    \"js\",\n    \"hdml\",\n    \"cct\",\n    \"swf\",\n    \"pct\"\n  ],\n  \"filePaths\": [\n    \"/sssi/*\",\n    \"/cache/aaabbc*\",\n    \"/price_toy/*\"\n  ],\n  \"hostnames\": [\n    \"example.com\",\n    \"www.example.net\",\n    \"m.example.com\"\n  ],\n  \"isNegativeFileExtensionMatch\": true,\n  \"isNegativePathMatch\": false,\n  \"securityPolicy\": {\n    \"policyId\": \"fwsf_32432\"\n  },\n  \"targetId\": 112231,\n  \"type\": \"website\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"You do not have the necessary access to perform this operation or the requested resource cannot be modified\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 403,\n  \"title\": \"Forbidden\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec-resource/error-types/ACCESS-DENIED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "451cd349-15e9-479a-8d5b-b7133cfaef9b",
+              "name": "[Not found](https://techdocs.akamai.com/application-security/reference/404). Security configuration version or match target wasn't found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "match-targets",
+                    ":targetId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "targetId",
+                      "description": "(Required) A unique identifier for each match target."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bypassNetworkLists\": [\n    {\n      \"id\": \"888518_ACDDCKERS\"\n    },\n    {\n      \"id\": \"1304427_AAXXBBLIST\"\n    }\n  ],\n  \"defaultFile\": \"NO_MATCH\",\n  \"fileExtensions\": [\n    \"wmls\",\n    \"jpeg\",\n    \"pws\",\n    \"carb\",\n    \"pdf\",\n    \"js\",\n    \"hdml\",\n    \"cct\",\n    \"swf\",\n    \"pct\"\n  ],\n  \"filePaths\": [\n    \"/sssi/*\",\n    \"/cache/aaabbc*\",\n    \"/price_toy/*\"\n  ],\n  \"hostnames\": [\n    \"example.com\",\n    \"www.example.net\",\n    \"m.example.com\"\n  ],\n  \"isNegativeFileExtensionMatch\": true,\n  \"isNegativePathMatch\": false,\n  \"securityPolicy\": {\n    \"policyId\": \"fwsf_32432\"\n  },\n  \"targetId\": 112231,\n  \"type\": \"website\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"The requested resource is not found\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 404,\n  \"title\": \"Not Found\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec/error-types/NOT-FOUND\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "883bc307-9652-43f7-8751-815068e526aa",
+          "name": "Akamai API Security Remove a Match Target",
+          "request": {
+            "name": "Akamai API Security Remove a Match Target",
+            "description": {
+              "content": "Deletes the specified match target. _Products:_ Kona Site Defender, App & API Protector with the Advanced Security module.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "configs",
+                ":configId",
+                "versions",
+                ":versionNumber",
+                "match-targets",
+                ":targetId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "accountSwitchKey",
+                  "value": "<string>",
+                  "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "configId",
+                  "description": "(Required) A unique identifier for each configuration."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "versionNumber",
+                  "description": "(Required) A unique identifier for each version of a configuration."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "targetId",
+                  "description": "(Required) A unique identifier for each match target."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/problem+json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9824eed7-306e-46f5-b3c0-8a5f4a58a87a",
+              "name": "Successfully deleted the match target.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "match-targets",
+                    ":targetId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "targetId",
+                      "description": "(Required) A unique identifier for each match target."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "753f9332-8263-4747-90e2-33da771055b3",
+              "name": "[Forbidden](https://techdocs.akamai.com/application-security/reference/403). You don't have access to match targets in this security configuration.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "match-targets",
+                    ":targetId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "targetId",
+                      "description": "(Required) A unique identifier for each match target."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"You do not have the necessary access to perform this operation or the requested resource cannot be modified\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 403,\n  \"title\": \"Forbidden\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec-resource/error-types/ACCESS-DENIED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "24906bfd-e3e8-421e-9ef1-ec7c259271dc",
+              "name": "[Not found](https://techdocs.akamai.com/application-security/reference/404). Security configuration version or match target wasn't found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "match-targets",
+                    ":targetId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "targetId",
+                      "description": "(Required) A unique identifier for each match target."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"The requested resource is not found\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 404,\n  \"title\": \"Not Found\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec/error-types/NOT-FOUND\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://{{hostname}}/appsec/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "3a747546-83a8-483e-8617-d4647b83fb0a",
+    "name": "Akamai: Application Security Activation history Match targets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Manage your configurations for Kona Site Defender,\nWeb Application Protector, and Client Reputation.\n",
+      "type": "text/plain"
+    }
+  }
+}

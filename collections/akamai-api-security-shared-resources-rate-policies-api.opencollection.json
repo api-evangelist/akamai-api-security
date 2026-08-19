@@ -1,0 +1,240 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Akamai: Application Security Activation history Shared resources: Rate policies API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Shared resources: Rate policies",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Akamai API Security List Rate Policies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{hostname}/appsec/v1/configs/:configId/versions/:versionNumber/rate-policies",
+            "params": [
+              {
+                "name": "configId",
+                "value": "{{configId}}",
+                "type": "path",
+                "description": "A unique identifier for each configuration."
+              },
+              {
+                "name": "versionNumber",
+                "value": "{{versionNumber}}",
+                "type": "path",
+                "description": "A unique identifier for each version of a configuration."
+              },
+              {
+                "name": "accountSwitchKey",
+                "value": "{{accountSwitchKey}}",
+                "type": "query",
+                "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+              }
+            ]
+          },
+          "docs": "Returns rate policies for a specific security configuration version. _Products:_ All."
+        },
+        {
+          "info": {
+            "name": "Akamai API Security Create a Rate Policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{hostname}/appsec/v1/configs/:configId/versions/:versionNumber/rate-policies",
+            "params": [
+              {
+                "name": "configId",
+                "value": "{{configId}}",
+                "type": "path",
+                "description": "A unique identifier for each configuration."
+              },
+              {
+                "name": "versionNumber",
+                "value": "{{versionNumber}}",
+                "type": "path",
+                "description": "A unique identifier for each version of a configuration."
+              },
+              {
+                "name": "accountSwitchKey",
+                "value": "{{accountSwitchKey}}",
+                "type": "query",
+                "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new rate policy for a specific configuration version. Now you can match on defined or undefined resources. If you're setting a match for either resource type, both `definedResources` and `undefinedResources` must be present in the request object or the request is considered incomplete. When `true`, match on _any_ defined resources without passing a `resourceId`. When `false`, you'll need to pass a `resourceId`. If you pass `definedResources` and `undefinedResources` with empty values, t"
+        },
+        {
+          "info": {
+            "name": "Akamai API Security Get a Rate Policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{hostname}/appsec/v1/configs/:configId/versions/:versionNumber/rate-policies/:ratePolicyId",
+            "params": [
+              {
+                "name": "configId",
+                "value": "{{configId}}",
+                "type": "path",
+                "description": "A unique identifier for each configuration."
+              },
+              {
+                "name": "versionNumber",
+                "value": "{{versionNumber}}",
+                "type": "path",
+                "description": "A unique identifier for each version of a configuration."
+              },
+              {
+                "name": "ratePolicyId",
+                "value": "{{ratePolicyId}}",
+                "type": "path",
+                "description": "A unique identifier for each rate policy."
+              },
+              {
+                "name": "accountSwitchKey",
+                "value": "{{accountSwitchKey}}",
+                "type": "query",
+                "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+              }
+            ]
+          },
+          "docs": "Returns the specified rate policy. _Products:_ All."
+        },
+        {
+          "info": {
+            "name": "Akamai API Security Modify a Rate Policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{hostname}/appsec/v1/configs/:configId/versions/:versionNumber/rate-policies/:ratePolicyId",
+            "params": [
+              {
+                "name": "configId",
+                "value": "{{configId}}",
+                "type": "path",
+                "description": "A unique identifier for each configuration."
+              },
+              {
+                "name": "versionNumber",
+                "value": "{{versionNumber}}",
+                "type": "path",
+                "description": "A unique identifier for each version of a configuration."
+              },
+              {
+                "name": "ratePolicyId",
+                "value": "{{ratePolicyId}}",
+                "type": "path",
+                "description": "A unique identifier for each rate policy."
+              },
+              {
+                "name": "accountSwitchKey",
+                "value": "{{accountSwitchKey}}",
+                "type": "query",
+                "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update details for a specific rate policy. Now you can match on defined or undefined resources. If you're setting a match for either resource type, both `definedResources` and `undefinedResources` must be present in the request object or the request is considered incomplete. When `true`, match on _any_ defined resources without passing a `resourceId`. When `false`, you'll need to pass a `resourceId`. If you pass `definedResources` and `undefinedResources` with empty values, they default to `fals"
+        },
+        {
+          "info": {
+            "name": "Akamai API Security Remove a Rate Policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{hostname}/appsec/v1/configs/:configId/versions/:versionNumber/rate-policies/:ratePolicyId",
+            "params": [
+              {
+                "name": "configId",
+                "value": "{{configId}}",
+                "type": "path",
+                "description": "A unique identifier for each configuration."
+              },
+              {
+                "name": "versionNumber",
+                "value": "{{versionNumber}}",
+                "type": "path",
+                "description": "A unique identifier for each version of a configuration."
+              },
+              {
+                "name": "ratePolicyId",
+                "value": "{{ratePolicyId}}",
+                "type": "path",
+                "description": "A unique identifier for each rate policy."
+              },
+              {
+                "name": "accountSwitchKey",
+                "value": "{{accountSwitchKey}}",
+                "type": "query",
+                "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+              }
+            ]
+          },
+          "docs": "Delete the specified rate policy. You can't delete a rate policy that is actively in use. To delete the rate policy, first activate an older configuration version or create a new version without the policy in place. _Products:_ All."
+        },
+        {
+          "info": {
+            "name": "Akamai API Security Modify a Rate Policy Evaluation",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{hostname}/appsec/v1/configs/:configId/versions/:versionNumber/rate-policies/:ratePolicyId/evaluation",
+            "params": [
+              {
+                "name": "configId",
+                "value": "{{configId}}",
+                "type": "path",
+                "description": "A unique identifier for each configuration."
+              },
+              {
+                "name": "versionNumber",
+                "value": "{{versionNumber}}",
+                "type": "path",
+                "description": "A unique identifier for each version of a configuration."
+              },
+              {
+                "name": "ratePolicyId",
+                "value": "{{ratePolicyId}}",
+                "type": "path",
+                "description": "A unique identifier for each rate policy."
+              },
+              {
+                "name": "accountSwitchKey",
+                "value": "{{accountSwitchKey}}",
+                "type": "query",
+                "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Apply or discard a rate policy evaluation."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

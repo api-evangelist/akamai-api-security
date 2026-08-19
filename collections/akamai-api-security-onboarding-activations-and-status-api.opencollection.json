@@ -1,0 +1,78 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Akamai: Application Security Activation history Onboarding: Activations and status API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Onboarding: Activations and status",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Akamai API Security Activate an Onboarding",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{hostname}/appsec/v1/onboardings/:onboardingId/activations",
+            "params": [
+              {
+                "name": "onboardingId",
+                "value": "{{onboardingId}}",
+                "type": "path",
+                "description": "A unique identifier for an onboarding."
+              },
+              {
+                "name": "accountSwitchKey",
+                "value": "{{accountSwitchKey}}",
+                "type": "query",
+                "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Activate an onboarding on the staging or production networks. You need to activate on the staging network before you can activate on production. Note that with this operation you can only activate on one network at a time. Once you activate on staging you can test your site as you normally would when using Property Manager or any of our security products. _Products:_ App & API Protector, App & API Protector with the Advanced Security module."
+        },
+        {
+          "info": {
+            "name": "Akamai API Security Get an Onboarding Activation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{hostname}/appsec/v1/onboardings/:onboardingId/activations/:activationId",
+            "params": [
+              {
+                "name": "onboardingId",
+                "value": "{{onboardingId}}",
+                "type": "path",
+                "description": "A unique identifier for an onboarding."
+              },
+              {
+                "name": "activationId",
+                "value": "{{activationId}}",
+                "type": "path",
+                "description": "A unique identifier for an activation."
+              },
+              {
+                "name": "accountSwitchKey",
+                "value": "{{accountSwitchKey}}",
+                "type": "query",
+                "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+              }
+            ]
+          },
+          "docs": "Returns the status of an activation. Activations can take about 20 minutes. If an activation fails, this API  responds with the underlying error status. _Products:_ App & API Protector, App & API Protector with the Advanced Security module."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,837 @@
+{
+  "item": [
+    {
+      "id": "c5e26f52-edae-4575-894e-51a15b4ac1fb",
+      "name": "IP/Geo Firewall settings",
+      "description": {
+        "content": "Manage which network lists are used in the IP/Geo Firewall\nsettings.  If you want to add or remove IP addresses from the\nnetwork lists, use the Network Lists API.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5d66159a-4b38-4944-9748-d4568777099f",
+          "name": "Akamai API Security Get IP/Geo Firewall Settings",
+          "request": {
+            "name": "Akamai API Security Get IP/Geo Firewall Settings",
+            "description": {
+              "content": "Lists which network lists are used in the IP/Geo Firewall settings. In Control Center this method is called `mode`. In this API the method is called `blocked`. The response shows blocked and allowed IPs depending on which network lists you include and which version of the mode you choose. If you want to add or remove IP addresses from the network lists, use the [Network Lists API](https://techdocs.akamai.com/network-lists/reference/api). Note that subnet controls are a legacy item in Control Center and are not available through this API. _Products:_ All.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "configs",
+                ":configId",
+                "versions",
+                ":versionNumber",
+                "security-policies",
+                ":policyId",
+                "ip-geo-firewall"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "accountSwitchKey",
+                  "value": "<string>",
+                  "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "configId",
+                  "description": "(Required) A unique identifier for each configuration."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "versionNumber",
+                  "description": "(Required) A unique identifier for each version of a configuration."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyId",
+                  "description": "(Required) A unique identifier for a security policy."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1852badb-d5f2-4c13-93b6-3c6fb0463495",
+              "name": "Successfully retrieved the IP/Geo firewall settings.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "security-policies",
+                    ":policyId",
+                    "ip-geo-firewall"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) A unique identifier for a security policy."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"asnControls\": {\n    \"allowedIPNetworkLists\": {\n      \"networkList\": [\n        \"9876_ASNTEST\"\n      ]\n    },\n    \"blockedIPNetworkLists\": {\n      \"networkList\": [\n        \"567321_TESTASNLIST\"\n      ]\n    }\n  },\n  \"block\": \"blockSpecificIPGeo\",\n  \"geoControls\": {\n    \"blockedIPNetworkLists\": {\n      \"networkList\": [\n        \"72138_TEST1\"\n      ]\n    }\n  },\n  \"ipControls\": {\n    \"allowedIPNetworkLists\": {\n      \"networkList\": [\n        \"56921_TEST\"\n      ]\n    },\n    \"blockedIPNetworkLists\": {\n      \"networkList\": [\n        \"53712_TESTLIST123\"\n      ]\n    }\n  },\n  \"ukraineGeoControl\": {\n    \"action\": \"deny\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8123d58f-e349-4de0-9f28-d53152c196d0",
+              "name": "[Invalid](https://techdocs.akamai.com/application-security/reference/400). Client error, such as invalid or malformed input.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "security-policies",
+                    ":policyId",
+                    "ip-geo-firewall"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) A unique identifier for a security policy."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"The request could not be understood by the server due to malformed syntax.\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 400,\n  \"title\": \"Bad Request\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec/error-types/BAD-REQUEST\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f80ec058-b5ec-4e4a-a63d-26f0e5b7893b",
+              "name": "[Not found](https://techdocs.akamai.com/application-security/reference/404). The named security policy doesn't exist, doesn't carry application layer controls, or no rule with this ID is available for use in this policy.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "security-policies",
+                    ":policyId",
+                    "ip-geo-firewall"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) A unique identifier for a security policy."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"The requested resource is not found\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 404,\n  \"title\": \"Not Found\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec/error-types/NOT-FOUND\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4698ed98-0e74-42d6-b0b9-6de48555d4db",
+              "name": "[Internal server error](https://techdocs.akamai.com/application-security/reference/500). Something went wrong on our side. Try again in a few minutes, and contact support if the error persists.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "security-policies",
+                    ":policyId",
+                    "ip-geo-firewall"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) A unique identifier for a security policy."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"Internal Server Error\",\n  \"instance\": \"12ab3c45-789d-01ef-2gh3-ijk4l56m78no\",\n  \"status\": 500,\n  \"title\": \"Internal Server Error\",\n  \"type\": \"internal_server_error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f4809d76-a996-4e4d-9de0-a686506c46f9",
+          "name": "Akamai API Security Modify IP/Geo Firewall Settings",
+          "request": {
+            "name": "Akamai API Security Modify IP/Geo Firewall Settings",
+            "description": {
+              "content": "Update the method and which network lists to use for IP/Geo firewall blocking. In Control Center this method is called `mode`. In this API the method is called `blocked`. Use `blockSpecificIPGeo` to block any IPs, geographies, or network lists you choose with this setting. Use `blockAllTrafficExceptAllowedIPs` to allow specific IPs or geographies that you choose to let through while the rest remain blocked. IPs you want to allow are contained in the `allowedIPNetworkLists`. It's important to verify the IPs you block are the ones you intend to block as it's easy to block wanted traffic by accident. Note that subnet controls are a legacy item in Control Center and are not available through this API. _Products:_ All.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "configs",
+                ":configId",
+                "versions",
+                ":versionNumber",
+                "security-policies",
+                ":policyId",
+                "ip-geo-firewall"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "accountSwitchKey",
+                  "value": "<string>",
+                  "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "configId",
+                  "description": "(Required) A unique identifier for each configuration."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "versionNumber",
+                  "description": "(Required) A unique identifier for each version of a configuration."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyId",
+                  "description": "(Required) A unique identifier for a security policy."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"block\": \"<string>\",\n  \"asnControls\": {\n    \"allowedIPNetworkLists\": {\n      \"networkList\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"blockedIPNetworkLists\": {\n      \"networkList\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  \"geoControls\": {\n    \"blockedIPNetworkLists\": {\n      \"networkList\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  \"ipControls\": {\n    \"allowedIPNetworkLists\": {\n      \"networkList\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"blockedIPNetworkLists\": {\n      \"networkList\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  \"ukraineGeoControl\": {\n    \"ukraineGeoControl\": {\n      \"action\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b8ed6c6d-ef1a-4743-8d15-5a9b64688988",
+              "name": "Successfully updated the IP/Geo Firewall settings.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "security-policies",
+                    ":policyId",
+                    "ip-geo-firewall"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) A unique identifier for a security policy."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"asnControls\": {\n    \"allowedIPNetworkLists\": {\n      \"networkList\": [\n        \"9876_ASNTEST\"\n      ]\n    },\n    \"blockedIPNetworkLists\": {\n      \"networkList\": [\n        \"567321_TESTASNLIST\"\n      ]\n    }\n  },\n  \"block\": \"blockSpecificIPGeo\",\n  \"geoControls\": {\n    \"blockedIPNetworkLists\": {\n      \"networkList\": [\n        \"72138_TEST1\"\n      ]\n    }\n  },\n  \"ipControls\": {\n    \"allowedIPNetworkLists\": {\n      \"networkList\": [\n        \"56921_TEST\"\n      ]\n    },\n    \"blockedIPNetworkLists\": {\n      \"networkList\": [\n        \"53712_TESTLIST123\"\n      ]\n    }\n  },\n  \"ukraineGeoControl\": {\n    \"action\": \"deny\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"asnControls\": {\n    \"allowedIPNetworkLists\": {\n      \"networkList\": [\n        \"9876_ASNTEST\"\n      ]\n    },\n    \"blockedIPNetworkLists\": {\n      \"networkList\": [\n        \"567321_TESTASNLIST\"\n      ]\n    }\n  },\n  \"block\": \"blockSpecificIPGeo\",\n  \"geoControls\": {\n    \"blockedIPNetworkLists\": {\n      \"networkList\": [\n        \"72138_TEST1\"\n      ]\n    }\n  },\n  \"ipControls\": {\n    \"allowedIPNetworkLists\": {\n      \"networkList\": [\n        \"56921_TEST\"\n      ]\n    },\n    \"blockedIPNetworkLists\": {\n      \"networkList\": [\n        \"53712_TESTLIST123\"\n      ]\n    }\n  },\n  \"ukraineGeoControl\": {\n    \"action\": \"deny\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0ffdfd1c-c2f0-4b9d-8fe8-e3d66bb88254",
+              "name": "[Invalid](https://techdocs.akamai.com/application-security/reference/400). Client error, such as invalid or malformed input.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "security-policies",
+                    ":policyId",
+                    "ip-geo-firewall"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) A unique identifier for a security policy."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"asnControls\": {\n    \"allowedIPNetworkLists\": {\n      \"networkList\": [\n        \"9876_ASNTEST\"\n      ]\n    },\n    \"blockedIPNetworkLists\": {\n      \"networkList\": [\n        \"567321_TESTASNLIST\"\n      ]\n    }\n  },\n  \"block\": \"blockSpecificIPGeo\",\n  \"geoControls\": {\n    \"blockedIPNetworkLists\": {\n      \"networkList\": [\n        \"72138_TEST1\"\n      ]\n    }\n  },\n  \"ipControls\": {\n    \"allowedIPNetworkLists\": {\n      \"networkList\": [\n        \"56921_TEST\"\n      ]\n    },\n    \"blockedIPNetworkLists\": {\n      \"networkList\": [\n        \"53712_TESTLIST123\"\n      ]\n    }\n  },\n  \"ukraineGeoControl\": {\n    \"action\": \"deny\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"The request could not be understood by the server due to malformed syntax.\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 400,\n  \"title\": \"Bad Request\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec/error-types/BAD-REQUEST\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "74da7ee2-7020-4531-98dc-ea642ef1c0cf",
+              "name": "[Forbidden](https://techdocs.akamai.com/application-security/reference/403). You don't have permission to write to this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "security-policies",
+                    ":policyId",
+                    "ip-geo-firewall"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) A unique identifier for a security policy."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"asnControls\": {\n    \"allowedIPNetworkLists\": {\n      \"networkList\": [\n        \"9876_ASNTEST\"\n      ]\n    },\n    \"blockedIPNetworkLists\": {\n      \"networkList\": [\n        \"567321_TESTASNLIST\"\n      ]\n    }\n  },\n  \"block\": \"blockSpecificIPGeo\",\n  \"geoControls\": {\n    \"blockedIPNetworkLists\": {\n      \"networkList\": [\n        \"72138_TEST1\"\n      ]\n    }\n  },\n  \"ipControls\": {\n    \"allowedIPNetworkLists\": {\n      \"networkList\": [\n        \"56921_TEST\"\n      ]\n    },\n    \"blockedIPNetworkLists\": {\n      \"networkList\": [\n        \"53712_TESTLIST123\"\n      ]\n    }\n  },\n  \"ukraineGeoControl\": {\n    \"action\": \"deny\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"You do not have the necessary access to perform this operation or the requested resource cannot be modified\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 403,\n  \"title\": \"Forbidden\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec-resource/error-types/ACCESS-DENIED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "778b103b-5221-4302-8986-12c8a54fa86e",
+              "name": "[Not found](https://techdocs.akamai.com/application-security/reference/404). The named security policy doesn't exist, doesn't carry application layer controls, or no rule with this ID is available for use in this policy.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "security-policies",
+                    ":policyId",
+                    "ip-geo-firewall"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) A unique identifier for a security policy."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"asnControls\": {\n    \"allowedIPNetworkLists\": {\n      \"networkList\": [\n        \"9876_ASNTEST\"\n      ]\n    },\n    \"blockedIPNetworkLists\": {\n      \"networkList\": [\n        \"567321_TESTASNLIST\"\n      ]\n    }\n  },\n  \"block\": \"blockSpecificIPGeo\",\n  \"geoControls\": {\n    \"blockedIPNetworkLists\": {\n      \"networkList\": [\n        \"72138_TEST1\"\n      ]\n    }\n  },\n  \"ipControls\": {\n    \"allowedIPNetworkLists\": {\n      \"networkList\": [\n        \"56921_TEST\"\n      ]\n    },\n    \"blockedIPNetworkLists\": {\n      \"networkList\": [\n        \"53712_TESTLIST123\"\n      ]\n    }\n  },\n  \"ukraineGeoControl\": {\n    \"action\": \"deny\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"The requested resource is not found\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 404,\n  \"title\": \"Not Found\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec/error-types/NOT-FOUND\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8f0cd5ba-cc7c-473a-8919-cf5c91667e27",
+              "name": "[Internal server error](https://techdocs.akamai.com/application-security/reference/500). Something went wrong on our side. Try again in a few minutes, and contact support if the error persists.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "security-policies",
+                    ":policyId",
+                    "ip-geo-firewall"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) A unique identifier for a security policy."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"asnControls\": {\n    \"allowedIPNetworkLists\": {\n      \"networkList\": [\n        \"9876_ASNTEST\"\n      ]\n    },\n    \"blockedIPNetworkLists\": {\n      \"networkList\": [\n        \"567321_TESTASNLIST\"\n      ]\n    }\n  },\n  \"block\": \"blockSpecificIPGeo\",\n  \"geoControls\": {\n    \"blockedIPNetworkLists\": {\n      \"networkList\": [\n        \"72138_TEST1\"\n      ]\n    }\n  },\n  \"ipControls\": {\n    \"allowedIPNetworkLists\": {\n      \"networkList\": [\n        \"56921_TEST\"\n      ]\n    },\n    \"blockedIPNetworkLists\": {\n      \"networkList\": [\n        \"53712_TESTLIST123\"\n      ]\n    }\n  },\n  \"ukraineGeoControl\": {\n    \"action\": \"deny\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"Internal Server Error\",\n  \"instance\": \"12ab3c45-789d-01ef-2gh3-ijk4l56m78no\",\n  \"status\": 500,\n  \"title\": \"Internal Server Error\",\n  \"type\": \"internal_server_error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://{{hostname}}/appsec/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "92ea85d2-05df-4bdd-a9d9-4a42104f30c8",
+    "name": "Akamai: Application Security Activation history IP/Geo Firewall settings API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Manage your configurations for Kona Site Defender,\nWeb Application Protector, and Client Reputation.\n",
+      "type": "text/plain"
+    }
+  }
+}

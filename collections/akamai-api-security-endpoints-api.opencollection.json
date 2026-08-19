@@ -1,0 +1,119 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Akamai: Application Security Activation history Endpoints API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Endpoints",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Akamai API Security Modify an API's Visibility",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{hostname}/appsec/v1/api-discovery/host/:hostname/basepath/:basePath",
+            "params": [
+              {
+                "name": "hostname",
+                "value": "{{hostname}}",
+                "type": "path",
+                "description": "The base64-encoded value of the hostname."
+              },
+              {
+                "name": "basePath",
+                "value": "{{basePath}}",
+                "type": "path",
+                "description": "The base64-encoded value of the base path."
+              },
+              {
+                "name": "accountSwitchKey",
+                "value": "{{accountSwitchKey}}",
+                "type": "query",
+                "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Hide or show an API. You can choose to include or exclude APIs from the [Get discovered APIs](https://techdocs.akamai.com/application-security/reference/get-api-list) response. This operation is per-user. If you hide an API from the response, another of your colleagues will still see that API in the response when they run this operation with their own credentials."
+        },
+        {
+          "info": {
+            "name": "Akamai API Security List Discovered API Endpoints",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{hostname}/appsec/v1/api-discovery/host/:hostname/basepath/:basePath/endpoints",
+            "params": [
+              {
+                "name": "hostname",
+                "value": "{{hostname}}",
+                "type": "path",
+                "description": "The base64-encoded value of the hostname."
+              },
+              {
+                "name": "basePath",
+                "value": "{{basePath}}",
+                "type": "path",
+                "description": "The base64-encoded value of the base path."
+              },
+              {
+                "name": "accountSwitchKey",
+                "value": "{{accountSwitchKey}}",
+                "type": "query",
+                "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+              }
+            ]
+          },
+          "docs": "Returns API endpoints for the specified hostname and base path. Unlike [Get discovered APIs](https://techdocs.akamai.com/application-security/reference/get-api-list), this operation returns APIs already in your API definitions. When you see a discovered API or a new resource, add it to your definition with [Create an endpoint or resource](https://techdocs.akamai.com/application-security/reference/post-api-endpoint-resource)."
+        },
+        {
+          "info": {
+            "name": "Akamai API Security Create an Endpoint or Resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{hostname}/appsec/v1/api-discovery/host/:hostname/basepath/:basePath/endpoints",
+            "params": [
+              {
+                "name": "hostname",
+                "value": "{{hostname}}",
+                "type": "path",
+                "description": "The base64-encoded value of the hostname."
+              },
+              {
+                "name": "basePath",
+                "value": "{{basePath}}",
+                "type": "path",
+                "description": "The base64-encoded value of the base path."
+              },
+              {
+                "name": "accountSwitchKey",
+                "value": "{{accountSwitchKey}}",
+                "type": "query",
+                "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new API endpoint or add a resource to an existing endpoint. When you run this operation to add a new resource to an existing API, the API version is cloned for you and the resource is included in the new version."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

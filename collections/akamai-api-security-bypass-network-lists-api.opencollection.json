@@ -1,0 +1,162 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Akamai: Application Security Activation history Bypass network lists API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Bypass network lists",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Akamai API Security Get Bypass Network Lists Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{hostname}/appsec/v1/configs/:configId/versions/:versionNumber/bypass-network-lists",
+            "params": [
+              {
+                "name": "configId",
+                "value": "{{configId}}",
+                "type": "path",
+                "description": "A unique identifier for each configuration."
+              },
+              {
+                "name": "versionNumber",
+                "value": "{{versionNumber}}",
+                "type": "path",
+                "description": "A unique identifier for each version of a configuration."
+              },
+              {
+                "name": "accountSwitchKey",
+                "value": "{{accountSwitchKey}}",
+                "type": "query",
+                "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+              }
+            ]
+          },
+          "docs": "Lists which network lists are used in the bypass network lists settings. If you want to add or remove IP addresses from the network lists, use the [Network Lists API](https://techdocs.akamai.com/network-lists/reference/api). _Products:_ Web Application Protector."
+        },
+        {
+          "info": {
+            "name": "Akamai API Security Modify the Bypass Network Lists Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{hostname}/appsec/v1/configs/:configId/versions/:versionNumber/bypass-network-lists",
+            "params": [
+              {
+                "name": "configId",
+                "value": "{{configId}}",
+                "type": "path",
+                "description": "A unique identifier for each configuration."
+              },
+              {
+                "name": "versionNumber",
+                "value": "{{versionNumber}}",
+                "type": "path",
+                "description": "A unique identifier for each version of a configuration."
+              },
+              {
+                "name": "accountSwitchKey",
+                "value": "{{accountSwitchKey}}",
+                "type": "query",
+                "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update which network lists to use in the bypass network lists settings. If you want to add or remove IP addresses from the network lists, use the [Network Lists API](https://techdocs.akamai.com/network-lists/reference/api). _Products:_ Web Application Protector."
+        },
+        {
+          "info": {
+            "name": "Akamai API Security Get the Bypass Network Lists Settings for a Security Policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{hostname}/appsec/v1/configs/:configId/versions/:versionNumber/security-policies/:policyId/bypass-network-lists",
+            "params": [
+              {
+                "name": "configId",
+                "value": "{{configId}}",
+                "type": "path",
+                "description": "A unique identifier for each configuration."
+              },
+              {
+                "name": "versionNumber",
+                "value": "{{versionNumber}}",
+                "type": "path",
+                "description": "A unique identifier for each version of a configuration."
+              },
+              {
+                "name": "policyId",
+                "value": "{{policyId}}",
+                "type": "path",
+                "description": "A unique identifier for a security policy."
+              },
+              {
+                "name": "accountSwitchKey",
+                "value": "{{accountSwitchKey}}",
+                "type": "query",
+                "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+              }
+            ]
+          },
+          "docs": "Lists which network lists are used in the bypass network lists settings. If you want to add or remove IP addresses from the network lists, use the [Network Lists API](https://techdocs.akamai.com/network-lists/reference/api). _Products:_ Web Application Protector, App & API Protector."
+        },
+        {
+          "info": {
+            "name": "Akamai API Security Modify the Bypass Network Lists Settings for a Security Policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{hostname}/appsec/v1/configs/:configId/versions/:versionNumber/security-policies/:policyId/bypass-network-lists",
+            "params": [
+              {
+                "name": "configId",
+                "value": "{{configId}}",
+                "type": "path",
+                "description": "A unique identifier for each configuration."
+              },
+              {
+                "name": "versionNumber",
+                "value": "{{versionNumber}}",
+                "type": "path",
+                "description": "A unique identifier for each version of a configuration."
+              },
+              {
+                "name": "policyId",
+                "value": "{{policyId}}",
+                "type": "path",
+                "description": "A unique identifier for a security policy."
+              },
+              {
+                "name": "accountSwitchKey",
+                "value": "{{accountSwitchKey}}",
+                "type": "query",
+                "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update which network lists to use in the bypass network lists settings. If you want to add or remove IP addresses from the network lists, use the [Network Lists API](https://techdocs.akamai.com/network-lists/reference/api). _Products:_ Web Application Protector, App & API Protector."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

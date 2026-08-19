@@ -1,0 +1,205 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Akamai: Application Security Activation history Shared resources: Custom deny actions API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Shared resources: Custom deny actions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Akamai API Security List Custom Deny Actions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{hostname}/appsec/v1/configs/:configId/versions/:versionNumber/custom-deny",
+            "params": [
+              {
+                "name": "configId",
+                "value": "{{configId}}",
+                "type": "path",
+                "description": "A unique identifier for each configuration."
+              },
+              {
+                "name": "versionNumber",
+                "value": "{{versionNumber}}",
+                "type": "path",
+                "description": "A unique identifier for each version of a configuration."
+              },
+              {
+                "name": "search",
+                "value": "{{search}}",
+                "type": "query",
+                "description": "Filter results by name, description, or ID. You can match on substrings."
+              },
+              {
+                "name": "accountSwitchKey",
+                "value": "{{accountSwitchKey}}",
+                "type": "query",
+                "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+              }
+            ]
+          },
+          "docs": "Returns custom deny actions for a specific security configuration version. _Products:_ All."
+        },
+        {
+          "info": {
+            "name": "Akamai API Security Create a Custom Deny Action",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{hostname}/appsec/v1/configs/:configId/versions/:versionNumber/custom-deny",
+            "params": [
+              {
+                "name": "configId",
+                "value": "{{configId}}",
+                "type": "path",
+                "description": "A unique identifier for each configuration."
+              },
+              {
+                "name": "versionNumber",
+                "value": "{{versionNumber}}",
+                "type": "path",
+                "description": "A unique identifier for each version of a configuration."
+              },
+              {
+                "name": "accountSwitchKey",
+                "value": "{{accountSwitchKey}}",
+                "type": "query",
+                "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new custom deny action for a specific configuration version. _Products:_ All."
+        },
+        {
+          "info": {
+            "name": "Akamai API Security Get a Custom Deny Action",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{hostname}/appsec/v1/configs/:configId/versions/:versionNumber/custom-deny/:customDenyId",
+            "params": [
+              {
+                "name": "configId",
+                "value": "{{configId}}",
+                "type": "path",
+                "description": "A unique identifier for each configuration."
+              },
+              {
+                "name": "versionNumber",
+                "value": "{{versionNumber}}",
+                "type": "path",
+                "description": "A unique identifier for each version of a configuration."
+              },
+              {
+                "name": "customDenyId",
+                "value": "{{customDenyId}}",
+                "type": "path",
+                "description": "A unique identifier for each custom deny action."
+              },
+              {
+                "name": "accountSwitchKey",
+                "value": "{{accountSwitchKey}}",
+                "type": "query",
+                "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+              }
+            ]
+          },
+          "docs": "Returns the specified custom deny action. _Products:_ All."
+        },
+        {
+          "info": {
+            "name": "Akamai API Security Modify a Custom Deny Action",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{hostname}/appsec/v1/configs/:configId/versions/:versionNumber/custom-deny/:customDenyId",
+            "params": [
+              {
+                "name": "configId",
+                "value": "{{configId}}",
+                "type": "path",
+                "description": "A unique identifier for each configuration."
+              },
+              {
+                "name": "versionNumber",
+                "value": "{{versionNumber}}",
+                "type": "path",
+                "description": "A unique identifier for each version of a configuration."
+              },
+              {
+                "name": "customDenyId",
+                "value": "{{customDenyId}}",
+                "type": "path",
+                "description": "A unique identifier for each custom deny action."
+              },
+              {
+                "name": "accountSwitchKey",
+                "value": "{{accountSwitchKey}}",
+                "type": "query",
+                "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update details for a specific custom deny action. _Products:_ All."
+        },
+        {
+          "info": {
+            "name": "Akamai API Security Remove a Custom Deny Action",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{hostname}/appsec/v1/configs/:configId/versions/:versionNumber/custom-deny/:customDenyId",
+            "params": [
+              {
+                "name": "configId",
+                "value": "{{configId}}",
+                "type": "path",
+                "description": "A unique identifier for each configuration."
+              },
+              {
+                "name": "versionNumber",
+                "value": "{{versionNumber}}",
+                "type": "path",
+                "description": "A unique identifier for each version of a configuration."
+              },
+              {
+                "name": "customDenyId",
+                "value": "{{customDenyId}}",
+                "type": "path",
+                "description": "A unique identifier for each custom deny action."
+              },
+              {
+                "name": "accountSwitchKey",
+                "value": "{{accountSwitchKey}}",
+                "type": "query",
+                "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+              }
+            ]
+          },
+          "docs": "Delete a custom deny action. You can't delete a custom deny action that is actively in use. To delete the custom deny action, first activate an older configuration version or create a new version without the policy in place. _Products:_ All."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

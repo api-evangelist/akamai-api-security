@@ -1,0 +1,84 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Akamai: Application Security Activation history Request body size API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Request body size",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Akamai API Security Get Request Body Size Settings for a Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{hostname}/appsec/v1/configs/:configId/versions/:versionNumber/advanced-settings/request-body",
+            "params": [
+              {
+                "name": "configId",
+                "value": "{{configId}}",
+                "type": "path",
+                "description": "A unique identifier for each configuration."
+              },
+              {
+                "name": "versionNumber",
+                "value": "{{versionNumber}}",
+                "type": "path",
+                "description": "A unique identifier for each version of a configuration."
+              },
+              {
+                "name": "accountSwitchKey",
+                "value": "{{accountSwitchKey}}",
+                "type": "query",
+                "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+              }
+            ]
+          },
+          "docs": "__Beta__ Return request body inspection limit settings for a configuration. Contact your account team if you'd like to run this operation. _Products:_ All."
+        },
+        {
+          "info": {
+            "name": "Akamai API Security Modify Request Body Inspection Limit Settings for a Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{hostname}/appsec/v1/configs/:configId/versions/:versionNumber/advanced-settings/request-body",
+            "params": [
+              {
+                "name": "configId",
+                "value": "{{configId}}",
+                "type": "path",
+                "description": "A unique identifier for each configuration."
+              },
+              {
+                "name": "versionNumber",
+                "value": "{{versionNumber}}",
+                "type": "path",
+                "description": "A unique identifier for each version of a configuration."
+              },
+              {
+                "name": "accountSwitchKey",
+                "value": "{{accountSwitchKey}}",
+                "type": "query",
+                "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "__Beta__ Modify request body inspection limit settings for a configuration. Inspect request bodies up to a certain size. In exceptional cases, you can change the default value to a set limit: `8`, `16`, or `32` kb. Contact your account team if you'd like to run this operation. _Products:_ All."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

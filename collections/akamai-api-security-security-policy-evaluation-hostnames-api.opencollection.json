@@ -1,0 +1,137 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Akamai: Application Security Activation history Security policy: Evaluation hostnames API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Security policy: Evaluation hostnames",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Akamai API Security List Evaluation Hostnames for a Security Policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{hostname}/appsec/v1/configs/:configId/versions/:versionNumber/security-policies/:policyId/eval-hostnames",
+            "params": [
+              {
+                "name": "configId",
+                "value": "{{configId}}",
+                "type": "path",
+                "description": "A unique identifier for each configuration."
+              },
+              {
+                "name": "versionNumber",
+                "value": "{{versionNumber}}",
+                "type": "path",
+                "description": "A unique identifier for each version of a configuration."
+              },
+              {
+                "name": "policyId",
+                "value": "{{policyId}}",
+                "type": "path",
+                "description": "A unique identifier for a security policy."
+              },
+              {
+                "name": "accountSwitchKey",
+                "value": "{{accountSwitchKey}}",
+                "type": "query",
+                "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+              }
+            ]
+          },
+          "docs": "List the evaluation hostnames for a configuration version. Evaluation mode for hostnames is only available for Web Application Protector. Run hostnames in evaluation mode to see how your configuration settings protect traffic for that hostname before adding a hostname directly to a live configuration. Once you begin, the hostnames you evaluate start responding to traffic as if they are your current hostnames. However, instead of taking an action the evaluation hostnames log which action they wou"
+        },
+        {
+          "info": {
+            "name": "Akamai API Security Modify Evaluation Hostnames for a Security Policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{hostname}/appsec/v1/configs/:configId/versions/:versionNumber/security-policies/:policyId/eval-hostnames",
+            "params": [
+              {
+                "name": "configId",
+                "value": "{{configId}}",
+                "type": "path",
+                "description": "A unique identifier for each configuration."
+              },
+              {
+                "name": "versionNumber",
+                "value": "{{versionNumber}}",
+                "type": "path",
+                "description": "A unique identifier for each version of a configuration."
+              },
+              {
+                "name": "policyId",
+                "value": "{{policyId}}",
+                "type": "path",
+                "description": "A unique identifier for a security policy."
+              },
+              {
+                "name": "accountSwitchKey",
+                "value": "{{accountSwitchKey}}",
+                "type": "query",
+                "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the list of hostnames you want to evaluate for a configuration version. _Products:_ Web Application Protector, App & API Protector."
+        },
+        {
+          "info": {
+            "name": "Akamai API Security Protect Evaluation Hostnames for a Security Policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{hostname}/appsec/v1/configs/:configId/versions/:versionNumber/security-policies/:policyId/protect-eval-hostnames",
+            "params": [
+              {
+                "name": "configId",
+                "value": "{{configId}}",
+                "type": "path",
+                "description": "A unique identifier for each configuration."
+              },
+              {
+                "name": "versionNumber",
+                "value": "{{versionNumber}}",
+                "type": "path",
+                "description": "A unique identifier for each version of a configuration."
+              },
+              {
+                "name": "policyId",
+                "value": "{{policyId}}",
+                "type": "path",
+                "description": "A unique identifier for a security policy."
+              },
+              {
+                "name": "accountSwitchKey",
+                "value": "{{accountSwitchKey}}",
+                "type": "query",
+                "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Move hostnames you're evaluating to active protection. When you move a hostname from the evaluation hostnames list, it's added to your security policy as a protected hostname. You'll see that hostname in the response object the next time you run [List selected hostnames](https://techdocs.akamai.com/application-security/reference/get-selected-hostnames). _Products:_ Web Application Protector, App & API Protector."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

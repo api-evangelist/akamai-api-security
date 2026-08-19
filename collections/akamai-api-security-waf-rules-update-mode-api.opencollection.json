@@ -1,0 +1,96 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Akamai: Application Security Activation history WAF rules: Update mode API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "WAF rules: Update mode",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Akamai API Security Get the Current Mode",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{hostname}/appsec/v1/configs/:configId/versions/:versionNumber/security-policies/:policyId/mode",
+            "params": [
+              {
+                "name": "configId",
+                "value": "{{configId}}",
+                "type": "path",
+                "description": "A unique identifier for each configuration."
+              },
+              {
+                "name": "versionNumber",
+                "value": "{{versionNumber}}",
+                "type": "path",
+                "description": "A unique identifier for each version of a configuration."
+              },
+              {
+                "name": "policyId",
+                "value": "{{policyId}}",
+                "type": "path",
+                "description": "A unique identifier for a security policy."
+              },
+              {
+                "name": "accountSwitchKey",
+                "value": "{{accountSwitchKey}}",
+                "type": "query",
+                "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+              }
+            ]
+          },
+          "docs": "When using Web Application Firewall in your security policy, this mode conveys how you're planning to keep the rules up to date, either `KRS` for manual updates or `AAG` for automatic updates. This operation returns which mode your rules are currently set to. _Products:_ All."
+        },
+        {
+          "info": {
+            "name": "Akamai API Security Modify the Mode",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{hostname}/appsec/v1/configs/:configId/versions/:versionNumber/security-policies/:policyId/mode",
+            "params": [
+              {
+                "name": "configId",
+                "value": "{{configId}}",
+                "type": "path",
+                "description": "A unique identifier for each configuration."
+              },
+              {
+                "name": "versionNumber",
+                "value": "{{versionNumber}}",
+                "type": "path",
+                "description": "A unique identifier for each version of a configuration."
+              },
+              {
+                "name": "policyId",
+                "value": "{{policyId}}",
+                "type": "path",
+                "description": "A unique identifier for a security policy."
+              },
+              {
+                "name": "accountSwitchKey",
+                "value": "{{accountSwitchKey}}",
+                "type": "query",
+                "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The mode you set determines how your rule sets are updated. Use `KRS` mode to update the rule sets manually, or `AAG` to have them update automatically. _Products:_ Kona Site Defender, App & API Protector with the Advanced Security module, Adaptive Security Engine.   If you're using Adaptive Security Engine, use `ASE_AUTO` to update the rules automatically, or `ASE_MANUAL` to update them yourself."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

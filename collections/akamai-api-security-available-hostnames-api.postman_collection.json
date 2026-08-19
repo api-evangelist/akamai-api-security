@@ -1,0 +1,329 @@
+{
+  "item": [
+    {
+      "id": "5d0a908f-1df6-4e07-9a72-19722f554f49",
+      "name": "Available hostnames",
+      "description": {
+        "content": "List all hostnames for a given contract and group.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fe121af6-e10f-4216-bf99-3bb57d5cc6b3",
+          "name": "Akamai API Security List Available Hostnames for a New Configuration",
+          "request": {
+            "name": "Akamai API Security List Available Hostnames for a New Configuration",
+            "description": {
+              "content": "Lists the hostnames for a given contract and group. Use this operation for a new configuration, and use [List selectable hostnames](https://techdocs.akamai.com/application-security/reference/get-selectable-hostnames) to see a list of hostnames you can add to an existing configuration. This operation shows you every acceptable hostname you can use, where the other hostname operation omits any hostnames already included in your configuration. _Products:_ All.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "contracts",
+                ":contractId",
+                "groups",
+                ":groupId",
+                "selectable-hostnames"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "accountSwitchKey",
+                  "value": "<string>",
+                  "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupId",
+                  "description": "(Required) A unique identifier for a group."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "contractId",
+                  "description": "(Required) A unique identifier for a contract."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f4032562-b347-49f7-9a3e-9b79f07d0ce4",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contracts",
+                    ":contractId",
+                    "groups",
+                    ":groupId",
+                    "selectable-hostnames"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) A unique identifier for a group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contractId",
+                      "description": "(Required) A unique identifier for a contract."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"availableSet\": [\n    {\n      \"activeInProduction\": true,\n      \"activeInStaging\": true,\n      \"arlInclusion\": true,\n      \"configIdInProduction\": 77653,\n      \"configNameInProduction\": \"WAF Security File\",\n      \"hostname\": \"example.com\"\n    },\n    {\n      \"activeInProduction\": false,\n      \"activeInStaging\": true,\n      \"arlInclusion\": true,\n      \"configIdInProduction\": 51074,\n      \"configNameInProduction\": \"A PUBLIC CONFIG\",\n      \"hostname\": \"www.example.com\"\n    },\n    {\n      \"activeInProduction\": true,\n      \"activeInStaging\": true,\n      \"arlInclusion\": true,\n      \"configIdInProduction\": 65473,\n      \"configNameInProduction\": \"Other Security Configuration\",\n      \"hostname\": \"www.example-123.com\"\n    }\n  ],\n  \"configId\": 123,\n  \"configVersion\": 2,\n  \"errorSet\": [\n    {\n      \"hostname\": \"*.example.net\",\n      \"reason\": \"property is not active in either production or staging\",\n      \"reasonCode\": 400\n    },\n    {\n      \"hostname\": \"test-example.net\",\n      \"reason\": \"You don't have access to this property\",\n      \"reasonCode\": 403\n    }\n  ],\n  \"protectARLInclusionHost\": true,\n  \"selectedSet\": [\n    {\n      \"activeInProduction\": true,\n      \"activeInStaging\": true,\n      \"arlInclusion\": false,\n      \"configIdInProduction\": 11887,\n      \"configNameInProduction\": \"Rbac Test Config\",\n      \"hostname\": \"m.example.com\"\n    },\n    {\n      \"activeInProduction\": true,\n      \"activeInStaging\": true,\n      \"arlInclusion\": false,\n      \"configIdInProduction\": null,\n      \"configNameInProduction\": null,\n      \"hostname\": \"m.example-123.com\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e712a148-81fb-491e-b942-1d68e3ee50b4",
+              "name": "[Bad request](https://techdocs.akamai.com/application-security/reference/400). Invalid request body or URL parameter input.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contracts",
+                    ":contractId",
+                    "groups",
+                    ":groupId",
+                    "selectable-hostnames"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) A unique identifier for a group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contractId",
+                      "description": "(Required) A unique identifier for a contract."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"The request could not be understood by the server due to malformed syntax.\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 400,\n  \"title\": \"Bad Request\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec/error-types/BAD-REQUEST\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c5baa4e6-7e5b-44cb-993f-01be525e8bed",
+              "name": "[Forbidden](https://techdocs.akamai.com/application-security/reference/403). You don't have access to the resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contracts",
+                    ":contractId",
+                    "groups",
+                    ":groupId",
+                    "selectable-hostnames"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) A unique identifier for a group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contractId",
+                      "description": "(Required) A unique identifier for a contract."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"You do not have the necessary access to perform this operation or the requested resource cannot be modified\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 403,\n  \"title\": \"Forbidden\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec-resource/error-types/ACCESS-DENIED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "69ed9adb-44f4-4ad9-a263-1b1ea2841db5",
+              "name": "[Not found](https://techdocs.akamai.com/application-security/reference/404). That resource doesn't exist, or the URL is malformed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contracts",
+                    ":contractId",
+                    "groups",
+                    ":groupId",
+                    "selectable-hostnames"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) A unique identifier for a group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contractId",
+                      "description": "(Required) A unique identifier for a contract."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"The requested resource is not found\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 404,\n  \"title\": \"Not Found\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec/error-types/NOT-FOUND\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://{{hostname}}/appsec/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a3db26b0-ed3c-485e-a54f-881211faefd1",
+    "name": "Akamai: Application Security Activation history Available hostnames API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Manage your configurations for Kona Site Defender,\nWeb Application Protector, and Client Reputation.\n",
+      "type": "text/plain"
+    }
+  }
+}

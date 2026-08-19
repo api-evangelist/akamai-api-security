@@ -1,0 +1,270 @@
+{
+  "item": [
+    {
+      "id": "8488daf6-938c-4bfd-bcff-0ec6bc53750b",
+      "name": "Configuration version export",
+      "description": {
+        "content": "Get comprehensive details about a security configuration\nversion.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "82a9aae4-3e4b-4cc8-bd44-404e501dfb74",
+          "name": "Akamai API Security Export a Configuration Version",
+          "request": {
+            "name": "Akamai API Security Export a Configuration Version",
+            "description": {
+              "content": "Returns comprehensive details about a security configuration version. This operation returns more data than [Get configuration version details](https://techdocs.akamai.com/application-security/reference/get-version-number), including Bot Manager protections, rate and security policies, rules, hostnames, and numerous additional settings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "export",
+                "configs",
+                ":configId",
+                "versions",
+                ":versionNumber"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "accountSwitchKey",
+                  "value": "<string>",
+                  "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "configId",
+                  "description": "(Required) A unique identifier for each configuration."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "versionNumber",
+                  "description": "(Required) A unique identifier for each version of a configuration."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "894cd861-92b3-4408-946e-fd6de7906eb2",
+              "name": "Successfully returned resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "export",
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"advancedOptions\": {\n    \"logging\": {\n      \"allowSampling\": true,\n      \"cookies\": {\n        \"type\": \"exclude\",\n        \"values\": [\n          \"_updated_By_SoapUI\",\n          \"w\",\n          \"NEW_VAL_ADDED_BY_SoapUI\"\n        ]\n      },\n      \"customHeaders\": {\n        \"type\": \"only\",\n        \"values\": [\n          \"112\",\n          \"sdasd\",\n          \"ds\"\n        ]\n      },\n      \"standardHeaders\": {\n        \"type\": \"only\"\n      }\n    },\n    \"pragmaHeader\": {\n      \"action\": \"REMOVE\",\n      \"conditionOperator\": \"AND\",\n      \"excludeCondition\": [\n        {\n          \"header\": \"Expect\",\n          \"positiveMatch\": true,\n          \"type\": \"requestHeaderValueMatch\",\n          \"useHeaders\": false,\n          \"value\": [\n            \"dasd\"\n          ],\n          \"valueCase\": true,\n          \"valueWildcard\": true\n        },\n        {\n          \"positiveMatch\": true,\n          \"type\": \"networkList\",\n          \"useHeaders\": true,\n          \"value\": [\n            \"62569_AEPUAT1PARTNERSSTRICTWL\"\n          ],\n          \"valueCase\": false,\n          \"valueWildcard\": false\n        }\n      ],\n      \"override\": true\n    },\n    \"prefetch\": {\n      \"allExtensions\": false,\n      \"enableAppLayer\": true,\n      \"enableRateControls\": false,\n      \"extensions\": [\n        \"cgi\",\n        \"jsp\",\n        \"EMPTY_STRING\",\n        \"aspx\",\n        \"php\",\n        \"py\",\n        \"asp\"\n      ]\n    }\n  },\n  \"advancedSettings\": {\n    \"userAllowListIdSettings\": {\n      \"userAllowListId\": \"82004_APRE2ENLDONOTDELETE\"\n    },\n    \"userRiskResponseStrategySettings\": {\n      \"traffic\": {\n        \"inline\": {\n          \"aggressive\": {\n            \"threshold\": 76\n          },\n          \"cautious\": {\n            \"threshold\": 0\n          },\n          \"strict\": {\n            \"threshold\": 51\n          }\n        },\n        \"nativeSdkAndroid\": {\n          \"aggressive\": {\n            \"threshold\": 76\n          },\n          \"cautious\": {\n            \"threshold\": 0\n          },\n          \"strict\": {\n            \"threshold\": 51\n          }\n        },\n        \"nativeSdkIos\": {\n          \"aggressive\": {\n            \"threshold\": 76\n          },\n          \"cautious\": {\n            \"threshold\": 0\n          },\n          \"strict\": {\n            \"threshold\": 51\n          }\n        },\n        \"standard\": {\n          \"aggressive\": {\n            \"threshold\": 76\n          },\n          \"cautious\": {\n            \"threshold\": 0\n          },\n          \"strict\": {\n            \"threshold\": 51\n          }\n        }\n      }\n    }\n  },\n  \"basedOn\": 1,\n  \"configId\": 48579,\n  \"configName\": \"New Security Config\",\n  \"createDate\": \"2017-09-08T22:24:41Z\",\n  \"createdBy\": \"mrossi\",\n  \"customRules\": [\n    {\n      \"conditions\": [\n        {\n          \"positiveMatch\": true,\n          \"type\": \"requestMethodMatch\",\n          \"value\": [\n            \"GET\"\n          ]\n        }\n      ],\n      \"configId\": 77653,\n      \"id\": 776532,\n      \"name\": \"UXR-715 RE2 Second Test with Flags\",\n      \"ruleActivated\": false,\n      \"stagingOnly\": true,\n      \"structured\": true,\n      \"tag\": [\n        \"tagfor\",\n        \"17.2\"\n      ],\n      \"version\": 1\n    },\n    {\n      \"conditions\": [\n        {\n          \"positiveMatch\": true,\n          \"type\": \"extensionMatch\",\n          \"value\": [\n            \"fdf\"\n          ],\n          \"valueCase\": true,\n          \"valueWildcard\": false\n        }\n      ],\n      \"configId\": 77653,\n      \"description\": \"Test CR\",\n      \"id\": 600001,\n      \"name\": \"Test CR\",\n      \"ruleActivated\": false,\n      \"structured\": true,\n      \"tag\": [\n        \"Test\",\n        \"Tag\"\n      ],\n      \"version\": 1\n    },\n    {\n      \"conditions\": [\n        {\n          \"name\": \"kids\",\n          \"nameCase\": true,\n          \"nameWildcard\": false,\n          \"positiveMatch\": true,\n          \"type\": \"cookieMatch\",\n          \"value\": [\n            \"dsds\",\n            \"dasdqw\",\n            \"dsa\",\n            \"dqwd\",\n            \"csqw\"\n          ],\n          \"valueCase\": true,\n          \"valueWildcard\": true\n        }\n      ],\n      \"configId\": 77653,\n      \"description\": \"Test CR\",\n      \"id\": 600006,\n      \"name\": \"Test CR\",\n      \"ruleActivated\": false,\n      \"structured\": true,\n      \"tag\": [\n        \"k\"\n      ],\n      \"version\": 1\n    },\n    {\n      \"conditions\": [\n        {\n          \"positiveMatch\": true,\n          \"type\": \"pathMatch\",\n          \"value\": [\n            \"/login\"\n          ]\n        }\n      ],\n      \"configId\": 77653,\n      \"id\": 606713,\n      \"name\": \"Test\",\n      \"ruleActivated\": false,\n      \"structured\": true,\n      \"tag\": [\n        \"adsa\"\n      ],\n      \"version\": 1\n    },\n    {\n      \"conditions\": [\n        {\n          \"name\": \"fvfv\",\n          \"positiveMatch\": true,\n          \"type\": \"argsPostMatch\",\n          \"value\": [\n            \"fgbr\"\n          ]\n        },\n        {\n          \"name\": [\n            \"test\"\n          ],\n          \"nameWildcard\": true,\n          \"positiveMatch\": true,\n          \"type\": \"requestHeaderMatch\",\n          \"value\": [\n            \"test1\"\n          ],\n          \"valueCase\": false,\n          \"valueWildcard\": true\n        }\n      ],\n      \"configId\": 77653,\n      \"description\": \"Test CR\",\n      \"id\": 690265,\n      \"name\": \"Test CR2\",\n      \"ruleActivated\": false,\n      \"structured\": true,\n      \"tag\": [\n        \"ee\"\n      ],\n      \"version\": 1\n    },\n    {\n      \"configId\": 77653,\n      \"id\": 667825,\n      \"inspectRequest\": false,\n      \"inspectResponse\": false,\n      \"metadata\": \"<match:variable name=\\\"MY_SAMPLE_THREAT_DETECTED\\\" result=\\\"true\\\" value=\\\"execute rule\\\">\\n<match:regex impl=\\\"re2\\\" regex=\\\"^\\\\d+$\\\" result=\\\"false\\\" select=\\\"REQUEST_HEADERS:Content-Length\\\" strict-err-check-re2=\\\"on\\\" transform=\\\"urlDecodeUni\\\">\\n<security:firewall.action>\\n<msg>UXR-715 CRB Metadata testing</msg>\\n<tag>CUSTOM/TEST</tag>\\n<id>667825</id>\\n<deny>%(WAF_CUSTOM_R667825_DENY)</deny>\\n<data>threat indicated from data %(MY_SAMPLE_THREAT_DETECTED)</data>\\n<http-status>403</http-status>\\n</security:firewall.action>\\n</match:regex>\\n</match:variable>\",\n      \"name\": \"UXR-715 RE27890\",\n      \"ruleActivated\": false,\n      \"structured\": false,\n      \"version\": 1\n    }\n  ],\n  \"errorHosts\": [\n    {\n      \"hostname\": \"business.example.com\",\n      \"reason\": \"property is not active in either production or staging\",\n      \"reasonCode\": 400\n    },\n    {\n      \"hostname\": \"anotherhostname.example.com\",\n      \"reason\": \"You don't have access to this property\",\n      \"reasonCode\": 403\n    }\n  ],\n  \"matchTargets\": {\n    \"apiTargets\": [\n      {\n        \"apis\": [\n          {\n            \"id\": 1041,\n            \"name\": \"hmm test\"\n          }\n        ],\n        \"bypassNetworkLists\": [\n          {\n            \"id\": \"1024_AMAZONELASTICCOMPUTECLOU\",\n            \"name\": \"Ec2 Akamai Network List\"\n          },\n          {\n            \"id\": \"1283_MICROSOFTWINDOWSAZUREDAT\",\n            \"name\": \"Azure IP range cloud services\"\n          }\n        ],\n        \"effectiveSecurityControls\": {\n          \"applyApiConstraints\": false,\n          \"applyApplicationLayerControls\": false,\n          \"applyNetworkLayerControls\": false,\n          \"applyRateControls\": true,\n          \"applyReputationControls\": false,\n          \"applySlowPostControls\": false\n        },\n        \"id\": 1362597,\n        \"securityPolicy\": {\n          \"policyId\": \"99e_47293\"\n        },\n        \"sequence\": 6,\n        \"type\": \"api\"\n      },\n      {\n        \"apis\": [\n          {\n            \"id\": 1001,\n            \"name\": \"1001\"\n          },\n          {\n            \"id\": 1041,\n            \"name\": \"hmm test\"\n          }\n        ],\n        \"bypassNetworkLists\": [\n          {\n            \"id\": \"11212_BYPASSURR\",\n            \"name\": \"bypass-URR\"\n          }\n        ],\n        \"effectiveSecurityControls\": {\n          \"applyApiConstraints\": true,\n          \"applyApplicationLayerControls\": false,\n          \"applyNetworkLayerControls\": true,\n          \"applyRateControls\": false,\n          \"applyReputationControls\": true,\n          \"applySlowPostControls\": false\n        },\n        \"id\": 1362598,\n        \"securityPolicy\": {\n          \"policyId\": \"4444_44572\"\n        },\n        \"sequence\": 7,\n        \"type\": \"api\"\n      }\n    ],\n    \"websiteTargets\": [\n      {\n        \"bypassNetworkLists\": [\n          {\n            \"id\": \"11212_BYPASSURR\",\n            \"name\": \"bypass-URR\"\n          }\n        ],\n        \"defaultFile\": \"NO_MATCH\",\n        \"effectiveSecurityControls\": {\n          \"applyApiConstraints\": true,\n          \"applyApplicationLayerControls\": true,\n          \"applyNetworkLayerControls\": false,\n          \"applyRateControls\": true,\n          \"applyReputationControls\": false,\n          \"applySlowPostControls\": false\n        },\n        \"fileExtensions\": [\n          \"jpg\"\n        ],\n        \"filePaths\": [\n          \"/path\"\n        ],\n        \"id\": 1362593,\n        \"isNegativeFileExtensionMatch\": false,\n        \"isNegativePathMatch\": false,\n        \"securityPolicy\": {\n          \"policyId\": \"qik3_38800\"\n        },\n        \"sequence\": 1,\n        \"type\": \"website\"\n      },\n      {\n        \"defaultFile\": \"NO_MATCH\",\n        \"effectiveSecurityControls\": {\n          \"applyApiConstraints\": true,\n          \"applyApplicationLayerControls\": true,\n          \"applyNetworkLayerControls\": true,\n          \"applyRateControls\": true,\n          \"applyReputationControls\": true,\n          \"applySlowPostControls\": false\n        },\n        \"filePaths\": [\n          \"/images\",\n          \"/image1\",\n          \"/path\"\n        ],\n        \"hostnames\": [\n          \"b2c.div1.akamaniac.com\"\n        ],\n        \"id\": 1362594,\n        \"isNegativeFileExtensionMatch\": false,\n        \"isNegativePathMatch\": false,\n        \"securityPolicy\": {\n          \"policyId\": \"qik2_38799\"\n        },\n        \"sequence\": 2,\n        \"type\": \"website\"\n      }\n    ]\n  },\n  \"production\": {\n    \"status\": \"Inactive\"\n  },\n  \"ratePolicies\": [\n    {\n      \"averageThreshold\": 3,\n      \"burstThreshold\": 2,\n      \"clientIdentifier\": \"\",\n      \"createDate\": \"2017-09-08T22:24:42Z\",\n      \"id\": 672601,\n      \"matchType\": \"path\",\n      \"name\": \"dsafsfdsf\",\n      \"pathMatchType\": \"RequestDisabled\",\n      \"pathUriPositiveMatch\": true,\n      \"queryParameters\": [\n        {\n          \"name\": \"dasdasdasd*\",\n          \"positiveMatch\": true,\n          \"valueInRange\": false,\n          \"values\": [\n            \"dasdasdas8*&^\"\n          ]\n        }\n      ],\n      \"requestType\": \"ClientRequest\",\n      \"sameActionOnIpv6\": true,\n      \"type\": \"BOTMAN\",\n      \"updateDate\": \"2017-09-08T22:24:42Z\",\n      \"useXForwardForHeaders\": false,\n      \"used\": false\n    },\n    {\n      \"additionalMatchOptions\": [\n        {\n          \"positiveMatch\": true,\n          \"type\": \"NetworkListCondition\",\n          \"values\": [\n            \"25620_REPUTATIONALLOWLIST174\",\n            \"11212_BYPASSURR\"\n          ]\n        },\n        {\n          \"positiveMatch\": true,\n          \"type\": \"RequestMethodCondition\",\n          \"values\": [\n            \"GET\",\n            \"HTTP_DELETE\"\n          ]\n        },\n        {\n          \"positiveMatch\": true,\n          \"type\": \"UserAgentCondition\",\n          \"values\": [\n            \"MOZILLA\",\n            \"Googlebot\"\n          ]\n        },\n        {\n          \"positiveMatch\": true,\n          \"type\": \"RequestMethodCondition\",\n          \"values\": [\n            \"GET\",\n            \"POST\",\n            \"HEAD\"\n          ]\n        },\n        {\n          \"positiveMatch\": true,\n          \"type\": \"ResponseStatusCondition\",\n          \"values\": [\n            \"400\",\n            \"401\",\n            \"402\",\n            \"403\",\n            \"404\",\n            \"405\",\n            \"406\",\n            \"407\",\n            \"408\",\n            \"409\",\n            \"410\",\n            \"500\",\n            \"501\",\n            \"502\",\n            \"503\",\n            \"504\"\n          ]\n        }\n      ],\n      \"averageThreshold\": 1000,\n      \"burstThreshold\": 10,\n      \"burstWindow\": 3,\n      \"clientIdentifier\": \"ip\",\n      \"condition\": {\n        \"atomicConditions\": [\n          {\n            \"className\": \"TlsFingerprintCondition\",\n            \"positiveMatch\": true,\n            \"value\": [\n              \"a797dc449ef113be\",\n              \"ba51ec8d71259a5b3c92d8787370e2c3\"\n            ]\n          },\n          {\n            \"className\": \"ClientReputationCondition\",\n            \"name\": [\n              \"DOSATCK\",\n              \"WEBATCK\"\n            ],\n            \"positiveMatch\": true,\n            \"sharedIpHandling\": \"BOTH\",\n            \"value\": 3\n          },\n          {\n            \"className\": \"RequestHeaderCondition\",\n            \"name\": [\n              \"Accept\",\n              \"Content-Type\"\n            ],\n            \"nameWildcard\": true,\n            \"positiveMatch\": true,\n            \"value\": [\n              \"json\",\n              \"xml\"\n            ],\n            \"valueCase\": false,\n            \"valueWildcard\": true\n          }\n        ],\n        \"positiveMatch\": true\n      },\n      \"createDate\": \"2017-09-08T22:24:42Z\",\n      \"description\": \"These Shared Resources will be available to all policies within the Security Configuration\",\n      \"id\": 672607,\n      \"matchType\": \"path\",\n      \"name\": \"These Shared Resources will be available to all policies within the Security Configuration\",\n      \"pathMatchType\": \"Custom\",\n      \"pathUriPositiveMatch\": true,\n      \"queryParameters\": [\n        {\n          \"name\": \"param1\",\n          \"positiveMatch\": false,\n          \"valueInRange\": true,\n          \"values\": [\n            \"value1\"\n          ]\n        }\n      ],\n      \"requestType\": \"ClientRequest\",\n      \"sameActionOnIpv6\": true,\n      \"type\": \"WAF\",\n      \"updateDate\": \"2017-09-08T22:24:42Z\",\n      \"useXForwardForHeaders\": false,\n      \"used\": true\n    }\n  ],\n  \"reputationProfiles\": [\n    {\n      \"context\": \"SCANTL\",\n      \"contextReadable\": \"Scanning Tools\",\n      \"enabled\": true,\n      \"id\": 210588,\n      \"name\": \"Scanning Tools (Low Threat)\",\n      \"threshold\": 5\n    },\n    {\n      \"condition\": {\n        \"atomicConditions\": [\n          {\n            \"className\": \"RequestHeaderCondition\",\n            \"index\": 1,\n            \"name\": [\n              \"test*\"\n            ],\n            \"nameWildcard\": false,\n            \"positiveMatch\": true,\n            \"value\": [\n              \"test*\"\n            ],\n            \"valueCase\": false,\n            \"valueWildcard\": false\n          },\n          {\n            \"className\": \"RequestHeaderCondition\",\n            \"index\": 2,\n            \"name\": [\n              \"Head\",\n              \"Header\"\n            ],\n            \"nameWildcard\": true,\n            \"positiveMatch\": true,\n            \"value\": [\n              \"Header value\"\n            ],\n            \"valueCase\": false,\n            \"valueWildcard\": true\n          },\n          {\n            \"checkIps\": \"connecting\",\n            \"className\": \"NetworkListCondition\",\n            \"index\": 3,\n            \"positiveMatch\": true,\n            \"value\": [\n              \"14121_IMAGEMANAGERSERVERS\"\n            ]\n          },\n          {\n            \"className\": \"RequestCookieCondition\",\n            \"index\": 4,\n            \"name\": \"cookieName\",\n            \"nameCase\": false,\n            \"nameWildcard\": true,\n            \"positiveMatch\": true,\n            \"value\": [\n              \"cookieValue\"\n            ],\n            \"valueCase\": false,\n            \"valueWildcard\": true\n          },\n          {\n            \"checkIps\": \"connecting\",\n            \"className\": \"AsNumberCondition\",\n            \"index\": 5,\n            \"positiveMatch\": true,\n            \"value\": [\n              \"5\"\n            ]\n          }\n        ],\n        \"canDelete\": false,\n        \"configVersionId\": 152889,\n        \"id\": 88112456,\n        \"name\": \"Cloned of 87956156 for version 152889\",\n        \"positiveMatch\": true,\n        \"uuid\": \"SEC_COND_88112456\",\n        \"version\": 1504909482545\n      },\n      \"context\": \"WEBATCK\",\n      \"contextReadable\": \"Web Attackers\",\n      \"enabled\": false,\n      \"id\": 210578,\n      \"name\": \"Web Attackers (Low Threat)\",\n      \"threshold\": 5\n    }\n  ],\n  \"rulesets\": [\n    {\n      \"attackGroups\": [\n        {\n          \"group\": \"DDOS\",\n          \"groupName\": \"Anomaly Score Exceeded for DDoS\",\n          \"threshold\": 5\n        },\n        {\n          \"group\": \"IN\",\n          \"groupName\": \"Anomaly Score Exceeded for Inbound\",\n          \"threshold\": 30\n        },\n        {\n          \"group\": \"SQL\",\n          \"groupName\": \"Anomaly Score Exceeded for SQL Injection\",\n          \"threshold\": 19\n        },\n        {\n          \"group\": \"TROJAN\",\n          \"groupName\": \"Anomaly Score Exceeded for Trojan\",\n          \"threshold\": 4\n        },\n        {\n          \"group\": \"XSS\",\n          \"groupName\": \"Anomaly Score Exceeded for Cross-Site Scripting\",\n          \"threshold\": 9\n        }\n      ],\n      \"id\": 41,\n      \"releaseDate\": \"2017-04-21T16:00:38Z\",\n      \"rules\": [\n        {\n          \"id\": 699989,\n          \"inspectRequestBody\": false,\n          \"inspectResponseBody\": false,\n          \"ruleVersion\": 1,\n          \"score\": 5,\n          \"tag\": \"<AKAMAI/PRAGMA_DEFLECTION>\",\n          \"title\": \"Akamai-X debug Pragma header detected and removed\"\n        },\n        {\n          \"id\": 699990,\n          \"inspectRequestBody\": false,\n          \"inspectResponseBody\": false,\n          \"ruleVersion\": 1,\n          \"score\": 5,\n          \"tag\": \"<AKAMAI/EDGESCAPE_ANONYMOUS_PROXY_v1>\",\n          \"title\": \"Detected request from anonymous proxy\"\n        },\n        {\n          \"attackGroups\": [\n            \"SQL\",\n            \"IN\"\n          ],\n          \"id\": 981252,\n          \"inspectRequestBody\": true,\n          \"inspectResponseBody\": false,\n          \"ruleVersion\": 4,\n          \"score\": 5,\n          \"tag\": \"<OWASP_CRS/WEB_ATTACK/SQL_INJECTION>\",\n          \"title\": \"MySQL Charset Switch and MSSQL DoS Attempts\"\n        },\n        {\n          \"attackGroups\": [\n            \"IN\",\n            \"DDOS\"\n          ],\n          \"id\": 3000060,\n          \"inspectRequestBody\": true,\n          \"inspectResponseBody\": false,\n          \"ruleVersion\": 2,\n          \"score\": 1000,\n          \"tag\": \"<AKAMAI/AUTOMATION/MALICIOUS>\",\n          \"title\": \"Mirai / Kaiten DDoS Detection - HTTP Attacks\"\n        },\n        {\n          \"attackGroups\": [\n            \"XSS\",\n            \"IN\"\n          ],\n          \"id\": 3000061,\n          \"inspectRequestBody\": true,\n          \"inspectResponseBody\": false,\n          \"ruleVersion\": 1,\n          \"score\": 5,\n          \"tag\": \"<AKAMAI/WEB_ATTACK/XSS>\",\n          \"title\": \"Referer Header From OpenBugBounty Website - Potential XSS\"\n        }\n      ],\n      \"rulesetVersionId\": 327550,\n      \"type\": \"Kona\"\n    }\n  ],\n  \"securityPolicies\": [\n    {\n      \"attackGroupActions\": [\n        {\n          \"action\": \"deny\",\n          \"exception\": {\n            \"specificHeaderCookieParamXmlOrJsonNames\": [\n              {\n                \"names\": [\n                  \"*\"\n                ],\n                \"selector\": \"REQUEST_HEADERS_NAMES\",\n                \"wildcard\": true\n              },\n              {\n                \"names\": [\n                  \"test\"\n                ],\n                \"selector\": \"REQUEST_HEADERS\",\n                \"wildcard\": true\n              },\n              {\n                \"names\": [\n                  \"connect.sid\"\n                ],\n                \"selector\": \"REQUEST_COOKIES_NAMES\",\n                \"wildcard\": false\n              },\n              {\n                \"names\": [\n                  \"XSRF_TOKEN\"\n                ],\n                \"selector\": \"REQUEST_COOKIES\",\n                \"wildcard\": true\n              },\n              {\n                \"names\": [\n                  \"*\"\n                ],\n                \"selector\": \"ARGS_NAMES\",\n                \"wildcard\": true\n              },\n              {\n                \"names\": [\n                  \"value\"\n                ],\n                \"selector\": \"ARGS\",\n                \"wildcard\": true\n              },\n              {\n                \"names\": [\n                  \"*\"\n                ],\n                \"selector\": \"JSON_NAMES\",\n                \"wildcard\": true\n              },\n              {\n                \"names\": [\n                  \"val\"\n                ],\n                \"selector\": \"JSON_PAIRS\",\n                \"wildcard\": true\n              },\n              {\n                \"names\": [\n                  \"test\"\n                ],\n                \"selector\": \"XML_PAIRS\",\n                \"wildcard\": true\n              },\n              {\n                \"selector\": \"REQUEST_PROTOCOL\",\n                \"wildcard\": true\n              },\n              {\n                \"selector\": \"REQUEST_METHOD\",\n                \"wildcard\": true\n              },\n              {\n                \"selector\": \"REQUEST_URI\",\n                \"wildcard\": true\n              },\n              {\n                \"selector\": \"QUERY_STRING\",\n                \"wildcard\": true\n              },\n              {\n                \"selector\": \"REQUEST_FILENAME\",\n                \"wildcard\": true\n              },\n              {\n                \"selector\": \"REQUEST_PATH_SEGMENT\",\n                \"wildcard\": true\n              },\n              {\n                \"selector\": \"REQUEST_BODY\",\n                \"wildcard\": true\n              },\n              {\n                \"selector\": \"REQBODY_PROCESSOR_ERROR\",\n                \"wildcard\": true\n              },\n              {\n                \"selector\": \"FILES_NAMES\",\n                \"wildcard\": true\n              }\n            ]\n          },\n          \"group\": \"SQL\",\n          \"rulesetVersionId\": 327550\n        },\n        {\n          \"action\": \"deny\",\n          \"group\": \"XSS\",\n          \"rulesetVersionId\": 327550\n        },\n        {\n          \"action\": \"deny\",\n          \"group\": \"IN\",\n          \"rulesetVersionId\": 327550\n        }\n      ],\n      \"customRuleActions\": [\n        {\n          \"action\": \"deny\",\n          \"id\": 628035\n        },\n        {\n          \"action\": \"alert\",\n          \"id\": 628037\n        }\n      ],\n      \"hasRatePolicyWithApiKey\": false,\n      \"id\": \"qik2_38799\",\n      \"name\": \"Generated Quick Policy - 4/10/17 7:13:18 PM GMT\",\n      \"networkLayerControls\": {\n        \"accountProtection\": {\n          \"generalSettings\": {\n            \"accountProtectionEnabled\": true,\n            \"originSignalHeaderEnabled\": true,\n            \"originUserIdInRequestHeaderEnabled\": false,\n            \"usernameInRequestHeaderEnabled\": false\n          },\n          \"transactionalEndpoints\": [\n            {\n              \"apiEndPointId\": 784844,\n              \"operationId\": \"d7cf5676-5e30-4682-aa8d-2f181a139213\",\n              \"telemetryTypeStates\": {\n                \"inline\": {\n                  \"ajaxSupportEnabled\": false,\n                  \"disabledAction\": \"none\",\n                  \"enabled\": true\n                },\n                \"nativeSdk\": {\n                  \"ajaxSupportEnabled\": false,\n                  \"disabledAction\": \"none\",\n                  \"enabled\": true\n                },\n                \"standard\": {\n                  \"ajaxSupportEnabled\": false,\n                  \"disabledAction\": \"monitor\",\n                  \"enabled\": true\n                }\n              },\n              \"traffic\": {\n                \"inline\": {\n                  \"aggressive\": {\n                    \"action\": \"monitor\",\n                    \"threshold\": 100\n                  },\n                  \"cautious\": {\n                    \"action\": \"monitor\",\n                    \"threshold\": 0\n                  },\n                  \"overrideThresholds\": true,\n                  \"strict\": {\n                    \"action\": \"monitor\",\n                    \"threshold\": 51\n                  }\n                },\n                \"nativeSdkAndroid\": {\n                  \"aggressive\": {\n                    \"action\": \"monitor\",\n                    \"threshold\": 100\n                  },\n                  \"bypassPreSdkVersion\": true,\n                  \"cautious\": {\n                    \"action\": \"monitor\",\n                    \"threshold\": 0\n                  },\n                  \"overrideThresholds\": true,\n                  \"strict\": {\n                    \"action\": \"monitor\",\n                    \"threshold\": 51\n                  }\n                },\n                \"nativeSdkIos\": {\n                  \"aggressive\": {\n                    \"action\": \"monitor\",\n                    \"threshold\": 100\n                  },\n                  \"bypassPreSdkVersion\": true,\n                  \"cautious\": {\n                    \"action\": \"monitor\",\n                    \"threshold\": 0\n                  },\n                  \"overrideThresholds\": true,\n                  \"strict\": {\n                    \"action\": \"monitor\",\n                    \"threshold\": 51\n                  }\n                },\n                \"standard\": {\n                  \"aggressive\": {\n                    \"action\": \"monitor\",\n                    \"threshold\": 100\n                  },\n                  \"cautious\": {\n                    \"action\": \"monitor\",\n                    \"threshold\": 0\n                  },\n                  \"overrideThresholds\": true,\n                  \"strict\": {\n                    \"action\": \"monitor\",\n                    \"threshold\": 63\n                  }\n                }\n              }\n            }\n          ]\n        },\n        \"block\": \"blockSpecificIPGeo\",\n        \"geoControls\": {\n          \"blockedIPNetworkLists\": {\n            \"additional\": [\n              \"AF\",\n              \"AS\"\n            ],\n            \"networkList\": [\n              \"4389_BLANKLIST\"\n            ]\n          }\n        },\n        \"ipControls\": {\n          \"allowedIPNetworkLists\": {\n            \"additional\": [\n              \"192.0.2.86\"\n            ],\n            \"networkList\": [\n              \"12801_25000\",\n              \"19440_1671\"\n            ]\n          },\n          \"blockedIPNetworkLists\": {\n            \"additional\": [\n              \"192.0.2.1\"\n            ],\n            \"networkList\": [\n              \"16656_CPISERVERS\",\n              \"18460_166RELEASETESTING\"\n            ]\n          }\n        },\n        \"slowPost\": {\n          \"action\": \"alert\",\n          \"durationThreshold\": {\n            \"timeout\": 5\n          },\n          \"slowRateThreshold\": {\n            \"period\": 60,\n            \"rate\": 10\n          }\n        }\n      },\n      \"pragmaHeader\": {\n        \"action\": \"REMOVE\",\n        \"conditionOperator\": \"AND\",\n        \"excludeCondition\": [\n          {\n            \"header\": \"Expect\",\n            \"positiveMatch\": true,\n            \"type\": \"requestHeaderValueMatch\",\n            \"useHeaders\": false,\n            \"value\": [\n              \"dasd\"\n            ],\n            \"valueCase\": true,\n            \"valueWildcard\": true\n          },\n          {\n            \"positiveMatch\": true,\n            \"type\": \"networkList\",\n            \"useHeaders\": true,\n            \"value\": [\n              \"62569_AEPUAT1PARTNERSSTRICTWL\"\n            ],\n            \"valueCase\": false,\n            \"valueWildcard\": false\n          }\n        ],\n        \"override\": true\n      },\n      \"ratePolicyActions\": [\n        {\n          \"id\": 0,\n          \"ipv4Action\": \"alert\",\n          \"ipv6Action\": \"deny\"\n        },\n        {\n          \"id\": 0,\n          \"ipv4Action\": \"alert\",\n          \"ipv6Action\": \"none\"\n        }\n      ],\n      \"reputationProfileActions\": [\n        {\n          \"action\": \"alert\",\n          \"id\": 281778\n        },\n        {\n          \"action\": \"deny\",\n          \"id\": 210588\n        }\n      ],\n      \"ruleActions\": [\n        {\n          \"action\": \"alert\",\n          \"id\": 960912,\n          \"rulesetVersionId\": 327550\n        },\n        {\n          \"action\": \"alert\",\n          \"id\": 960035,\n          \"rulesetVersionId\": 327550\n        },\n        {\n          \"action\": \"alert\",\n          \"id\": 981300,\n          \"rulesetVersionId\": 327550\n        },\n        {\n          \"action\": \"deny\",\n          \"id\": 3000001,\n          \"rulesetVersionId\": 327550\n        },\n        {\n          \"action\": \"alert\",\n          \"conditions\": [\n            {\n              \"hosts\": [\n                \"www.example.com\",\n                \"*.example.com\"\n              ],\n              \"positiveMatch\": true,\n              \"type\": \"hostMatch\"\n            },\n            {\n              \"paths\": [\n                \"/a/d\",\n                \"/test/\"\n              ],\n              \"positiveMatch\": false,\n              \"type\": \"pathMatch\"\n            },\n            {\n              \"caseSensitive\": false,\n              \"name\": \"test\",\n              \"nameCase\": false,\n              \"positiveMatch\": false,\n              \"type\": \"uriQueryMatch\",\n              \"value\": \"value\",\n              \"wildcard\": false\n            },\n            {\n              \"header\": \"user-agent\",\n              \"positiveMatch\": false,\n              \"type\": \"requestHeaderMatch\",\n              \"value\": \"test-agent-*\",\n              \"valueCase\": false,\n              \"valueWildcard\": true\n            }\n          ],\n          \"exception\": {\n            \"selectors\": [\n              {\n                \"selector\": \"REQUEST_COOKIES\",\n                \"type\": \"GENERIC\"\n              },\n              {\n                \"name\": \"cccx\",\n                \"selector\": \"XML_PAIRS\",\n                \"type\": \"EXACT\",\n                \"value\": \"vvv\"\n              },\n              {\n                \"selector\": \"REQUEST_COOKIES\",\n                \"type\": \"GENERIC\"\n              },\n              {\n                \"selector\": \"ARGS\",\n                \"type\": \"GENERIC\"\n              }\n            ],\n            \"values\": [\n              \"test\",\n              \"sdfasf\"\n            ]\n          },\n          \"id\": 970903,\n          \"rulesetVersionId\": 327550\n        }\n      ]\n    },\n    {\n      \"hasRatePolicyWithApiKey\": false,\n      \"id\": \"qqqq_39297\",\n      \"name\": \"qqqqqq\"\n    },\n    {\n      \"apiRequestConstraints\": {\n        \"action\": \"\",\n        \"apiEndpoints\": [\n          {\n            \"action\": \"alert\",\n            \"id\": 1941\n          },\n          {\n            \"action\": \"alert\",\n            \"id\": 1942\n          },\n          {\n            \"action\": \"alert\",\n            \"id\": 1943\n          }\n        ]\n      },\n      \"hasRatePolicyWithApiKey\": false,\n      \"id\": \"178t_48704\",\n      \"name\": \"Copy of Tet-a-Tet with 17.8\",\n      \"networkLayerControls\": {\n        \"block\": \"blockSpecificIPGeo\",\n        \"ipControls\": {\n          \"blockedIPNetworkLists\": {\n            \"networkList\": [\n              \"24321_TESTNW\"\n            ]\n          }\n        }\n      },\n      \"reputationProfileActions\": [\n        {\n          \"action\": \"alert\",\n          \"id\": 281778\n        },\n        {\n          \"action\": \"alert\",\n          \"id\": 281776\n        }\n      ]\n    }\n  ],\n  \"selectableHosts\": [\n    \"www.example1.com\",\n    \"www.example2.com\"\n  ],\n  \"selectedHosts\": [\n    \"www.example3.com\",\n    \"www.example4.com\"\n  ],\n  \"siem\": {\n    \"enableForAllPolicies\": false,\n    \"enableSiem\": true,\n    \"enabledBotmanSiemEvents\": false,\n    \"exceptions\": [\n      {\n        \"actionTypes\": [\n          \"*\"\n        ],\n        \"protection\": \"botmanagement\"\n      },\n      {\n        \"actionTypes\": [\n          \"alert\"\n        ],\n        \"protection\": \"ipgeo\"\n      },\n      {\n        \"actionTypes\": [\n          \"alert\"\n        ],\n        \"protection\": \"rate\"\n      }\n    ],\n    \"firewallPolicyIds\": [\n      \"qik2_38799\",\n      \"4444_44572\",\n      \"teet_39295\",\n      \"ds22_48583\"\n    ],\n    \"siemDefinitionId\": 1\n  },\n  \"staging\": {\n    \"status\": \"Inactive\"\n  },\n  \"version\": 2\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "034f48cc-3519-42ad-8e98-ff87a1b2f17f",
+              "name": "[Forbidden](https://techdocs.akamai.com/application-security/reference/403). You don't have access to the resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "export",
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"You do not have the necessary access to perform this operation or the requested resource cannot be modified\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 403,\n  \"title\": \"Forbidden\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec-resource/error-types/ACCESS-DENIED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fa738985-3d9b-406f-9ff7-6e1c6825da95",
+              "name": "[Not found](https://techdocs.akamai.com/application-security/reference/404). That resource doesn't exist, or the URL is malformed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "export",
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"The requested resource is not found\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 404,\n  \"title\": \"Not Found\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec/error-types/NOT-FOUND\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://{{hostname}}/appsec/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a3f15877-bc2f-4514-8c8d-2111abb59419",
+    "name": "Akamai: Application Security Activation history Configuration version export API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Manage your configurations for Kona Site Defender,\nWeb Application Protector, and Client Reputation.\n",
+      "type": "text/plain"
+    }
+  }
+}

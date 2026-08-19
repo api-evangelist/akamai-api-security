@@ -1,0 +1,59 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Akamai: Application Security Activation history Security policy: Evaluation mode API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Security policy: Evaluation mode",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Akamai API Security Set Evaluation Mode",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{hostname}/appsec/v1/configs/:configId/versions/:versionNumber/security-policies/:policyId/eval",
+            "params": [
+              {
+                "name": "policyId",
+                "value": "{{policyId}}",
+                "type": "path",
+                "description": "A unique identifier for a security policy."
+              },
+              {
+                "name": "versionNumber",
+                "value": "{{versionNumber}}",
+                "type": "path",
+                "description": "A unique identifier for each version of a configuration."
+              },
+              {
+                "name": "configId",
+                "value": "{{configId}}",
+                "type": "path",
+                "description": "A unique identifier for each configuration."
+              },
+              {
+                "name": "accountSwitchKey",
+                "value": "{{accountSwitchKey}}",
+                "type": "query",
+                "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Evaluation mode runs concurrently with your existing Web Application Firewall Rule settings and records how the rules would respond if they were applied to live traffic. The default action for evaluation rules is `alert`. Unlike other POST or PUT actions, this request object supports values other than `enabled` or `disabled`. Use `START` to begin evaluation mode. An evaluation period lasts four weeks unless you stop the evaluation. Once you begin, the rules you evaluate will respond to traffic a"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

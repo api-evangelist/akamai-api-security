@@ -1,0 +1,737 @@
+{
+  "item": [
+    {
+      "id": "5945bff5-f0bc-41f4-9813-6208310c538e",
+      "name": "Onboarding: Activations and status",
+      "description": {
+        "content": "Manage your onboardings' activations, and the activation history for each onboarding.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8d67b6cf-7ccf-457d-9667-f4439f47e395",
+          "name": "Akamai API Security Activate an Onboarding",
+          "request": {
+            "name": "Akamai API Security Activate an Onboarding",
+            "description": {
+              "content": "Activate an onboarding on the staging or production networks. You need to activate on the staging network before you can activate on production. Note that with this operation you can only activate on one network at a time. Once you activate on staging you can test your site as you normally would when using Property Manager or any of our security products. _Products:_ App & API Protector, App & API Protector with the Advanced Security module.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "onboardings",
+                ":onboardingId",
+                "activations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "accountSwitchKey",
+                  "value": "<string>",
+                  "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "onboardingId",
+                  "description": "(Required) A unique identifier for an onboarding."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"notificationEmails\": [\n    \"<string>\"\n  ],\n  \"network\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a49d5939-409f-4779-80b5-f9a77a165c12",
+              "name": "Successfully updated the onboarding settings.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "onboardings",
+                    ":onboardingId",
+                    "activations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "onboardingId",
+                      "description": "(Required) A unique identifier for an onboarding."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"network\": \"STAGING\",\n  \"notificationEmails\": [\n    \"test_user@akamai.com\",\n    \"test_user2@akamai.com\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"activationId\": 51,\n  \"activationStatus\": \"PENDING\",\n  \"activationStatusLink\": \"/appsec/v1/onboardings/101/activations/51\",\n  \"createdBy\": \"adevi\",\n  \"createdDate\": \"2014-03-02T02:22:12Z\",\n  \"network\": \"STAGING\",\n  \"onboardingLink\": \"/appsec/v1/onboardings/101\",\n  \"percentComplete\": 0,\n  \"retryAfter\": 1200\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "31deb99a-fc80-43d9-84f8-c334bfa3bc75",
+              "name": "[Forbidden](https://techdocs.akamai.com/application-security/reference/403). You are not authorized to use this API.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "onboardings",
+                    ":onboardingId",
+                    "activations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "onboardingId",
+                      "description": "(Required) A unique identifier for an onboarding."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"network\": \"STAGING\",\n  \"notificationEmails\": [\n    \"test_user@akamai.com\",\n    \"test_user2@akamai.com\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"You do not have the necessary access to perform this operation or the requested resource cannot be modified\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 403,\n  \"title\": \"Forbidden\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec-resource/error-types/ACCESS-DENIED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1ef217e1-c776-4769-a74f-c2316c7f8f20",
+              "name": "[Not found](https://techdocs.akamai.com/application-security/reference/404). Onboarding was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "onboardings",
+                    ":onboardingId",
+                    "activations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "onboardingId",
+                      "description": "(Required) A unique identifier for an onboarding."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"network\": \"STAGING\",\n  \"notificationEmails\": [\n    \"test_user@akamai.com\",\n    \"test_user2@akamai.com\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"The requested resource is not found\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 404,\n  \"title\": \"Not Found\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec/error-types/NOT-FOUND\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "289d5615-d7e1-44cb-89e7-9a7cc76783b1",
+              "name": "[Conflict](https://techdocs.akamai.com/application-security/reference/409). Invalid onboarding Activation Request. See the `fieldErrors` and other fields provided in the response for more information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "onboardings",
+                    ":onboardingId",
+                    "activations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "onboardingId",
+                      "description": "(Required) A unique identifier for an onboarding."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"network\": \"STAGING\",\n  \"notificationEmails\": [\n    \"test_user@akamai.com\",\n    \"test_user2@akamai.com\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"There is an ongoing activation for the given onboardingId\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 409,\n  \"title\": \"Concurrent modification error\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec/error-types/CONCURRENT-MODIFICATION-ERROR\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cdb585f1-4975-42bf-9af7-28d5eaa4e889",
+              "name": "[Unprocessable content](https://techdocs.akamai.com/application-security/reference/422). Onboarding can't be activated in the Production Network before Staging.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "onboardings",
+                    ":onboardingId",
+                    "activations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "onboardingId",
+                      "description": "(Required) A unique identifier for an onboarding."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"network\": \"STAGING\",\n  \"notificationEmails\": [\n    \"test_user@akamai.com\",\n    \"test_user2@akamai.com\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"Onboarding cant be activated in Production Network before Staging.\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 422,\n  \"title\": \"Unprocessable request\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec/error-types/UNPROCESSABLE-REQUEST\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b52b997f-67f7-4bae-af8b-5f3480ea0497",
+          "name": "Akamai API Security Get an Onboarding Activation",
+          "request": {
+            "name": "Akamai API Security Get an Onboarding Activation",
+            "description": {
+              "content": "Returns the status of an activation. Activations can take about 20 minutes. If an activation fails, this API  responds with the underlying error status. _Products:_ App & API Protector, App & API Protector with the Advanced Security module.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "onboardings",
+                ":onboardingId",
+                "activations",
+                ":activationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "accountSwitchKey",
+                  "value": "<string>",
+                  "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "onboardingId",
+                  "description": "(Required) A unique identifier for an onboarding."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "activationId",
+                  "description": "(Required) A unique identifier for an activation."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "41930661-dc77-4297-8303-bab401932278",
+              "name": "Onboarding Activation is completed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "onboardings",
+                    ":onboardingId",
+                    "activations",
+                    ":activationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "onboardingId",
+                      "description": "(Required) A unique identifier for an onboarding."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "activationId",
+                      "description": "(Required) A unique identifier for an activation."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"activationId\": 51,\n  \"activationStatus\": \"ACTIVE\",\n  \"activationStatusLink\": \"/appsec/v1/onboardings/101/activations/51\",\n  \"completedDate\": \"2014-03-01T21:12:57Z\",\n  \"createdBy\": \"afero\",\n  \"createdDate\": \"2014-03-02T02:22:12Z\",\n  \"network\": \"STAGING\",\n  \"onboardingLink\": \"/appsec/v1/onboardings/101\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "48383c04-69cc-4190-ad62-fb5138334142",
+              "name": "Onboarding activation is in progress.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "onboardings",
+                    ":onboardingId",
+                    "activations",
+                    ":activationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "onboardingId",
+                      "description": "(Required) A unique identifier for an onboarding."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "activationId",
+                      "description": "(Required) A unique identifier for an activation."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"activationId\": 51,\n  \"activationStatus\": \"PENDING\",\n  \"activationStatusLink\": \"/appsec/v1/onboardings/101/activations/51\",\n  \"createdBy\": \"hgildong\",\n  \"createdDate\": \"2014-03-02T02:22:12Z\",\n  \"network\": \"STAGING\",\n  \"onboardingLink\": \"/appsec/v1/onboardings/101\",\n  \"percentComplete\": 40,\n  \"retryAfter\": 500\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c39fabb6-126f-4a57-8fee-37abec97b05d",
+              "name": "[Forbidden](https://techdocs.akamai.com/application-security/reference/403). You are not authorized to use this API.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "onboardings",
+                    ":onboardingId",
+                    "activations",
+                    ":activationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "onboardingId",
+                      "description": "(Required) A unique identifier for an onboarding."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "activationId",
+                      "description": "(Required) A unique identifier for an activation."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"You do not have the necessary access to perform this operation or the requested resource cannot be modified\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 403,\n  \"title\": \"Forbidden\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec-resource/error-types/ACCESS-DENIED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e5513e00-6aa7-41e5-9932-25397c26af7b",
+              "name": "[Not found](https://techdocs.akamai.com/application-security/reference/404). The `onboardingId` or `activationId` was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "onboardings",
+                    ":onboardingId",
+                    "activations",
+                    ":activationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "onboardingId",
+                      "description": "(Required) A unique identifier for an onboarding."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "activationId",
+                      "description": "(Required) A unique identifier for an activation."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"The requested resource is not found\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 404,\n  \"title\": \"Not Found\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec/error-types/NOT-FOUND\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b8be8e8-7df2-480b-a104-8cd81cde4a7e",
+              "name": "[Conflict](https://techdocs.akamai.com/application-security/reference/500). Onboarding activation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "onboardings",
+                    ":onboardingId",
+                    "activations",
+                    ":activationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "onboardingId",
+                      "description": "(Required) A unique identifier for an onboarding."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "activationId",
+                      "description": "(Required) A unique identifier for an activation."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"activationObject\": {\n    \"activationStatus\": \"FAILED\",\n    \"createdBy\": \"szhang\",\n    \"createdTime\": \"2014-03-02T02:22:12Z\",\n    \"failedTime\": \"2014-03-02T02:22:12Z\",\n    \"network\": \"STAGING\"\n  },\n  \"detail\": \"Onboarding Activation failed.Please retry after sometime\",\n  \"errors\": [\n    {\n      \"detail\": \"\",\n      \"status\": \"\",\n      \"title\": \"\",\n      \"type\": \"\"\n    }\n  ],\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7- a8d6-a92282cf1749\",\n  \"status\": 500,\n  \"title\": \"Onboarding Activation Failed\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec/error-types/INTERNAL-SERVER-ERROR\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://{{hostname}}/appsec/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "92656a14-63d4-4555-a092-eaae2a600035",
+    "name": "Akamai: Application Security Activation history Onboarding: Activations and status API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Manage your configurations for Kona Site Defender,\nWeb Application Protector, and Client Reputation.\n",
+      "type": "text/plain"
+    }
+  }
+}

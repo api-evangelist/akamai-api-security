@@ -1,0 +1,84 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Akamai: Application Security Activation history Subscriptions API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Subscriptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Akamai API Security List Subscribers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{hostname}/appsec/v1/configs/:configId/notification/subscription/:feature",
+            "params": [
+              {
+                "name": "feature",
+                "value": "{{feature}}",
+                "type": "path",
+                "description": "A unique identifier for each subscription feature."
+              },
+              {
+                "name": "configId",
+                "value": "{{configId}}",
+                "type": "path",
+                "description": "A unique identifier for each configuration."
+              },
+              {
+                "name": "accountSwitchKey",
+                "value": "{{accountSwitchKey}}",
+                "type": "query",
+                "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+              }
+            ]
+          },
+          "docs": "List all subscribers to a security configuration's `feature`. The response array is empty if there are no subscribers. Currently available `feature` values are `AAG_TUNING_REC` for AAG and ASE rule sets, and `WAF_RULE_UPDATE` for ASE rule sets. _Products:_ Kona Site Defender."
+        },
+        {
+          "info": {
+            "name": "Akamai API Security Subscribe or Unsubscribe to Recommendation Emails",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{hostname}/appsec/v1/configs/:configId/notification/subscription/:feature",
+            "params": [
+              {
+                "name": "feature",
+                "value": "{{feature}}",
+                "type": "path",
+                "description": "A unique identifier for each subscription feature."
+              },
+              {
+                "name": "configId",
+                "value": "{{configId}}",
+                "type": "path",
+                "description": "A unique identifier for each configuration."
+              },
+              {
+                "name": "accountSwitchKey",
+                "value": "{{accountSwitchKey}}",
+                "type": "query",
+                "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set the request object's `action` to `subscribe` to add user emails to the subscription object. Use `unsubscribe` to remove them from the list. The lists are organized by `features`. Currently available `feature` values are `AAG_TUNING_REC` for AAG and ASE rule sets, and `WAF_RULE_UPDATE` for ASE rule sets. _Products:_ Kona Site Defender."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

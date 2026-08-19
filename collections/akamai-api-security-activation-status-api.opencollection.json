@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Akamai: Application Security Activation history Activation status API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Activation status",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Akamai API Security Get an Activation Request Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{hostname}/appsec/v1/activations/status/:statusId",
+            "params": [
+              {
+                "name": "statusId",
+                "value": "{{statusId}}",
+                "type": "path",
+                "description": "UUID of this activation request status."
+              },
+              {
+                "name": "accountSwitchKey",
+                "value": "{{accountSwitchKey}}",
+                "type": "query",
+                "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+              }
+            ]
+          },
+          "docs": "Returns the status of a long-running activation request. Any errors that occur when generating the activation cause this API to respond with the underlying error status. _Products:_ All."
+        },
+        {
+          "info": {
+            "name": "Akamai API Security Get Activation Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{hostname}/appsec/v1/activations/:activationId",
+            "params": [
+              {
+                "name": "activationId",
+                "value": "{{activationId}}",
+                "type": "path",
+                "description": "A unique identifier for an activation."
+              },
+              {
+                "name": "accountSwitchKey",
+                "value": "{{accountSwitchKey}}",
+                "type": "query",
+                "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+              }
+            ]
+          },
+          "docs": "Returns the status of an activation. _Products:_ All."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

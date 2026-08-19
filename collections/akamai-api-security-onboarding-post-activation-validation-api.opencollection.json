@@ -1,0 +1,193 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Akamai: Application Security Activation history Onboarding: Post-activation validation API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Onboarding: Post-activation validation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Akamai API Security List Onboarding Certificate Challenges",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{hostname}/appsec/v1/onboardings/:onboardingId/certificate-validation",
+            "params": [
+              {
+                "name": "onboardingId",
+                "value": "{{onboardingId}}",
+                "type": "path",
+                "description": "A unique identifier for an onboarding."
+              },
+              {
+                "name": "accountSwitchKey",
+                "value": "{{accountSwitchKey}}",
+                "type": "query",
+                "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+              }
+            ]
+          },
+          "docs": "Returns the information you need to validate your certificate. Add the `TXT` DNS record listed in the  response to your DNS record. Adding the `TXT` record won't affect your website. Once you've added the `TXT` record, and before the token expires, run [Validate onboarding certificate](https://techdocs.akamai.com/application-security/docs/post-onboarding-certificate-validation) to validate the certificate."
+        },
+        {
+          "info": {
+            "name": "Akamai API Security Validate Onboarding Certificate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{hostname}/appsec/v1/onboardings/:onboardingId/certificate-validation/validate",
+            "params": [
+              {
+                "name": "onboardingId",
+                "value": "{{onboardingId}}",
+                "type": "path",
+                "description": "A unique identifier for an onboarding."
+              },
+              {
+                "name": "accountSwitchKey",
+                "value": "{{accountSwitchKey}}",
+                "type": "query",
+                "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+              }
+            ]
+          },
+          "docs": "Validates the certificate's `TXT` DNS record. Once validation completes, it takes about 5 minutes to deploy the certificates across Akamai's global network. You can validate via HTTPhttp token, DNS records, or URL redirect."
+        },
+        {
+          "info": {
+            "name": "Akamai API Security List Hostname CNAME DNS Records",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{hostname}/appsec/v1/onboardings/:onboardingId/cname-to-akamai",
+            "params": [
+              {
+                "name": "onboardingId",
+                "value": "{{onboardingId}}",
+                "type": "path",
+                "description": "A unique identifier for an onboarding."
+              },
+              {
+                "name": "accountSwitchKey",
+                "value": "{{accountSwitchKey}}",
+                "type": "query",
+                "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+              }
+            ]
+          },
+          "docs": "Returns the DNS records you need to CNAME to Akamai. Once you update your CNAME record with the information in this call's response, your end user traffic starts to flow through Akamai's platform. Note that you can only CNAME to Akamai after an activation on staging or production is complete."
+        },
+        {
+          "info": {
+            "name": "Akamai API Security Validate Hostname CNAME DNS Records",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{hostname}/appsec/v1/onboardings/:onboardingId/cname-to-akamai/validate",
+            "params": [
+              {
+                "name": "onboardingId",
+                "value": "{{onboardingId}}",
+                "type": "path",
+                "description": "A unique identifier for an onboarding."
+              },
+              {
+                "name": "accountSwitchKey",
+                "value": "{{accountSwitchKey}}",
+                "type": "query",
+                "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+              }
+            ]
+          },
+          "docs": "Validates your site is ready to serve traffic. Call this operation after you've replaced the DNS entry that directs traffic to your site with the DNS CNAME records in [List hostname CNAME DNS records](https://techdocs.akamai.com/application-security/docs/get-onboarding-cname-records). In each record, set the time-to-live (TTL) to 300 seconds (5 minutes). Once this call completes, run [Get an onboarding](https://techdocs.akamai.com/application-security/docs/get-onboarding) to verify your onboardi"
+        },
+        {
+          "info": {
+            "name": "Akamai API Security List Origin Hostname DNS Records",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{hostname}/appsec/v1/onboardings/:onboardingId/origin-validation",
+            "params": [
+              {
+                "name": "onboardingId",
+                "value": "{{onboardingId}}",
+                "type": "path",
+                "description": "A unique identifier for an onboarding."
+              },
+              {
+                "name": "accountSwitchKey",
+                "value": "{{accountSwitchKey}}",
+                "type": "query",
+                "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+              }
+            ]
+          },
+          "docs": "Lists the DNS records for your origin. Once you make this call, visit your DNS provider account and create a new DNS type `A` record with the values returned in the response. In the rare case that you changed your origin values outside this setup, you can run [Skip origin validation](https://techdocs.akamai.com/application-security/docs/post-skip-onboarding-origin-validation) to proceed to the next step without validating your origin at this time."
+        },
+        {
+          "info": {
+            "name": "Akamai API Security Skip Origin Hostnames DNS Record Validation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{hostname}/appsec/v1/onboardings/:onboardingId/origin-validation/skip",
+            "params": [
+              {
+                "name": "onboardingId",
+                "value": "{{onboardingId}}",
+                "type": "path",
+                "description": "A unique identifier for an onboarding."
+              },
+              {
+                "name": "accountSwitchKey",
+                "value": "{{accountSwitchKey}}",
+                "type": "query",
+                "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+              }
+            ]
+          },
+          "docs": "Skips the validation of `A` DNS record. In the rare case that you changed your origin values outside this onboarding, you can choose not to complete the origin validation process through this onboarding workflow. Skipping for any other reason may cause your site to become unreachable. When you choose to skip validating your origin through this call, the response shows the records with a value of `skipped`."
+        },
+        {
+          "info": {
+            "name": "Akamai API Security Validate Origin Hostnames DNS Records",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{hostname}/appsec/v1/onboardings/:onboardingId/origin-validation/validate",
+            "params": [
+              {
+                "name": "onboardingId",
+                "value": "{{onboardingId}}",
+                "type": "path",
+                "description": "A unique identifier for an onboarding."
+              },
+              {
+                "name": "accountSwitchKey",
+                "value": "{{accountSwitchKey}}",
+                "type": "query",
+                "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+              }
+            ]
+          },
+          "docs": "Validates the `A` DNS record you entered into your DNS record. In the rare case that you changed your origin values outside this setup, you can run [Skip origin validation](https://techdocs.akamai.com/application-security/docs/post-skip-onboarding-origin-validation) to proceed to the next step without validating your origin at this time."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1565 @@
+{
+  "item": [
+    {
+      "id": "65e363a5-f1a2-45d3-b6c2-816b399a0bf4",
+      "name": "Pragma settings",
+      "description": {
+        "content": "Manage the Pragma header settings for your security policies.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fd59251f-ff5d-43b4-8c28-cea84a10a692",
+          "name": "Akamai API Security Get Pragma Settings for a Configuration",
+          "request": {
+            "name": "Akamai API Security Get Pragma Settings for a Configuration",
+            "description": {
+              "content": "Return the `Pragma` header excluded conditions. By default, the `Pragma` header is stripped from an operation's response except in cases where you set `excludeCondition`. This operation applies at the security configuration level. To see settings at the security policy level, run [List Pragma header settings for a security policy](https://techdocs.akamai.com/application-security/reference/get-policies-pragma-header). _Products:_ All.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "configs",
+                ":configId",
+                "versions",
+                ":versionNumber",
+                "advanced-settings",
+                "pragma-header"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "accountSwitchKey",
+                  "value": "<string>",
+                  "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "configId",
+                  "description": "(Required) A unique identifier for each configuration."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "versionNumber",
+                  "description": "(Required) A unique identifier for each version of a configuration."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "19922daa-1b91-47a3-80e8-abf825b30de6",
+              "name": "Successfully retrieved the Pragma header settings.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "advanced-settings",
+                    "pragma-header"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"action\": \"REMOVE\",\n  \"conditionOperator\": \"AND\",\n  \"excludeCondition\": [\n    {\n      \"header\": \"accept\",\n      \"positiveMatch\": true,\n      \"type\": \"requestHeaderValueMatch\",\n      \"value\": [\n        \"application/json\",\n        \"application/xml\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": true\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"ipMatch\",\n      \"useHeaders\": false,\n      \"value\": [\n        \"192.0.2.1\",\n        \"192.0.2.250/24\"\n      ]\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"networkList\",\n      \"value\": [\n        \"123_3ALLOWEDIPS\"\n      ]\n    },\n    {\n      \"name\": \"type\",\n      \"positiveMatch\": true,\n      \"type\": \"queryParamNameValueMatch\",\n      \"value\": [\n        \"type A\",\n        \"type B\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "46615011-7b02-446d-9f78-d78a3b0f0226",
+              "name": "[Invalid](https://techdocs.akamai.com/application-security/reference/400). Client error, such as invalid or malformed input.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "advanced-settings",
+                    "pragma-header"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"The request could not be understood by the server due to malformed syntax.\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 400,\n  \"title\": \"Bad Request\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec/error-types/BAD-REQUEST\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8789b922-56a8-48c8-9c82-a273cb933da6",
+              "name": "[Not found](https://techdocs.akamai.com/application-security/reference/404). The named security policy doesn't exist, doesn't carry application layer controls, or no rule with this ID is available for use in this policy.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "advanced-settings",
+                    "pragma-header"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"The requested resource is not found\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 404,\n  \"title\": \"Not Found\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec/error-types/NOT-FOUND\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0b33489c-fd91-487e-832a-674be12026f2",
+              "name": "[Internal server error](https://techdocs.akamai.com/application-security/reference/500). Something went wrong on our side. Try again in a few minutes, and contact support if the error persists.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "advanced-settings",
+                    "pragma-header"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"Internal Server Error\",\n  \"instance\": \"12ab3c45-789d-01ef-2gh3-ijk4l56m78no\",\n  \"status\": 500,\n  \"title\": \"Internal Server Error\",\n  \"type\": \"internal_server_error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8af90683-63b8-4942-8d7e-220919cfcfe9",
+          "name": "Akamai API Security Modify Pragma Settings for a Configuration",
+          "request": {
+            "name": "Akamai API Security Modify Pragma Settings for a Configuration",
+            "description": {
+              "content": "Update the `Pragma` header excluded conditions. By default, the `Pragma` header is stripped from an operation's response except in cases where you set `excludeCondition`. To remove existing settings, submit your request with an empty payload `{}` at the top-level of an object. For example, submit `\"type\": \"{}\"` in the request body to remove the `requestHeaderValueMatch` from the excluded conditions. If you submit an empty payload for each member, you'll clear all of your condition settings. This operation applies at the security configuration level. To see settings at the security policy level, run [Modify Pragma header settings for a security policy](https://techdocs.akamai.com/application-security/reference/put-policies-pragma-header). _Products:_ All.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "configs",
+                ":configId",
+                "versions",
+                ":versionNumber",
+                "advanced-settings",
+                "pragma-header"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "accountSwitchKey",
+                  "value": "<string>",
+                  "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "configId",
+                  "description": "(Required) A unique identifier for each configuration."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "versionNumber",
+                  "description": "(Required) A unique identifier for each version of a configuration."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"<string>\",\n  \"conditionOperator\": \"<string>\",\n  \"excludeCondition\": [\n    {\n      \"type\": \"<string>\",\n      \"positiveMatch\": \"<boolean>\",\n      \"value\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"header\": \"<string>\",\n      \"name\": \"<string>\",\n      \"useHeaders\": \"<boolean>\",\n      \"valueCase\": \"<boolean>\",\n      \"valueWildcard\": \"<boolean>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"positiveMatch\": \"<boolean>\",\n      \"value\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"header\": \"<string>\",\n      \"name\": \"<string>\",\n      \"useHeaders\": \"<boolean>\",\n      \"valueCase\": \"<boolean>\",\n      \"valueWildcard\": \"<boolean>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6f8cdcdd-86d5-40ca-93ff-38c9f6cdbf27",
+              "name": "Successfully updated the Pragma header settings:.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "advanced-settings",
+                    "pragma-header"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"REMOVE\",\n  \"conditionOperator\": \"AND\",\n  \"excludeCondition\": [\n    {\n      \"header\": \"accept\",\n      \"positiveMatch\": true,\n      \"type\": \"requestHeaderValueMatch\",\n      \"value\": [\n        \"application/json\",\n        \"application/xml\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": true\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"ipMatch\",\n      \"useHeaders\": false,\n      \"value\": [\n        \"192.0.2.1\",\n        \"192.0.2.250/24\"\n      ]\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"networkList\",\n      \"value\": [\n        \"123_3ALLOWEDIPS\"\n      ]\n    },\n    {\n      \"name\": \"type\",\n      \"positiveMatch\": true,\n      \"type\": \"queryParamNameValueMatch\",\n      \"value\": [\n        \"type A\",\n        \"type B\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": false\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"action\": \"REMOVE\",\n  \"conditionOperator\": \"AND\",\n  \"excludeCondition\": [\n    {\n      \"header\": \"accept\",\n      \"positiveMatch\": true,\n      \"type\": \"requestHeaderValueMatch\",\n      \"value\": [\n        \"application/json\",\n        \"application/xml\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": true\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"ipMatch\",\n      \"useHeaders\": false,\n      \"value\": [\n        \"192.0.2.1\",\n        \"192.0.2.250/24\"\n      ]\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"networkList\",\n      \"value\": [\n        \"123_3ALLOWEDIPS\"\n      ]\n    },\n    {\n      \"name\": \"type\",\n      \"positiveMatch\": true,\n      \"type\": \"queryParamNameValueMatch\",\n      \"value\": [\n        \"type A\",\n        \"type B\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8c8f12cb-6784-4c9a-89f3-b4a0763f0b33",
+              "name": "[Invalid](https://techdocs.akamai.com/application-security/reference/400). Client error, such as invalid or malformed input.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "advanced-settings",
+                    "pragma-header"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"REMOVE\",\n  \"conditionOperator\": \"AND\",\n  \"excludeCondition\": [\n    {\n      \"header\": \"accept\",\n      \"positiveMatch\": true,\n      \"type\": \"requestHeaderValueMatch\",\n      \"value\": [\n        \"application/json\",\n        \"application/xml\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": true\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"ipMatch\",\n      \"useHeaders\": false,\n      \"value\": [\n        \"192.0.2.1\",\n        \"192.0.2.250/24\"\n      ]\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"networkList\",\n      \"value\": [\n        \"123_3ALLOWEDIPS\"\n      ]\n    },\n    {\n      \"name\": \"type\",\n      \"positiveMatch\": true,\n      \"type\": \"queryParamNameValueMatch\",\n      \"value\": [\n        \"type A\",\n        \"type B\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": false\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"The request could not be understood by the server due to malformed syntax.\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 400,\n  \"title\": \"Bad Request\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec/error-types/BAD-REQUEST\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "54b5fc73-cd41-4fd5-9e4c-d314ab453b99",
+              "name": "[Forbidden](https://techdocs.akamai.com/application-security/reference/403). You don't have permission to write to this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "advanced-settings",
+                    "pragma-header"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"REMOVE\",\n  \"conditionOperator\": \"AND\",\n  \"excludeCondition\": [\n    {\n      \"header\": \"accept\",\n      \"positiveMatch\": true,\n      \"type\": \"requestHeaderValueMatch\",\n      \"value\": [\n        \"application/json\",\n        \"application/xml\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": true\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"ipMatch\",\n      \"useHeaders\": false,\n      \"value\": [\n        \"192.0.2.1\",\n        \"192.0.2.250/24\"\n      ]\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"networkList\",\n      \"value\": [\n        \"123_3ALLOWEDIPS\"\n      ]\n    },\n    {\n      \"name\": \"type\",\n      \"positiveMatch\": true,\n      \"type\": \"queryParamNameValueMatch\",\n      \"value\": [\n        \"type A\",\n        \"type B\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": false\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"You do not have the necessary access to perform this operation or the requested resource cannot be modified\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 403,\n  \"title\": \"Forbidden\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec-resource/error-types/ACCESS-DENIED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4509c1eb-c028-4423-a72a-b52c74ac097c",
+              "name": "[Not found](https://techdocs.akamai.com/application-security/reference/404). The named security policy doesn't exist, doesn't carry application layer controls, or no rule with this ID is available for use in this policy.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "advanced-settings",
+                    "pragma-header"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"REMOVE\",\n  \"conditionOperator\": \"AND\",\n  \"excludeCondition\": [\n    {\n      \"header\": \"accept\",\n      \"positiveMatch\": true,\n      \"type\": \"requestHeaderValueMatch\",\n      \"value\": [\n        \"application/json\",\n        \"application/xml\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": true\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"ipMatch\",\n      \"useHeaders\": false,\n      \"value\": [\n        \"192.0.2.1\",\n        \"192.0.2.250/24\"\n      ]\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"networkList\",\n      \"value\": [\n        \"123_3ALLOWEDIPS\"\n      ]\n    },\n    {\n      \"name\": \"type\",\n      \"positiveMatch\": true,\n      \"type\": \"queryParamNameValueMatch\",\n      \"value\": [\n        \"type A\",\n        \"type B\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": false\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"The requested resource is not found\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 404,\n  \"title\": \"Not Found\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec/error-types/NOT-FOUND\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b9a79dbb-5240-41d8-a051-e6dac86c8c6b",
+              "name": "[Internal server error](https://techdocs.akamai.com/application-security/reference/500). Something went wrong on our side. Try again in a few minutes, and contact support if the error persists.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "advanced-settings",
+                    "pragma-header"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"REMOVE\",\n  \"conditionOperator\": \"AND\",\n  \"excludeCondition\": [\n    {\n      \"header\": \"accept\",\n      \"positiveMatch\": true,\n      \"type\": \"requestHeaderValueMatch\",\n      \"value\": [\n        \"application/json\",\n        \"application/xml\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": true\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"ipMatch\",\n      \"useHeaders\": false,\n      \"value\": [\n        \"192.0.2.1\",\n        \"192.0.2.250/24\"\n      ]\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"networkList\",\n      \"value\": [\n        \"123_3ALLOWEDIPS\"\n      ]\n    },\n    {\n      \"name\": \"type\",\n      \"positiveMatch\": true,\n      \"type\": \"queryParamNameValueMatch\",\n      \"value\": [\n        \"type A\",\n        \"type B\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": false\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"Internal Server Error\",\n  \"instance\": \"12ab3c45-789d-01ef-2gh3-ijk4l56m78no\",\n  \"status\": 500,\n  \"title\": \"Internal Server Error\",\n  \"type\": \"internal_server_error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "63ece32c-9e7f-496f-bd16-35bb5fa12291",
+          "name": "Akamai API Security Get Pragma Settings for a Security Policy",
+          "request": {
+            "name": "Akamai API Security Get Pragma Settings for a Security Policy",
+            "description": {
+              "content": "Return the `Pragma` header's excluded conditions. By default, the `Pragma` header debugging information is stripped from an operation's response except in cases where you set `excludeCondition`. This operation applies at the security policy level. To modify `Pragma` header settings at the security configuration level, run [List Pragma header settings for a configuration](https://techdocs.akamai.com/application-security/reference/get-advanced-settings-pragma-header). _Products:_ All.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "configs",
+                ":configId",
+                "versions",
+                ":versionNumber",
+                "security-policies",
+                ":policyId",
+                "advanced-settings",
+                "pragma-header"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "accountSwitchKey",
+                  "value": "<string>",
+                  "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "configId",
+                  "description": "(Required) A unique identifier for each configuration."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "versionNumber",
+                  "description": "(Required) A unique identifier for each version of a configuration."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyId",
+                  "description": "(Required) A unique identifier for a security policy."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "256ad675-3be7-4d3a-bd83-122f2dfd8bf9",
+              "name": "Successfully retrieved the Pragma Header settings.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "security-policies",
+                    ":policyId",
+                    "advanced-settings",
+                    "pragma-header"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) A unique identifier for a security policy."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"action\": \"REMOVE\",\n  \"conditionOperator\": \"AND\",\n  \"excludeCondition\": [\n    {\n      \"header\": \"accept\",\n      \"positiveMatch\": true,\n      \"type\": \"requestHeaderValueMatch\",\n      \"value\": [\n        \"application/json\",\n        \"application/xml\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": true\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"ipMatch\",\n      \"useHeaders\": false,\n      \"value\": [\n        \"192.0.2.1\",\n        \"192.0.2.250/24\"\n      ]\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"networkList\",\n      \"value\": [\n        \"123_3ALLOWEDIPS\"\n      ]\n    },\n    {\n      \"name\": \"type\",\n      \"positiveMatch\": true,\n      \"type\": \"queryParamNameValueMatch\",\n      \"value\": [\n        \"type A\",\n        \"type B\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ca51e2ff-4812-48cf-a080-0aa9f7d26e3a",
+              "name": "[Invalid](https://techdocs.akamai.com/application-security/reference/400). Client error, such as invalid or malformed input.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "security-policies",
+                    ":policyId",
+                    "advanced-settings",
+                    "pragma-header"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) A unique identifier for a security policy."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"The request could not be understood by the server due to malformed syntax.\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 400,\n  \"title\": \"Bad Request\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec/error-types/BAD-REQUEST\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "54e35a60-ad50-4308-872a-52bb0ff3de22",
+              "name": "[Not found](https://techdocs.akamai.com/application-security/reference/404). The named security policy doesn't exist, doesn't carry application layer controls, or no rule with this ID is available for use in this policy.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "security-policies",
+                    ":policyId",
+                    "advanced-settings",
+                    "pragma-header"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) A unique identifier for a security policy."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"The requested resource is not found\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 404,\n  \"title\": \"Not Found\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec/error-types/NOT-FOUND\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4a741d7c-2f36-4d4d-a09c-9a8fd1fc1719",
+              "name": "[Internal server error](https://techdocs.akamai.com/application-security/reference/500). Something went wrong on our side. Try again in a few minutes, and contact support if the error persists.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "security-policies",
+                    ":policyId",
+                    "advanced-settings",
+                    "pragma-header"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) A unique identifier for a security policy."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"Internal Server Error\",\n  \"instance\": \"12ab3c45-789d-01ef-2gh3-ijk4l56m78no\",\n  \"status\": 500,\n  \"title\": \"Internal Server Error\",\n  \"type\": \"internal_server_error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ddd64cfa-e529-4084-852e-921f56aacc88",
+          "name": "Akamai API Security Modify Pragma Settings for a Security Policy",
+          "request": {
+            "name": "Akamai API Security Modify Pragma Settings for a Security Policy",
+            "description": {
+              "content": "Update the pragma header excluded conditions. By default, the `Pragma` header debugging information is stripped from an operation's response except in cases where you set `excludeCondition`. To remove existing settings, submit your request with an empty payload `{}` at the top-level of an object. For example, submit `\"type\": \"{}\"` in the request body to remove the `requestHeaderValueMatch` from the excluded conditions. If you submit an empty payload for each member, you'll clear all of your condition settings. To modify `Pragma` header settings at the security configuration level, run [Modify Pragma header settings for a configuration](https://techdocs.akamai.com/application-security/reference/put-advanced-settings-pragma-header) . _Products:_ All.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "configs",
+                ":configId",
+                "versions",
+                ":versionNumber",
+                "security-policies",
+                ":policyId",
+                "advanced-settings",
+                "pragma-header"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "accountSwitchKey",
+                  "value": "<string>",
+                  "description": "For customers who manage more than one account, this [runs the operation from another account](https://techdocs.akamai.com/developer/docs/manage-many-accounts-with-one-api-client). The Identity and Access Management API provides a [list of available account switch keys](https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "configId",
+                  "description": "(Required) A unique identifier for each configuration."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "versionNumber",
+                  "description": "(Required) A unique identifier for each version of a configuration."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyId",
+                  "description": "(Required) A unique identifier for a security policy."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"<string>\",\n  \"conditionOperator\": \"<string>\",\n  \"excludeCondition\": [\n    {\n      \"type\": \"<string>\",\n      \"positiveMatch\": \"<boolean>\",\n      \"value\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"header\": \"<string>\",\n      \"name\": \"<string>\",\n      \"useHeaders\": \"<boolean>\",\n      \"valueCase\": \"<boolean>\",\n      \"valueWildcard\": \"<boolean>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"positiveMatch\": \"<boolean>\",\n      \"value\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"header\": \"<string>\",\n      \"name\": \"<string>\",\n      \"useHeaders\": \"<boolean>\",\n      \"valueCase\": \"<boolean>\",\n      \"valueWildcard\": \"<boolean>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "341ba90d-0428-4f8a-a00f-d61faed96a22",
+              "name": "Successfully updated the Pragma header settings:.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "security-policies",
+                    ":policyId",
+                    "advanced-settings",
+                    "pragma-header"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) A unique identifier for a security policy."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"REMOVE\",\n  \"conditionOperator\": \"AND\",\n  \"excludeCondition\": [\n    {\n      \"header\": \"accept\",\n      \"positiveMatch\": true,\n      \"type\": \"requestHeaderValueMatch\",\n      \"value\": [\n        \"application/json\",\n        \"application/xml\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": true\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"ipMatch\",\n      \"useHeaders\": false,\n      \"value\": [\n        \"192.0.2.1\",\n        \"192.0.2.250/24\"\n      ]\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"networkList\",\n      \"value\": [\n        \"123_3ALLOWEDIPS\"\n      ]\n    },\n    {\n      \"name\": \"type\",\n      \"positiveMatch\": true,\n      \"type\": \"queryParamNameValueMatch\",\n      \"value\": [\n        \"type A\",\n        \"type B\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": false\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"action\": \"REMOVE\",\n  \"conditionOperator\": \"AND\",\n  \"excludeCondition\": [\n    {\n      \"header\": \"accept\",\n      \"positiveMatch\": true,\n      \"type\": \"requestHeaderValueMatch\",\n      \"value\": [\n        \"application/json\",\n        \"application/xml\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": true\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"ipMatch\",\n      \"useHeaders\": false,\n      \"value\": [\n        \"192.0.2.1\",\n        \"192.0.2.250/24\"\n      ]\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"networkList\",\n      \"value\": [\n        \"123_3ALLOWEDIPS\"\n      ]\n    },\n    {\n      \"name\": \"type\",\n      \"positiveMatch\": true,\n      \"type\": \"queryParamNameValueMatch\",\n      \"value\": [\n        \"type A\",\n        \"type B\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "258e0095-42c6-4714-8c3b-41272c022055",
+              "name": "[Invalid](https://techdocs.akamai.com/application-security/reference/400). Client error, such as invalid or malformed input.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "security-policies",
+                    ":policyId",
+                    "advanced-settings",
+                    "pragma-header"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) A unique identifier for a security policy."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"REMOVE\",\n  \"conditionOperator\": \"AND\",\n  \"excludeCondition\": [\n    {\n      \"header\": \"accept\",\n      \"positiveMatch\": true,\n      \"type\": \"requestHeaderValueMatch\",\n      \"value\": [\n        \"application/json\",\n        \"application/xml\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": true\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"ipMatch\",\n      \"useHeaders\": false,\n      \"value\": [\n        \"192.0.2.1\",\n        \"192.0.2.250/24\"\n      ]\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"networkList\",\n      \"value\": [\n        \"123_3ALLOWEDIPS\"\n      ]\n    },\n    {\n      \"name\": \"type\",\n      \"positiveMatch\": true,\n      \"type\": \"queryParamNameValueMatch\",\n      \"value\": [\n        \"type A\",\n        \"type B\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": false\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"The request could not be understood by the server due to malformed syntax.\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 400,\n  \"title\": \"Bad Request\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec/error-types/BAD-REQUEST\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fe9fec0f-db25-49fb-92af-39c58c29f2ca",
+              "name": "[Forbidden](https://techdocs.akamai.com/application-security/reference/403). You don't have permission to write to this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "security-policies",
+                    ":policyId",
+                    "advanced-settings",
+                    "pragma-header"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) A unique identifier for a security policy."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"REMOVE\",\n  \"conditionOperator\": \"AND\",\n  \"excludeCondition\": [\n    {\n      \"header\": \"accept\",\n      \"positiveMatch\": true,\n      \"type\": \"requestHeaderValueMatch\",\n      \"value\": [\n        \"application/json\",\n        \"application/xml\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": true\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"ipMatch\",\n      \"useHeaders\": false,\n      \"value\": [\n        \"192.0.2.1\",\n        \"192.0.2.250/24\"\n      ]\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"networkList\",\n      \"value\": [\n        \"123_3ALLOWEDIPS\"\n      ]\n    },\n    {\n      \"name\": \"type\",\n      \"positiveMatch\": true,\n      \"type\": \"queryParamNameValueMatch\",\n      \"value\": [\n        \"type A\",\n        \"type B\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": false\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"You do not have the necessary access to perform this operation or the requested resource cannot be modified\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 403,\n  \"title\": \"Forbidden\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec-resource/error-types/ACCESS-DENIED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cc452a9c-e260-43bb-9623-b1f3b06594f8",
+              "name": "[Not found](https://techdocs.akamai.com/application-security/reference/404). The named security policy doesn't exist, doesn't carry application layer controls, or no rule with this ID is available for use in this policy.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "security-policies",
+                    ":policyId",
+                    "advanced-settings",
+                    "pragma-header"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) A unique identifier for a security policy."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"REMOVE\",\n  \"conditionOperator\": \"AND\",\n  \"excludeCondition\": [\n    {\n      \"header\": \"accept\",\n      \"positiveMatch\": true,\n      \"type\": \"requestHeaderValueMatch\",\n      \"value\": [\n        \"application/json\",\n        \"application/xml\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": true\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"ipMatch\",\n      \"useHeaders\": false,\n      \"value\": [\n        \"192.0.2.1\",\n        \"192.0.2.250/24\"\n      ]\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"networkList\",\n      \"value\": [\n        \"123_3ALLOWEDIPS\"\n      ]\n    },\n    {\n      \"name\": \"type\",\n      \"positiveMatch\": true,\n      \"type\": \"queryParamNameValueMatch\",\n      \"value\": [\n        \"type A\",\n        \"type B\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": false\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"The requested resource is not found\",\n  \"instance\": \"https://problems.luna.akamaiapis.net/appsec/error-instances/d54686b5-21cb-4ab7-a8d6-a92282cf1749\",\n  \"status\": 404,\n  \"title\": \"Not Found\",\n  \"type\": \"https://problems.luna.akamaiapis.net/appsec/error-types/NOT-FOUND\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "66d3049c-e2aa-4112-b218-a5f8de47ddc1",
+              "name": "[Internal server error](https://techdocs.akamai.com/application-security/reference/500). Something went wrong on our side. Try again in a few minutes, and contact support if the error persists.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configs",
+                    ":configId",
+                    "versions",
+                    ":versionNumber",
+                    "security-policies",
+                    ":policyId",
+                    "advanced-settings",
+                    "pragma-header"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountSwitchKey",
+                      "value": "{{accountSwitchKey}}"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "configId",
+                      "description": "(Required) A unique identifier for each configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "versionNumber",
+                      "description": "(Required) A unique identifier for each version of a configuration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) A unique identifier for a security policy."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"REMOVE\",\n  \"conditionOperator\": \"AND\",\n  \"excludeCondition\": [\n    {\n      \"header\": \"accept\",\n      \"positiveMatch\": true,\n      \"type\": \"requestHeaderValueMatch\",\n      \"value\": [\n        \"application/json\",\n        \"application/xml\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": true\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"ipMatch\",\n      \"useHeaders\": false,\n      \"value\": [\n        \"192.0.2.1\",\n        \"192.0.2.250/24\"\n      ]\n    },\n    {\n      \"positiveMatch\": true,\n      \"type\": \"networkList\",\n      \"value\": [\n        \"123_3ALLOWEDIPS\"\n      ]\n    },\n    {\n      \"name\": \"type\",\n      \"positiveMatch\": true,\n      \"type\": \"queryParamNameValueMatch\",\n      \"value\": [\n        \"type A\",\n        \"type B\"\n      ],\n      \"valueCase\": true,\n      \"valueWildcard\": false\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"Internal Server Error\",\n  \"instance\": \"12ab3c45-789d-01ef-2gh3-ijk4l56m78no\",\n  \"status\": 500,\n  \"title\": \"Internal Server Error\",\n  \"type\": \"internal_server_error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://{{hostname}}/appsec/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9c45ec70-f0b7-46be-939f-fe116190f274",
+    "name": "Akamai: Application Security Activation history Pragma settings API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Manage your configurations for Kona Site Defender,\nWeb Application Protector, and Client Reputation.\n",
+      "type": "text/plain"
+    }
+  }
+}
