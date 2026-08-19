@@ -29,7 +29,7 @@ tags:
 url: https://raw.githubusercontent.com/api-evangelist/akamai-api-security/refs/heads/main/apis.yml
 created: '2026-03-26'
 modified: '2026-05-19'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: akamai-api-security:akamai-apis
   name: Akamai APIs
