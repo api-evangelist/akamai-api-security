@@ -97,6 +97,8 @@ apis:
   description: Get the list of API endpoints associated with a security policy.
   humanURL: https://www.akamai.com/products/api-security
   tags:
+  - API Endpoints
+  tags_raw:
   - API endpoints
   properties:
   - type: OpenAPI
@@ -324,7 +326,8 @@ apis:
   name: Akamai API Security Endpoints API
   description: Manage the API endpoints associated with a security policy.
   humanURL: https://www.akamai.com/products/api-security
-  tags:
+  tags: []
+  tags_raw:
   - Endpoints
   properties:
   - type: OpenAPI
@@ -855,6 +858,8 @@ apis:
     security configuration.
   humanURL: https://www.akamai.com/products/api-security
   tags:
+  - Subscription
+  tags_raw:
   - Subscriptions
   properties:
   - type: OpenAPI
