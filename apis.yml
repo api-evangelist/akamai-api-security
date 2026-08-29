@@ -1027,6 +1027,9 @@ apis:
   - type: GettingStarted
     url: https://techdocs.akamai.com/api-security/docs/get-started
 common:
+  - type: CapabilityMap
+    url: capabilities/akamai-api-security-capability-edges.yml
+    name: Akamai API Security Business Capability Map
   - type: AgenticAccess
     url: agentic-access/akamai-api-security-agentic-access.yml
   - type: DomainSecurity

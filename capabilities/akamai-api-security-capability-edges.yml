@@ -1,0 +1,308 @@
+slug: akamai-api-security
+provider: Akamai API Security
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 30
+edges:
+- tag: SIEM settings
+  spec_file: akamai-api-security-siem-settings-api-openapi.yml
+  capability_id: BC-620.30
+  capability_id_l1: BC-620
+  capability_name: Threat Detection & Response Management
+  confidence: 0.85
+  evidence: '"Get SIEM Settings", "Modify SIEM Settings", "Get SIEM Versions"'
+  reason: Explicit configuration of SIEM integration for security event streaming, which is squarely SOC/SIEM
+    threat detection and response tooling.
+- tag: CVE Protections lookup
+  spec_file: akamai-api-security-cve-protections-lookup-api-openapi.yml
+  capability_id: BC-620.40
+  capability_id_l1: BC-620
+  capability_name: Vulnerability Management
+  confidence: 0.8
+  evidence: GET /cves "List CVEs"; GET /cves/{cveId}/security-coverage "Get CVE Coverage"
+  reason: Operations enumerate CVEs, subscribe to CVE notifications and report protection coverage for
+    each CVE, which is vulnerability identification and remediation coverage tracking.
+- tag: IP/Geo Firewall settings
+  spec_file: akamai-api-security-ip-geo-firewall-settings-api-openapi.yml
+  capability_id: BC-620
+  capability_id_l1: BC-620
+  capability_name: Cybersecurity Management
+  confidence: 0.8
+  evidence: '''Get IP/Geo Firewall Settings'' / ''Modify IP/Geo Firewall Settings'' under /security-policies/{policyId}/ip-geo-firewall'
+  reason: Configuration of firewall (IP/geo blocking) controls within a security policy — plainly cybersecurity
+    control management. Sub-capability ambiguous between security governance and architecture, so L1 only.
+- tag: Malware policy actions
+  spec_file: akamai-api-security-malware-policy-actions-api-openapi.yml
+  capability_id: BC-620
+  capability_id_l1: BC-620
+  capability_name: Cybersecurity Management
+  confidence: 0.8
+  evidence: '''List Malware Policy Actions'' / ''Modify a Malware Policy Action'' under /security-policies/{policyId}/malware-policies'
+  reason: Defines enforcement actions for malware detection policies — security control configuration
+    under Cybersecurity Management.
+- tag: 'WAF rules: Penalty box conditions'
+  spec_file: akamai-api-security-waf-rules-penalty-box-conditions-api-openapi.yml
+  capability_id: BC-620
+  capability_id_l1: BC-620
+  capability_name: Cybersecurity Management
+  confidence: 0.8
+  evidence: GET /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/penalty-box/conditions
+    — 'Get Penalty Box Condition'; 'Manage your configurations for Kona Site Defender, Web Application
+    Protector, and Client Reputation.'
+  reason: Operations configure web-application-firewall security policy behaviour (penalty box blocking
+    conditions), which is cybersecurity control management. Sub-capability is ambiguous between threat
+    response and security architecture, so only the L1 is asserted.
+- tag: 'WAF rules: Rapid rules'
+  spec_file: akamai-api-security-waf-rules-rapid-rules-api-openapi.yml
+  capability_id: BC-620
+  capability_id_l1: BC-620
+  capability_name: Cybersecurity Management
+  confidence: 0.8
+  evidence: '''List Rapid Rules'', ''Update Rapid Rules'' Default Action'', ''Update a Rapid Rule''s Conditions
+    and Exceptions'' under /security-policies/{policyId}/rapid-rules'
+  reason: CRUD over WAF rule actions, statuses and exceptions within security policies — management of
+    cybersecurity protective controls. L2 not clearly determined by the evidence.
+- tag: Protections
+  spec_file: akamai-api-security-protections-api-openapi.yml
+  capability_id: BC-620
+  capability_id_l1: BC-620
+  capability_name: Cybersecurity Management
+  confidence: 0.78
+  evidence: '''Get Protections'' / ''Modify Protections'' under /security-policies/{policyId}/protections'
+  reason: Enables/disables the protection modules (WAF, rate control, bot, etc.) of a security policy
+    — configuration of cybersecurity controls. L1 only as sub-capability is ambiguous.
+- tag: 'WAF rules: Attack groups'
+  spec_file: akamai-api-security-waf-rules-attack-groups-api-openapi.yml
+  capability_id: BC-620.30
+  capability_id_l1: BC-620
+  capability_name: Threat Detection & Response Management
+  confidence: 0.78
+  evidence: '"List Attack Groups"; "Modify the Action for an Attack Group"'
+  reason: WAF attack-group actions and exceptions — configuration of attack detection and blocking behaviour,
+    clearly cybersecurity threat detection and response.
+- tag: 'WAF rules: General settings'
+  spec_file: akamai-api-security-waf-rules-general-settings-api-openapi.yml
+  capability_id: BC-620.30
+  capability_id_l1: BC-620
+  capability_name: Threat Detection & Response Management
+  confidence: 0.78
+  evidence: '"Upgrade KRS Ruleset"; "Get Adaptive Intelligence Settings"; "Modify the Conditions and Exceptions
+    of a Rule"'
+  reason: WAF ruleset and threat-intelligence settings management — configuration of attack detection
+    and blocking, squarely cybersecurity threat detection and response.
+- tag: General configuration settings
+  spec_file: akamai-api-security-general-configuration-settings-api-openapi.yml
+  capability_id: BC-620
+  capability_id_l1: BC-620
+  capability_name: Cybersecurity Management
+  confidence: 0.75
+  evidence: POST /configs — 'Create a Configuration'; GET /configs/{configId} — 'Get a Security Configuration'
+  reason: CRUD and versioning over security configurations for Kona Site Defender / Web Application Protector.
+    Squarely the lifecycle of security control configuration, so Cybersecurity Management; the operations
+    are generic CRUD across the security config so no L2 is asserted.
+- tag: General policy settings
+  spec_file: akamai-api-security-general-policy-settings-api-openapi.yml
+  capability_id: BC-620
+  capability_id_l1: BC-620
+  capability_name: Cybersecurity Management
+  confidence: 0.75
+  evidence: POST /configs/{configId}/versions/{versionNumber}/security-policies — 'Clone or Create a Security
+    Policy'
+  reason: Lifecycle of WAF security policies. These are technical enforcement policies, not corporate
+    policy documents, so Cybersecurity Management at L1; BC-620.10 is about governance/GRC policy and
+    would be a stretch.
+- tag: 'Security policy: Evaluation attack groups'
+  spec_file: akamai-api-security-security-policy-evaluation-attack-groups-api-openapi.yml
+  capability_id: BC-620.30
+  capability_id_l1: BC-620
+  capability_name: Threat Detection & Response Management
+  confidence: 0.75
+  evidence: '"List Evaluation Attack Groups", "Modify the Action for an Evaluation Attack Group"'
+  reason: Attack-group detection rules and their actions (alert/deny) — explicit attack detection and
+    response configuration.
+- tag: 'Shared resources: Custom rules'
+  spec_file: akamai-api-security-shared-resources-custom-rules-api-openapi.yml
+  capability_id: BC-620.30
+  capability_id_l1: BC-620
+  capability_name: Threat Detection & Response Management
+  confidence: 0.75
+  evidence: 'POST /configs/{configId}/custom-rules — "Create a Custom Rule"; description: "Manage your
+    configurations for Kona Site Defender, Web Application Protector, and Client Reputation"'
+  reason: Custom WAF rules within Akamai's web application firewall configuration — a security control
+    for detecting and blocking attack traffic. L1 Cybersecurity Management is certain; the sub-capability
+    (threat detection & response vs. security architecture) is somewhat ambiguous.
+- tag: 'WAF rules: Tuning recommendations'
+  spec_file: akamai-api-security-waf-rules-tuning-recommendations-api-openapi.yml
+  capability_id: BC-620
+  capability_id_l1: BC-620
+  capability_name: Cybersecurity Management
+  confidence: 0.75
+  evidence: '''Get Tuning Recommendations for a Policy'', ''List Tuning Recommendations for an Attack
+    Group'', ''Respond to Exception Recommendations'''
+  reason: Tuning of WAF attack-group rules and exceptions is cybersecurity control configuration, not
+    a business capability elsewhere in the list. L1 only, as no sub-capability is clearly named.
+- tag: Custom rule actions
+  spec_file: akamai-api-security-custom-rule-actions-api-openapi.yml
+  capability_id: BC-620
+  capability_id_l1: BC-620
+  capability_name: Cybersecurity Management
+  confidence: 0.72
+  evidence: GET /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/custom-rules
+    — 'List Custom Rule Actions'
+  reason: Defines the action (alert/deny) taken by custom WAF rules within a security policy — configuration
+    of protective security controls, mapping to Cybersecurity Management. No L2 in the list precisely
+    covers WAF rule tuning.
+- tag: Hostnames
+  spec_file: akamai-api-security-hostnames-api-openapi.yml
+  capability_id: BC-620
+  capability_id_l1: BC-620
+  capability_name: Cybersecurity Management
+  confidence: 0.72
+  evidence: '''List Selected Hostnames for a Security Policy'' / ''Modify Selected Hostnames for a Security
+    Policy'''
+  reason: Binds hostnames to security policies within a WAF configuration; a security control-scoping
+    surface, not a business-domain hostname registry. L1 only.
+- tag: 'Security policy: Evaluation rules'
+  spec_file: akamai-api-security-security-policy-evaluation-rules-api-openapi.yml
+  capability_id: BC-620.30
+  capability_id_l1: BC-620
+  capability_name: Threat Detection & Response Management
+  confidence: 0.72
+  evidence: '"List Evaluation Rules", "Modify the Action of an Evaluation Rule"'
+  reason: WAF detection rules and their actions under evaluation — attack detection rule tuning within
+    threat detection and response.
+- tag: 'Shared resources: Malware policies'
+  spec_file: akamai-api-security-shared-resources-malware-policies-api-openapi.yml
+  capability_id: BC-620.30
+  capability_id_l1: BC-620
+  capability_name: Threat Detection & Response Management
+  confidence: 0.72
+  evidence: '"Create a Malware Policy"; "List Supported Malware Policy Content Types"'
+  reason: Malware inspection policies within the WAF/application-security configuration — a detection-and-blocking
+    control, so Cybersecurity Management, most plausibly threat detection & response.
+- tag: API request constraints
+  spec_file: akamai-api-security-api-request-constraints-api-openapi.yml
+  capability_id: BC-620
+  capability_id_l1: BC-620
+  capability_name: Cybersecurity Management
+  confidence: 0.7
+  evidence: '"Modify the Request Constraint Action for All APIs" under security-policies/{policyId}/api-request-constraints'
+  reason: Configures enforcement actions (constraints) applied to API requests by the security policy
+    — application/API security control management. Kept at the L1 cybersecurity level as the evidence
+    does not clearly pick detection vs architecture.
+- tag: 'Configuration: Evaluation hostnames'
+  spec_file: akamai-api-security-configuration-evaluation-hostnames-api-openapi.yml
+  capability_id: BC-620
+  capability_id_l1: BC-620
+  capability_name: Cybersecurity Management
+  confidence: 0.7
+  evidence: PUT /configs/{configId}/versions/{versionNumber}/protect-eval-hostnames — 'Protect Evaluation
+    Hostnames'
+  reason: Selects and protects hostnames under WAF evaluation mode — configuration of security protection
+    scope, i.e. Cybersecurity Management. No candidate L2 specifically covers WAF control configuration,
+    so L1 only.
+- tag: Discovered APIs
+  spec_file: akamai-api-security-discovered-apis-api-openapi.yml
+  capability_id: BC-620
+  capability_id_l1: BC-620
+  capability_name: Cybersecurity Management
+  confidence: 0.7
+  evidence: GET /api-discovery — 'List Discovered APIs'; vendor 'continuously discovers and monitors all
+    APIs, identifies vulnerabilities and misconfigurations'
+  reason: API asset discovery for security posture management. This is security-side inventory of attack
+    surface, not developer-platform API lifecycle, so Cybersecurity Management L1; it straddles asset
+    discovery and vulnerability management so no L2 asserted.
+- tag: Hostname coverage
+  spec_file: akamai-api-security-hostname-coverage-api-openapi.yml
+  capability_id: BC-620
+  capability_id_l1: BC-620
+  capability_name: Cybersecurity Management
+  confidence: 0.7
+  evidence: 'GET /hostname-coverage — ''Get Hostname Coverage''; doc: ''Manage your configurations for
+    Kona Site Defender, Web Application Protector, and Client Reputation.'''
+  reason: Reports which hostnames are covered by WAF/security configurations — administration of security
+    controls, i.e. Cybersecurity Management. Too thin to name a sub-capability.
+- tag: Rate policy actions
+  spec_file: akamai-api-security-rate-policy-actions-api-openapi.yml
+  capability_id: BC-620.30
+  capability_id_l1: BC-620
+  capability_name: Threat Detection & Response Management
+  confidence: 0.7
+  evidence: '"List Rate Policy Actions" / "Modify a Rate Policy Action" under /security-policies/{policyId}/rate-policies'
+  reason: WAF rate-limiting policy actions configured to detect and block abusive traffic — a security
+    control within Cybersecurity Management, closest to threat detection/response mitigation. Sub-capability
+    fit is somewhat approximate (control configuration rather than SOC operations), hence moderate confidence.
+- tag: Reputation analysis
+  spec_file: akamai-api-security-reputation-analysis-api-openapi.yml
+  capability_id: BC-620.30
+  capability_id_l1: BC-620
+  capability_name: Threat Detection & Response Management
+  confidence: 0.7
+  evidence: '"Get Reputation Analysis Settings" ... "Manage your configurations for Kona Site Defender,
+    Web Application Protector, and Client Reputation"'
+  reason: Client reputation scoring settings used to identify and act on malicious clients — a threat
+    detection control, not a business-domain reputation concept.
+- tag: 'Shared resources: Reputation profiles'
+  spec_file: akamai-api-security-shared-resources-reputation-profiles-api-openapi.yml
+  capability_id: BC-620.30
+  capability_id_l1: BC-620
+  capability_name: Threat Detection & Response Management
+  confidence: 0.7
+  evidence: '"Create a Reputation Profile"; description mentions "Client Reputation"'
+  reason: Client reputation scoring profiles used to detect and block malicious clients — a cybersecurity
+    threat-detection control, not customer/brand reputation management.
+- tag: URL protection policies
+  spec_file: akamai-api-security-url-protection-policies-api-openapi.yml
+  capability_id: BC-620.30
+  capability_id_l1: BC-620
+  capability_name: Threat Detection & Response Management
+  confidence: 0.7
+  evidence: '"Create a URL Protection Policy" under /versions/{versionNumber}/url-protections'
+  reason: URL-level protection policies in the web application firewall configuration — a security control
+    governing detection/blocking of requests to protected URLs.
+- tag: URL protection policy actions
+  spec_file: akamai-api-security-url-protection-policy-actions-api-openapi.yml
+  capability_id: BC-620.30
+  capability_id_l1: BC-620
+  capability_name: Threat Detection & Response Management
+  confidence: 0.7
+  evidence: '"List URL Protection Policy Actions"; "Modify a URL Protection Policy Action" under security-policies/{policyId}/url-protections'
+  reason: Configures the enforcement action (alert/deny) taken by URL protection policies within a security
+    policy — cybersecurity detection and response control.
+- tag: 'WAF rules: Evaluation Penalty box conditions'
+  spec_file: akamai-api-security-waf-rules-evaluation-penalty-box-conditions-api-openapi.yml
+  capability_id: BC-620.30
+  capability_id_l1: BC-620
+  capability_name: Threat Detection & Response Management
+  confidence: 0.7
+  evidence: '"Get Penalty Box Conditions in Evaluation Mode"; "Modify the Penalty Box Conditions in Evaluation
+    Mode"'
+  reason: WAF penalty-box (attacker quarantine) conditions in evaluation mode — a threat detection/response
+    control within the application firewall.
+- tag: 'WAF rules: Penalty box'
+  spec_file: akamai-api-security-waf-rules-penalty-box-api-openapi.yml
+  capability_id: BC-620.30
+  capability_id_l1: BC-620
+  capability_name: Threat Detection & Response Management
+  confidence: 0.7
+  evidence: '"Get the Penalty Box"; "Modify the Penalty Box" under security-policies/{policyId}/penalty-box'
+  reason: Penalty box configuration quarantines clients that trigger WAF rules — a security detection/response
+    enforcement control, not a business penalty concept.
+- tag: 'WAF rules: Update mode'
+  spec_file: akamai-api-security-waf-rules-update-mode-api-openapi.yml
+  capability_id: BC-620
+  capability_id_l1: BC-620
+  capability_name: Cybersecurity Management
+  confidence: 0.7
+  evidence: GET/PUT /security-policies/{policyId}/mode — 'Get the Current Mode' / 'Modify the Mode'
+  reason: Sets the WAF rule-update mode on a security policy; a security control configuration operation.
+    Thin surface (two operations) so confidence is moderate and no L2 is asserted.
