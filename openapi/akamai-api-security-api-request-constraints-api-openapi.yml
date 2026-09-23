@@ -2,13 +2,11 @@ openapi: 3.2.0
 info:
   description: 'Manage your configurations for Kona Site Defender,
 
-    Web Application Protector, and Client Reputation.
-
-    '
+    Web Application Protector, and Client Reputation.'
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
-  title: 'Akamai: Application Security Activation history API request constraints API'
+  title: 'Akamai: Application Security API request constraints API'
   version: v1
 servers:
 - url: https://{hostname}/appsec/v1
@@ -586,7 +584,7 @@ paths:
       file-path: paths/policy-api-request-constraints-api.yaml
       path-info: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/api-request-constraints/{apiId}
     put:
-      description: Update what action to take when the API request constraint triggers. This operation modifies an individual API constraint action. To use this operation, run [List all API request constraints and actions](https://techdocs.akamai.com/application-security/reference/get-api-request-constraints) and pick an API from the response list. Use `alert` to record the trigger of the event, `deny` to block the request, or `none` to take no action. Currently the only member in the API Request Constraints object is `action`. _Products:_ Kona Site Defender, App & API Protector with the Advanced Security module.
+      description: Update what action to take when the API request constraint triggers. This operation modifies an individual API constraint action. To use this operation, run List all API request constraints and actions and pick an API from the response list. Use `alert` to record the trigger of the event, `deny` to block the request, or `none` to take no action. Currently the only member in the API Request Constraints object is `action`. _Products:_ Kona Site Defender, App & API Protector with the Advanced Security module.
       externalDocs:
         description: See documentation for this operation in Akamai's Application Security API
         url: https://techdocs.akamai.com/application-security/reference/put-api-request-constraints-api

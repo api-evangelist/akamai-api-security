@@ -2,13 +2,11 @@ openapi: 3.2.0
 info:
   description: 'Manage your configurations for Kona Site Defender,
 
-    Web Application Protector, and Client Reputation.
-
-    '
+    Web Application Protector, and Client Reputation.'
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
-  title: 'Akamai: Application Security Activation history Pragma settings API'
+  title: 'Akamai: Application Security Pragma settings API'
   version: v1
 servers:
 - url: https://{hostname}/appsec/v1
@@ -43,7 +41,7 @@ paths:
       file-path: paths/config-pragma-header.yaml
       path-info: /configs/{configId}/versions/{versionNumber}/advanced-settings/pragma-header
     get:
-      description: Return the `Pragma` header excluded conditions. By default, the `Pragma` header is stripped from an operation's response except in cases where you set `excludeCondition`. This operation applies at the security configuration level. To see settings at the security policy level, run [List Pragma header settings for a security policy](https://techdocs.akamai.com/application-security/reference/get-policies-pragma-header). _Products:_ All.
+      description: Return the `Pragma` header excluded conditions. By default, the `Pragma` header is stripped from an operation's response except in cases where you set `excludeCondition`. This operation applies at the security configuration level. To see settings at the security policy level, run List Pragma header settings for a security policy. _Products:_ All.
       externalDocs:
         description: See documentation for this operation in Akamai's Application Security API
         url: https://techdocs.akamai.com/application-security/reference/get-advanced-settings-pragma-header
@@ -308,7 +306,7 @@ paths:
       tags:
       - Pragma settings
     put:
-      description: 'Update the `Pragma` header excluded conditions. By default, the `Pragma` header is stripped from an operation''s response except in cases where you set `excludeCondition`. To remove existing settings, submit your request with an empty payload `{}` at the top-level of an object. For example, submit `"type": "{}"` in the request body to remove the `requestHeaderValueMatch` from the excluded conditions. If you submit an empty payload for each member, you''ll clear all of your condition settings. This operation applies at the security configuration level. To see settings at the security policy level, run [Modify Pragma header settings for a security policy](https://techdocs.akamai.com/application-security/reference/put-policies-pragma-header). _Products:_ All.'
+      description: 'Update the `Pragma` header excluded conditions. By default, the `Pragma` header is stripped from an operation''s response except in cases where you set `excludeCondition`. To remove existing settings, submit your request with an empty payload `{}` at the top-level of an object. For example, submit `"type": "{}"` in the request body to remove the `requestHeaderValueMatch` from the excluded conditions. If you submit an empty payload for each member, you''ll clear all of your condition settings. This operation applies at the security configuration level. To see settings at the security policy level, run Modify Pragma header settings for a security policy. _Products:_ All.'
       externalDocs:
         description: See documentation for this operation in Akamai's Application Security API
         url: https://techdocs.akamai.com/application-security/reference/put-advanced-settings-pragma-header
@@ -757,7 +755,7 @@ paths:
       file-path: paths/policy-pragma-header.yaml
       path-info: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/advanced-settings/pragma-header
     get:
-      description: Return the `Pragma` header's excluded conditions. By default, the `Pragma` header debugging information is stripped from an operation's response except in cases where you set `excludeCondition`. This operation applies at the security policy level. To modify `Pragma` header settings at the security configuration level, run [List Pragma header settings for a configuration](https://techdocs.akamai.com/application-security/reference/get-advanced-settings-pragma-header). _Products:_ All.
+      description: Return the `Pragma` header's excluded conditions. By default, the `Pragma` header debugging information is stripped from an operation's response except in cases where you set `excludeCondition`. This operation applies at the security policy level. To modify `Pragma` header settings at the security configuration level, run List Pragma header settings for a configuration. _Products:_ All.
       externalDocs:
         description: See documentation for this operation in Akamai's Application Security API
         url: https://techdocs.akamai.com/application-security/reference/get-policies-pragma-header
@@ -1022,7 +1020,7 @@ paths:
       tags:
       - Pragma settings
     put:
-      description: 'Update the pragma header excluded conditions. By default, the `Pragma` header debugging information is stripped from an operation''s response except in cases where you set `excludeCondition`. To remove existing settings, submit your request with an empty payload `{}` at the top-level of an object. For example, submit `"type": "{}"` in the request body to remove the `requestHeaderValueMatch` from the excluded conditions. If you submit an empty payload for each member, you''ll clear all of your condition settings. To modify `Pragma` header settings at the security configuration level, run [Modify Pragma header settings for a configuration](https://techdocs.akamai.com/application-security/reference/put-advanced-settings-pragma-header) . _Products:_ All.'
+      description: 'Update the pragma header excluded conditions. By default, the `Pragma` header debugging information is stripped from an operation''s response except in cases where you set `excludeCondition`. To remove existing settings, submit your request with an empty payload `{}` at the top-level of an object. For example, submit `"type": "{}"` in the request body to remove the `requestHeaderValueMatch` from the excluded conditions. If you submit an empty payload for each member, you''ll clear all of your condition settings. To modify `Pragma` header settings at the security configuration level, run Modify Pragma header settings for a configuration . _Products:_ All.'
       externalDocs:
         description: See documentation for this operation in Akamai's Application Security API
         url: https://techdocs.akamai.com/application-security/reference/put-policies-pragma-header

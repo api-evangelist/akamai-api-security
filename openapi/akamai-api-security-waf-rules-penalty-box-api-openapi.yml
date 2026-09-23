@@ -2,20 +2,18 @@ openapi: 3.2.0
 info:
   description: 'Manage your configurations for Kona Site Defender,
 
-    Web Application Protector, and Client Reputation.
-
-    '
+    Web Application Protector, and Client Reputation.'
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
-  title: 'Akamai: Application Security Activation history WAF rules: Penalty box API'
+  title: 'Akamai: Application Security WAF rules: Penalty box API'
   version: v1
 servers:
 - url: https://{hostname}/appsec/v1
 tags:
 - description: 'Manage the penalty box settings for your Web Application
 
-    Firewall implementation.    '
+    Firewall implementation.'
   name: 'WAF rules: Penalty box'
 paths:
   /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/penalty-box:
@@ -257,7 +255,7 @@ paths:
       tags:
       - 'WAF rules: Penalty box'
     put:
-      description: Modifies the penalty box settings for a security policy. When the penalty box is enabled for a policy, clients that trigger a WAF Deny action are placed in the _penalty box_. There, the action you select for penalty box (either `Alert` or `Deny`) continues to apply to any requests from that client for the next 10 minutes.  _Products:_ All.
+      description: Modifies the penalty box settings for a security policy. When the penalty box is enabled for a policy, clients that trigger a WAF Deny action are placed in the _penalty box_. There, the action you select for penalty box (either `Alert` or `Deny`) continues to apply to any requests from that client for the next 10 minutes. _Products:_ All.
       externalDocs:
         description: See documentation for this operation in Akamai's Application Security API
         url: https://techdocs.akamai.com/application-security/reference/put-policy-penalty-box

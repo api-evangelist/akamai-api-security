@@ -2,18 +2,16 @@ openapi: 3.2.0
 info:
   description: 'Manage your configurations for Kona Site Defender,
 
-    Web Application Protector, and Client Reputation.
-
-    '
+    Web Application Protector, and Client Reputation.'
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
-  title: 'Akamai: Application Security Activation history Security policy: Evaluation mode API'
+  title: 'Akamai: Application Security Security policy: Evaluation…'
   version: v1
 servers:
 - url: https://{hostname}/appsec/v1
 tags:
-- description: 'Set the evaluation mode for your security policies.  This mode
+- description: 'Set the evaluation mode for your security policies. This mode
 
     runs concurrently with your existing Web Application Firewall
 
@@ -59,7 +57,7 @@ paths:
       file-path: paths/policy-eval.yaml
       path-info: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/eval
     post:
-      description: 'Evaluation mode runs concurrently with your existing Web Application Firewall Rule settings and records how the rules would respond if they were applied to live traffic. The default action for evaluation rules is `alert`. Unlike other POST or PUT actions, this request object supports values other than `enabled` or `disabled`. Use `START` to begin evaluation mode. An evaluation period lasts four weeks unless you stop the evaluation. Once you begin, the rules you evaluate will respond to traffic as if they are your current rules. However, instead of taking an action the evaluation rules will log which action they would have taken if they were your active rules and not a test of future rules. Use `STOP` to end the evaluation before it completes on its own, and not upgrade your rules. Use `RESTART` to start an evaluation you previously stopped, or one that has expired. Use `COMPLETE` to stop your in-progress evaluation and automatically upgrade your existing KRS rules to the rule set you just evaluated. Use `UPDATE` to upgrade to the newest available version of evaluation rules. A request value of `START`, `RESTART`, or `COMPLETE` returns an `eval` value of `enabled`. A request value of `STOP` or `UPDATE` returns an `eval` value of `disabled`. _Products:_ Kona Site Defender, App & API Protector with the Advanced Security module.  If you''re using Adaptive Security Engine, pass `eval` as usual, and add `"mode": "ASE_AUTO"` or `ASE_MANUAL` in your request. If you''re using Kona Rule Sets, continue to pass only the `eval` value.'
+      description: 'Evaluation mode runs concurrently with your existing Web Application Firewall Rule settings and records how the rules would respond if they were applied to live traffic. The default action for evaluation rules is `alert`. Unlike other POST or PUT actions, this request object supports values other than `enabled` or `disabled`. Use `START` to begin evaluation mode. An evaluation period lasts four weeks unless you stop the evaluation. Once you begin, the rules you evaluate will respond to traffic as if they are your current rules. However, instead of taking an action the evaluation rules will log which action they would have taken if they were your active rules and not a test of future rules. Use `STOP` to end the evaluation before it completes on its own, and not upgrade your rules. Use `RESTART` to start an evaluation you previously stopped, or one that has expired. Use `COMPLETE` to stop your in-progress evaluation and automatically upgrade your existing KRS rules to the rule set you just evaluated. Use `UPDATE` to upgrade to the newest available version of evaluation rules. A request value of `START`, `RESTART`, or `COMPLETE` returns an `eval` value of `enabled`. A request value of `STOP` or `UPDATE` returns an `eval` value of `disabled`. _Products:_ Kona Site Defender, App & API Protector with the Advanced Security module. If you''re using Adaptive Security Engine, pass `eval` as usual, and add `"mode": "ASE_AUTO"` or `ASE_MANUAL` in your request. If you''re using Kona Rule Sets, continue to pass only the `eval` value.'
       externalDocs:
         description: See documentation for this operation in Akamai's Application Security API
         url: https://techdocs.akamai.com/application-security/reference/post-policy-eval

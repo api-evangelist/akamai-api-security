@@ -2,13 +2,11 @@ openapi: 3.2.0
 info:
   description: 'Manage your configurations for Kona Site Defender,
 
-    Web Application Protector, and Client Reputation.
-
-    '
+    Web Application Protector, and Client Reputation.'
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
-  title: 'Akamai: Application Security Activation history Bypass network lists API'
+  title: 'Akamai: Application Security Bypass network lists API'
   version: v1
 servers:
 - url: https://{hostname}/appsec/v1
@@ -43,7 +41,7 @@ paths:
       file-path: paths/config-bypass-network-lists.yaml
       path-info: /configs/{configId}/versions/{versionNumber}/bypass-network-lists
     get:
-      description: Lists which network lists are used in the bypass network lists settings. If you want to add or remove IP addresses from the network lists, use the [Network Lists API](https://techdocs.akamai.com/network-lists/reference/api). _Products:_ Web Application Protector.
+      description: Lists which network lists are used in the bypass network lists settings. If you want to add or remove IP addresses from the network lists, use the Network Lists API. _Products:_ Web Application Protector.
       externalDocs:
         description: See documentation for this operation in Akamai's Application Security API
         url: https://techdocs.akamai.com/application-security/reference/get-bypass-network-lists
@@ -196,7 +194,7 @@ paths:
       tags:
       - Bypass network lists
     put:
-      description: Update which network lists to use in the bypass network lists settings. If you want to add or remove IP addresses from the network lists, use the [Network Lists API](https://techdocs.akamai.com/network-lists/reference/api). _Products:_ Web Application Protector.
+      description: Update which network lists to use in the bypass network lists settings. If you want to add or remove IP addresses from the network lists, use the Network Lists API. _Products:_ Web Application Protector.
       externalDocs:
         description: See documentation for this operation in Akamai's Application Security API
         url: https://techdocs.akamai.com/application-security/reference/put-bypass-network-lists
@@ -415,7 +413,7 @@ paths:
       file-path: paths/policy-bypass-network-lists.yaml
       path-info: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/bypass-network-lists
     get:
-      description: Lists which network lists are used in the bypass network lists settings. If you want to add or remove IP addresses from the network lists, use the [Network Lists API](https://techdocs.akamai.com/network-lists/reference/api). _Products:_ Web Application Protector, App & API Protector.
+      description: Lists which network lists are used in the bypass network lists settings. If you want to add or remove IP addresses from the network lists, use the Network Lists API. _Products:_ Web Application Protector, App & API Protector.
       externalDocs:
         description: See documentation for this operation in Akamai's Application Security API
         url: https://techdocs.akamai.com/application-security/reference/get-bypass-network-lists-per-policy
@@ -568,7 +566,7 @@ paths:
       tags:
       - Bypass network lists
     put:
-      description: Update which network lists to use in the bypass network lists settings. If you want to add or remove IP addresses from the network lists, use the [Network Lists API](https://techdocs.akamai.com/network-lists/reference/api). _Products:_ Web Application Protector, App & API Protector.
+      description: Update which network lists to use in the bypass network lists settings. If you want to add or remove IP addresses from the network lists, use the Network Lists API. _Products:_ Web Application Protector, App & API Protector.
       externalDocs:
         description: See documentation for this operation in Akamai's Application Security API
         url: https://techdocs.akamai.com/application-security/reference/put-bypass-network-lists-per-policy
@@ -747,7 +745,7 @@ paths:
           description: '[Forbidden](https://techdocs.akamai.com/application-security/reference/403). You don''t have access to the resource.'
           x-akamai:
             file-path: errors/403.yaml
-      summary: Akamai API Security Modify the Bypass Network Lists Settings for a Security Policy
+      summary: Akamai API Security Modify the Bypass Network Lists Settings for a Security…
       tags:
       - Bypass network lists
 externalDocs:

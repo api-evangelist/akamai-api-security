@@ -2,13 +2,11 @@ openapi: 3.2.0
 info:
   description: 'Manage your configurations for Kona Site Defender,
 
-    Web Application Protector, and Client Reputation.
-
-    '
+    Web Application Protector, and Client Reputation.'
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
-  title: 'Akamai: Application Security Activation history WAF rules: General settings API'
+  title: 'Akamai: Application Security WAF rules: General settings API'
   version: v1
 servers:
 - url: https://{hostname}/appsec/v1
@@ -272,7 +270,7 @@ paths:
       tags:
       - 'WAF rules: General settings'
     put:
-      description: 'Upgrade to the most recent version of the KRS rule set. Akamai periodically updates these rules to keep protections current. However, the rules you use in your security policies do not automatically upgrade to the latest version when setting `mode` to `KRS`. These rules do update automatically when you have `mode` set to `AAG`. Before you upgrade, run [Get upgrade details](https://techdocs.akamai.com/application-security/reference/get-rules-upgrade-details) to see which rules have changed. If you want to test how these rules would operate with live traffic before committing to the upgrade, run them in evaluation mode. This applies to KRS rules only and does not allow you to make any changes to the rules themselves. The response is the same as the `mode` response. _Products:_ Kona Site Defender, App & API Protector with the Advanced Security module, Adaptive Security Engine.  If you''re already using or want to switch from KRS to Adaptive Security Engine (ASE), pass `"upgrade": true,` and `"mode": "ASE_AUTO"` or `ASE_MANUAL` in your request. If you''re using Kona Rule Sets, continue to pass only the upgrade value. Note that this operation does not grant access to Adaptive Security Engine. It updates the ASE protections if you already have ASE on your contract. Once you switch to ASE protections, you can''t go back to KRS rules. Contact your account team if you want to add ASE to your contract.'
+      description: 'Upgrade to the most recent version of the KRS rule set. Akamai periodically updates these rules to keep protections current. However, the rules you use in your security policies do not automatically upgrade to the latest version when setting `mode` to `KRS`. These rules do update automatically when you have `mode` set to `AAG`. Before you upgrade, run Get upgrade details to see which rules have changed. If you want to test how these rules would operate with live traffic before committing to the upgrade, run them in evaluation mode. This applies to KRS rules only and does not allow you to make any changes to the rules themselves. The response is the same as the `mode` response. _Products:_ Kona Site Defender, App & API Protector with the Advanced Security module, Adaptive Security Engine. If you''re already using or want to switch from KRS to Adaptive Security Engine (ASE), pass `"upgrade": true,` and `"mode": "ASE_AUTO"` or `ASE_MANUAL` in your request. If you''re using Kona Rule Sets, continue to pass only the upgrade value. Note that this operation does not grant access to Adaptive Security Engine. It updates the ASE protections if you already have ASE on your contract. Once you switch to ASE protections, you can''t go back to KRS rules. Contact your account team if you want to add ASE to your contract.'
       externalDocs:
         description: See documentation for this operation in Akamai's Application Security API
         url: https://techdocs.akamai.com/application-security/reference/put-policy-rules
@@ -1683,7 +1681,7 @@ paths:
       file-path: paths/policy-rule.yaml
       path-info: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/rules/{ruleId}
     get:
-      description: Return the action a rule takes when triggered. This applies to both ASE auto and ASE manual upgrade modes. Rule actions for `ASE_AUTO` are currently in beta. Contact your account team to access this option.  _Products:_ Kona Site Defender, App & API Protector with the Advanced Security module.
+      description: Return the action a rule takes when triggered. This applies to both ASE auto and ASE manual upgrade modes. Rule actions for `ASE_AUTO` are currently in beta. Contact your account team to access this option. _Products:_ Kona Site Defender, App & API Protector with the Advanced Security module.
       externalDocs:
         description: See documentation for this operation in Akamai's Application Security API
         url: https://techdocs.akamai.com/application-security/reference/get-rule

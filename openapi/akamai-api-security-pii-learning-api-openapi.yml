@@ -2,13 +2,11 @@ openapi: 3.2.0
 info:
   description: 'Manage your configurations for Kona Site Defender,
 
-    Web Application Protector, and Client Reputation.
-
-    '
+    Web Application Protector, and Client Reputation.'
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
-  title: 'Akamai: Application Security Activation history PII learning API'
+  title: 'Akamai: Application Security PII learning API'
   version: v1
 servers:
 - url: https://{hostname}/appsec/v1
@@ -234,7 +232,7 @@ paths:
       tags:
       - PII learning
     put:
-      description: 'Turn on PII learning for your API definition. To enable PII learning, submit your request with a payload of `{"enablePiiLearning": true}`. To disable PII learning, submit your request with a payload of `{"enablePiiLearning": false}`. This operation applies at the security configuration level. Run [Modify PII settings for an endpoint version](https://techdocs.akamai.com/api-definitions/reference/post-endpoint-version-pii-settings) to manage your API definitions in regards to PII.  _Products:_ Kona Site Defender, App & API Protector with the Advanced Security module.'
+      description: 'Turn on PII learning for your API definition. To enable PII learning, submit your request with a payload of `{"enablePiiLearning": true}`. To disable PII learning, submit your request with a payload of `{"enablePiiLearning": false}`. This operation applies at the security configuration level. Run Modify PII settings for an endpoint version to manage your API definitions in regards to PII. _Products:_ Kona Site Defender, App & API Protector with the Advanced Security module.'
       externalDocs:
         description: See documentation for this operation in Akamai's Application Security API
         url: https://techdocs.akamai.com/application-security/reference/put-advanced-settings-pii-learning

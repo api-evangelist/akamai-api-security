@@ -2,13 +2,11 @@ openapi: 3.2.0
 info:
   description: 'Manage your configurations for Kona Site Defender,
 
-    Web Application Protector, and Client Reputation.
-
-    '
+    Web Application Protector, and Client Reputation.'
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
-  title: 'Akamai: Application Security Activation history Request body size API'
+  title: 'Akamai: Application Security Request body size API'
   version: v1
 servers:
 - url: https://{hostname}/appsec/v1
@@ -495,7 +493,7 @@ paths:
           description: '[Internal server error](https://techdocs.akamai.com/application-security/reference/500). Something went wrong on our side. Try again in a few minutes, and contact support if the error persists.'
           x-akamai:
             file-path: errors/500-server-errors.yaml
-      summary: Akamai API Security Modify Request Body Inspection Limit Settings for a Configuration
+      summary: Akamai API Security Modify Request Body Inspection Limit Settings for a…
       tags:
       - Request body size
       x-akamai:

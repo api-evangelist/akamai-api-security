@@ -2,13 +2,11 @@ openapi: 3.2.0
 info:
   description: 'Manage your configurations for Kona Site Defender,
 
-    Web Application Protector, and Client Reputation.
-
-    '
+    Web Application Protector, and Client Reputation.'
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
-  title: 'Akamai: Application Security Activation history Client-Side Protections & Compliance API'
+  title: 'Akamai: Application Security Client-Side Protections &…'
   version: v1
 servers:
 - url: https://{hostname}/appsec/v1
@@ -52,7 +50,7 @@ paths:
       file-path: paths/policy-cpc.yaml
       path-info: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/cpc
     get:
-      description: Get Client-Side Protection & Compliance settings for a specific policy. For more information, see [Client-side Protection & Compliance](https://techdocs.akamai.com/client-side-protect-compliance/docs/client-side-protect-compliance-ov) _Products:_ All.
+      description: Get Client-Side Protection & Compliance settings for a specific policy. For more information, see Client-side Protection & Compliance _Products:_ All.
       externalDocs:
         description: See documentation for this operation in Akamai's Application Security API
         url: https://techdocs.akamai.com/application-security/reference/get-policy-cpc

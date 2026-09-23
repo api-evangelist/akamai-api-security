@@ -2,13 +2,11 @@ openapi: 3.2.0
 info:
   description: 'Manage your configurations for Kona Site Defender,
 
-    Web Application Protector, and Client Reputation.
-
-    '
+    Web Application Protector, and Client Reputation.'
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
-  title: 'Akamai: Application Security Activation history Attack payload logs API'
+  title: 'Akamai: Application Security Attack payload logs API'
   version: v1
 servers:
 - url: https://{hostname}/appsec/v1
@@ -45,7 +43,7 @@ paths:
       file-path: paths/config-logging-attack-payload.yaml
       path-info: /configs/{configId}/versions/{versionNumber}/advanced-settings/logging/attack-payload
     get:
-      description: Lists attack payload log settings for a configuration. When set to `NONE`, the request body and response body show as redacted in the log. For example, `JSON_PAIRS:redacted`. Attack payload logging is on by default, and in most cases you should leave it enabled. This operation applies at the configuration level, and therefore applies to all policies within a configuration. If you want to view these settings for a specific policy, run [Get attack payload logging settings for a policy](https://techdocs.akamai.com/application-security/reference/get-policies-attack-payload-logging). _Products:_ All.
+      description: Lists attack payload log settings for a configuration. When set to `NONE`, the request body and response body show as redacted in the log. For example, `JSON_PAIRS:redacted`. Attack payload logging is on by default, and in most cases you should leave it enabled. This operation applies at the configuration level, and therefore applies to all policies within a configuration. If you want to view these settings for a specific policy, run Get attack payload logging settings for a policy. _Products:_ All.
       externalDocs:
         description: See documentation for this operation in Akamai's Application Security API
         url: https://techdocs.akamai.com/application-security/reference/get-advanced-settings-attack-payload-logging
@@ -268,7 +266,7 @@ paths:
       tags:
       - Attack payload logs
     put:
-      description: Enable, disable, or update attack payload log settings for a configuration. When set to `NONE`, the request body and response body show as redacted in the log. For example, `JSON_PAIRS:redacted`. When set to `RESPONSE_BODY` or `REQUEST_BODY` the log shows only the string flagged as a possible attack, and not the entire request or response body. This operation applies at the configuration level, and therefore applies to all policies within a configuration. If you want to override these settings for a specific policy, run [Modify attack payload log settings for a policy](https://techdocs.akamai.com/application-security/reference/put-policies-attack-payload-logging). _Products:_ All.
+      description: Enable, disable, or update attack payload log settings for a configuration. When set to `NONE`, the request body and response body show as redacted in the log. For example, `JSON_PAIRS:redacted`. When set to `RESPONSE_BODY` or `REQUEST_BODY` the log shows only the string flagged as a possible attack, and not the entire request or response body. This operation applies at the configuration level, and therefore applies to all policies within a configuration. If you want to override these settings for a specific policy, run Modify attack payload log settings for a policy. _Products:_ All.
       externalDocs:
         description: See documentation for this operation in Akamai's Application Security API
         url: https://techdocs.akamai.com/application-security/reference/put-advanced-settings-attack-payload-logging

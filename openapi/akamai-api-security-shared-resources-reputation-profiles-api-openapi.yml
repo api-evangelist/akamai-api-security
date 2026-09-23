@@ -2,18 +2,16 @@ openapi: 3.2.0
 info:
   description: 'Manage your configurations for Kona Site Defender,
 
-    Web Application Protector, and Client Reputation.
-
-    '
+    Web Application Protector, and Client Reputation.'
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
-  title: 'Akamai: Application Security Activation history Shared resources: Reputation profiles API'
+  title: 'Akamai: Application Security Shared resources: Reputation…'
   version: v1
 servers:
 - url: https://{hostname}/appsec/v1
 tags:
-- description: 'Manage your reputation profiles.  Reputation protections
+- description: 'Manage your reputation profiles. Reputation protections
 
     identify potentially malicious IP addresses, scoring them based
 
@@ -471,7 +469,7 @@ paths:
       tags:
       - 'Shared resources: Reputation profiles'
     get:
-      description: Returns reputation profiles for a specific security configuration version. To use reputation profiles, you need to add [Client Reputation](https://techdocs.akamai.com/app-api-protector/docs/control-client-reputation) to Kona Site Defender on your contract. _Products:_ Kona Site Defender, App & API Protector with the Advanced Security module.
+      description: Returns reputation profiles for a specific security configuration version. To use reputation profiles, you need to add Client Reputation to Kona Site Defender on your contract. _Products:_ Kona Site Defender, App & API Protector with the Advanced Security module.
       externalDocs:
         description: See documentation for this operation in Akamai's Application Security API
         url: https://techdocs.akamai.com/application-security/reference/get-reputation-profiles
@@ -769,7 +767,7 @@ paths:
       file-path: paths/config-reputation-profile.yaml
       path-info: /configs/{configId}/versions/{versionNumber}/reputation-profiles/{reputationProfileId}
     get:
-      description: Returns the details for a specific reputation profile.  _Products:_ Kona Site Defender, App & API Protector with the Advanced Security module.
+      description: Returns the details for a specific reputation profile. _Products:_ Kona Site Defender, App & API Protector with the Advanced Security module.
       externalDocs:
         description: See documentation for this operation in Akamai's Application Security API
         url: https://techdocs.akamai.com/application-security/reference/get-reputation-profile
@@ -1015,7 +1013,7 @@ paths:
       tags:
       - 'Shared resources: Reputation profiles'
     put:
-      description: Update details for a specific reputation profile.  _Products:_ Kona Site Defender, App & API Protector with the Advanced Security module.
+      description: Update details for a specific reputation profile. _Products:_ Kona Site Defender, App & API Protector with the Advanced Security module.
       externalDocs:
         description: See documentation for this operation in Akamai's Application Security API
         url: https://techdocs.akamai.com/application-security/reference/put-reputation-profile
@@ -1446,7 +1444,7 @@ paths:
       tags:
       - 'Shared resources: Reputation profiles'
     delete:
-      description: Delete a reputation profile. You can't delete a reputation profile that is actively in use. To delete the reputation profile, first activate an older configuration version or create a new version without that policy in place.  _Products:_ Kona Site Defender, App & API Protector with the Advanced Security module.
+      description: Delete a reputation profile. You can't delete a reputation profile that is actively in use. To delete the reputation profile, first activate an older configuration version or create a new version without that policy in place. _Products:_ Kona Site Defender, App & API Protector with the Advanced Security module.
       externalDocs:
         description: See documentation for this operation in Akamai's Application Security API
         url: https://techdocs.akamai.com/application-security/reference/delete-reputation-profile

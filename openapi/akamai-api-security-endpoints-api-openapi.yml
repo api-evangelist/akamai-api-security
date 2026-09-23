@@ -2,13 +2,11 @@ openapi: 3.2.0
 info:
   description: 'Manage your configurations for Kona Site Defender,
 
-    Web Application Protector, and Client Reputation.
-
-    '
+    Web Application Protector, and Client Reputation.'
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
-  title: 'Akamai: Application Security Activation history Endpoints API'
+  title: 'Akamai: Application Security Endpoints API'
   version: v1
 servers:
 - url: https://{hostname}/appsec/v1
@@ -42,7 +40,7 @@ paths:
       file-path: paths/api-discovery-base-path.yaml
       path-info: /api-discovery/host/{hostname}/basepath/{basePath}
     put:
-      description: Hide or show an API. You can choose to include or exclude APIs from the [Get discovered APIs](https://techdocs.akamai.com/application-security/reference/get-api-list) response. This operation is per-user. If you hide an API from the response, another of your colleagues will still see that API in the response when they run this operation with their own credentials.
+      description: Hide or show an API. You can choose to include or exclude APIs from the Get discovered APIs response. This operation is per-user. If you hide an API from the response, another of your colleagues will still see that API in the response when they run this operation with their own credentials.
       externalDocs:
         description: See documentation for this operation in Akamai's Application Security API
         url: https://techdocs.akamai.com/application-security/reference/put-api-visibility
@@ -1158,7 +1156,7 @@ paths:
       tags:
       - Endpoints
     get:
-      description: Returns API endpoints for the specified hostname and base path. Unlike [Get discovered APIs](https://techdocs.akamai.com/application-security/reference/get-api-list), this operation returns APIs already in your API definitions. When you see a discovered API or a new resource, add it to your definition with [Create an endpoint or resource](https://techdocs.akamai.com/application-security/reference/post-api-endpoint-resource).
+      description: Returns API endpoints for the specified hostname and base path. Unlike Get discovered APIs, this operation returns APIs already in your API definitions. When you see a discovered API or a new resource, add it to your definition with Create an endpoint or resource.
       externalDocs:
         description: See documentation for this operation in Akamai's Application Security API
         url: https://techdocs.akamai.com/application-security/reference/get-discovered-api-endpoints

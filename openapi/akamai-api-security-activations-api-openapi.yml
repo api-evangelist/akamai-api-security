@@ -2,13 +2,11 @@ openapi: 3.2.0
 info:
   description: 'Manage your configurations for Kona Site Defender,
 
-    Web Application Protector, and Client Reputation.
-
-    '
+    Web Application Protector, and Client Reputation.'
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
-  title: 'Akamai: Application Security Activation history Activations API'
+  title: 'Akamai: Application Security Activations API'
   version: v1
 servers:
 - url: https://{hostname}/appsec/v1
@@ -21,7 +19,7 @@ paths:
       file-path: paths/activations.yaml
       path-info: /activations
     post:
-      description: Activates one or more configurations globally. Note that you need to explicitly list any invalid hosts in the `acknowledgedInvalidHostsByConfig` parameter in order to successfully activate a configuration that includes invalid hostnames. If you have an invalid hostname that isn't explicitly called out you'll receive an error telling you to add them to `acknowledgedInvalidHostsByConfig`. See [Activate with invalid hostnames](https://techdocs.akamai.com/application-security/reference/activate-with-invalid-hostnames) for instructions. _Products:_ All.
+      description: Activates one or more configurations globally. Note that you need to explicitly list any invalid hosts in the `acknowledgedInvalidHostsByConfig` parameter in order to successfully activate a configuration that includes invalid hostnames. If you have an invalid hostname that isn't explicitly called out you'll receive an error telling you to add them to `acknowledgedInvalidHostsByConfig`. See Activate with invalid hostnames for instructions. _Products:_ All.
       externalDocs:
         description: See documentation for this operation in Akamai's Application Security API
         url: https://techdocs.akamai.com/application-security/reference/post-activations

@@ -2,13 +2,11 @@ openapi: 3.2.0
 info:
   description: 'Manage your configurations for Kona Site Defender,
 
-    Web Application Protector, and Client Reputation.
-
-    '
+    Web Application Protector, and Client Reputation.'
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
-  title: 'Akamai: Application Security Activation history Onboarding: Post-activation validation API'
+  title: 'Akamai: Application Security Onboarding: Post-activation…'
   version: v1
 servers:
 - url: https://{hostname}/appsec/v1
@@ -32,7 +30,7 @@ paths:
       file-path: paths/onboarding-certificate-validation-status.yaml
       path-info: /onboardings/{onboardingId}/certificate-validation
     get:
-      description: Returns the information you need to validate your certificate. Add the `TXT` DNS record listed in the  response to your DNS record. Adding the `TXT` record won't affect your website. Once you've added the `TXT` record, and before the token expires, run [Validate onboarding certificate](https://techdocs.akamai.com/application-security/docs/post-onboarding-certificate-validation) to validate the certificate.
+      description: Returns the information you need to validate your certificate. Add the `TXT` DNS record listed in the response to your DNS record. Adding the `TXT` record won't affect your website. Once you've added the `TXT` record, and before the token expires, run Validate onboarding certificate to validate the certificate.
       externalDocs:
         description: See documentation for this operation in Akamai's Application Security API
         url: https://techdocs.akamai.com/application-security/reference/get-onboarding-certificate-validation
@@ -1041,7 +1039,7 @@ paths:
       file-path: paths/onboarding-cname-to-akamai.yaml
       path-info: /onboardings/{onboardingId}/cname-to-akamai
     post:
-      description: 'Validates your site is ready to serve traffic. Call this operation after you''ve replaced the DNS entry that directs traffic to your site with the DNS CNAME records in [List hostname CNAME DNS records](https://techdocs.akamai.com/application-security/docs/get-onboarding-cname-records). In each record, set the time-to-live (TTL) to 300 seconds (5 minutes). Once this call completes, run [Get an onboarding](https://techdocs.akamai.com/application-security/docs/get-onboarding) to verify your onboarding is complete. When you''ve successfully completed any validations and CNAME changes, you''ll see `onboardingStatus: "COMPLETE"` in the response.'
+      description: 'Validates your site is ready to serve traffic. Call this operation after you''ve replaced the DNS entry that directs traffic to your site with the DNS CNAME records in List hostname CNAME DNS records. In each record, set the time-to-live (TTL) to 300 seconds (5 minutes). Once this call completes, run Get an onboarding to verify your onboarding is complete. When you''ve successfully completed any validations and CNAME changes, you''ll see `onboardingStatus: "COMPLETE"` in the response.'
       externalDocs:
         description: See documentation for this operation in Akamai's Application Security API
         url: https://techdocs.akamai.com/application-security/reference/post-validate-onboarding-cname-records
@@ -1484,7 +1482,7 @@ paths:
       file-path: paths/onboarding-origin-validation-status.yaml
       path-info: /onboardings/{onboardingId}/origin-validation
     get:
-      description: Lists the DNS records for your origin. Once you make this call, visit your DNS provider account and create a new DNS type `A` record with the values returned in the response. In the rare case that you changed your origin values outside this setup, you can run [Skip origin validation](https://techdocs.akamai.com/application-security/docs/post-skip-onboarding-origin-validation) to proceed to the next step without validating your origin at this time.
+      description: Lists the DNS records for your origin. Once you make this call, visit your DNS provider account and create a new DNS type `A` record with the values returned in the response. In the rare case that you changed your origin values outside this setup, you can run Skip origin validation to proceed to the next step without validating your origin at this time.
       externalDocs:
         description: See documentation for this operation in Akamai's Application Security API
         url: https://techdocs.akamai.com/application-security/reference/get-onboarding-origin-validation
@@ -2045,7 +2043,7 @@ paths:
       file-path: paths/onboarding-origin-validation.yaml
       path-info: /onboardings/{onboardingId}/origin-validation/validate
     post:
-      description: Validates the `A` DNS record you entered into your DNS record. In the rare case that you changed your origin values outside this setup, you can run [Skip origin validation](https://techdocs.akamai.com/application-security/docs/post-skip-onboarding-origin-validation) to proceed to the next step without validating your origin at this time.
+      description: Validates the `A` DNS record you entered into your DNS record. In the rare case that you changed your origin values outside this setup, you can run Skip origin validation to proceed to the next step without validating your origin at this time.
       externalDocs:
         description: See documentation for this operation in Akamai's Application Security API
         url: https://techdocs.akamai.com/application-security/reference/post-onboarding-origin-validation

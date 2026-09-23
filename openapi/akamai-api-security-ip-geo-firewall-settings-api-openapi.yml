@@ -2,20 +2,18 @@ openapi: 3.2.0
 info:
   description: 'Manage your configurations for Kona Site Defender,
 
-    Web Application Protector, and Client Reputation.
-
-    '
+    Web Application Protector, and Client Reputation.'
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
-  title: 'Akamai: Application Security Activation history IP/Geo Firewall settings API'
+  title: 'Akamai: Application Security IP/Geo Firewall settings API'
   version: v1
 servers:
 - url: https://{hostname}/appsec/v1
 tags:
 - description: 'Manage which network lists are used in the IP/Geo Firewall
 
-    settings.  If you want to add or remove IP addresses from the
+    settings. If you want to add or remove IP addresses from the
 
     network lists, use the Network Lists API.'
   name: IP/Geo Firewall settings
@@ -57,7 +55,7 @@ paths:
       file-path: paths/policy-ip-geo-firewall.yaml
       path-info: /configs/{configId}/versions/{versionNumber}/security-policies/{policyId}/ip-geo-firewall
     get:
-      description: Lists which network lists are used in the IP/Geo Firewall settings. In Control Center this method is called `mode`. In this API the method is called `blocked`. The response shows blocked and allowed IPs depending on which network lists you include and which version of the mode you choose. If you want to add or remove IP addresses from the network lists, use the [Network Lists API](https://techdocs.akamai.com/network-lists/reference/api). Note that subnet controls are a legacy item in Control Center and are not available through this API. _Products:_ All.
+      description: Lists which network lists are used in the IP/Geo Firewall settings. In Control Center this method is called `mode`. In this API the method is called `blocked`. The response shows blocked and allowed IPs depending on which network lists you include and which version of the mode you choose. If you want to add or remove IP addresses from the network lists, use the Network Lists API. Note that subnet controls are a legacy item in Control Center and are not available through this API. _Products:_ All.
       externalDocs:
         description: See documentation for this operation in Akamai's Application Security API
         url: https://techdocs.akamai.com/application-security/reference/get-policy-ip-geo-firewall
